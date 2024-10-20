@@ -1,0 +1,43 @@
+.card {
+	width: 25rem;
+	display: flex;
+	flex-direction: column;
+	padding: 2.4rem;
+	background-color: var(--color-white);
+	box-shadow: 0 0.2rem 1rem rgba(black, 0.1);
+	border-radius: 0.3rem;
+	gap: 2.4rem;
+	transition: 0.2s;
+	
+	&:hover {
+		box-shadow: 0 0.4rem 1.2rem rgba(black, 0.15);
+
+		.card__actions {
+			visibility: visible;	
+			opacity: 1;
+		}
+	}
+
+	&__middle {
+		display: flex;
+		align-items: center;
+	}
+
+	&__actions {
+		display: flex;
+		justify-content: flex-end;
+		gap: 0.8rem;
+		flex: 1;
+		align-items: center;
+		visibility: hidden;
+		opacity: 0;
+		transition: 0.1s;
+	}
+
+	&__color {
+		width: 1.2rem;
+		height: 1.2rem;
+		border-radius: 50%;
+		background-color: green;
+	}
+}

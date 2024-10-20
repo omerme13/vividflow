@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import "./App.scss";
-import Card from "./components/Card/Card";
+import Card from '@/components/Card/Card';
 
 const App: FC = () => {
     return (

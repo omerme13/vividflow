@@ -1,4 +1,9 @@
 .app {
 	padding: 3rem;
 	color: var(--color-main-text);
+	height: 100vh;
+}
+
+:root {
+	background-color: var(--color-purple-20);
 }
