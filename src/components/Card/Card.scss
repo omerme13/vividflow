@@ -1,7 +1,8 @@
 @use '../../styles/variables';
 
 .card {
-    width: 25rem;
+    min-width: 25rem;
+    max-width: 30rem;
     display: flex;
     flex-direction: column;
     padding: 2.4rem;
@@ -10,7 +11,9 @@
     border-radius: 0.3rem;
     gap: 2.4rem;
     transition: 0.2s;
-
+	break-inside: avoid;
+	margin: 0 auto 1.6rem;
+	
     &:hover {
         box-shadow: 0 0.4rem 1.2rem rgba(black, 0.15);
 
