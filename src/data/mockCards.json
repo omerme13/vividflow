@@ -1,0 +1,44 @@
+[
+	{
+		"text": "Test note"
+	},
+	{
+		"text": "Testing notes again"
+	},
+	{
+		"text": "Find Nemo",
+		"label": "food",
+		"color": "blue",
+		"isCompleted": false,
+		"isOnKanban": false,
+		"dueDate": null
+	},
+	{
+		"text": "Call mom",
+		"label": "family",
+		"color": "red",
+		"isCompleted": false,
+		"isOnKanban": false,
+		"dueDate": null
+	},
+	{
+		"text": "Find all the articles from the author who wrote Harry Potter",
+		"label": "books",
+		"color": "green",
+		"isCompleted": false,
+		"isOnKanban": false,
+		"dueDate": null
+	},
+	{
+		"text": "Wake up early tomorrow",
+		"label": ""
+	},
+	{
+		"text": "Write the song I’v always wanted to write",
+		"label": "self development",
+		"color": "yellow",
+		"isCompleted": false,
+		"isOnKanban": false,
+		"dueDate": null
+	}
+]
