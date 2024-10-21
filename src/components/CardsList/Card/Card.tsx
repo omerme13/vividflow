@@ -6,9 +6,9 @@ import LabelIcon from "@/assets/icons/label.svg?react";
 import ShowMoreIcon from "@/assets/icons/show-more.svg?react";
 import TrashIcon from "@/assets/icons/trash.svg?react";
 import PaletteIcon from "@/assets/icons/palette.svg?react";
+import CardAction from "./CardAction";
 
 import "./Card.scss";
-import CardAction from "./CardAction";
 
 const markAsDone = () => {};
 
@@ -22,14 +22,7 @@ const showMore = () => {};
 
 const openPalette = () => {};
 
-const Card: FC<CardProps> = ({
-    text,
-    label,
-    color,
-    isOnKanban,
-    isCompleted,
-    dueDate,
-}) => {
+const Card: FC<CardProps> = ({ card: { text, label, color, isOnKanban, isCompleted, dueDate } }) => {
     return (
         <div className="card">
             <div className="card__text">{text}</div>
