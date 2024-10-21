@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, SVGProps } from "react";
 
 import './CardAction.scss';
 
 interface CardActionProps {
     action: () => void;
     size?: number;
-    icon: FC<React.SVGProps<SVGSVGElement>>;
+    icon: FC<SVGProps<SVGSVGElement>>;
 }
 
 const CardAction: FC<CardActionProps> = ({ action, size, icon: Icon }) => {

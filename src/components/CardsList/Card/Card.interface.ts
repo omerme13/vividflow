@@ -1,4 +1,4 @@
-export interface ICard {
+export interface CardData {
     text: string;
     label?: string;
     color?: CardColors;
@@ -8,7 +8,7 @@ export interface ICard {
 }
 
 export interface CardProps {
-	card: ICard;
+	card: CardData;
 }
 
 export enum CardColors {
