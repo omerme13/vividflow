@@ -1,0 +1,15 @@
+.sidebar-item {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+
+	&:hover {
+		opacity: 0.7;
+		cursor: pointer;
+	}
+
+	&__text {
+		line-height: 1;
+		text-transform: capitalize;
+	}
+}

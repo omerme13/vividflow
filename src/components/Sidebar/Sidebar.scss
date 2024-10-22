@@ -1,0 +1,15 @@
+.sidebar {
+	height: 100%;
+	background: var(--color-purple-60);
+	position: fixed;
+	width: var(--sidebar-width);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__items-container {
+		display: flex;
+		flex-direction: column;
+		row-gap: 2rem;
+	}
+}
