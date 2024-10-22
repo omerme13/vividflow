@@ -1,26 +1,22 @@
 import { FC } from "react";
-import { SideBarItemData, SidebarProps } from "./Sidebar.interface";
-
-import CheckIcon from "@/assets/icons/check.svg?react";
-import DashboardIcon from "@/assets/icons/dashboard.svg?react";
-import CalendarIcon from "@/assets/icons/calendar.svg?react";
-import SettingsIcon from "@/assets/icons/settings.svg?react";
+import SidebarItem from "./SidebarItem";
+import { SidebarActions, sidebarItems } from "./constants";
 
 import "./Sidebar.scss";
-import SidebarItem from "./SidebarItem";
 
-const sidebarItems: SideBarItemData[] = [
-    { text: "tasks", icon: CheckIcon, action: () => {} },
-    { text: "dashboard", icon: DashboardIcon, action: () => {} },
-    { text: "calendar", icon: CalendarIcon, action: () => {} },
-    { text: "settings", icon: SettingsIcon, action: () => {} },
-];
-const Sidebar: FC<SidebarProps> = () => {
+const actions = {
+    [SidebarActions.tasks]: () => {},
+    [SidebarActions.calendar]: () => {},
+    [SidebarActions.dashboard]: () => {},
+    [SidebarActions.settings]: () => {},
+};
+
+const Sidebar: FC = () => {
     return (
         <div className="sidebar">
             <div className="sidebar__items-container">
-                {sidebarItems.map((item) => (
-                    <SidebarItem key={item.text} {...item} />
+                {sidebarItems.map(({ text, icon }) => (
+                    <SidebarItem key={text} text={text} icon={icon} action={actions[text]} />
                 ))}
             </div>
         </div>
