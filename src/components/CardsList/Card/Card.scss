@@ -5,7 +5,7 @@
     flex-direction: column;
     padding: 2.4rem;
     background-color: var(--color-white);
-    box-shadow: 0 0.2rem 1rem rgba(black, 0.1);
+    box-shadow: 0 0.1rem 0.5rem rgba(black, 0.1);
     border-radius: 0.3rem;
     gap: 2.4rem;
     transition: 0.2s;
@@ -13,7 +13,8 @@
 	margin: 0 auto 1.6rem;
 	
     &:hover {
-        box-shadow: 0 0.4rem 1.2rem rgba(black, 0.15);
+        box-shadow: 0 0.3rem 1rem rgba(black, 0.2);
+		transform: translateY(-2px) scale(1.01);
 
         .card-action {
             opacity: 1;

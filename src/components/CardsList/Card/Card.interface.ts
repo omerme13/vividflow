@@ -1,4 +1,5 @@
 export interface CardData {
+	id: string;
     text: string;
     label?: string;
     color?: CardColors;
@@ -9,6 +10,7 @@ export interface CardData {
 
 export interface CardProps {
 	card: CardData;
+	deleteCard: (id: string) => void;
 }
 
 export enum CardColors {

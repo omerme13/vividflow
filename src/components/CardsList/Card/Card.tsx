@@ -16,13 +16,11 @@ const setDueDate = () => {};
 
 const addLabel = () => {};
 
-const deleteTask = () => {};
-
 const showMore = () => {};
 
 const openPalette = () => {};
 
-const Card: FC<CardProps> = ({ card: { text, label, color, isOnKanban, isCompleted, dueDate } }) => {
+const Card: FC<CardProps> = ({ card: { id, text, label, color, isOnKanban, isCompleted, dueDate }, deleteCard }) => {
     return (
         <div className="card">
             <div className="card__text">{text}</div>
@@ -37,7 +35,7 @@ const Card: FC<CardProps> = ({ card: { text, label, color, isOnKanban, isComplet
                     <CardAction icon={CheckIcon} action={markAsDone} />
                     <CardAction icon={ClockIcon} action={setDueDate} />
                     <CardAction icon={LabelIcon} action={addLabel} />
-                    <CardAction icon={TrashIcon} action={deleteTask} />
+                    <CardAction icon={TrashIcon} action={() => deleteCard(id)} />
                     <CardAction icon={ShowMoreIcon} action={showMore} />
                 </div>
             </div>

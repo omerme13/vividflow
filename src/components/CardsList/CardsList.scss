@@ -1,6 +1,8 @@
 .cards-list {
 	padding: 3rem;
+	// padding: 3rem 10.6rem 3rem 5.6rem;
 	column-count: auto;
 	column-width: 25rem;
 	column-gap: 1.6rem;
+	margin-left: var(--sidebar-width);	
 }

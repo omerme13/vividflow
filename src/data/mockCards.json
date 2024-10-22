@@ -1,51 +1,11 @@
 [
 	{
-		"text": "Test note"
+		"text": "Test note",
+		"id": "1"
 	},
 	{
-		"text": "Testing notes again"
-	},
-	{
-		"text": "Find Nemo",
-		"label": "food",
-		"color": "blue",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null
-	},
-	{
-		"text": "Call mom",
-		"label": "family",
-		"color": "red",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null
-	},
-	{
-		"text": "Find all the articles from the author who wrote Harry Potter",
-		"label": "books",
-		"color": "green",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null
-	},
-	{
-		"text": "Wake up early tomorrow",
-		"label": ""
-	},
-	{
-		"text": "Write the song I’v always wanted to write",
-		"label": "self development",
-		"color": "yellow",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null
-	},
-	{
-		"text": "Test note"
-	},
-	{
-		"text": "Testing notes again"
+		"text": "Testing notes again",
+		"id": "2"
 	},
 	{
 		"text": "Find Nemo",
@@ -53,7 +13,8 @@
 		"color": "blue",
 		"isCompleted": false,
 		"isOnKanban": false,
-		"dueDate": null
+		"dueDate": null,
+		"id": "3"
 	},
 	{
 		"text": "Call mom",
@@ -61,7 +22,8 @@
 		"color": "red",
 		"isCompleted": false,
 		"isOnKanban": false,
-		"dueDate": null
+		"dueDate": null,
+		"id": "4"
 	},
 	{
 		"text": "Find all the articles from the author who wrote Harry Potter",
@@ -69,11 +31,13 @@
 		"color": "green",
 		"isCompleted": false,
 		"isOnKanban": false,
-		"dueDate": null
+		"dueDate": null,
+		"id": "5"
 	},
 	{
 		"text": "Wake up early tomorrow",
-		"label": ""
+		"label": "",
+		"id": "6"
 	},
 	{
 		"text": "Write the song I’v always wanted to write",
@@ -81,6 +45,56 @@
 		"color": "yellow",
 		"isCompleted": false,
 		"isOnKanban": false,
-		"dueDate": null
+		"dueDate": null,
+		"id": "7"
+	},
+	{
+		"text": "Test note",
+		"id": "8"
+	},
+	{
+		"text": "Testing notes again",
+		"id": "9"
+	},
+	{
+		"text": "Find Nemo",
+		"label": "food",
+		"color": "blue",
+		"isCompleted": false,
+		"isOnKanban": false,
+		"dueDate": null,
+		"id": "10"
+	},
+	{
+		"text": "Call mom",
+		"label": "family",
+		"color": "red",
+		"isCompleted": false,
+		"isOnKanban": false,
+		"dueDate": null,
+		"id": "11"
+	},
+	{
+		"text": "Find all the articles from the author who wrote Harry Potter",
+		"label": "books",
+		"color": "green",
+		"isCompleted": false,
+		"isOnKanban": false,
+		"dueDate": null,
+		"id": "12"
+	},
+	{
+		"text": "Wake up early tomorrow",
+		"label": "",
+		"id": "13"
+	},
+	{
+		"text": "Write the song I’v always wanted to write",
+		"label": "self development",
+		"color": "yellow",
+		"isCompleted": false,
+		"isOnKanban": false,
+		"dueDate": null,
+		"id": "14"
 	}
 ]
