@@ -1,5 +1,5 @@
 import { FC } from "react";
-import SidebarItem from "./SidebarItem";
+import SidebarItem from "./components/SidebarItem/SidebarItem";
 import { SidebarActions, sidebarItems } from "./constants";
 
 import "./Sidebar.scss";

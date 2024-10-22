@@ -1,9 +1,9 @@
 import { FC } from "react";
 
-import CardsList from "@/components/CardsList/CardsList";
-import Sidebar from "@/components/Sidebar/Sidebar";
 
 import "./App.scss";
+import Sidebar from "@/components/Sidebar";
+import CardsList from "@/components/CardsList";
 
 const App: FC = () => {
     return (

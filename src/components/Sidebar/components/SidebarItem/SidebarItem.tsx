@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { SidebarItemProps } from "./Sidebar.interface";
+import { SidebarItemProps } from "./SidebarItem.types";
 
 import './SidebarItem.scss';
  

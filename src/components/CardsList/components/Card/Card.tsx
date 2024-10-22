@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CardProps } from "./Card.interface";
+import { CardProps } from "./Card.types";
 import CheckIcon from "@/assets/icons/check.svg?react";
 import ClockIcon from "@/assets/icons/clock.svg?react";
 import LabelIcon from "@/assets/icons/label.svg?react";

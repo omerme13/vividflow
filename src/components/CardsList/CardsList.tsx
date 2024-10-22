@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import cardsData from "@/data/mockCards.json";
 import { generateUniqueId } from "@/utils/helpers";
-import Card from "./Card/Card";
-import { CardData } from "./Card/Card.interface";
+import Card from "./components/Card/Card";
+import { CardData } from "./components/Card/Card.types";
 
 import "./CardsList.scss";
 
