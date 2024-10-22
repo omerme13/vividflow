@@ -1,0 +1,24 @@
+.new-task-button {
+	display: flex;
+	background: none;
+	border: 1px solid var(--color-main-text);
+	border-radius: 30px;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0.6rem 1.2rem;
+	gap: 0.8rem;
+	transition: 0.1s;
+	margin-bottom: 4rem;
+
+	&:hover {
+		cursor: pointer;
+		border: 1px solid var(--color-palette-orange);
+	}
+	
+	&__text {
+		color: var(--color-main-text);
+		font-family: var(--font-family-main);
+		font-weight: var(--font-weight-bold);
+		line-height: 1;
+	}
+}

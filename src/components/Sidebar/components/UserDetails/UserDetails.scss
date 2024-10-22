@@ -1,0 +1,10 @@
+.user-details {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+
+	&__image {
+		width: 30px;
+		height: 30px;
+	}
+}
