@@ -32,7 +32,7 @@ const Card: FC<CardProps> = ({ card: { id, text, label, color, isOnKanban, isCom
                     <CardAction icon={CheckIcon} action={markAsDone} />
                     <CardAction icon={ClockIcon} action={setDueDate} />
                     <CardAction icon={LabelIcon} action={addLabel} />
-                    <CardAction icon={TrashIcon} action={() => deleteCard(id)} />
+                    <CardAction icon={TrashIcon} action={() => deleteCard(id)} isWarning />
                     <CardAction icon={PaletteIcon} action={openPalette} />
                     <CardAction icon={ShowMoreIcon} action={showMore} />
                 </div>

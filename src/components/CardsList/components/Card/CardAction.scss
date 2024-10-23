@@ -3,3 +3,9 @@
 	opacity: 0;
 	transition: 0.1s;
 }
+
+.card-action--warning:hover {
+	path {
+		fill: var(--color-palette-red-strong);
+	}
+}
