@@ -40,6 +40,15 @@
 		"id": "6"
 	},
 	{
+		"text": "Find all the articles from the author who wrote Harry Potter",
+		"label": "books",
+		"color": "green",
+		"isCompleted": false,
+		"isOnKanban": false,
+		"dueDate": null,
+		"id": "12"
+	},
+	{
 		"text": "Write the song I’v always wanted to write",
 		"label": "self development",
 		"color": "yellow",
@@ -73,15 +82,6 @@
 		"isOnKanban": false,
 		"dueDate": null,
 		"id": "11"
-	},
-	{
-		"text": "Find all the articles from the author who wrote Harry Potter",
-		"label": "books",
-		"color": "green",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null,
-		"id": "12"
 	},
 	{
 		"text": "Wake up early tomorrow",

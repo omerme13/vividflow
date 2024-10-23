@@ -1,10 +1,11 @@
 import { FC } from "react";
 import SidebarItem from "./components/SidebarItem/SidebarItem";
 import { SidebarActions, sidebarItems } from "./constants";
-
-import "./Sidebar.scss";
 import UserDetails from "./components/UserDetails/UserDetails";
 import NewTaskButton from "./components/NewTaskButton/NewTaskButton";
+import Logo from "@/assets/icons/vividflow.svg?react";
+
+import "./Sidebar.scss";
 
 const actions = {
     [SidebarActions.tasks]: () => {},
@@ -23,6 +24,7 @@ const Sidebar: FC = () => {
                     <SidebarItem key={text} text={text} icon={icon} action={actions[text]} />
                 ))}
             </div>
+			<Logo className="sidebar__logo" />
         </div>
     );
 };

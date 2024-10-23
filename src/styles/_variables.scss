@@ -1,22 +1,24 @@
 :root {
-	--color-purple-60: #C9CDF5;
-	--color-purple-40: #DCDEEF;
-	--color-purple-20: #EAEBFB;
-	--color-purple-10: #F7F7FD;
-	--color-white: #fff;
-	--color-main-text: #072A58;
-	--color-secondary: #E67E22;
-	--color-palette-red: #E74C3C;
-	--color-palette-orange: #E67E22;
-	--color-palette-yellow: #F1C40F;
-	--color-palette-green: #2ECC71;
-	--color-palette-blue: #3498DB;
+    --color-purple-60: #c9cdf5;
+    --color-purple-40: #dcdeef;
+    --color-purple-20: #eaebfb;
+    --color-purple-10: #f7f7fd;
+    --color-main-text: #072a58;
+    --color-secondary: #e67e22;
+    --color-palette-red: rgba(231, 76, 60, 0.6);
+    --color-palette-orange: rgba(230, 126, 34, 0.6);
+    --color-palette-yellow: rgba(241, 196, 15, 0.6);
+    --color-palette-green: rgba(46, 204, 113, 0.6);
+    --color-palette-blue: rgba(52, 152, 219, 0.6);
 
-	--font-family-main: 'Lato', Arial, sans-serif;
-	--font-weight-bold: 600;
-	--font-size-main: 1.6rem;
-	--font-size-menu: 1.4rem;
-	
-	--card-width: 25rem;
-	--sidebar-width: 18.4rem;
-  }
+    --color-white: #fff;
+    --color-light-gray: #eee;
+
+    --font-family-main: "Lato", Arial, sans-serif;
+    --font-weight-bold: 600;
+    --font-size-main: 1.6rem;
+    --font-size-menu: 1.4rem;
+
+    --card-width: 25rem;
+    --sidebar-width: 18.4rem;
+}

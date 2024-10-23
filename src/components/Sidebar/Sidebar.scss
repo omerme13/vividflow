@@ -5,12 +5,16 @@
 	width: var(--sidebar-width);
 	display: flex;
 	flex-direction: column;
-	padding: 4rem 3rem;
+	padding: 4rem 3rem 6rem;
 	gap: 1.2rem;
 
 	&__items-container {
 		display: flex;
 		flex-direction: column;
 		row-gap: 2rem;
+	}
+
+	&__logo {
+		margin-top: auto;
 	}
 }

@@ -1,6 +1,6 @@
 .card {
-    min-width: 25rem;
-    max-width: 30rem;
+    min-width: 24rem;
+    max-width: 32rem;
     display: flex;
     flex-direction: column;
     padding: 2.4rem;
@@ -11,16 +11,28 @@
     transition: 0.2s;
 	break-inside: avoid;
 	margin: 0 auto 1.6rem;
-	
-    &:hover {
-        box-shadow: 0 0.3rem 1rem rgba(black, 0.2);
-		transform: translateY(-2px) scale(1.01);
+	overflow: hidden;
+	position: relative;
+	top: 0;
 
-        .card-action {
-            opacity: 1;
-            visibility: visible;
-        }
-    }
+	&:hover {
+		box-shadow: 0 0.3rem 1rem rgba(black, 0.2);
+		top: -2px;
+		.card-action {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+	
+	&__color {
+		width: 100%;
+		background-color: var(--color-light-gray);
+		height: 0.5rem;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
 
     &__middle {
         display: flex;
@@ -50,10 +62,4 @@
             cursor: pointer;
         }
     }
-
-	&__color {
-		width: 1.2rem;
-		height: 1.2rem;
-		border-radius: 50%;
-	}
 }
