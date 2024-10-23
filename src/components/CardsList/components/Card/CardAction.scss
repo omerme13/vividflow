@@ -1,10 +1,5 @@
-.card-action.icon {
+.card-action {
 	visibility: hidden;
 	opacity: 0;
 	transition: 0.1s;
-	
-	&:hover {
-		opacity: 0.7;
-		cursor: pointer;
-	}
 }

@@ -18,9 +18,15 @@
 	&:hover {
 		box-shadow: 0 0.3rem 1rem rgba(black, 0.2);
 		top: -2px;
+
 		.card-action {
 			opacity: 1;
 			visibility: visible;
+
+			&:hover {
+				opacity: 0.7;
+				cursor: pointer;
+			}
 		}
 	}
 	
