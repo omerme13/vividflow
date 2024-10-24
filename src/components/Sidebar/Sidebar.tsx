@@ -14,11 +14,15 @@ const actions = {
     [SidebarActions.settings]: () => {},
 };
 
-const Sidebar: FC = () => {
+interface SidebarProps {
+	openNewTaskModal: () => void;
+}
+
+const Sidebar: FC<SidebarProps> = ({ openNewTaskModal }) => {
     return (
         <div className="sidebar">
 			<UserDetails name="Omer" />
-			<NewTaskButton />
+			<NewTaskButton onClick={openNewTaskModal} />
             <div className="sidebar__items-container">
                 {sidebarItems.map(({ text, icon }) => (
                     <SidebarItem key={text} text={text} icon={icon} action={actions[text]} />
