@@ -1,19 +1,19 @@
-export interface CardData {
+export interface TaskData {
 	id: string;
     text: string;
     label?: string;
-    color?: CardColors;
+    color?: TaskColors;
     isOnKanban?: boolean;
     isCompleted?: boolean;
     dueDate?: Date | null;
 }
 
-export interface CardProps {
-	card: CardData;
-	deleteCard: (id: string) => void;
+export interface TaskProps {
+	task: TaskData;
+	deleteTask: (id: string) => void;
 }
 
-export enum CardColors {
+export enum TaskColors {
     Red = "red",
     Orange = "orange",
 	Yellow = 'yellow',

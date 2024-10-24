@@ -1,4 +1,4 @@
-.card {
+.task {
     min-width: 24rem;
     max-width: 32rem;
     display: flex;
@@ -19,7 +19,7 @@
 		box-shadow: 0 0.3rem 1rem rgba(black, 0.2);
 		top: -2px;
 
-		.card-action {
+		.task-action {
 			opacity: 1;
 			visibility: visible;
 

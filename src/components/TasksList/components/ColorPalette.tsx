@@ -1,21 +1,21 @@
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 
-import { CardColors } from "./Card.types";
+import { TaskColors } from "./Task.types";
 
 import "./ColorPalette.scss";
 interface ColorPaletteProps {
-    setCardColor: Dispatch<SetStateAction<CardColors | undefined>>;
+    setTaskColor: Dispatch<SetStateAction<TaskColors | undefined>>;
     onClose: () => void;
 }
 
-export default function ColorPalette({ setCardColor, onClose }: ColorPaletteProps) {
+export default function ColorPalette({ setTaskColor, onClose }: ColorPaletteProps) {
     const paletteRef = useRef<HTMLDivElement>(null);
 
     const setColor = (e: React.MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement;
 
         if (target?.dataset?.color) {
-            setCardColor(target.dataset.color as CardColors);
+            setTaskColor(target.dataset.color as TaskColors);
             onClose();
         }
     };
@@ -36,7 +36,7 @@ export default function ColorPalette({ setCardColor, onClose }: ColorPaletteProp
 
     return (
         <div className="color-palette" ref={paletteRef}>
-            {Object.values(CardColors).map((color: CardColors) => (
+            {Object.values(TaskColors).map((color: TaskColors) => (
                 <div
                     key={color}
                     className={`color-palette__color color-palette__color--${color}`}

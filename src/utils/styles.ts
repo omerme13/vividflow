@@ -1,3 +1,3 @@
-import { CardColors } from "@/components/CardsList/components/Card";
+import { TaskColors } from "@/components/TasksList/components/Task";
 
-export const getPaletteColor = (color: CardColors | undefined) => `var(--color-palette-${color}, var(--color-light-gray))`;
+export const getPaletteColor = (color: TaskColors | undefined) => `var(--color-palette-${color}, var(--color-light-gray))`;
