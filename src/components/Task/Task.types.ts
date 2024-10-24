@@ -14,6 +14,7 @@ export interface TaskProps {
 }
 
 export enum TaskColors {
+	Gray = "gray",
     Red = "red",
     Orange = "orange",
 	Yellow = 'yellow',

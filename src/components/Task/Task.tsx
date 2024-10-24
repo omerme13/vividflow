@@ -6,9 +6,9 @@ import LabelIcon from "@/assets/icons/label.svg?react";
 import ShowMoreIcon from "@/assets/icons/show-more.svg?react";
 import TrashIcon from "@/assets/icons/trash.svg?react";
 import PaletteIcon from "@/assets/icons/palette.svg?react";
-import TaskAction from "./components/TaskAction";
 import { getPaletteColor } from "@/utils/styles";
-import ColorPalette from "./components/ColorPalette";
+import TaskAction from "./components/TaskAction/TaskAction";
+import ColorPalette from "./components/ColorPalette/ColorPalette";
 
 import "./Task.scss";
 
@@ -20,9 +20,11 @@ const addLabel = () => {};
 
 const showMore = () => {};
 
-export default function Task({ task: { id, text, label, color, isOnKanban, isCompleted, dueDate }, deleteTask }: TaskProps) {
-	// TODO instead of undefined. Make the default color to lightgray from the variables
-    const [taskColor, setTaskColor] = useState<TaskColors | undefined>(color);
+export default function Task({
+    task: { id, text, label, color = TaskColors.Gray, isOnKanban, isCompleted, dueDate },
+    deleteTask,
+}: TaskProps) {
+    const [taskColor, setTaskColor] = useState<TaskColors>(color);
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
 
     const togglePalette = () => setIsPaletteOpen((value) => !value);

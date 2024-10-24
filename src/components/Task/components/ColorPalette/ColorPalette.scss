@@ -15,21 +15,5 @@
 		&:hover {
 			cursor: pointer;
 		}
-
-        &--red {
-            background: var(--color-palette-red);
-        }
-        &--orange {
-            background: var(--color-palette-orange);
-        }
-        &--yellow {
-            background: var(--color-palette-yellow);
-        }
-        &--green {
-            background: var(--color-palette-green);
-        }
-        &--blue {
-            background: var(--color-palette-blue);
-        }
     }
 }

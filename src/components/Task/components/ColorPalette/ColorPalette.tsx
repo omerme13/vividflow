@@ -3,8 +3,9 @@ import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { TaskColors } from "@/components/Task";
 
 import "./ColorPalette.scss";
+import { getPaletteColor } from "@/utils/styles";
 interface ColorPaletteProps {
-    setTaskColor: Dispatch<SetStateAction<TaskColors | undefined>>;
+    setTaskColor: Dispatch<SetStateAction<TaskColors>>;
     onClose: () => void;
 }
 
@@ -42,6 +43,7 @@ export default function ColorPalette({ setTaskColor, onClose }: ColorPaletteProp
                     className={`color-palette__color color-palette__color--${color}`}
                     onClick={setColor}
                     data-color={color}
+					style={{ background: getPaletteColor(color) }}
                 />
             ))}
         </div>
