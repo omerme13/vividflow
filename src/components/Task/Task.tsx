@@ -9,6 +9,7 @@ import PaletteIcon from "@/assets/icons/palette.svg?react";
 import { getPaletteColor } from "@/utils/styles";
 import TaskAction from "./components/TaskAction/TaskAction";
 import ColorPalette from "./components/ColorPalette/ColorPalette";
+import { useTaskContext } from "@/context/TaskContext";
 
 import "./Task.scss";
 
@@ -21,13 +22,13 @@ const addLabel = () => {};
 const showMore = () => {};
 
 export default function Task({
-    task: { id, text, label, color = TaskColors.Gray, isOnKanban, isCompleted, dueDate },
-    deleteTask,
+    task: { id, text, label, color = TaskColors.Gray, isOnKanban, isCompleted, dueDate }
 }: TaskProps) {
     const [taskColor, setTaskColor] = useState<TaskColors>(color);
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
 
     const togglePalette = () => setIsPaletteOpen((value) => !value);
+	const { deleteTask } = useTaskContext();
 
     return (
         <div className="task">

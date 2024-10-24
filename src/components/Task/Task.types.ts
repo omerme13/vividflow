@@ -10,7 +10,6 @@ export interface TaskData {
 
 export interface TaskProps {
 	task: TaskData;
-	deleteTask: (id: string) => void;
 }
 
 export enum TaskColors {
