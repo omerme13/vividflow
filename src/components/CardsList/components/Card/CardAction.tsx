@@ -1,23 +1,19 @@
 import { FC, SVGProps } from "react";
 
 import "./CardAction.scss";
-import { fileURLToPath } from "url";
-
 interface CardActionProps {
     action: (value: unknown) => void;
     size?: number;
     icon: FC<SVGProps<SVGSVGElement>>;
-	isWarning?: boolean;
+    isWarning?: boolean;
 }
 
-const CardAction: FC<CardActionProps> = ({ action, size, icon: Icon, isWarning }) => {
+export default function CardAction({ action, size, icon: Icon, isWarning }: CardActionProps) {
     return (
         <Icon
-            className={`card-action ${isWarning ? 'card-action--warning' : ''}`}
+            className={`card-action ${isWarning ? "card-action--warning" : ""}`}
             onClick={action}
             {...(size && { width: size, height: size })}
         />
     );
-};
-
-export default CardAction;
+}

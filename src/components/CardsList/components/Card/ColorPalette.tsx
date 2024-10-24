@@ -1,25 +1,24 @@
-import { Dispatch, FC, SetStateAction, useEffect, useRef } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 
 import { CardColors } from "./Card.types";
 
 import "./ColorPalette.scss";
-
 interface ColorPaletteProps {
-    setCardColor: Dispatch<SetStateAction<CardColors | undefined>>
-	onClose: () => void;
+    setCardColor: Dispatch<SetStateAction<CardColors | undefined>>;
+    onClose: () => void;
 }
 
-const ColorPalette: FC<ColorPaletteProps> = ({ setCardColor, onClose }) => {
+export default function ColorPalette({ setCardColor, onClose }: ColorPaletteProps) {
     const paletteRef = useRef<HTMLDivElement>(null);
 
-	const setColor = (e: React.MouseEvent<HTMLDivElement>) => {
-		const target = e.target as HTMLDivElement;
+    const setColor = (e: React.MouseEvent<HTMLDivElement>) => {
+        const target = e.target as HTMLDivElement;
 
-		if (target?.dataset?.color) {
-			setCardColor(target.dataset.color as CardColors);
-			onClose();
-		}
-	};
+        if (target?.dataset?.color) {
+            setCardColor(target.dataset.color as CardColors);
+            onClose();
+        }
+    };
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
@@ -28,13 +27,12 @@ const ColorPalette: FC<ColorPaletteProps> = ({ setCardColor, onClose }) => {
             }
         };
 
-        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside);
 
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [onClose]);
-
 
     return (
         <div className="color-palette" ref={paletteRef}>
@@ -48,6 +46,4 @@ const ColorPalette: FC<ColorPaletteProps> = ({ setCardColor, onClose }) => {
             ))}
         </div>
     );
-};
-
-export default ColorPalette;
+}

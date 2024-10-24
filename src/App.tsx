@@ -1,14 +1,14 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 
-import "./App.scss";
 import Sidebar from "@/components/Sidebar";
 import CardsList from "@/components/CardsList";
 import NewTaskModal from "./components/NewTaskModal/NewTaskModal";
 
-const App: FC = () => {
+import "./App.scss";
+
+export default function App() {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const handleSubmit = () => {};
-	
     return (
         <div className="app">
             <Sidebar openNewTaskModal={() => setIsModalOpen(true)} />
@@ -21,6 +21,4 @@ const App: FC = () => {
             />
         </div>
     );
-};
-
-export default App;
+}

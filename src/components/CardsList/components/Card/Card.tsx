@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 import { CardColors, CardProps } from "./Card.types";
 import CheckIcon from "@/assets/icons/check.svg?react";
 import ClockIcon from "@/assets/icons/clock.svg?react";
@@ -20,7 +20,7 @@ const addLabel = () => {};
 
 const showMore = () => {};
 
-const Card: FC<CardProps> = ({ card: { id, text, label, color, isOnKanban, isCompleted, dueDate }, deleteCard }) => {
+export default function Card({ card: { id, text, label, color, isOnKanban, isCompleted, dueDate }, deleteCard }: CardProps) {
 	// TODO instead of undefined. Make the default color to lightgray from the variables
     const [cardColor, setCardColor] = useState<CardColors | undefined>(color);
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
@@ -47,6 +47,4 @@ const Card: FC<CardProps> = ({ card: { id, text, label, color, isOnKanban, isCom
             </div>
         </div>
     );
-};
-
-export default Card;
+}

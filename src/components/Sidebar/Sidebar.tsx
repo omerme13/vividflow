@@ -1,4 +1,3 @@
-import { FC } from "react";
 import SidebarItem from "./components/SidebarItem/SidebarItem";
 import { SidebarActions, sidebarItems } from "./constants";
 import UserDetails from "./components/UserDetails/UserDetails";
@@ -13,24 +12,21 @@ const actions = {
     [SidebarActions.dashboard]: () => {},
     [SidebarActions.settings]: () => {},
 };
-
 interface SidebarProps {
-	openNewTaskModal: () => void;
+    openNewTaskModal: () => void;
 }
 
-const Sidebar: FC<SidebarProps> = ({ openNewTaskModal }) => {
+export default function Sidebar({ openNewTaskModal }: SidebarProps) {
     return (
         <div className="sidebar">
-			<UserDetails name="Omer" />
-			<NewTaskButton onClick={openNewTaskModal} />
+            <UserDetails name="Omer" />
+            <NewTaskButton onClick={openNewTaskModal} />
             <div className="sidebar__items-container">
                 {sidebarItems.map(({ text, icon }) => (
                     <SidebarItem key={text} text={text} icon={icon} action={actions[text]} />
                 ))}
             </div>
-			<Logo className="sidebar__logo" />
+            <Logo className="sidebar__logo" />
         </div>
     );
-};
-
-export default Sidebar;
+}
