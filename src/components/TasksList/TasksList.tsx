@@ -1,8 +1,7 @@
 import { useState } from "react";
 import tasksData from "@/data/mockTasks.json";
 import { generateUniqueId } from "@/utils/helpers";
-import Task from "./components/Task";
-import { TaskData } from './components/Task.types';
+import Task, { TaskData } from "@/components/Task";
 
 import "./TasksList.scss";
 

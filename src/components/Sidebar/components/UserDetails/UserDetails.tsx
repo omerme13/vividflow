@@ -1,4 +1,4 @@
-import { UserDetailsProps } from "./UserDetails.interface";
+import { UserDetailsProps } from "./UserDetails.types";
 import { defaultAvatarUrl } from "./constants";
 
 import "./UserDetails.scss";

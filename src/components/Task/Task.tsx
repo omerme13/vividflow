@@ -6,9 +6,9 @@ import LabelIcon from "@/assets/icons/label.svg?react";
 import ShowMoreIcon from "@/assets/icons/show-more.svg?react";
 import TrashIcon from "@/assets/icons/trash.svg?react";
 import PaletteIcon from "@/assets/icons/palette.svg?react";
-import TaskAction from "./TaskAction";
+import TaskAction from "./components/TaskAction";
 import { getPaletteColor } from "@/utils/styles";
-import ColorPalette from "./ColorPalette";
+import ColorPalette from "./components/ColorPalette";
 
 import "./Task.scss";
 

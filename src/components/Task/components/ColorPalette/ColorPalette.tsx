@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 
-import { TaskColors } from "./Task.types";
+import { TaskColors } from "@/components/Task";
 
 import "./ColorPalette.scss";
 interface ColorPaletteProps {

@@ -1,6 +1,7 @@
 import { FC, SVGProps } from "react";
 
 import "./TaskAction.scss";
+
 interface TaskActionProps {
     action: (value: unknown) => void;
     size?: number;
