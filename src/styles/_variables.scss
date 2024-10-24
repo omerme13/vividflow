@@ -6,7 +6,6 @@
     --color-main-text: #072a58;
     --color-secondary: #e67e22;
 
-	
     --color-palette-gray: #eee;
     --color-palette-red: rgba(231, 76, 60, 0.6);
     --color-palette-orange: rgba(230, 126, 34, 0.6);
@@ -15,7 +14,7 @@
     --color-palette-blue: rgba(52, 152, 219, 0.6);
     --color-palette-red-strong: rgba(231, 76, 60);
 
-    --color-white: #fff;
+    --color-card-background: #fff;
 
     --font-family-main: "Lato", Arial, sans-serif;
     --font-weight-bold: 600;
@@ -24,4 +23,24 @@
 
     --task-width: 25rem;
     --sidebar-width: 18.4rem;
+}
+
+html.dark {
+    --color-purple-60: #2a2a4a;
+    --color-purple-40: #252543;
+    --color-purple-20: #1a1a2e;
+	--color-purple-10: #111118;
+	
+    --color-main-text: #d1d5db;
+    --color-secondary: #f4a261;
+
+    --color-palette-gray: #2c2c3a;
+    --color-palette-red: rgba(203, 64, 66, 0.8);
+    --color-palette-orange: rgba(226, 149, 120, 0.8);
+    --color-palette-yellow: rgba(246, 174, 45, 0.8);
+    --color-palette-green: rgba(82, 183, 136, 0.8);
+    --color-palette-blue: rgba(69, 123, 157, 0.8);
+    --color-palette-red-strong: rgb(203, 64, 66);
+
+    --color-card-background: #1d1d32;
 }
