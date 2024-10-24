@@ -4,7 +4,7 @@ import "./CardAction.scss";
 import { fileURLToPath } from "url";
 
 interface CardActionProps {
-    action: () => void;
+    action: (value: unknown) => void;
     size?: number;
     icon: FC<SVGProps<SVGSVGElement>>;
 	isWarning?: boolean;

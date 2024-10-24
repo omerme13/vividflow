@@ -1,0 +1,35 @@
+.color-palette {
+    background: var(--color-purple-10);
+    display: flex;
+    gap: 0.8rem;
+    padding: 1rem 0.8rem;
+    position: absolute;
+    bottom: 5rem;
+	border-radius: 3px;
+
+    &__color {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+        &--red {
+            background: var(--color-palette-red);
+        }
+        &--orange {
+            background: var(--color-palette-orange);
+        }
+        &--yellow {
+            background: var(--color-palette-yellow);
+        }
+        &--green {
+            background: var(--color-palette-green);
+        }
+        &--blue {
+            background: var(--color-palette-blue);
+        }
+    }
+}
