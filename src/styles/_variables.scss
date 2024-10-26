@@ -1,8 +1,9 @@
 :root {
-    --color-purple-60: #c9cdf5;
-    --color-purple-40: #dcdeef;
+    --color-purple-40: #c9cdf5;
+    --color-purple-30: #dcdeef;
     --color-purple-20: #eaebfb;
     --color-purple-10: #f7f7fd;
+	
     --color-main-text: #072a58;
     --color-secondary: #e67e22;
 
@@ -26,8 +27,8 @@
 }
 
 html.dark {
-    --color-purple-60: #2a2a4a;
-    --color-purple-40: #252543;
+    --color-purple-40: #2a2a4a;
+    --color-purple-30: #252543;
     --color-purple-20: #12111c;
 	--color-purple-10: #111118;
 	
