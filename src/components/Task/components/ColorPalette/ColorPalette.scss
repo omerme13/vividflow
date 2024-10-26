@@ -11,9 +11,11 @@
         width: 1.5rem;
         height: 1.5rem;
         border-radius: 50%;
+		transition: 0.2s;
 
 		&:hover {
 			cursor: pointer;
+			transform: scale(1.15);
 		}
     }
 }
