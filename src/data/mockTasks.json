@@ -1,100 +1,152 @@
 [
-	{
-		"text": "Test note",
-		"id": "1"
-	},
-	{
-		"text": "Testing notes again",
-		"id": "2"
-	},
-	{
-		"text": "Find Nemo",
-		"label": "food",
-		"color": "blue",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null,
-		"id": "3"
-	},
-	{
-		"text": "Call mom",
-		"label": "family",
-		"color": "red",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null,
-		"id": "4"
-	},
-	{
-		"text": "Find all the articles from the author who wrote Harry Potter",
-		"label": "books",
-		"color": "green",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null,
-		"id": "5"
-	},
-	{
-		"text": "Wake up early tomorrow",
-		"label": "",
-		"id": "6"
-	},
-	{
-		"text": "Find all the articles from the author who wrote Harry Potter",
-		"label": "books",
-		"color": "green",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null,
-		"id": "12"
-	},
-	{
-		"text": "Write the song I’v always wanted to write",
-		"label": "self development",
-		"color": "yellow",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null,
-		"id": "7"
-	},
-	{
-		"text": "Test note",
-		"id": "8"
-	},
-	{
-		"text": "Testing notes again",
-		"id": "9"
-	},
-	{
-		"text": "Find Nemo",
-		"label": "food",
-		"color": "blue",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null,
-		"id": "10"
-	},
-	{
-		"text": "Call mom",
-		"label": "family",
-		"color": "red",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null,
-		"id": "11"
-	},
-	{
-		"text": "Wake up early tomorrow",
-		"label": "",
-		"id": "13"
-	},
-	{
-		"text": "Write the song I’v always wanted to write",
-		"label": "self development",
-		"color": "yellow",
-		"isCompleted": false,
-		"isOnKanban": false,
-		"dueDate": null,
-		"id": "14"
-	}
+    {
+        "text": "Teach my cat to fetch (day 47 - still unsuccessful)",
+        "label": "pets",
+        "color": "orange",
+        "isCompleted": false,
+        "isOnKanban": true,
+        "dueDate": "2025-12-25",
+        "id": "1"
+    },
+    {
+        "text": "Find out why my rubber duck isn't answering my coding questions",
+        "label": "debugging",
+        "color": "yellow",
+        "isCompleted": false,
+        "isOnKanban": false,
+        "dueDate": null,
+        "id": "2"
+    },
+    {
+        "text": "Learn to juggle while cooking pancakes",
+        "label": "life goals",
+        "color": "blue",
+        "isCompleted": false,
+        "isOnKanban": true,
+        "dueDate": "2024-12-01",
+        "id": "3"
+    },
+    {
+        "text": "Write a strongly worded letter to my plant for not growing",
+        "label": "gardening",
+        "id": "4"
+    },
+    {
+        "text": "Figure out why my coffee tastes different when I use my lucky mug",
+        "label": "investigation",
+        "color": "purple",
+        "isCompleted": true,
+        "isOnKanban": false,
+        "dueDate": null,
+        "id": "5"
+    },
+    {
+        "text": "Buy groceries",
+        "label": "shopping",
+        "id": "6"
+    },
+    {
+        "text": "Convince my neighbor that my AI assistant is actually my very smart cousin from Canada",
+        "label": "social",
+        "color": "green",
+        "isCompleted": false,
+        "isOnKanban": true,
+        "dueDate": "2024-11-15",
+        "id": "7"
+    },
+    {
+        "text": "Read that book everyone's talking about",
+        "label": "books",
+        "id": "8"
+    },
+    {
+        "text": "Train for marathon (Netflix marathon, that is)",
+        "label": "self development",
+        "color": "red",
+        "isCompleted": false,
+        "isOnKanban": false,
+        "dueDate": null,
+        "id": "9"
+    },
+    {
+        "text": "Find my missing sock's soulmate",
+        "id": "10"
+    },
+    {
+        "text": "Perfect my dinosaur impression for next week's presentation",
+        "label": "work",
+        "color": "green",
+        "isCompleted": false,
+        "isOnKanban": true,
+        "dueDate": "2024-11-01",
+        "id": "11"
+    },
+    {
+        "text": "Create a time machine to get back those 5 minutes I spent watching cat videos",
+        "label": "science",
+        "color": "blue",
+        "isCompleted": false,
+        "isOnKanban": false,
+        "dueDate": null,
+        "id": "12"
+    },
+    {
+        "text": "Call mom",
+        "label": "family",
+        "color": "red",
+        "isCompleted": false,
+        "isOnKanban": false,
+        "dueDate": null,
+        "id": "13"
+    },
+    {
+        "text": "Practice mindfulness (aka staring at clouds looking for shapes)",
+        "label": "self development",
+        "id": "14"
+    },
+    {
+        "text": "Debug the bug that's not actually a bug but a feature",
+        "label": "coding",
+        "color": "purple",
+        "isCompleted": true,
+        "isOnKanban": true,
+        "dueDate": "2024-10-30",
+        "id": "15"
+    },
+    {
+        "text": "Finish writing my novel about a programmer who talks to plants",
+        "label": "writing",
+        "color": "yellow",
+        "isCompleted": false,
+        "isOnKanban": true,
+        "dueDate": "2024-12-31",
+        "id": "16"
+    },
+    {
+        "text": "Remember what I was supposed to remember",
+        "id": "17"
+    },
+    {
+        "text": "Organize my organization system",
+        "label": "productivity",
+        "color": "blue",
+        "isCompleted": false,
+        "isOnKanban": false,
+        "dueDate": null,
+        "id": "18"
+    },
+    {
+        "text": "Learn to speak Klingon for my next tech interview",
+        "label": "career development",
+        "color": "green",
+        "isCompleted": false,
+        "isOnKanban": true,
+        "dueDate": "2025-01-15",
+        "id": "19"
+    },
+    {
+        "text": "Find out who let the dogs out",
+        "label": "investigation",
+        "id": "20"
+    }
 ]
