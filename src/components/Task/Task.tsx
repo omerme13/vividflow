@@ -13,39 +13,35 @@ import { useTaskContext } from "@/context/TaskContext";
 
 import "./Task.scss";
 
-const markAsDone = () => {};
-
-const setDueDate = () => {};
-
-const addLabel = () => {};
-
-const showMore = () => {};
-
-export default function Task({
-    task: { id, text, label, color = TaskColors.Gray, isOnKanban, isCompleted, dueDate }
-}: TaskProps) {
-    const [taskColor, setTaskColor] = useState<TaskColors>(color);
+export default function Task({ task }: TaskProps) {
+    const { id, text, label, color = TaskColors.Gray } = task;
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
 
-    const togglePalette = () => setIsPaletteOpen((value) => !value);
-	const { deleteTask } = useTaskContext();
+    const { updateTask, deleteTask } = useTaskContext();
+
+    const togglePalette = () => setIsPaletteOpen((prev) => !prev);
+
+    const handleUpdateColor = (newColor: TaskColors) => {
+        updateTask({ ...task, color: newColor });
+        setIsPaletteOpen(false);
+    };
 
     return (
         <div className="task">
-            <div className="task__color" style={{ background: getPaletteColor(taskColor) }} />
+            <div className="task__color" style={{ background: getPaletteColor(color) }} />
             <div className="task__text">{text}</div>
             {label && <div className="task__label">{label}</div>}
             <div className="task__middle">
                 <div className="task__actions">
-                    <TaskAction icon={CheckIcon} action={markAsDone} />
-                    <TaskAction icon={ClockIcon} action={setDueDate} />
-                    <TaskAction icon={LabelIcon} action={addLabel} />
+                    <TaskAction icon={CheckIcon} action={() => {}} />
+                    <TaskAction icon={ClockIcon} action={() => {}} />
+                    <TaskAction icon={LabelIcon} action={() => {}} />
                     <TaskAction icon={TrashIcon} action={() => deleteTask(id)} isWarning />
                     <TaskAction icon={PaletteIcon} action={togglePalette} />
                     {isPaletteOpen && (
-                        <ColorPalette setTaskColor={setTaskColor} onClose={() => setIsPaletteOpen(false)} />
+                        <ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
                     )}
-                    <TaskAction icon={ShowMoreIcon} action={showMore} />
+                    <TaskAction icon={ShowMoreIcon} action={() => {}} />
                 </div>
             </div>
         </div>

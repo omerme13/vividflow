@@ -1,7 +1,6 @@
 import React, { createContext, useState, useCallback, useContext } from "react";
-import initialTasks from "@/data/mockTasks.json";
-
-import { TaskData } from "@/components/Task";
+import { TaskData } from "@/components/Task/Task.types";
+import * as taskStorage from "@/utils/taskLocalStorage";
 
 type TaskDataWithoutId = Omit<TaskData, "id">;
 
@@ -10,28 +9,24 @@ interface TaskContextType {
     addTask: (task: TaskDataWithoutId) => void;
     updateTask: (task: TaskData) => void;
     deleteTask: (id: string) => void;
-    toggleTaskComplete: (id: string) => void;
 }
 
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
 export function TaskProvider({ children }: { children: React.ReactNode }) {
-    const [tasks, setTasks] = useState<TaskData[]>(initialTasks as TaskData[]);
+    const [tasks, setTasks] = useState<TaskData[]>(() => taskStorage.getTasks());
 
     const addTask = useCallback((newTask: TaskDataWithoutId) => {
-        setTasks((prev) => [...prev, { ...newTask, id: crypto.randomUUID() }]);
+        const taskWithId = { ...newTask, id: crypto.randomUUID() };
+        setTasks((prev) => taskStorage.addTask(prev, taskWithId));
     }, []);
 
     const updateTask = useCallback((updatedTask: TaskData) => {
-        setTasks((prev) => prev.map((task) => (task.id === updatedTask.id ? updatedTask : task)));
+        setTasks((prev) => taskStorage.updateTask(prev, updatedTask));
     }, []);
 
     const deleteTask = useCallback((id: string) => {
-        setTasks((prev) => prev.filter((task) => task.id !== id));
-    }, []);
-
-    const toggleTaskComplete = useCallback((id: string) => {
-        setTasks((prev) => prev.map((task) => (task.id === id ? { ...task, isCompleted: !task.isCompleted } : task)));
+        setTasks((prev) => taskStorage.deleteTask(prev, id));
     }, []);
 
     return (
@@ -41,7 +36,6 @@ export function TaskProvider({ children }: { children: React.ReactNode }) {
                 addTask,
                 updateTask,
                 deleteTask,
-                toggleTaskComplete,
             }}
         >
             {children}
@@ -54,6 +48,5 @@ export function useTaskContext() {
     if (context === undefined) {
         throw new Error("useTaskContext must be used within a TaskProvider");
     }
-
     return context;
 }

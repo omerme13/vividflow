@@ -1,22 +1,22 @@
-import { Dispatch, SetStateAction, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { TaskColors } from "@/components/Task";
 
 import "./ColorPalette.scss";
 import { getPaletteColor } from "@/utils/styles";
 interface ColorPaletteProps {
-    setTaskColor: Dispatch<SetStateAction<TaskColors>>;
+    updateTaskColor: (newColor: TaskColors) => void;
     onClose: () => void;
 }
 
-export default function ColorPalette({ setTaskColor, onClose }: ColorPaletteProps) {
+export default function ColorPalette({ updateTaskColor, onClose }: ColorPaletteProps) {
     const paletteRef = useRef<HTMLDivElement>(null);
 
     const setColor = (e: React.MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement;
 
         if (target?.dataset?.color) {
-            setTaskColor(target.dataset.color as TaskColors);
+            updateTaskColor(target.dataset.color as TaskColors);
             onClose();
         }
     };
