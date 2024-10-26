@@ -7,12 +7,13 @@
 	align-items: center;
 	padding: 0.6rem 1.2rem;
 	gap: 0.8rem;
-	transition: 0.1s;
+	transition: 0.2s;
 	margin-bottom: 4rem;
 
 	&:hover {
 		cursor: pointer;
-		border: 1px solid var(--color-palette-orange);
+		background-color: var(--color-purple-20);
+        border-color: var(--color-purple-30);
 	}
 	
 	&__text {

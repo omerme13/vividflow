@@ -1,26 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./NewTaskModal.scss";
+import { useTaskContext } from "@/context/TaskContext";
 
-interface Task {
-    id: string;
-    name: string;
-    label: string;
-}
 
 interface NewTaskModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onSubmit: (task: Omit<Task, "id">) => void;
     existingLabels: string[];
 }
 
-export default function NewTaskModal({ isOpen, onClose, onSubmit, existingLabels }: NewTaskModalProps) {
+export default function NewTaskModal({ isOpen, onClose, existingLabels }: NewTaskModalProps) {
     const [name, setName] = useState("");
     const [label, setLabel] = useState("");
     const [showLabelSuggestions, setShowLabelSuggestions] = useState(false);
     const [filteredLabels, setFilteredLabels] = useState<string[]>([]);
     const modalRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+	const { addTask } = useTaskContext();
+
 
     useEffect(() => {
         if (isOpen && inputRef.current) {
@@ -58,8 +55,8 @@ export default function NewTaskModal({ isOpen, onClose, onSubmit, existingLabels
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (name.trim()) {
-            onSubmit({
-                name: name.trim(),
+            addTask({
+                text: name.trim(),
                 label: label.trim(),
             });
             handleClose();
@@ -79,8 +76,6 @@ export default function NewTaskModal({ isOpen, onClose, onSubmit, existingLabels
         <div className="new-task-modal">
             <div className="new-task-modal__overlay">
                 <div className="new-task-modal__content" ref={modalRef}>
-                    <h2 className="new-task-modal__title">New Task</h2>
-
                     <form className="new-task-modal__form" onSubmit={handleSubmit}>
                         <div className="new-task-modal__input-wrapper">
                             <input
