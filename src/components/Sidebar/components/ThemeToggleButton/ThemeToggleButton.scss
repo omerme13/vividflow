@@ -1,0 +1,11 @@
+.theme-toggle-button {
+	transition: 0.2s;
+	border: none;
+	background: none;
+	color: inherit;
+	
+	&:hover {
+		cursor: pointer;
+		transform: scale(1.1) rotate(-10deg);
+	}
+}

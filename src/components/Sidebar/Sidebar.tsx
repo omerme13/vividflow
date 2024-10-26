@@ -3,6 +3,7 @@ import { SidebarActions, sidebarItems } from "./constants";
 import UserDetails from "./components/UserDetails/UserDetails";
 import NewTaskButton from "./components/NewTaskButton/NewTaskButton";
 import Logo from "@/assets/icons/vividflow.svg?react";
+import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton";
 
 import "./Sidebar.scss";
 
@@ -26,7 +27,10 @@ export default function Sidebar({ openNewTaskModal }: SidebarProps) {
                     <SidebarItem key={text} text={text} icon={icon} action={actions[text]} />
                 ))}
             </div>
-            <Logo className="sidebar__logo" />
+            <div className="sidebar__bottom">
+				<ThemeToggleButton />
+                <Logo className="sidebar__logo" />
+            </div>
         </div>
     );
 }

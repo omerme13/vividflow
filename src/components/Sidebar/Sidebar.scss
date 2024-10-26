@@ -14,7 +14,11 @@
 		row-gap: 2rem;
 	}
 
-	&__logo {
+	&__bottom {
 		margin-top: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1.6rem;
+		align-items: center;
 	}
 }
