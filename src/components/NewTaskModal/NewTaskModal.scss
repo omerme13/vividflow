@@ -16,7 +16,7 @@
 
     &__content {
         background-color: var(--color-card-background);
-        border-radius: 1.6rem;
+        border-radius: 1.2rem;
         padding: 3.2rem;
         width: 100%;
         max-width: 40rem;
@@ -36,13 +36,14 @@
     }
 
     &__input {
+		font-family: inherit;
+        font-size: var(--font-size-menu);
+        color: var(--color-main-text);
         width: 100%;
         padding: 1.2rem 1.6rem;
         background-color: var(--color-purple-10);
         border: 1px solid transparent;
         border-radius: 1.2rem;
-        font-size: var(--font-size-menu);
-        color: var(--color-main-text);
         transition: 0.2s;
 
         &::placeholder {
@@ -60,29 +61,59 @@
 
     &__suggestions {
         position: absolute;
-        top: calc(100% + 0.4rem);
+        top: calc(100%);
         left: 0;
         right: 0;
         background-color: var(--color-card-background);
         border-radius: 1.2rem;
         overflow: hidden;
-        box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.1);
-        z-index: 1;
+        box-shadow: 0 0.8rem 2.4rem rgba(0, 0, 0, 0.12);
+        border: 1px solid var(--color-purple-20);
+        max-height: 24rem;
+        overflow-y: auto;
+        z-index: 2;
+
+        &::-webkit-scrollbar {
+            width: 0.8rem;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--color-purple-30);
+            border-radius: 0.4rem;
+            border: 0.2rem solid var(--color-card-background);
+        }
     }
 
     &__suggestion-item {
+		font-family: inherit;
+        font-size: var(--font-size-menu);
+        color: var(--color-main-text);
         width: 100%;
-        padding: 1.2rem 1.6rem;
+        padding: 1rem 2rem;
         border: none;
         background: none;
         text-align: left;
         cursor: pointer;
-        font-size: var(--font-size-menu);
-        color: var(--color-main-text);
-        transition: background-color 0.2s;
+        transition: 0.15s ease;
+        display: flex;
+        align-items: center;
+		text-transform: capitalize;
 
-        &:hover {
+        &:hover, &--selected {
             background-color: var(--color-purple-10);
+            color: var(--color-cta);
+        }
+
+        &:active {
+            background-color: var(--color-purple-20);
+        }
+
+        & + & {
+            border-top: 1px solid var(--color-purple-10);
         }
     }
 
@@ -94,6 +125,7 @@
     }
 
     &__button {
+		font-family: inherit;
         padding: 1rem 2rem;
         border-radius: 1rem;
         font-size: var(--font-size-menu);
@@ -109,12 +141,19 @@
             &:hover {
                 background-color: var(--color-cta-hover);
                 transform: translateY(-1px);
+                box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
+            }
+
+            &:active {
+                transform: translateY(0);
+                box-shadow: none;
             }
 
             &:disabled {
                 background-color: var(--color-purple-30);
                 cursor: not-allowed;
                 transform: none;
+                box-shadow: none;
             }
         }
 
@@ -125,6 +164,10 @@
 
             &:hover {
                 background-color: var(--color-purple-10);
+            }
+
+            &:active {
+                background-color: var(--color-purple-20);
             }
         }
     }

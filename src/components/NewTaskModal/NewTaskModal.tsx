@@ -1,6 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./NewTaskModal.scss";
+import React, { useState, useRef } from "react";
 import { useTaskContext } from "@/context/TaskContext";
+import useSuggestions from "@/hooks/useSuggestion";
+import useClickOutside from "@/hooks/useClickOutside";
+
+import "./NewTaskModal.scss";
 
 interface NewTaskModalProps {
     isOpen: boolean;
@@ -10,45 +13,38 @@ interface NewTaskModalProps {
 export default function NewTaskModal({ isOpen, onClose }: NewTaskModalProps) {
     const [name, setName] = useState("");
     const [label, setLabel] = useState("");
-    const [showLabelSuggestions, setShowLabelSuggestions] = useState(false);
-    const [filteredLabels, setFilteredLabels] = useState<string[]>([]);
     const modalRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-	const { addTask, labels: existingLabels } = useTaskContext();
+    const suggestionsRef = useRef<HTMLDivElement>(null);
+    const { addTask, labels: existingLabels } = useTaskContext();
 
+    const { 
+        filteredSuggestions, 
+        selectedIndex, 
+        setSelectedIndex, 
+        showSuggestions, 
+        setShowSuggestions, 
+        handleKeyDown 
+    } = useSuggestions({
+        inputValue: label,
+        suggestions: existingLabels,
+        onSelect: (suggestion) => {
+            setLabel(suggestion);
+            setShowSuggestions(false);
+        },
+    });
 
-    useEffect(() => {
-        if (isOpen && inputRef.current) {
-            inputRef.current.focus();
-        }
-    }, [isOpen]);
+    useClickOutside({
+        refs: [modalRef],
+        handler: onClose,
+        enabled: isOpen,
+    });
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-                handleClose();
-            }
-        };
-
-        if (isOpen) {
-            document.addEventListener("mousedown", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [isOpen]);
-
-    useEffect(() => {
-        if (label) {
-            const filtered = existingLabels.filter((existingLabel) =>
-                existingLabel.toLowerCase().includes(label.toLowerCase())
-            );
-            setFilteredLabels(filtered);
-        } else {
-            setFilteredLabels(existingLabels);
-        }
-    }, [label, existingLabels]);
+    useClickOutside({
+        refs: [suggestionsRef, inputRef],
+        handler: () => setShowSuggestions(false),
+        enabled: showSuggestions,
+    });
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -64,7 +60,7 @@ export default function NewTaskModal({ isOpen, onClose }: NewTaskModalProps) {
     const handleClose = () => {
         setName("");
         setLabel("");
-        setShowLabelSuggestions(false);
+        setShowSuggestions(false);
         onClose();
     };
 
@@ -92,21 +88,25 @@ export default function NewTaskModal({ isOpen, onClose }: NewTaskModalProps) {
                                 type="text"
                                 value={label}
                                 onChange={(e) => setLabel(e.target.value)}
-                                onFocus={() => setShowLabelSuggestions(true)}
+                                onFocus={() => setShowSuggestions(true)}
+                                onKeyDown={handleKeyDown}
                                 placeholder="Add label"
                             />
 
-                            {showLabelSuggestions && filteredLabels.length > 0 && (
-                                <div className="new-task-modal__suggestions">
-                                    {filteredLabels.map((suggestion) => (
+                            {showSuggestions && filteredSuggestions.length > 0 && (
+                                <div className="new-task-modal__suggestions" ref={suggestionsRef}>
+                                    {filteredSuggestions.map((suggestion, index) => (
                                         <button
                                             key={suggestion}
                                             type="button"
-                                            className="new-task-modal__suggestion-item"
+                                            className={`new-task-modal__suggestion-item ${
+                                                index === selectedIndex ? "new-task-modal__suggestion-item--selected" : ""
+                                            }`}
                                             onClick={() => {
                                                 setLabel(suggestion);
-                                                setShowLabelSuggestions(false);
+                                                setShowSuggestions(false);
                                             }}
+                                            onMouseEnter={() => setSelectedIndex(index)}
                                         >
                                             {suggestion}
                                         </button>
