@@ -1,23 +1,21 @@
 import { TaskData } from "@/components/Task";
 import { extractUniqueLabels } from "./tasks";
-
-const TASKS_KEY = 'vividflow_tasks';
-const LABELS_KEY = 'vividflow_labels';
+import { StorageKeys } from "./constants";
 
 export const getTasks = (): TaskData[] => {
-    const storedTasks = localStorage.getItem(TASKS_KEY);
+    const storedTasks = localStorage.getItem(StorageKeys.Tasks);
     if (!storedTasks) return [];
     
     try {
         return JSON.parse(storedTasks);
     } catch {
-        localStorage.removeItem(TASKS_KEY);
+        localStorage.removeItem(StorageKeys.Tasks);
         return [];
     }
 };
 
 export const getLabels = (): string[] => {
-    const storedLabels = localStorage.getItem(LABELS_KEY);
+    const storedLabels = localStorage.getItem(StorageKeys.Labels);
     if (!storedLabels) {
         const tasks = getTasks();
 		const labels = extractUniqueLabels(tasks);
@@ -33,9 +31,9 @@ export const getLabels = (): string[] => {
 };
 
 export const saveTasks = (tasks: TaskData[]): void => {
-    localStorage.setItem(TASKS_KEY, JSON.stringify(tasks));
+    localStorage.setItem(StorageKeys.Tasks, JSON.stringify(tasks));
 };
 
 export const saveLabels = (labels: string[]): void => {
-    localStorage.setItem(LABELS_KEY, JSON.stringify(labels));
+    localStorage.setItem(StorageKeys.Labels, JSON.stringify(labels));
 };
