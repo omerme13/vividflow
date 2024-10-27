@@ -1,10 +1,7 @@
 import { PlusIcon } from "@/assets/icons";
+import { NewTaskButtonProps } from "./NewTaskButton.types";
 
 import "./NewTaskButton.scss";
-
-interface NewTaskButtonProps {
-    onClick: () => void;
-}
 
 export default function NewTaskButton({ onClick }: NewTaskButtonProps) {
     return (

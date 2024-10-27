@@ -1,14 +1,11 @@
 import { useRef } from "react";
 
 import { TaskColors } from "@/components/Task";
-
-import "./ColorPalette.scss";
+import { ColorPaletteProps } from "./ColorPalette.types";
 import { getPaletteColor } from "@/utils/styles";
 import useClickOutside from "@/hooks/useClickOutside";
-interface ColorPaletteProps {
-    updateTaskColor: (newColor: TaskColors) => void;
-    onClose: () => void;
-}
+
+import "./ColorPalette.scss";
 
 export default function ColorPalette({ updateTaskColor, onClose }: ColorPaletteProps) {
     const paletteRef = useRef<HTMLDivElement>(null);
