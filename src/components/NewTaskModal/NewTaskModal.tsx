@@ -84,7 +84,7 @@ export default function NewTaskModal({ isOpen, onClose }: NewTaskModalProps) {
 
                         <div className="new-task-modal__input-wrapper">
                             <input
-                                className="new-task-modal__input"
+                                className="new-task-modal__input new-task-modal__input--label"
                                 type="text"
                                 value={label}
                                 onChange={(e) => setLabel(e.target.value)}
