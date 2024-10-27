@@ -2,21 +2,19 @@ import React, { useState, useEffect, useRef } from "react";
 import "./NewTaskModal.scss";
 import { useTaskContext } from "@/context/TaskContext";
 
-
 interface NewTaskModalProps {
     isOpen: boolean;
     onClose: () => void;
-    existingLabels: string[];
 }
 
-export default function NewTaskModal({ isOpen, onClose, existingLabels }: NewTaskModalProps) {
+export default function NewTaskModal({ isOpen, onClose }: NewTaskModalProps) {
     const [name, setName] = useState("");
     const [label, setLabel] = useState("");
     const [showLabelSuggestions, setShowLabelSuggestions] = useState(false);
     const [filteredLabels, setFilteredLabels] = useState<string[]>([]);
     const modalRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-	const { addTask } = useTaskContext();
+	const { addTask, labels: existingLabels } = useTaskContext();
 
 
     useEffect(() => {

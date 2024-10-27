@@ -12,7 +12,7 @@ export default function App() {
         <div className="app">
             <Sidebar openNewTaskModal={() => setIsModalOpen(true)} />
             <TasksList />
-            <NewTaskModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} existingLabels={[]} />
+            <NewTaskModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
     );
 }
