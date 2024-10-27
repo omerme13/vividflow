@@ -9,7 +9,7 @@ import PaletteIcon from "@/assets/icons/palette.svg?react";
 import { getPaletteColor } from "@/utils/styles";
 import TaskAction from "./components/TaskAction/TaskAction";
 import ColorPalette from "./components/ColorPalette/ColorPalette";
-import { useTaskContext } from "@/context/TaskContext";
+import { useTask } from "@/context/TaskContext";
 
 import "./Task.scss";
 
@@ -17,7 +17,7 @@ export default function Task({ task }: TaskProps) {
     const { id, text, label, color = TaskColors.Gray } = task;
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
 
-    const { updateTask, deleteTask } = useTaskContext();
+    const { updateTask, deleteTask } = useTask(id);
 
     const togglePalette = () => setIsPaletteOpen((prev) => !prev);
 
@@ -36,7 +36,7 @@ export default function Task({ task }: TaskProps) {
                     <TaskAction icon={CheckIcon} action={() => {}} />
                     <TaskAction icon={ClockIcon} action={() => {}} />
                     <TaskAction icon={LabelIcon} action={() => {}} />
-                    <TaskAction icon={TrashIcon} action={() => deleteTask(id)} isWarning />
+                    <TaskAction icon={TrashIcon} action={deleteTask} isWarning />
                     <TaskAction icon={PaletteIcon} action={togglePalette} />
                     {isPaletteOpen && (
                         <ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
