@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { TaskColors, TaskProps } from "./Task.types";
-import CheckIcon from "@/assets/icons/check.svg?react";
-import ClockIcon from "@/assets/icons/clock.svg?react";
-import LabelIcon from "@/assets/icons/label.svg?react";
-import ShowMoreIcon from "@/assets/icons/show-more.svg?react";
-import TrashIcon from "@/assets/icons/trash.svg?react";
-import PaletteIcon from "@/assets/icons/palette.svg?react";
+import { CheckIcon, ClockIcon, LabelIcon, PaletteIcon, ShowMoreIcon, TrashIcon } from "@/assets/icons";
 import { getPaletteColor } from "@/utils/styles";
 import TaskAction from "./components/TaskAction/TaskAction";
 import ColorPalette from "./components/ColorPalette/ColorPalette";

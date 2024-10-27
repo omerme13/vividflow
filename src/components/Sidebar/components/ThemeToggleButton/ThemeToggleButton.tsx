@@ -1,6 +1,5 @@
 import { useState } from "react";
-import DarkModeLogo from "@/assets/icons/dark.svg?react";
-import LightModeLogo from "@/assets/icons/light.svg?react";
+import { DarkIcon, LightIcon } from '@/assets/icons';
 
 import './ThemeToggleButton.scss';
 
@@ -15,7 +14,7 @@ export default function ThemeToggleButton() {
 
     return (
         <button className="theme-toggle-button" onClick={toggleDarkMode}>
-            {isDarkMode ? <LightModeLogo /> : <DarkModeLogo />}
+            {isDarkMode ? <LightIcon /> : <DarkIcon />}
         </button>
     );
 }

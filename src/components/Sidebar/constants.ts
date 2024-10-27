@@ -1,7 +1,4 @@
-import CheckIcon from "@/assets/icons/check.svg?react";
-import DashboardIcon from "@/assets/icons/dashboard.svg?react";
-import CalendarIcon from "@/assets/icons/calendar.svg?react";
-import SettingsIcon from "@/assets/icons/settings.svg?react";
+import { CheckIcon, DashboardIcon, CalendarIcon, SettingsIcon } from '@/assets/icons';
 
 export enum SidebarActions {
 	tasks = "tasks",

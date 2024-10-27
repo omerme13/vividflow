@@ -2,7 +2,7 @@ import SidebarItem from "./components/SidebarItem/SidebarItem";
 import { SidebarActions, sidebarItems } from "./constants";
 import UserDetails from "./components/UserDetails/UserDetails";
 import NewTaskButton from "./components/NewTaskButton/NewTaskButton";
-import Logo from "@/assets/icons/vividflow.svg?react";
+import { Logo } from "@/assets/icons";
 import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton";
 
 import "./Sidebar.scss";
