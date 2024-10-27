@@ -46,6 +46,10 @@
         border-radius: 1.2rem;
         transition: 0.2s;
 
+		&--label {
+			text-transform: capitalize;
+		}
+		
         &::placeholder {
             color: var(--color-main-text);
             opacity: 0.5;
