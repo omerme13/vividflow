@@ -8,10 +8,10 @@ import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton"
 import "./Sidebar.scss";
 
 const actions = {
-    [SidebarActions.tasks]: () => {},
-    [SidebarActions.calendar]: () => {},
-    [SidebarActions.dashboard]: () => {},
-    [SidebarActions.settings]: () => {},
+    [SidebarActions.Tasks]: () => {},
+    [SidebarActions.Calendar]: () => {},
+    [SidebarActions.Dashboard]: () => {},
+    [SidebarActions.Settings]: () => {},
 };
 interface SidebarProps {
     openNewTaskModal: () => void;

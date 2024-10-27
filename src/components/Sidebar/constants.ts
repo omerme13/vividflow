@@ -1,14 +1,14 @@
 import { CheckIcon, DashboardIcon, CalendarIcon, SettingsIcon } from '@/assets/icons';
 
 export enum SidebarActions {
-	tasks = "tasks",
-	dashboard = "dashboard",
-	calendar = "calendar",
-	settings = "settings",
+	Tasks = "tasks",
+	Dashboard = "dashboard",
+	Calendar = "calendar",
+	Settings = "settings",
 }
 export const sidebarItems = [
-    { text: SidebarActions.tasks, icon: CheckIcon },
-    { text: SidebarActions.dashboard, icon: DashboardIcon },
-    { text: SidebarActions.calendar, icon: CalendarIcon },
-    { text: SidebarActions.settings, icon: SettingsIcon },
+    { text: SidebarActions.Tasks, icon: CheckIcon },
+    { text: SidebarActions.Dashboard, icon: DashboardIcon },
+    { text: SidebarActions.Calendar, icon: CalendarIcon },
+    { text: SidebarActions.Settings, icon: SettingsIcon },
 ];
