@@ -1,9 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 import { TaskColors } from "@/components/Task";
 
 import "./ColorPalette.scss";
 import { getPaletteColor } from "@/utils/styles";
+import useClickOutside from "@/hooks/useClickOutside";
 interface ColorPaletteProps {
     updateTaskColor: (newColor: TaskColors) => void;
     onClose: () => void;
@@ -11,6 +12,11 @@ interface ColorPaletteProps {
 
 export default function ColorPalette({ updateTaskColor, onClose }: ColorPaletteProps) {
     const paletteRef = useRef<HTMLDivElement>(null);
+
+	useClickOutside({
+        refs: [paletteRef],
+        handler: onClose,
+    });
 
     const setColor = (e: React.MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement;
@@ -20,20 +26,6 @@ export default function ColorPalette({ updateTaskColor, onClose }: ColorPaletteP
             onClose();
         }
     };
-
-    useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            if (paletteRef.current && !paletteRef.current.contains(e.target as Node)) {
-                onClose();
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [onClose]);
 
     return (
         <div className="color-palette" ref={paletteRef}>

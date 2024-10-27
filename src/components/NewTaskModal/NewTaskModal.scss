@@ -22,7 +22,7 @@
         max-width: 40rem;
         position: relative;
         box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.08);
-        animation: slideUp 0.1s ease-out;
+        animation: slideUp 0.15s ease-out;
     }
 
     &__form {
@@ -98,7 +98,7 @@
         background: none;
         text-align: left;
         cursor: pointer;
-        transition: 0.15s ease;
+        transition: 0.15s;
         display: flex;
         align-items: center;
 		text-transform: capitalize;
