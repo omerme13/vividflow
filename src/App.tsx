@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Sidebar from "@/components/Sidebar";
 import TasksList from "@/components/TasksList";
-import NewTaskModal from "./components/NewTaskModal/NewTaskModal";
+import TaskModal from "@/components/TaskModal";
 
 import "./App.scss";
 
@@ -12,7 +12,7 @@ export default function App() {
         <div className="app">
             <Sidebar openNewTaskModal={() => setIsModalOpen(true)} />
             <TasksList />
-            <NewTaskModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <TaskModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
     );
 }

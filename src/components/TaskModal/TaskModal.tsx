@@ -2,9 +2,9 @@ import React, { useState, useRef } from "react";
 import { useTaskContext } from "@/context/TaskContext";
 import useSuggestions from "@/hooks/useSuggestion";
 import useClickOutside from "@/hooks/useClickOutside";
-import { NewTaskModalProps } from "./NewTaskModal.types";
+import { NewTaskModalProps } from "./TaskModal.types";
 
-import "./NewTaskModal.scss";
+import "./TaskModal.scss";
 
 export default function NewTaskModal({ isOpen, onClose }: NewTaskModalProps) {
     const [name, setName] = useState("");

@@ -30,7 +30,6 @@ export default function Task({ task }: TaskProps) {
                 <div className="task__actions">
                     <TaskAction icon={CheckIcon} action={() => {}} />
                     <TaskAction icon={ClockIcon} action={() => {}} />
-                    <TaskAction icon={LabelIcon} action={() => {}} />
                     <TaskAction icon={TrashIcon} action={deleteTask} isWarning />
                     <TaskAction icon={PaletteIcon} action={togglePalette} />
                     {isPaletteOpen && (
