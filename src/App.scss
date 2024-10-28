@@ -1,7 +1,27 @@
 .app {
 	color: var(--color-main-text);
+
 }
 
 :root {
 	background-color: var(--color-purple-20);
+	
+	&::-webkit-scrollbar {
+		width: 0.8rem;
+	 }
+	 
+	 &::-webkit-scrollbar-track {
+		background: var(--color-purple-20);
+	 }
+	 
+	 &::-webkit-scrollbar-thumb {
+		background-color: var(--color-purple-30);
+		border-radius: 0.4rem;
+		border: 0.2rem solid var(--color-purple-20);
+		
+		&:hover {
+			background-color: var(--color-purple-40);
+			border-width: 0.15rem;
+		}
+	 }
 }
