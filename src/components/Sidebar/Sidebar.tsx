@@ -1,17 +1,18 @@
 import SidebarItem from "./components/SidebarItem/SidebarItem";
-import { SidebarActions, sidebarItems } from "./constants";
+import { sidebarItems } from "./constants";
 import UserDetails from "./components/UserDetails/UserDetails";
 import NewTaskButton from "./components/NewTaskButton/NewTaskButton";
 import { Logo } from "@/assets/icons";
 import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton";
+import { Page } from "@/types/layout";
 
 import "./Sidebar.scss";
 
 const actions = {
-    [SidebarActions.Tasks]: () => {},
-    [SidebarActions.Calendar]: () => {},
-    [SidebarActions.Dashboard]: () => {},
-    [SidebarActions.Settings]: () => {},
+    [Page.Tasks]: () => {},
+    [Page.Calendar]: () => {},
+    [Page.Dashboard]: () => {},
+    [Page.Settings]: () => {},
 };
 interface SidebarProps {
     openNewTaskModal: () => void;
