@@ -15,7 +15,19 @@ export function PreferencesProvider({ children }: PreferencesProviderProps) {
     const [preferences, setPreferences] = useState<UserPreferences>(preferenceStorage.getStoredPreferences());
 
     useEffect(() => {
-        setPreferences(preferenceStorage.getStoredPreferences());
+        const isDark = preferences.isDarkMode;
+        document.documentElement.classList.toggle("dark", isDark);
+    }, [preferences.isDarkMode]);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+        const handleChange = (e: MediaQueryListEvent) => {
+            updatePreference({ isDarkMode: e.matches });
+        };
+
+        mediaQuery.addEventListener("change", handleChange);
+        return () => mediaQuery.removeEventListener("change", handleChange);
     }, []);
 
     function updatePreference(updates: Partial<UserPreferences>) {

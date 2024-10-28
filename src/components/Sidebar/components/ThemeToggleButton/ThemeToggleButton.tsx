@@ -1,20 +1,16 @@
-import { useState } from "react";
-import { DarkIcon, LightIcon } from '@/assets/icons';
+import { DarkIcon, LightIcon } from "@/assets/icons";
+import { usePreferences } from "@/context/PreferenceContext";
 
-import './ThemeToggleButton.scss';
+import "./ThemeToggleButton.scss";
 
 export default function ThemeToggleButton() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const { preferences, updatePreference } = usePreferences();
 
-	const toggleDarkMode = () => {
-		const action = isDarkMode ? "remove" : "add";
-		document.documentElement.classList[action]("dark");
-		setIsDarkMode(value => !value);
-	}
+    const toggleDarkMode = () => updatePreference({ isDarkMode: !preferences.isDarkMode });
 
     return (
         <button className="theme-toggle-button" onClick={toggleDarkMode}>
-            {isDarkMode ? <LightIcon /> : <DarkIcon />}
+            {preferences.isDarkMode ? <LightIcon /> : <DarkIcon />}
         </button>
     );
 }
