@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TaskColors, TaskProps } from "./Task.types";
-import { CheckIcon, ClockIcon, LabelIcon, PaletteIcon, ShowMoreIcon, TrashIcon } from "@/assets/icons";
+import { CheckIcon, ClockIcon, PaletteIcon, ShowMoreIcon, TrashIcon } from "@/assets/icons";
 import { getPaletteColor } from "@/utils/styles";
 import TaskAction from "./components/TaskAction/TaskAction";
 import ColorPalette from "./components/ColorPalette/ColorPalette";

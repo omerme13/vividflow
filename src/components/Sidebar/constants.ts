@@ -1,14 +1,9 @@
 import { CheckIcon, DashboardIcon, CalendarIcon, SettingsIcon } from '@/assets/icons';
+import { Page } from '@/types/layout';
 
-export enum SidebarActions {
-	Tasks = "tasks",
-	Dashboard = "dashboard",
-	Calendar = "calendar",
-	Settings = "settings",
-}
 export const sidebarItems = [
-    { text: SidebarActions.Tasks, icon: CheckIcon },
-    { text: SidebarActions.Dashboard, icon: DashboardIcon },
-    { text: SidebarActions.Calendar, icon: CalendarIcon },
-    { text: SidebarActions.Settings, icon: SettingsIcon },
+    { text: Page.Tasks, icon: CheckIcon },
+    { text: Page.Dashboard, icon: DashboardIcon },
+    { text: Page.Calendar, icon: CalendarIcon },
+    { text: Page.Settings, icon: SettingsIcon },
 ];
