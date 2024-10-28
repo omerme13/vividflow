@@ -1,6 +1,11 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { PreferencesContextType, UserPreferences } from "@/types/preference";
+import { UserPreferences } from "@/types/preference";
 import * as preferenceStorage from "@/utils/preferenceLocalStorage";
+
+interface PreferencesContextType {
+    preferences: UserPreferences;
+    updatePreference: (updates: Partial<UserPreferences>) => void;
+};
 
 const PreferencesContext = createContext<PreferencesContextType>({
     preferences: preferenceStorage.getStoredPreferences(),

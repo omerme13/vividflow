@@ -1,7 +1,6 @@
 import { CalendarMode, LayoutState, Page } from "@/types/layout";
+import { StorageKeys } from "@/utils/constants";
 import { createContext, useContext, useEffect, useState } from "react";
-
-const LAYOUT_STORAGE_KEY = "vivid_flow_layout";
 
 const defaultLayoutState: LayoutState = {
     isCompactSidebar: true,
@@ -22,12 +21,12 @@ const LayoutContext = createContext<LayoutContextType | undefined>(undefined);
 
 export function LayoutProvider({ children }: { children: React.ReactNode }) {
     const [layout, setLayout] = useState<LayoutState>(() => {
-        const stored = localStorage.getItem(LAYOUT_STORAGE_KEY);
+        const stored = localStorage.getItem(StorageKeys.Layout);
         return stored ? JSON.parse(stored) : defaultLayoutState;
     });
 
     useEffect(() => {
-        localStorage.setItem(LAYOUT_STORAGE_KEY, JSON.stringify(layout));
+        localStorage.setItem(StorageKeys.Layout, JSON.stringify(layout));
     }, [layout]);
 
     const toggleSidebar = () => {
