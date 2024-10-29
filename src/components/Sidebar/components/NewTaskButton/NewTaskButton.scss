@@ -23,3 +23,17 @@
 		line-height: 1;
 	}
 }
+
+.new-task-button--compact {
+	display: flex;
+	background: none;
+	border: none;
+	gap: 0.8rem;
+	transition: 0.2s;
+	margin-bottom: 4rem;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 0.7;
+	}
+}

@@ -7,4 +7,5 @@ export interface SideBarItemData {
 }
 
 export interface SidebarItemProps extends SideBarItemData {
+	isCompactSidebar: boolean;
 }

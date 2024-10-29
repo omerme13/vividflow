@@ -3,16 +3,16 @@ import TaskHeader from "@/components/TasksHeader/TasksHeader";
 import TaskList from "@/components/TasksList";
 import { useLayout } from "@/context/LayoutContext";
 
-import './Tasks.scss';
+import "./Tasks.scss";
 
 export default function Tasks() {
     const { layout, toggleTaskModal } = useLayout();
-	
+
     return (
-        <div className="tasks">
+        <div className={`tasks ${layout.isCompactSidebar ? "tasks--compact-sidebar" : ""}`}>
             <TaskHeader />
-            <TaskList />
-			{/* TODO move the modal to a general place */}
+            {layout.isGridViewMode ? <TaskList /> : <div />}
+            {/* TODO move the modal to a general place */}
             <TaskModal isOpen={layout.isTaskModalOpen} onClose={toggleTaskModal} />
         </div>
     );

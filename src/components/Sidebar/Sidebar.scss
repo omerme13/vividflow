@@ -7,6 +7,13 @@
 	flex-direction: column;
 	padding: 4rem 3rem 6rem;
 	gap: 1.2rem;
+	z-index: 1;
+
+	&.sidebar--compact {
+		width: var(--sidebar-width-compact);
+		padding: 4rem 0 11.6rem;
+		align-items: center;
+	}
 
 	&__items-container {
 		display: flex;

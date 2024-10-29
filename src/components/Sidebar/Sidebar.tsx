@@ -7,6 +7,7 @@ import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton"
 import { Page } from "@/types/layout";
 
 import "./Sidebar.scss";
+import { useLayout } from "@/context/LayoutContext";
 
 const actions = {
     [Page.Tasks]: () => {},
@@ -19,18 +20,28 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ openNewTaskModal }: SidebarProps) {
+    const {
+        layout: { isCompactSidebar },
+    } = useLayout();
+
     return (
-        <div className="sidebar">
-            <UserDetails name="Omer" />
-            <NewTaskButton onClick={openNewTaskModal} />
+        <div className={`sidebar ${isCompactSidebar ? "sidebar--compact" : ""}`}>
+            {!isCompactSidebar && <UserDetails name="Omer" />}
+            <NewTaskButton onClick={openNewTaskModal} isCompactSidebar={isCompactSidebar} />
             <div className="sidebar__items-container">
                 {sidebarItems.map(({ text, icon }) => (
-                    <SidebarItem key={text} text={text} icon={icon} action={actions[text]} />
+                    <SidebarItem
+                        key={text}
+                        text={text}
+                        icon={icon}
+                        action={actions[text]}
+                        isCompactSidebar={isCompactSidebar}
+                    />
                 ))}
             </div>
             <div className="sidebar__bottom">
-				<ThemeToggleButton />
-                <Logo className="sidebar__logo" />
+                <ThemeToggleButton />
+                {!isCompactSidebar && <Logo className="sidebar__logo" />}
             </div>
         </div>
     );

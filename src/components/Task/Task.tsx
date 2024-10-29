@@ -26,17 +26,15 @@ export default function Task({ task }: TaskProps) {
             <div className="task__color" style={{ background: getPaletteColor(color) }} />
             <div className="task__text">{text}</div>
             {label && <div className="task__label">{label}</div>}
-            <div className="task__middle">
-                <div className="task__actions">
-                    <TaskAction icon={CheckIcon} action={() => {}} />
-                    <TaskAction icon={ClockIcon} action={() => {}} />
-                    <TaskAction icon={TrashIcon} action={deleteTask} isWarning />
-                    <TaskAction icon={PaletteIcon} action={togglePalette} />
-                    {isPaletteOpen && (
-                        <ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
-                    )}
-                    <TaskAction icon={ShowMoreIcon} action={() => {}} />
-                </div>
+            <div className="task__actions">
+                <TaskAction icon={CheckIcon} action={() => {}} />
+                <TaskAction icon={ClockIcon} action={() => {}} />
+                <TaskAction icon={TrashIcon} action={deleteTask} isWarning />
+                <TaskAction icon={PaletteIcon} action={togglePalette} />
+                {isPaletteOpen && (
+                    <ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
+                )}
+                <TaskAction icon={ShowMoreIcon} action={() => {}} />
             </div>
         </div>
     );
