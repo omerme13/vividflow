@@ -18,6 +18,19 @@
 		font-family: inherit;
 		font-size: var(--font-size-main);
 		color: inherit;
+        border: 1px solid transparent;
+        transition: 0.2s;
+
+		&::placeholder {
+            color: var(--color-main-text);
+            opacity: 0.5;
+        }
+
+		&:focus {
+            border-color: var(--color-purple-70);
+            box-shadow: 0 0 0 0.4rem var(--color-cta-light);
+        }
+
 	}
 
 	&__search-button {
