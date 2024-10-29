@@ -1,12 +1,33 @@
-import { Hamburger } from "@/assets/icons";
+import { GridIcon, HamburgerIcon, KanbanIcon, SearchIcon } from "@/assets/icons";
+import { useLayout } from "@/context/LayoutContext";
 
-import './TasksHeader.scss';
+import "./TasksHeader.scss";
 
-export default function TaskHeader() {
-  return (
-	<div className="task-header">
-		<Hamburger />
-		<input type="text" className="task-header__search-input" />
-	</div>
-  );
+export default function TasksHeader() {
+    const { layout, toggleViewMode, toggleSidebar } = useLayout();
+
+    return (
+        <div className="tasks-header">
+            <HamburgerIcon className="tasks-header__menu-button" onClick={toggleSidebar} />
+            <div className="tasks-header__search-input-container">
+                <SearchIcon className="tasks-header__search-button" />
+                <input type="text" className="tasks-header__search-input" placeholder="Search" />
+            </div>
+            <button className="tasks-header__layout-toggle-button">
+                <KanbanIcon
+                    className={`tasks-header__layout-toggle-button-icon ${
+                        layout.isGridViewMode ? "tasks-header__layout-toggle-button-icon--not-selected" : ""
+                    }`}
+                    onClick={toggleViewMode}
+                />
+                <div className="tasks-header__layout-toggle-button-separator" />
+                <GridIcon
+                    className={`tasks-header__layout-toggle-button-icon ${
+                        layout.isGridViewMode ? "" : "tasks-header__layout-toggle-button-icon--not-selected"
+                    }`}
+                    onClick={toggleViewMode}
+                />
+            </button>
+        </div>
+    );
 }

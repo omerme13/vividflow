@@ -12,4 +12,7 @@ export { default as SettingsIcon } from "@/assets/icons/settings.svg?react";
 export { default as ShowMoreIcon } from "@/assets/icons/show-more.svg?react";
 export { default as TrashIcon } from "@/assets/icons/trash.svg?react";
 export { default as Logo } from "@/assets/icons/vividflow.svg?react";
-export { default as Hamburger } from "@/assets/icons/hamburger.svg?react";
+export { default as HamburgerIcon } from "@/assets/icons/hamburger.svg?react";
+export { default as SearchIcon } from "@/assets/icons/search.svg?react";
+export { default as KanbanIcon } from "@/assets/icons/kanban.svg?react";
+export { default as GridIcon } from "@/assets/icons/grid.svg?react";
