@@ -7,6 +7,7 @@ const defaultLayoutState: LayoutState = {
     isGridViewMode: true,
     currentPage: Page.Tasks,
     calendarMode: CalendarMode.Month,
+	isTaskModalOpen: false
 };
 
 interface LayoutContextType {
@@ -15,6 +16,7 @@ interface LayoutContextType {
     toggleViewMode: () => void;
     setCurrentPage: (page: Page) => void;
     setCalendarMode: (mode: CalendarMode) => void;
+	toggleTaskModal: () => void;
 }
 
 const LayoutContext = createContext<LayoutContextType | undefined>(undefined);
@@ -57,6 +59,13 @@ export function LayoutProvider({ children }: { children: React.ReactNode }) {
         }));
     };
 
+	const toggleTaskModal = () => {
+        setLayout((prev) => ({
+            ...prev,
+            isTaskModalOpen: !prev.isTaskModalOpen,
+        }));
+    };
+
     return (
         <LayoutContext.Provider
             value={{
@@ -65,6 +74,7 @@ export function LayoutProvider({ children }: { children: React.ReactNode }) {
                 toggleViewMode,
                 setCurrentPage,
                 setCalendarMode,
+				toggleTaskModal
             }}
         >
             {children}

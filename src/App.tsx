@@ -1,18 +1,17 @@
-import { useState } from "react";
-
 import Sidebar from "@/components/Sidebar";
-import TasksList from "@/components/TasksList";
-import TaskModal from "@/components/TaskModal";
+
+import Tasks from "@/pages/Tasks";
+import { useLayout } from "@/context/LayoutContext";
 
 import "./App.scss";
 
 export default function App() {
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const { toggleTaskModal } = useLayout();
+	
     return (
         <div className="app">
-            <Sidebar openNewTaskModal={() => setIsModalOpen(true)} />
-            <TasksList />
-            <TaskModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <Sidebar openNewTaskModal={toggleTaskModal} />
+			<Tasks />
         </div>
     );
 }

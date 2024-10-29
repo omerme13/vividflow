@@ -17,4 +17,5 @@ export const DEFAULT_LAYOUT: LayoutState = {
     isGridViewMode: true,
     currentPage: Page.Tasks,
     calendarMode: CalendarMode.Month,
+	isTaskModalOpen: false
 } as const;

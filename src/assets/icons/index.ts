@@ -12,3 +12,4 @@ export { default as SettingsIcon } from "@/assets/icons/settings.svg?react";
 export { default as ShowMoreIcon } from "@/assets/icons/show-more.svg?react";
 export { default as TrashIcon } from "@/assets/icons/trash.svg?react";
 export { default as Logo } from "@/assets/icons/vividflow.svg?react";
+export { default as Hamburger } from "@/assets/icons/hamburger.svg?react";

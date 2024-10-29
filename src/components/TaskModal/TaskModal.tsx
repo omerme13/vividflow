@@ -6,7 +6,7 @@ import { NewTaskModalProps } from "./TaskModal.types";
 
 import "./TaskModal.scss";
 
-export default function NewTaskModal({ isOpen, onClose }: NewTaskModalProps) {
+export default function TaskModal({ isOpen, onClose }: NewTaskModalProps) {
     const [name, setName] = useState("");
     const [label, setLabel] = useState("");
     const modalRef = useRef<HTMLDivElement>(null);

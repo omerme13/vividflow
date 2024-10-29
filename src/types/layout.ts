@@ -17,4 +17,5 @@ export interface LayoutState {
     isGridViewMode: boolean;
     currentPage: Page;
     calendarMode: CalendarMode;
+	isTaskModalOpen: boolean;
 }

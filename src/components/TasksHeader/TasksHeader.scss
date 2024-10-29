@@ -1,0 +1,19 @@
+.task-header {
+	display: flex;
+	align-items: baseline;
+	padding:  3rem 1.6rem;
+	
+	&__search-input {
+		background-color: var(--color-purple-10);
+		width: 38rem;
+		height: 5.6rem;
+		outline: none;
+		border: none;
+		border-radius: 2.8rem;
+		margin-left: 1.6rem;
+		padding-left: 5.4rem;
+		font-family: inherit;
+		font-size: var(--font-size-main);
+		color: inherit;
+	}
+}
