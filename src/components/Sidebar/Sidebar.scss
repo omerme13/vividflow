@@ -5,13 +5,14 @@
 	width: var(--sidebar-width);
 	display: flex;
 	flex-direction: column;
-	padding: 4rem 3rem 6rem;
-	gap: 1.2rem;
+	padding: 3.2rem 2.4rem 6rem;
+	gap: 2.4rem;
 	z-index: 1;
+	font-size: var(--font-size-menu);
 
 	&.sidebar--compact {
 		width: var(--sidebar-width-compact);
-		padding: 4rem 0 11.6rem;
+		padding: 3.2rem 0 11.6rem;
 		align-items: center;
 	}
 
@@ -27,5 +28,20 @@
 		flex-direction: column;
 		gap: 1.6rem;
 		align-items: center;
+	}
+
+	&__toggle-compact-button {
+		cursor: pointer;
+		margin-left: auto;
+
+		&:hover {
+			opacity: 0.7;	
+		}
+	}
+
+	&__top-container {
+		display: flex;
+		align-items: center;
+		height: 3rem;
 	}
 }

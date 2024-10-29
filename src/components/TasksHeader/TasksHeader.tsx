@@ -1,14 +1,13 @@
-import { GridIcon, HamburgerIcon, KanbanIcon, SearchIcon } from "@/assets/icons";
+import { GridIcon, KanbanIcon, SearchIcon } from "@/assets/icons";
 import { useLayout } from "@/context/LayoutContext";
 
 import "./TasksHeader.scss";
 
 export default function TasksHeader() {
-    const { layout, toggleViewMode, toggleSidebar } = useLayout();
+    const { layout, toggleViewMode } = useLayout();
 
     return (
         <div className="tasks-header">
-            <HamburgerIcon className="tasks-header__menu-button" onClick={toggleSidebar} />
             <div className="tasks-header__search-input-container">
                 <SearchIcon className="tasks-header__search-button" />
                 <input type="text" className="tasks-header__search-input" placeholder="Search" />

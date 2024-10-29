@@ -2,7 +2,7 @@ import SidebarItem from "./components/SidebarItem/SidebarItem";
 import { sidebarItems } from "./constants";
 import UserDetails from "./components/UserDetails/UserDetails";
 import NewTaskButton from "./components/NewTaskButton/NewTaskButton";
-import { Logo } from "@/assets/icons";
+import { HamburgerIcon, Logo } from "@/assets/icons";
 import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton";
 import { Page } from "@/types/layout";
 
@@ -22,11 +22,15 @@ interface SidebarProps {
 export default function Sidebar({ openNewTaskModal }: SidebarProps) {
     const {
         layout: { isCompactSidebar },
+        toggleSidebar,
     } = useLayout();
 
     return (
         <div className={`sidebar ${isCompactSidebar ? "sidebar--compact" : ""}`}>
-            {!isCompactSidebar && <UserDetails name="Omer" />}
+            <div className="sidebar__top-container">
+                {!isCompactSidebar && <UserDetails name="Omer" />}
+                <HamburgerIcon className="sidebar__toggle-compact-button" onClick={toggleSidebar} />
+            </div>
             <NewTaskButton onClick={openNewTaskModal} isCompactSidebar={isCompactSidebar} />
             <div className="sidebar__items-container">
                 {sidebarItems.map(({ text, icon }) => (
