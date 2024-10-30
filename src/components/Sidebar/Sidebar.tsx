@@ -15,23 +15,22 @@ const actions = {
     [Page.Dashboard]: () => {},
     [Page.Settings]: () => {},
 };
-interface SidebarProps {
-    openNewTaskModal: () => void;
-}
 
-export default function Sidebar({ openNewTaskModal }: SidebarProps) {
+export default function Sidebar() {
     const {
         layout: { isCompactSidebar },
         toggleSidebar,
+		toggleTaskModal
     } = useLayout();
 
+	
     return (
         <div className={`sidebar ${isCompactSidebar ? "sidebar--compact" : ""}`}>
             <div className="sidebar__top-container">
                 {!isCompactSidebar && <UserDetails name="Omer" />}
                 <HamburgerIcon className="sidebar__toggle-compact-button" onClick={toggleSidebar} />
             </div>
-            <NewTaskButton onClick={openNewTaskModal} isCompactSidebar={isCompactSidebar} />
+            <NewTaskButton onClick={toggleTaskModal} isCompactSidebar={isCompactSidebar} />
             <div className="sidebar__items-container">
                 {sidebarItems.map(({ text, icon }) => (
                     <SidebarItem

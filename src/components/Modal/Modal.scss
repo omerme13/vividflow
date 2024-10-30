@@ -1,0 +1,27 @@
+.modal {
+    &__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        animation: fadeIn 0.1s ease-out;
+    }
+
+    &__content {
+        background-color: var(--color-card-background);
+        border-radius: 1.2rem;
+        padding: 3.2rem;
+        width: 100%;
+        max-width: 40rem;
+        position: relative;
+        box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.08);
+        animation: slideUp 0.15s ease-out;
+    }
+}

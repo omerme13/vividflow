@@ -1,17 +1,15 @@
 import Sidebar from "@/components/Sidebar";
 
 import Tasks from "@/pages/Tasks";
-import { useLayout } from "@/context/LayoutContext";
-
-import "./App.scss";
 import { TaskProvider } from "./context/TaskContext";
 
+import "./App.scss";
+
 export default function App() {
-    const { toggleTaskModal } = useLayout();
 
     return (
         <div className="app">
-            <Sidebar openNewTaskModal={toggleTaskModal} />
+            <Sidebar />
             <TaskProvider>
                 <Tasks />
             </TaskProvider>

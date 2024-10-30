@@ -8,7 +8,7 @@ import { useTask } from "@/context/TaskContext";
 
 import "./Task.scss";
 
-export default function Task({ task }: TaskProps) {
+export default function Task({ task, onEdit }: TaskProps) {
     const { id, text, label, color = TaskColors.Gray } = task;
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
 
@@ -22,7 +22,7 @@ export default function Task({ task }: TaskProps) {
     };
 
     return (
-        <div className="task">
+        <div className="task" onClick={onEdit}>
             <div className="task__color" style={{ background: getPaletteColor(color) }} />
             <div className="task__text">{text}</div>
             {label && <div className="task__label">{label}</div>}

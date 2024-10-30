@@ -10,6 +10,7 @@ export interface TaskData {
 
 export interface TaskProps {
 	task: TaskData;
+	onEdit: () => void;
 }
 
 export enum TaskColors {
