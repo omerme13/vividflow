@@ -1,1 +1,0 @@
-export const defaultAvatarUrl = "/src/assets/icons/avatar.svg";
