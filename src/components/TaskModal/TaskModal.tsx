@@ -25,7 +25,7 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
         });
 
     useClickOutside({
-        refs: [suggestionsRef, inputRef],
+        refs: [suggestionsRef],
         handler: () => setShowSuggestions(false),
         enabled: showSuggestions,
     });
@@ -39,6 +39,8 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                 setName("");
                 setLabel("");
             }
+			
+			inputRef.current?.focus();
         }
     }, [isOpen, task, isEditMode]);
 

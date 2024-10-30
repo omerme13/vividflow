@@ -20,7 +20,7 @@ export default function useSuggestions({
     inputValue,
     suggestions,
     onSelect,
-    maxSuggestions = 5,
+    maxSuggestions,
 }: UseSuggestionsProps): UseSuggestionsResult {
     const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
     const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -28,7 +28,7 @@ export default function useSuggestions({
 
     useEffect(() => {
         if (!inputValue.trim()) {
-            setFilteredSuggestions(suggestions.slice(0, maxSuggestions));
+            setFilteredSuggestions(suggestions.slice(0, maxSuggestions || -1));
         } else {
             const filtered = suggestions
                 .filter((suggestion) => suggestion.toLowerCase().includes(inputValue.toLowerCase().trim()))
