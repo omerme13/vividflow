@@ -8,6 +8,8 @@ type TaskDataWithoutId = Omit<TaskData, "id">;
 interface TaskContext {
     tasks: TaskData[];
     labels: string[];
+	searchQuery: string;
+	setSearchQuery: Dispatch<SetStateAction<string>>;
     addTask: (task: TaskDataWithoutId) => void;
     updateTask: (task: TaskData) => void;
     deleteTask: (id: string) => void;
@@ -27,6 +29,7 @@ const saveTasksAndUpdateLabels = (tasks: TaskData[], setLabels: Dispatch<SetStat
 export function TaskProvider({ children }: { children: ReactNode }) {
     const [tasks, setTasks] = useState<TaskData[]>(() => taskStorage.getTasks());
     const [labels, setLabels] = useState<string[]>(() => taskStorage.getLabels());
+	const [searchQuery, setSearchQuery] = useState<string>("");
 
     const addTask = useCallback((newTask: TaskDataWithoutId) => {
         const taskWithId = { ...newTask, id: crypto.randomUUID() };
@@ -67,6 +70,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
                 deleteTask,
                 getTasksByLabel,
                 getTaskById,
+				searchQuery,
+				setSearchQuery,
             }}
         >
             {children}
@@ -91,4 +96,13 @@ export function useTask(id: string) {
         updateTask,
         deleteTask: () => deleteTask(id),
     };
+}
+
+export function useFilteredTasks() {
+    const { tasks, searchQuery } = useTaskContext();
+    
+    return tasks.filter(task => 
+        task.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (task.label && task.label.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
 }

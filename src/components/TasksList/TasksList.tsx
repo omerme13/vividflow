@@ -2,13 +2,13 @@ import { useState } from "react";
 import TaskModal from "@/components/TaskModal";
 import Task from "@/components/Task";
 import { TaskData } from "@/components/Task/Task.types";
-import { useTaskContext } from "@/context/TaskContext";
+import { useFilteredTasks } from "@/context/TaskContext";
 import { useLayout } from "@/context/LayoutContext";
 
 import "./TasksList.scss";
 
 export default function TaskList() {
-    const { tasks } = useTaskContext();
+	const filteredTasks = useFilteredTasks();
     const [selectedTask, setSelectedTask] = useState<TaskData | null>(null);
     const { layout, toggleTaskModal } = useLayout();
 	
@@ -24,7 +24,7 @@ export default function TaskList() {
 
     return (
         <div className="tasks-list">
-            {tasks.map((task) => (
+            {filteredTasks.map((task) => (
                 <Task key={task.id} task={task} onEdit={() => handleEdit(task)} />
             ))}
             <TaskModal
