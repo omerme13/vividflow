@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { MouseEvent, useRef } from "react";
 
 import { TaskColors } from "@/components/Task";
 import { ColorPaletteProps } from "./ColorPalette.types";
@@ -15,7 +15,7 @@ export default function ColorPalette({ updateTaskColor, onClose }: ColorPaletteP
         handler: onClose,
     });
 
-    const setColor = (e: React.MouseEvent<HTMLDivElement>) => {
+    const setColor = (e: MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement;
 
         if (target?.dataset?.color) {

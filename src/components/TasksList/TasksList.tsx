@@ -27,7 +27,6 @@ export default function TaskList() {
             {tasks.map((task) => (
                 <Task key={task.id} task={task} onEdit={() => handleEdit(task)} />
             ))}
-
             <TaskModal
                 isOpen={layout.isTaskModalOpen}
                 onClose={handleClose}

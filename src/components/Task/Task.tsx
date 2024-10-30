@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { TaskColors, TaskProps } from "./Task.types";
 import { CheckIcon, ClockIcon, PaletteIcon, ShowMoreIcon, TrashIcon } from "@/assets/icons";
 import { getPaletteColor } from "@/utils/styles";
@@ -21,12 +21,20 @@ export default function Task({ task, onEdit }: TaskProps) {
         setIsPaletteOpen(false);
     };
 
+    const handleLabelClick = (e: MouseEvent<HTMLElement>) => {
+        e.stopPropagation();
+    };
+
     return (
         <div className="task" onClick={onEdit}>
             <div className="task__color" style={{ background: getPaletteColor(color) }} />
             <div className="task__text">{text}</div>
-            {label && <div className="task__label">{label}</div>}
-            <div className="task__actions">
+            {label && (
+                <div className="task__label" onClick={handleLabelClick}>
+                    {label}
+                </div>
+            )}
+            <div className="task__actions" onClick={e => e.stopPropagation()}>
                 <TaskAction icon={CheckIcon} action={() => {}} />
                 <TaskAction icon={ClockIcon} action={() => {}} />
                 <TaskAction icon={TrashIcon} action={deleteTask} isWarning />
