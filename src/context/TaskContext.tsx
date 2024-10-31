@@ -2,6 +2,7 @@ import { createContext, useState, useCallback, useContext, Dispatch, SetStateAct
 import { TaskData } from "@/components/Task";
 import * as taskStorage from "@/utils/taskLocalStorage";
 import { extractUniqueLabels } from "@/utils/tasks";
+import useDebouncedValue from "@/hooks/useDebouncedValue";
 
 type TaskDataWithoutId = Omit<TaskData, "id">;
 
@@ -100,9 +101,10 @@ export function useTask(id: string) {
 
 export function useFilteredTasks() {
     const { tasks, searchQuery } = useTaskContext();
-    
+	const debouncedSearchQuery = useDebouncedValue<string>(searchQuery);
+
     return tasks.filter(task => 
-        task.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (task.label && task.label.toLowerCase().includes(searchQuery.toLowerCase()))
+        task.text.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+        (task.label && task.label.toLowerCase().includes(debouncedSearchQuery.toLowerCase()))
     );
 }
