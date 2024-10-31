@@ -1,3 +1,5 @@
-<svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0 12V10H18V12H0ZM0 7V5H18V7H0ZM0 2V0H18V2H0Z" fill="currentColor"/>
+<svg class="__toggle-compact-button hamburger-lines" width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="11" x2="18" y2="11" stroke="currentColor" stroke-width="2"/>
+    <line x1="0" y1="6" x2="18" y2="6" stroke="currentColor" stroke-width="2"/>
+    <line x1="0" y1="1" x2="18" y2="1" stroke="currentColor" stroke-width="2"/>
 </svg>
