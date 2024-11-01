@@ -2,6 +2,7 @@ import { DarkIcon, LightIcon } from "@/assets/icons";
 import { usePreferences } from "@/context/PreferenceContext";
 
 import "./ThemeToggleButton.scss";
+import Tooltip from "@/components/Tooltip";
 
 export default function ThemeToggleButton() {
     const { preferences, updatePreference } = usePreferences();
@@ -9,8 +10,10 @@ export default function ThemeToggleButton() {
     const toggleDarkMode = () => updatePreference({ isDarkMode: !preferences.isDarkMode });
 
     return (
-        <button className="theme-toggle-button" onClick={toggleDarkMode}>
-            {preferences.isDarkMode ? <LightIcon /> : <DarkIcon />}
-        </button>
+        <Tooltip content={`switch to ${preferences.isDarkMode ? "light" : "dark"} mode`}>
+            <button className="theme-toggle-button" onClick={toggleDarkMode}>
+                {preferences.isDarkMode ? <LightIcon /> : <DarkIcon />}
+            </button>
+        </Tooltip>
     );
 }
