@@ -1,21 +1,29 @@
-import { createContext, useState, useCallback, useContext, Dispatch, SetStateAction, ReactNode } from "react";
-import { TaskData } from "@/components/Task";
+import { createContext, useState, useCallback, useContext, Dispatch, SetStateAction, ReactNode, useMemo } from "react";
+import { TaskColors, TaskData } from "@/components/Task";
 import * as taskStorage from "@/utils/taskLocalStorage";
 import { extractUniqueLabels } from "@/utils/tasks";
 import useDebouncedValue from "@/hooks/useDebouncedValue";
 
 type TaskDataWithoutId = Omit<TaskData, "id">;
 
+interface FilterOptions {
+    selectedLabels: string[];
+    selectedColors: TaskColors[];
+}
+
 interface TaskContext {
     tasks: TaskData[];
     labels: string[];
-	searchQuery: string;
-	setSearchQuery: Dispatch<SetStateAction<string>>;
+    searchQuery: string;
+    filterOptions: FilterOptions;
+    setSearchQuery: Dispatch<SetStateAction<string>>;
+    setFilterOptions: Dispatch<SetStateAction<FilterOptions>>;
     addTask: (task: TaskDataWithoutId) => void;
     updateTask: (task: TaskData) => void;
     deleteTask: (id: string) => void;
     getTasksByLabel: (label: string) => TaskData[];
     getTaskById: (id: string) => TaskData | undefined;
+    clearFilters: () => void;
 }
 
 const TaskContext = createContext<TaskContext | undefined>(undefined);
@@ -27,10 +35,16 @@ const saveTasksAndUpdateLabels = (tasks: TaskData[], setLabels: Dispatch<SetStat
     taskStorage.saveLabels(newLabels);
 };
 
+const initialFilterOptions: FilterOptions = {
+    selectedLabels: [],
+    selectedColors: [],
+};
+
 export function TaskProvider({ children }: { children: ReactNode }) {
     const [tasks, setTasks] = useState<TaskData[]>(() => taskStorage.getTasks());
     const [labels, setLabels] = useState<string[]>(() => taskStorage.getLabels());
-	const [searchQuery, setSearchQuery] = useState<string>("");
+    const [searchQuery, setSearchQuery] = useState<string>("");
+    const [filterOptions, setFilterOptions] = useState<FilterOptions>(initialFilterOptions);
 
     const addTask = useCallback((newTask: TaskDataWithoutId) => {
         const taskWithId = { ...newTask, id: crypto.randomUUID() };
@@ -61,6 +75,11 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
     const getTaskById = useCallback((id: string) => tasks.find((task) => task.id === id), [tasks]);
 
+    const clearFilters = useCallback(() => {
+        setFilterOptions(initialFilterOptions);
+        setSearchQuery("");
+    }, []);
+
     return (
         <TaskContext.Provider
             value={{
@@ -71,8 +90,11 @@ export function TaskProvider({ children }: { children: ReactNode }) {
                 deleteTask,
                 getTasksByLabel,
                 getTaskById,
-				searchQuery,
-				setSearchQuery,
+                searchQuery,
+                setSearchQuery,
+                filterOptions,
+                setFilterOptions,
+                clearFilters,
             }}
         >
             {children}
@@ -100,11 +122,22 @@ export function useTask(id: string) {
 }
 
 export function useFilteredTasks() {
-    const { tasks, searchQuery } = useTaskContext();
-	const debouncedSearchQuery = useDebouncedValue<string>(searchQuery);
+    const { tasks, searchQuery, filterOptions } = useTaskContext();
+    const debouncedSearchQuery = useDebouncedValue<string>(searchQuery);
+    const { selectedLabels, selectedColors } = filterOptions;
 
-    return tasks.filter(task => 
-        task.text.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
-        (task.label && task.label.toLowerCase().includes(debouncedSearchQuery.toLowerCase()))
-    );
+    return useMemo(() => {
+        const normalizedQuery = debouncedSearchQuery.toLowerCase();
+
+        const filterConditions: Array<(task: TaskData) => boolean> = [
+            (task) =>
+                normalizedQuery === "" ||
+                task.text.toLowerCase().includes(normalizedQuery) ||
+                (task.label?.toLowerCase() || "").includes(normalizedQuery),
+            (task) => selectedLabels.length === 0 || !!(task.label && selectedLabels.includes(task.label)),
+            (task) => selectedColors.length === 0 || !!(task.color && selectedColors.includes(task.color)),
+        ];
+
+        return tasks.filter((task) => filterConditions.every((condition) => condition(task)));
+    }, [tasks, debouncedSearchQuery, selectedLabels, selectedColors]);
 }
