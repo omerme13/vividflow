@@ -10,7 +10,7 @@ import "./TaskModal.scss";
 export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskModalProps) {
     const [name, setName] = useState("");
     const [label, setLabel] = useState("");
-    const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLTextAreaElement>(null);
     const suggestionsRef = useRef<HTMLDivElement>(null);
     const { addTask, updateTask, labels: existingLabels } = useTaskContext();
 
@@ -70,13 +70,12 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
         <Modal isOpen={isOpen} onClose={onClose}>
             <form className="task-modal__form" onSubmit={handleSubmit}>
                 <div className="task-modal__input-wrapper">
-                    <input
+                    <textarea
                         ref={inputRef}
-                        className="task-modal__input"
-                        type="text"
+                        className="task-modal__input task-modal__textarea"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Task name"
+                        placeholder="Task description"
                     />
                 </div>
 
