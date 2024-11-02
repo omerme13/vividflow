@@ -1,12 +1,29 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, MouseEvent } from "react";
 import { TooltipProps } from "./Tooltip.types";
 
 import "./Tooltip.scss";
 
+const calculatePosition = (x: number, y: number, tooltipElement: HTMLElement) => {
+    const tooltipRect = tooltipElement.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    if (x + tooltipRect.width > viewportWidth) {
+        x = x - tooltipRect.width;
+    }
+
+    if (y + tooltipRect.height > viewportHeight) {
+        y = y - tooltipRect.height;
+    }
+
+    return { x, y };
+};
+
 export default function Tooltip({ content, children, delay = 200, className = "" }: TooltipProps) {
     const [isVisible, setIsVisible] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });
-    const timeoutRef = useRef<NodeJS.Timeout>();
+    const tooltipRef = useRef<HTMLDivElement>(null);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         return () => {
@@ -32,11 +49,14 @@ export default function Tooltip({ content, children, delay = 200, className = ""
         setIsVisible(false);
     };
 
-    const handleMouseMove = (e: React.MouseEvent) => {
-        setPosition({ x: e.clientX, y: e.clientY });
+    const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+        if (tooltipRef.current) {
+            const { x, y } = calculatePosition(e.clientX, e.clientY, tooltipRef.current);
+            setPosition({ x, y });
+        }
     };
 
-    if (!content) return <>{children}</>;
+    if (!content) return children;
 
     return (
         <div
@@ -48,6 +68,7 @@ export default function Tooltip({ content, children, delay = 200, className = ""
             <div className="tooltip__trigger">{children}</div>
             {isVisible && (
                 <div
+                    ref={tooltipRef}
                     className="tooltip__content"
                     style={{
                         left: `${position.x}px`,
