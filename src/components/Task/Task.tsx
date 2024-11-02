@@ -34,15 +34,15 @@ export default function Task({ task, onEdit }: TaskProps) {
                     {label}
                 </div>
             )}
-            <div className="task__actions" onClick={e => e.stopPropagation()}>
-                <TaskAction icon={CheckIcon} action={() => {}} />
-                <TaskAction icon={ClockIcon} action={() => {}} />
-                <TaskAction icon={TrashIcon} action={deleteTask} isWarning />
-                <TaskAction icon={PaletteIcon} action={togglePalette} />
+            <div className="task__actions" onClick={(e) => e.stopPropagation()}>
+                <TaskAction icon={CheckIcon} action={() => {}} tooltipContent="mark as done" />
+                <TaskAction icon={ClockIcon} action={() => {}} tooltipContent="set time" />
+                <TaskAction icon={TrashIcon} action={deleteTask} isWarning tooltipContent="delete" />
+                <TaskAction icon={PaletteIcon} action={togglePalette} tooltipContent="choose a color" />
                 {isPaletteOpen && (
                     <ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
                 )}
-                <TaskAction icon={ShowMoreIcon} action={() => {}} />
+                <TaskAction icon={ShowMoreIcon} action={() => {}} tooltipContent="show more" />
             </div>
         </div>
     );
