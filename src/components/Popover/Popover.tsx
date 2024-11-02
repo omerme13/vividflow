@@ -6,7 +6,7 @@ import { PopoverProps } from './Popover.types';
 import "./Popover.scss";
 
 
-export default function Popover({ trigger, children }: PopoverProps) {
+export default function Popover({ trigger, triggerClassName = "", children }: PopoverProps) {
     const [isOpen, setIsOpen] = useState(false);
     const triggerRef = useRef<HTMLButtonElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -35,7 +35,7 @@ export default function Popover({ trigger, children }: PopoverProps) {
         <>
             <button 
                 ref={triggerRef} 
-                className="popover__trigger"
+                className={`popover__trigger ${triggerClassName}`}
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
             >

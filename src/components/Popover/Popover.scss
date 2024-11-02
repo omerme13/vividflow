@@ -1,6 +1,13 @@
 .popover {
     &__trigger {
         cursor: pointer;
+		border: none;
+		background: none;
+		color: var(--color-text-main);
+
+		&:hover {
+			opacity: 0.7;
+		}
     }
 
     &__content {
