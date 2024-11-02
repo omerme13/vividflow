@@ -19,10 +19,10 @@ const calculatePosition = (x: number, y: number, tooltipElement: HTMLElement) =>
     return { x, y };
 };
 
-export default function Tooltip({ content, children, delay = 200, className = "" }: TooltipProps) {
+export default function Tooltip({ content, children, delay = 500, className = "" }: TooltipProps) {
     const [isVisible, setIsVisible] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });
-    const tooltipRef = useRef<HTMLDivElement>(null);
+    const tooltipRef = useRef<HTMLDivElement | null>(null);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
@@ -33,7 +33,8 @@ export default function Tooltip({ content, children, delay = 200, className = ""
         };
     }, []);
 
-    const showTooltip = () => {
+    const showTooltip = (e: MouseEvent<HTMLDivElement>) => {
+		setPosition({ x: e.clientX, y: e.clientY });
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
         }
