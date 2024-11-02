@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { createPortal } from "react-dom";
 import { ModalProps } from "./Modal.types";
 import useClickOutside from "@/hooks/useClickOutside";
 
@@ -15,13 +16,14 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
 
     if (!isOpen) return null;
 
-    return (
+    return createPortal(
         <div className="modal">
             <div className="modal__overlay">
                 <div className="modal__content" ref={modalRef}>
                     {children}
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
