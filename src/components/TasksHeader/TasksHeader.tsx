@@ -4,6 +4,9 @@ import LayoutToggleButton from "./LayoutToggleButton";
 import { useTaskContext } from "@/context/TaskContext";
 import { ChangeEvent } from "react";
 import Popover from "../Popover/Popover";
+import Tooltip from "@/components/Tooltip";
+import TasksFilters from "@/components/TasksFilters";
+
 
 import "./TasksHeader.scss";
 
@@ -23,8 +26,15 @@ export default function TasksHeader() {
                 />
             </div>
 
-            <Popover triggerClassName="tasks-header__filter-icon" trigger={<FilterIcon />}>
-                This is the content of the popover
+            <Popover
+                triggerClassName="tasks-header__filter-icon"
+                trigger={
+                    <Tooltip content="filter">
+                        <FilterIcon />
+                    </Tooltip>
+                }
+            >
+                <TasksFilters />
             </Popover>
             <LayoutToggleButton />
         </div>
