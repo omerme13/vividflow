@@ -1,0 +1,29 @@
+.popover {
+    &__trigger {
+        cursor: pointer;
+    }
+
+    &__content {
+		font-family: inherit;
+        background-color: var(--color-purple-10);
+        color: var(--color-text-main);
+        min-width: 20rem;
+        border-radius: 8px;
+        box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.15);
+        padding: 1.2rem;
+        z-index: 1000;
+
+        animation: popoverFadeIn 0.2s;
+    }
+}
+
+@keyframes popoverFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
