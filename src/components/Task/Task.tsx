@@ -1,6 +1,6 @@
 import { MouseEvent, useState } from "react";
 import { TaskColors, TaskProps } from "./Task.types";
-import { CheckIcon, ClockIcon, PaletteIcon, ShowMoreIcon, TrashIcon } from "@/assets/icons";
+import { CheckIcon, ClockIcon, PaletteIcon, TrashIcon } from "@/assets/icons";
 import { getPaletteColor } from "@/utils/styles";
 import TaskAction from "./components/TaskAction/TaskAction";
 import ColorPalette from "./components/ColorPalette/ColorPalette";
@@ -37,12 +37,11 @@ export default function Task({ task, onEdit }: TaskProps) {
             <div className="task__actions" onClick={(e) => e.stopPropagation()}>
                 <TaskAction icon={CheckIcon} action={() => {}} tooltipContent="mark as done" />
                 <TaskAction icon={ClockIcon} action={() => {}} tooltipContent="set time" />
-                <TaskAction icon={TrashIcon} action={deleteTask} isWarning tooltipContent="delete" />
                 <TaskAction icon={PaletteIcon} action={togglePalette} tooltipContent="choose a color" />
                 {isPaletteOpen && (
-                    <ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
+					<ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
                 )}
-                <TaskAction icon={ShowMoreIcon} action={() => {}} tooltipContent="show more" />
+				<TaskAction icon={TrashIcon} action={deleteTask} isWarning tooltipContent="delete" />
             </div>
         </div>
     );
