@@ -53,7 +53,7 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                 <div className="task-modal__input-wrapper">
                     <textarea
                         ref={inputRef}
-                        className="task-modal__input task-modal__textarea"
+                        className="task-modal__input task-modal__textarea scrollbar"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Task description"

@@ -1,5 +1,3 @@
-.app {
-}
 
 :root {
 	color: var(--color-main-text);
@@ -10,25 +8,4 @@
 	}
 	
     background-color: var(--color-purple-20);
-
-    &::-webkit-scrollbar {
-        width: 0.8rem;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: var(--color-purple-20);
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: var(--color-purple-40);
-        border-radius: 0.4rem;
-        border: 0.2rem solid var(--color-purple-30);
-
-        &:hover {
-            background-color: var(--color-purple-50);
-            border-width: 0.15rem;
-        }
-    }
-
-    scrollbar-gutter: stable;
 }

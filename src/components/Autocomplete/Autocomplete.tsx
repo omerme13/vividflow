@@ -43,7 +43,7 @@ export default function Autocomplete({
             />
 
             {showSuggestions && filteredSuggestions.length > 0 && (
-                <div className="autocomplete__suggestions" ref={suggestionsRef}>
+                <div className="autocomplete__suggestions scrollbar" ref={suggestionsRef}>
                     {filteredSuggestions.map((suggestion, index) => (
                         <button
                             key={suggestion}

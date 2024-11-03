@@ -42,20 +42,6 @@
         overflow-y: auto;
         z-index: 2;
         animation: slideUp 0.1s;
-
-        &::-webkit-scrollbar {
-            width: 0.8rem;
-        }
-
-        &::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background-color: var(--color-purple-30);
-            border-radius: 0.4rem;
-            border: 0.2rem solid var(--color-card-background);
-        }
     }
 
     &__suggestion-item {

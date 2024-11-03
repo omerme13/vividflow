@@ -2,10 +2,11 @@ import Select from "react-select";
 import { useTaskContext } from "@/context/TaskContext";
 import { TaskColors } from "@/components/Task";
 import { getPaletteColor } from "@/utils/styles";
+
 import "./TasksFilters.scss";
 
 const TaskFilter = () => {
-    const { labels, filterOptions, setFilterOptions } = useTaskContext();
+    const { labels, filterOptions, setFilterOptions, clearColorFilters } = useTaskContext();
 
     const labelOptions = labels.map((label) => ({
         value: label,
@@ -29,6 +30,7 @@ const TaskFilter = () => {
                     placeholder="Select labels"
                     className="tasks-filters__select"
                     classNamePrefix="tasks-filters-select"
+                    classNames={{ menuList: () => "scrollbar" }}
                 />
             </div>
 
@@ -62,6 +64,9 @@ const TaskFilter = () => {
                             />
                         </div>
                     ))}
+                    <button className="tasks-filters__remove-selected-colors" type="button" onClick={clearColorFilters}>
+                        Clear
+                    </button>
                 </div>
             </div>
         </div>
