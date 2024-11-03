@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Modal from "@/components/Modal";
 import { useTaskContext } from "@/context/TaskContext";
-import useClickOutside from "@/hooks/useClickOutside";
-import useSuggestions from "@/hooks/useSuggestion";
 import { TaskModalProps } from "./TaskModal.types";
+import Autocomplete from "@/components/Autocomplete";
 
 import "./TaskModal.scss";
 
@@ -11,24 +10,7 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
     const [name, setName] = useState("");
     const [label, setLabel] = useState("");
     const inputRef = useRef<HTMLTextAreaElement>(null);
-    const suggestionsRef = useRef<HTMLDivElement>(null);
     const { addTask, updateTask, labels: existingLabels } = useTaskContext();
-
-    const { filteredSuggestions, selectedIndex, setSelectedIndex, showSuggestions, setShowSuggestions, handleKeyDown } =
-        useSuggestions({
-            inputValue: label,
-            suggestions: existingLabels,
-            onSelect: (suggestion) => {
-                setLabel(suggestion);
-                setShowSuggestions(false);
-            },
-        });
-
-    useClickOutside({
-        refs: [suggestionsRef],
-        handler: () => setShowSuggestions(false),
-        enabled: showSuggestions,
-    });
 
     useEffect(() => {
         if (isOpen) {
@@ -39,8 +21,8 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                 setName("");
                 setLabel("");
             }
-			
-			inputRef.current?.focus();
+
+            inputRef.current?.focus();
         }
     }, [isOpen, task, isEditMode]);
 
@@ -62,7 +44,6 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
     };
 
     const handleClose = () => {
-        setShowSuggestions(false);
         onClose();
     };
 
@@ -79,38 +60,7 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                     />
                 </div>
 
-                <div className="task-modal__input-wrapper">
-                    <input
-                        className="task-modal__input task-modal__input--label"
-                        type="text"
-                        value={label}
-                        onChange={(e) => setLabel(e.target.value)}
-                        onFocus={() => setShowSuggestions(true)}
-                        onKeyDown={handleKeyDown}
-                        placeholder="Add label"
-                    />
-
-                    {showSuggestions && filteredSuggestions.length > 0 && (
-                        <div className="task-modal__suggestions" ref={suggestionsRef}>
-                            {filteredSuggestions.map((suggestion, index) => (
-                                <button
-                                    key={suggestion}
-                                    type="button"
-                                    className={`task-modal__suggestion-item ${
-                                        index === selectedIndex ? "task-modal__suggestion-item--selected" : ""
-                                    }`}
-                                    onClick={() => {
-                                        setLabel(suggestion);
-                                        setShowSuggestions(false);
-                                    }}
-                                    onMouseEnter={() => setSelectedIndex(index)}
-                                >
-                                    {suggestion}
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                </div>
+                <Autocomplete value={label} onChange={setLabel} suggestions={existingLabels} placeholder="Add label" />
 
                 <div className="task-modal__actions">
                     <button
