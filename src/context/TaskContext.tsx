@@ -83,19 +83,22 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         setSearchQuery("");
     }, []);
 
-	const clearColorFilters = () => {
-		setFilterOptions(prev => ({...prev, selectedColors: initialFilterOptions.selectedColors}))
-	}
+    const clearColorFilters = useCallback(() => {
+        setFilterOptions((prev) => ({ ...prev, selectedColors: initialFilterOptions.selectedColors }));
+    }, []);
 
-	const hasFilters = () => !!filterOptions.selectedColors.length || !!filterOptions.selectedLabels.length;
+    const hasFilters = useCallback(
+        () => !!filterOptions.selectedColors.length || !!filterOptions.selectedLabels.length,
+        [filterOptions]
+    );
 
-	const filterByLabel = (label: string) => {
-		setFilterOptions(prev => ({
-			...prev,
-			selectedLabels: [label]
-		}))
-	}
-	
+    const filterByLabel = useCallback((label: string) => {
+        setFilterOptions((prev) => ({
+            ...prev,
+            selectedLabels: [label],
+        }));
+    }, []);
+
     return (
         <TaskContext.Provider
             value={{
@@ -111,9 +114,9 @@ export function TaskProvider({ children }: { children: ReactNode }) {
                 filterOptions,
                 setFilterOptions,
                 clearFilters,
-				clearColorFilters,
-				hasFilters,
-				filterByLabel
+                clearColorFilters,
+                hasFilters,
+                filterByLabel,
             }}
         >
             {children}
@@ -137,7 +140,7 @@ export function useTask(id: string) {
         task,
         updateTask,
         deleteTask: () => deleteTask(id),
-		filterByLabel: () => filterByLabel(task?.label || "")
+        filterByLabel: () => filterByLabel(task?.label || ""),
     };
 }
 
@@ -158,6 +161,11 @@ export function useFilteredTasks() {
             (task) => selectedColors.length === 0 || !!(task.color && selectedColors.includes(task.color)),
         ];
 
-        return tasks.filter((task) => filterConditions.every((condition) => condition(task)));
+        const filteredTasks = tasks.filter((task) => filterConditions.every((condition) => condition(task)));
+
+        return {
+            completed: filteredTasks.filter((task) => task.isCompleted),
+            incomplete: filteredTasks.filter((task) => !task.isCompleted),
+        };
     }, [tasks, debouncedSearchQuery, selectedLabels, selectedColors]);
 }
