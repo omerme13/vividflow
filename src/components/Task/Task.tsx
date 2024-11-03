@@ -7,12 +7,12 @@ import ColorPalette from "./components/ColorPalette/ColorPalette";
 import { useTask } from "@/context/TaskContext";
 
 import "./Task.scss";
+import Tooltip from "../Tooltip";
 
 export default function Task({ task, onEdit }: TaskProps) {
     const { id, text, label, color = TaskColors.Gray } = task;
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
-
-    const { updateTask, deleteTask } = useTask(id);
+    const { updateTask, deleteTask, filterByLabel } = useTask(id);
 
     const togglePalette = () => setIsPaletteOpen((prev) => !prev);
 
@@ -23,6 +23,7 @@ export default function Task({ task, onEdit }: TaskProps) {
 
     const handleLabelClick = (e: MouseEvent<HTMLElement>) => {
         e.stopPropagation();
+		filterByLabel();
     };
 
     return (
@@ -30,9 +31,11 @@ export default function Task({ task, onEdit }: TaskProps) {
             <div className="task__color" style={{ background: getPaletteColor(color) }} />
             <div className="task__text">{text}</div>
             {label && (
+				<Tooltip content={`filter by ${label}`}>
                 <div className="task__label" onClick={handleLabelClick}>
                     {label}
                 </div>
+				</Tooltip>
             )}
             <div className="task__actions" onClick={(e) => e.stopPropagation()}>
                 <TaskAction icon={CheckIcon} action={() => {}} tooltipContent="mark as done" />

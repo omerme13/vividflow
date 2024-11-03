@@ -26,6 +26,7 @@ interface TaskContext {
     clearFilters: () => void;
     clearColorFilters: () => void;
     hasFilters: () => boolean;
+    filterByLabel: (label: string) => void;
 }
 
 const TaskContext = createContext<TaskContext | undefined>(undefined);
@@ -88,6 +89,13 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
 	const hasFilters = () => !!filterOptions.selectedColors.length || !!filterOptions.selectedLabels.length;
 
+	const filterByLabel = (label: string) => {
+		setFilterOptions(prev => ({
+			...prev,
+			selectedLabels: [label]
+		}))
+	}
+	
     return (
         <TaskContext.Provider
             value={{
@@ -104,7 +112,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
                 setFilterOptions,
                 clearFilters,
 				clearColorFilters,
-				hasFilters
+				hasFilters,
+				filterByLabel
             }}
         >
             {children}
@@ -121,13 +130,14 @@ export function useTaskContext() {
 }
 
 export function useTask(id: string) {
-    const { getTaskById, updateTask, deleteTask } = useTaskContext();
+    const { getTaskById, updateTask, deleteTask, filterByLabel } = useTaskContext();
     const task = getTaskById(id);
 
     return {
         task,
         updateTask,
         deleteTask: () => deleteTask(id),
+		filterByLabel: () => filterByLabel(task?.label || "")
     };
 }
 
