@@ -5,7 +5,8 @@ export interface TaskData {
     color?: TaskColors;
     isOnKanban?: boolean;
     isCompleted?: boolean;
-    dueDate?: Date | null;
+    dueDate?: Date;
+	completedAt?: Date;
 }
 
 export interface TaskProps {
