@@ -27,6 +27,8 @@ interface TaskContext {
     clearColorFilters: () => void;
     hasFilters: () => boolean;
     filterByLabel: (label: string) => void;
+    toggleTaskCompletion: (id: string) => void;
+    setTaskDueDate: (id: string, date: Date | undefined) => void;
 }
 
 const TaskContext = createContext<TaskContext | undefined>(undefined);
@@ -50,7 +52,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     const [filterOptions, setFilterOptions] = useState<FilterOptions>(initialFilterOptions);
 
     const addTask = useCallback((newTask: TaskDataWithoutId) => {
-        const taskWithId = { ...newTask, id: crypto.randomUUID() };
+        const taskWithId = { ...newTask, isCompleted: false, id: crypto.randomUUID() };
         setTasks((prev) => {
             const updatedTasks = [...prev, taskWithId];
             saveTasksAndUpdateLabels(updatedTasks, setLabels);
@@ -99,6 +101,39 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         }));
     }, []);
 
+    const toggleTaskCompletion = useCallback((id: string) => {
+        setTasks((prev) => {
+            const updatedTasks = prev.map((task) =>
+                task.id === id
+                    ? {
+                          ...task,
+                          isCompleted: !task.isCompleted,
+                          completedAt: !task.isCompleted ? new Date() : undefined,
+                      }
+                    : task
+            );
+
+            taskStorage.saveTasks(updatedTasks);
+            return updatedTasks;
+        });
+    }, []);
+
+    const setTaskDueDate = useCallback((id: string, date: Date | undefined) => {
+        setTasks((prev) => {
+            const updatedTasks = prev.map((task) =>
+                task.id === id
+                    ? {
+                          ...task,
+                          dueDate: date,
+                      }
+                    : task
+            );
+
+            taskStorage.saveTasks(updatedTasks);
+            return updatedTasks;
+        });
+    }, []);
+
     return (
         <TaskContext.Provider
             value={{
@@ -117,6 +152,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
                 clearColorFilters,
                 hasFilters,
                 filterByLabel,
+                toggleTaskCompletion,
+                setTaskDueDate,
             }}
         >
             {children}
@@ -133,14 +170,21 @@ export function useTaskContext() {
 }
 
 export function useTask(id: string) {
-    const { getTaskById, updateTask, deleteTask, filterByLabel } = useTaskContext();
+    const { getTaskById, updateTask, deleteTask, filterByLabel, toggleTaskCompletion, setTaskDueDate } =
+        useTaskContext();
     const task = getTaskById(id);
+
+	if (!task) {
+        throw new Error(`Task with id ${id} not found`);
+    }
 
     return {
         task,
         updateTask,
         deleteTask: () => deleteTask(id),
-        filterByLabel: () => filterByLabel(task?.label || ""),
+        filterByLabel: () => filterByLabel(task.label || ""),
+        toggleTaskCompletion: () => toggleTaskCompletion(id),
+        setTaskDueDate: (date: Date | undefined) => setTaskDueDate(id, date),
     };
 }
 
