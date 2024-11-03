@@ -10,14 +10,18 @@ export default function useClickOutside({ refs, handler, enabled = true }: UseCl
     useEffect(() => {
         if (!enabled) return;
 
-        const handleClickOutside = (event: MouseEvent) => {
-            const clickedOutside = refs.every((ref) => !ref.current?.contains(event.target as Node));
+        const handleClickOutside = (e: MouseEvent) => {
+            const path = e.composedPath();
+            
+            const clickedInside = refs.some(ref => 
+                ref.current && path.includes(ref.current)
+            );
 
-            if (clickedOutside) {
+            if (!clickedInside) {
                 handler();
             }
         };
-
+		
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [refs, handler, enabled]);
