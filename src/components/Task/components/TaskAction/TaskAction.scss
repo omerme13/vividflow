@@ -2,10 +2,16 @@
 	visibility: hidden;
 	opacity: 0;
 	transition: 0.1s;
-}
 
-.task-action--warning:hover {
-	path {
-		fill: var(--color-palette-red-strong);
+	&--warning:hover {
+		path {
+			fill: var(--color-palette-red-strong);
+		}
+	}
+	
+	&--active {
+		path {
+			fill: var(--color-palette-orange);
+		}
 	}
 }
