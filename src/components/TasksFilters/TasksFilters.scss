@@ -1,12 +1,12 @@
 .tasks-filters {
     width: 40rem;
-    padding: 1.6rem;
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
     border-radius: 0.8rem;
     font-family: inherit;
     color: var(--color-main-text);
+	padding: 2.8rem;
 
     &__section {
         display: flex;
