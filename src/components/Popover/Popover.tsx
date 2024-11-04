@@ -4,8 +4,6 @@ import useClickOutside from "@/hooks/useClickOutside";
 import { PopoverProps } from "./Popover.types";
 import "./Popover.scss";
 
-const OFFSET = 20;
-
 export default function Popover({ trigger, triggerClassName = "", children, marginFromBorders = 0 }: PopoverProps) {
     const [isOpen, setIsOpen] = useState(false);
     const triggerRef = useRef<HTMLButtonElement>(null);
@@ -36,7 +34,7 @@ export default function Popover({ trigger, triggerClassName = "", children, marg
 
             const shouldPositionAbove = top + contentRect.height > viewportHeight;
             if (shouldPositionAbove) {
-                top = triggerRect.top - contentRect.height - OFFSET;
+                top = triggerRect.top - contentRect.height;
             }
 
             setPosition({

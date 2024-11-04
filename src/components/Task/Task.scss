@@ -64,11 +64,6 @@
     }
 }
 
-.task-action {
-	visibility: hidden;
-	opacity: 0;
-}
-
 .datepicker-wrapper {
     display: flex;
     background: var(--color-purple-10);
@@ -209,7 +204,7 @@
     }
 
     &__time-list {
-        height: 22rem !important;
+        height: 23.5rem !important;
 
         &::-webkit-scrollbar {
             width: 0.6rem;
