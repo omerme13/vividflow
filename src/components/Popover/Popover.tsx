@@ -75,7 +75,6 @@ export default function Popover({ trigger, triggerClassName = "", children, marg
                             left: `${position.left}px`,
                             maxWidth: `calc(100vw - ${marginFromBorders * 2}px)`,
                             maxHeight: `calc(100vh - ${marginFromBorders * 2}px)`,
-                            overflow: "auto",
                         }}
                     >
                         {children}
