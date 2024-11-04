@@ -6,4 +6,5 @@ export interface TaskActionProps {
     icon: FC<SVGProps<SVGSVGElement>>;
     isWarning?: boolean;
 	tooltipContent?: string | ReactNode;
+	isActive?: boolean;
 }	

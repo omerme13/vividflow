@@ -9,34 +9,34 @@
     border-radius: 0.3rem;
     gap: 2.4rem;
     transition: 0.2s;
-	break-inside: avoid;
-	margin: 0 auto 1.6rem;
-	overflow: hidden;
-	position: relative;
-	top: 0;
+    break-inside: avoid;
+    margin: 0 auto 1.6rem;
+    // overflow: hidden;
+    position: relative;
+    top: 0;
 
-	&:hover {
-		box-shadow: 0 0.3rem 1rem rgba(black, 0.2);
-		top: -2px;
+    &:hover {
+        box-shadow: 0 0.3rem 1rem rgba(black, 0.2);
+        top: -2px;
 
-		.task-action {
-			opacity: 1;
-			visibility: visible;
+        .task-action {
+            opacity: 1;
+            visibility: visible;
 
-			&:hover {
-				opacity: 0.7;
-				cursor: pointer;
-			}
-		}
-	}
-	
-	&__color {
-		width: 100%;
-		height: 0.5rem;
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
+            &:hover {
+                opacity: 0.7;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__color {
+        width: 100%;
+        height: 0.5rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 
     &__actions {
         display: flex;
@@ -44,22 +44,159 @@
         gap: 0.8rem;
         flex: 1;
         align-items: center;
+        position: relative;
     }
 
-	
     &__label {
-		font-size: 1.2rem;
+        font-size: 1.2rem;
         background-color: var(--color-purple-30);
         width: fit-content;
         padding: 0.6rem 1.2rem;
         font-weight: var(--font-weight-bold);
         border-radius: 0.5rem;
         text-transform: capitalize;
-		line-height: 1;
-		
+        line-height: 1;
+
         &:hover {
-			opacity: 0.7;
+            opacity: 0.7;
             cursor: pointer;
         }
+    }
+
+    .react-datepicker {
+        position: absolute;
+        left: 0;
+        top: 2rem;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        color: var(--color-main-text);
+        border-radius: 9rem;
+        box-shadow: 0 0.2rem 1rem rgba(black, 0.1);
+        border: none;
+        font-family: inherit;
+        height: 0;
+
+        &__header {
+            background: transparent;
+            border-bottom: none;
+            padding-top: 1.6rem;
+        }
+
+        &__month-container {
+            background: var(--color-purple-10);
+            font-size: var(--font-size-menu);
+            width: 100%;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 0.1rem 0.5rem rgba(black, 0.1);
+        }
+
+        &__current-month {
+            color: var(--color-main-text);
+            font-weight: var(--font-weight-bold);
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        &__day-names {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 0.8rem;
+        }
+
+        &__day-name {
+            color: var(--color-secondary-text);
+            font-size: 1.2rem;
+            font-weight: var(--font-weight-bold);
+            width: 3.2rem;
+            margin: 0;
+        }
+
+        &__month {
+            // margin: 0;
+        }
+
+        &__week {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        &__day {
+            color: var(--color-main-text);
+            width: 3.2rem;
+            height: 3.2rem;
+            line-height: 3.2rem;
+            border-radius: 50%;
+            margin: 0;
+            font-size: 1.2rem;
+
+            &:hover {
+                background: var(--color-purple-30);
+                color: var(--color-main-text);
+            }
+
+            &--selected {
+                background: var(--color-purple-50) !important;
+                color: white !important;
+                font-weight: var(--font-weight-bold);
+            }
+
+            &--keyboard-selected {
+                background: var(--color-purple-30);
+                color: var(--color-main-text);
+            }
+
+            &--outside-month {
+                color: var(--color-secondary-text);
+                opacity: 0.5;
+            }
+
+            &--disabled {
+                color: var(--color-secondary-text);
+                opacity: 0.3;
+
+                &:hover {
+                    background: transparent;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        &__navigation {
+            top: 1.6rem;
+
+            &-icon {
+                &::before {
+                    border-color: var(--color-main-text);
+                }
+            }
+
+            &:hover {
+                *::before {
+                    border-color: var(--color-purple-50);
+                }
+            }
+        }
+
+        &__triangle {
+            display: none;
+        }
+    }
+
+    .react-datepicker-popper {
+        transform-origin: top center;
+        animation: datepickerFade 0.2s ease-out;
+    }
+}
+
+@keyframes datepickerFade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
