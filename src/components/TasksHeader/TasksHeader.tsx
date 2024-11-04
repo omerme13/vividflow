@@ -1,11 +1,10 @@
 import { FilterIcon, FilterOffIcon, SearchIcon } from "@/assets/icons";
-
 import LayoutToggleButton from "./LayoutToggleButton";
 import { useTaskContext } from "@/context/TaskContext";
 import { ChangeEvent } from "react";
-import Popover from "../Popover/Popover";
 import Tooltip from "@/components/Tooltip";
 import TasksFilters from "@/components/TasksFilters";
+import Popover from "@/components/Popover";
 
 import "./TasksHeader.scss";
 
@@ -36,11 +35,13 @@ export default function TasksHeader() {
                 >
                     <TasksFilters />
                 </Popover>
-                {hasFilters() && <Tooltip content="remove filters">
-                    <button className="tasks-header__filter-off-icon" onClick={clearFilters}>
-                        <FilterOffIcon />
-                    </button>
-                </Tooltip>}
+                {hasFilters() && (
+                    <Tooltip content="remove filters">
+                        <button className="tasks-header__filter-off-icon" onClick={clearFilters}>
+                            <FilterOffIcon />
+                        </button>
+                    </Tooltip>
+                )}
             </div>
             <LayoutToggleButton />
         </div>
