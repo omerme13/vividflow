@@ -18,6 +18,16 @@
     &:hover {
         box-shadow: 0 0.3rem 1rem rgba(black, 0.2);
         top: -2px;
+
+        .task-action {
+            opacity: 1;
+            visibility: visible;
+
+            &:hover {
+                opacity: 0.7;
+                cursor: pointer;
+            }
+        }
     }
 
     &__color {
@@ -55,13 +65,8 @@
 }
 
 .task-action {
-    opacity: 1;
-    visibility: visible;
-
-    &:hover {
-        opacity: 0.7;
-        cursor: pointer;
-    }
+	visibility: hidden;
+	opacity: 0;
 }
 
 .datepicker-wrapper {
