@@ -1,6 +1,32 @@
 .tasks-list {
 	padding: 3.2rem;
-	column-count: auto;
-	column-width: 25rem;
-	column-gap: 1.6rem;
+	display: flex;
+	flex-direction: column;
+	gap: 8rem;
+
+	& > * {
+		column-count: auto;
+		column-width: 25rem;
+		column-gap: 1.6rem;
+	}
+	
+	&__done {
+		.task {
+			opacity: 0.7;
+			filter: grayscale(0.5);
+
+			&__text {
+				text-decoration: line-through;
+			}
+
+			&__actions {
+				
+			}
+		}
+	}
+	
+	&__undone {
+
+
+	}
 }
