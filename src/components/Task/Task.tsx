@@ -58,7 +58,10 @@ export default function Task({ task, onEdit }: TaskProps) {
                 {isPaletteOpen && (
                     <ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
                 )}
-                <Popover trigger={<TaskAction icon={ClockIcon} tooltipContent="set time" isActive={!!dueDate} />}>
+                <Popover
+                    marginFromBorders={190}
+                    trigger={<TaskAction icon={ClockIcon} tooltipContent="set time" isActive={!!dueDate} />}
+                >
                     <div className="datepicker-wrapper">
                         <DatePicker
                             selected={dueDate ? new Date(dueDate) : null}
