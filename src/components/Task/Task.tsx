@@ -60,7 +60,15 @@ export default function Task({ task, onEdit }: TaskProps) {
                 )}
                 <Popover
                     marginFromBorders={190}
-                    trigger={<TaskAction icon={ClockIcon} tooltipContent="set time" isActive={!!dueDate} />}
+                    trigger={
+                        <TaskAction
+                            icon={ClockIcon}
+                            tooltipContent={
+                                dueDate ? `time set to ${new Date(dueDate).toLocaleString("en-GB")}` : "set time"
+                            }
+                            isActive={!!dueDate}
+                        />
+                    }
                 >
                     <div className="datepicker-wrapper">
                         <DatePicker

@@ -75,6 +75,8 @@ export default function Popover({ trigger, triggerClassName = "", children, marg
                             maxHeight: `calc(100vh - ${marginFromBorders * 2}px)`,
                         }}
                     >
+						<div className="popover__close-button" onClick={() => setIsOpen(false)}>x</div>
+
                         {children}
                     </div>,
                     document.body

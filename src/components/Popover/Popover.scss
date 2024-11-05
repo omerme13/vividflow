@@ -14,9 +14,24 @@
         border-radius: 8px;
         box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.15);
         z-index: 1000;
+		position: relative;
 
         animation: popoverFadeIn 0.2s;
     }
+
+	&__close-button {
+		position: absolute;
+		top: 0.5rem;
+		right: 1.5rem;
+		z-index: 10;
+		font-size: 2rem;
+		font-weight: var(--font-weight-bold);
+		
+		&:hover {
+			cursor: pointer;
+			opacity: 0.7;
+		}
+	}
 }
 
 @keyframes popoverFadeIn {
