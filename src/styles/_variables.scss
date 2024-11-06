@@ -12,11 +12,10 @@
 
     --color-cta: var(--color-purple-70);
     --color-cta-hover: var(--color-purple-60);
-    --color-cta-light: rgba(92, 96, 201, 0.1);
+    --color-cta-light: rgba(92, 96, 201, 0.15);
 
     --color-palette-gray: #eee;
     --color-palette-red: rgba(231, 76, 60, 0.7);
-    --color-palette-orange: rgba(230, 126, 34, 0.7);
     --color-palette-yellow: rgba(241, 196, 15, 0.7);
     --color-palette-green: rgba(46, 204, 113, 0.7);
     --color-palette-blue: rgba(52, 152, 219, 0.7);
@@ -46,13 +45,13 @@ html.dark {
     --color-main-text: #d1d5db;
     --color-secondary: #f4a261;
 
+	
     --color-cta: var(--color-purple-70);
     --color-cta-hover: var(--color-purple-60);
     --color-cta-light: rgba(110, 110, 184, 0.15);
 
     --color-palette-gray: #2c2c3a;
     --color-palette-red: rgba(203, 64, 66, 0.8);
-    --color-palette-orange: rgba(226, 149, 120, 0.8);
     --color-palette-yellow: rgba(246, 174, 45, 0.8);
     --color-palette-green: rgba(82, 183, 136, 0.8);
     --color-palette-blue: rgba(69, 123, 157, 0.8);

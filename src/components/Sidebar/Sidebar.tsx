@@ -28,14 +28,12 @@ export default function Sidebar() {
     return (
         <div className={getClassWithModifier("sidebar", "compact", isCompactSidebar)}>
             <HamburgerIcon
-                className={getClassWithModifier("sidebar__toggle-compact-button", "compact", isCompactSidebar)}
+                className="sidebar__toggle-compact-button"
                 onClick={toggleSidebar}
             />
-            <div className={getClassWithModifier("sidebar__top-container", "compact", isCompactSidebar)}>
-                <div className="sidebar__user-details">
-                    <img src={defaultAvatarUrl} className="sidebar__user-avatar" />
-                    {!isCompactSidebar && <div className="sidebar__user-name">{"Omer"}</div>}
-                </div>
+            <div className="sidebar__user-details">
+                <img src={defaultAvatarUrl} className="sidebar__user-avatar" />
+                {!isCompactSidebar && <div className="sidebar__user-name">{"Omer"}</div>}
             </div>
             <NewTaskButton onClick={toggleTaskModal} isCompactSidebar={isCompactSidebar} />
             <div className="sidebar__items-container">

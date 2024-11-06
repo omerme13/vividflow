@@ -8,7 +8,7 @@ export default function NewTaskButton({ onClick, isCompactSidebar }: NewTaskButt
     return (
         <Tooltip content={isCompactSidebar ? "add new task" : ""}>
             <button
-                className={`new-task-button ${isCompactSidebar ? "new-task-button--compact" : ""}`}
+                className="new-task-button"
                 onClick={onClick}
             >
                 <PlusIcon />
