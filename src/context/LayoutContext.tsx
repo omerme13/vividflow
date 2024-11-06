@@ -5,7 +5,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 const defaultLayoutState: LayoutState = {
     isCompactSidebar: true,
     isGridViewMode: true,
-    currentPage: Page.Tasks,
     calendarMode: CalendarMode.Month,
 	isTaskModalOpen: false
 };

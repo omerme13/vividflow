@@ -36,17 +36,17 @@ export default function Sidebar() {
                 {!isCompactSidebar && <div className="sidebar__user-name">{"Omer"}</div>}
             </div>
             <NewTaskButton onClick={toggleTaskModal} isCompactSidebar={isCompactSidebar} />
-            <div className="sidebar__items-container">
-                {sidebarItems.map(({ text, icon }) => (
+            <nav className="sidebar__nav">
+                {sidebarItems.map(({ page, icon }) => (
                     <SidebarItem
-                        key={text}
-                        text={text}
+                        key={page}
+                        page={page}
                         icon={icon}
-                        action={actions[text]}
+                        action={actions[page]}
                         isCompactSidebar={isCompactSidebar}
                     />
                 ))}
-            </div>
+            </nav>
             <div className="sidebar__bottom">
                 <ThemeToggleButton />
                 {!isCompactSidebar && <Logo className="sidebar__logo" />}

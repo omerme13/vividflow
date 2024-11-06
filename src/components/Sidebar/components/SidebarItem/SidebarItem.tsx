@@ -1,15 +1,19 @@
 import { SidebarItemProps } from "./SidebarItem.types";
+import Tooltip from "@/components/Tooltip";
+import { Link, useLocation } from "react-router-dom";
+import { getClassWithModifier } from "@/utils/styles";
 
 import "./SidebarItem.scss";
-import Tooltip from "@/components/Tooltip";
 
-export default function SidebarItem({ text, action, icon: Icon, isCompactSidebar }: SidebarItemProps) {
+export default function SidebarItem({ page, action, icon: Icon, isCompactSidebar }: SidebarItemProps) {
+    const { pathname } = useLocation();
+
     return (
-        <Tooltip content={isCompactSidebar ? text : ""}>
-            <div className="sidebar-item">
+        <Tooltip content={isCompactSidebar ? page : ""}>
+            <Link className={getClassWithModifier("sidebar-item", "selected", pathname.includes(page))} to={page}>
                 <Icon className="sidebar-item__icon" onClick={action} />
-                {!isCompactSidebar && <div className="sidebar-item__text">{text}</div>}
-            </div>
+                {!isCompactSidebar && <div className="sidebar-item__page">{page}</div>}
+            </Link>
         </Tooltip>
     );
 }

@@ -1,18 +1,7 @@
-import Sidebar from "@/components/Sidebar";
-
-import Tasks from "@/pages/Tasks";
-import { TaskProvider } from "./context/TaskContext";
-
-import "./App.scss";
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes/router';
+import './App.scss';
 
 export default function App() {
-
-    return (
-        <div className="app">
-            <Sidebar />
-            <TaskProvider>
-                <Tasks />
-            </TaskProvider>
-        </div>
-    );
+  return <RouterProvider router={router} />;
 }

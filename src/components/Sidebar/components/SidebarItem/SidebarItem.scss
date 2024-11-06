@@ -5,12 +5,15 @@
     padding: 1.2rem 2.4rem;
     transition: 0.1s;
     position: relative;
+	text-decoration: none;
+	color: inherit;
+
     &:hover {
         background: var(--color-purple-30);
         cursor: pointer;
     }
 	
-    &__text {
+    &__page {
 		line-height: 1;
         text-transform: capitalize;
     }

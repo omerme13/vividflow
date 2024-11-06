@@ -2,8 +2,8 @@ import { DashboardIcon, CalendarIcon, SettingsIcon, TaskIcon } from '@/assets/ic
 import { Page } from '@/types/layout';
 
 export const sidebarItems = [
-    { text: Page.Tasks, icon: TaskIcon },
-    { text: Page.Dashboard, icon: DashboardIcon },
-    { text: Page.Calendar, icon: CalendarIcon },
-    { text: Page.Settings, icon: SettingsIcon },
+    { page: Page.Tasks, icon: TaskIcon },
+    { page: Page.Dashboard, icon: DashboardIcon },
+    { page: Page.Calendar, icon: CalendarIcon },
+    { page: Page.Settings, icon: SettingsIcon },
 ];

@@ -1,7 +1,7 @@
 import { FC, SVGProps } from "react";
 
 export interface SideBarItemData {
-	text: string;
+	page: string;
 	action: () => void;
 	icon: FC<SVGProps<SVGSVGElement>>
 }
