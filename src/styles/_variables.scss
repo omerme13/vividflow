@@ -6,13 +6,14 @@
     --color-purple-30: #dcdeef;
     --color-purple-20: #eaebfb;
     --color-purple-10: #f7f7fd;
-	
+
     --color-main-text: #072a58;
     --color-secondary: #e67e22;
 
     --color-cta: var(--color-purple-70);
     --color-cta-hover: var(--color-purple-60);
     --color-cta-light: rgba(92, 96, 201, 0.15);
+    --color-cta-lighter: rgba(92, 96, 201, 0.1);
 
     --color-palette-gray: #eee;
     --color-palette-red: rgba(231, 76, 60, 0.7);
@@ -41,14 +42,14 @@ html.dark {
     --color-purple-30: #252543;
     --color-purple-20: #12111c;
     --color-purple-10: #111118;
-	
+
     --color-main-text: #d1d5db;
     --color-secondary: #f4a261;
 
-	
     --color-cta: var(--color-purple-70);
     --color-cta-hover: var(--color-purple-60);
     --color-cta-light: rgba(110, 110, 184, 0.15);
+    --color-cta-lighter: rgba(110, 110, 184, 0.1);
 
     --color-palette-gray: #2c2c3a;
     --color-palette-red: rgba(203, 64, 66, 0.8);
