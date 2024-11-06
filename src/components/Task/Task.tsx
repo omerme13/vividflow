@@ -1,7 +1,7 @@
 import { MouseEvent, useState } from "react";
 import { TaskColors, TaskProps } from "./Task.types";
 import { CheckIcon, ClockIcon, PaletteIcon, TrashIcon } from "@/assets/icons";
-import { getPaletteColor } from "@/utils/styles";
+import { getClassWithModifier, getPaletteColor } from "@/utils/styles";
 import TaskAction from "./components/TaskAction/TaskAction";
 import ColorPalette from "./components/ColorPalette/ColorPalette";
 import { useTask } from "@/context/TaskContext";
@@ -12,7 +12,7 @@ import Popover from "@/components/Popover";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Task.scss";
 
-export default function Task({ task, onEdit }: TaskProps) {
+export default function Task({ task, onEdit, isGridMode }: TaskProps) {
     const { id, text, label, color = TaskColors.Gray, isCompleted, dueDate } = task;
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
     const { updateTask, deleteTask, filterByLabel, toggleTaskCompletion, setTaskDueDate } = useTask(id);
@@ -36,7 +36,7 @@ export default function Task({ task, onEdit }: TaskProps) {
     };
 
     return (
-        <div className="task" onClick={onEdit}>
+        <div className={getClassWithModifier("task", "list-mode", !isGridMode)} onClick={onEdit}>
             <div className="task__color" style={{ background: getPaletteColor(color) }} />
             <div className="task__text">{text}</div>
             {label && (

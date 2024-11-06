@@ -4,6 +4,7 @@ import Task from "@/components/Task";
 import { TaskData } from "@/components/Task/Task.types";
 import { useFilteredTasks } from "@/context/TaskContext";
 import { useLayout } from "@/context/LayoutContext";
+import { getClassWithModifier } from "@/utils/styles";
 
 import "./TasksList.scss";
 
@@ -23,7 +24,7 @@ export default function TaskList() {
     };
 
     return (
-        <div className="tasks-list">
+        <div className={getClassWithModifier("tasks-list", "list-mode", !layout.isGridViewMode)}>
             <div className="tasks-list__undone">
                 {filteredTasks.incomplete.map((task) => (
                     <Task key={task.id} task={task} onEdit={() => handleEdit(task)} />

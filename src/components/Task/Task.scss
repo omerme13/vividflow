@@ -62,6 +62,10 @@
             cursor: pointer;
         }
     }
+
+	&--list-mode {
+		min-width: 70%;
+	}
 }
 
 .datepicker-wrapper {

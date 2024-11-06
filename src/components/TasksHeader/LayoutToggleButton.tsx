@@ -1,4 +1,4 @@
-import { GridIcon, KanbanIcon } from "@/assets/icons";
+import { GridIcon, ListIcon } from "@/assets/icons";
 import { useLayout } from "@/context/LayoutContext";
 import { getClassWithModifier } from "@/utils/styles";
 
@@ -17,8 +17,8 @@ export default function LayoutToggleButton() {
                 />
             </Tooltip>
             <div className="layout-toggle-button__separator" />
-            <Tooltip content="kanban mode">
-                <KanbanIcon
+            <Tooltip content="list mode">
+                <ListIcon
                     className={getClassWithModifier("layout-toggle-button__icon", "disabled", layout.isGridViewMode)}
                     onClick={toggleViewMode}
                 />

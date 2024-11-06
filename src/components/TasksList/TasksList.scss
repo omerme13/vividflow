@@ -5,11 +5,19 @@
     gap: 8rem;
 
     & > * {
-        column-count: auto;
+		column-count: auto;
         column-width: 25rem;
         column-gap: 1.6rem;
         position: relative;
     }
+
+	&--list-mode {
+
+		& > * {
+			display: flex;
+			flex-direction: column;
+		}
+	}
 
     &__done {
         .task {

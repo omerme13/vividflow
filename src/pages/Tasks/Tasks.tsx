@@ -10,7 +10,7 @@ export default function Tasks() {
     return (
         <div className={`tasks ${layout.isCompactSidebar ? "tasks--compact-sidebar" : ""}`}>
             <TaskHeader />
-            {layout.isGridViewMode ? <TaskList /> : <div />}
+            <TaskList />
         </div>
     );
 }

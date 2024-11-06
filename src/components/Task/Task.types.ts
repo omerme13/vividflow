@@ -12,6 +12,7 @@ export interface TaskData {
 export interface TaskProps {
 	task: TaskData;
 	onEdit: () => void;
+	isGridMode: boolean;
 }
 
 export enum TaskColors {
