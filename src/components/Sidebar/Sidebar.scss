@@ -8,13 +8,13 @@
     padding: 3.6rem 0 6rem;
     z-index: 1;
     font-size: var(--font-size-menu);
-	transition: 0.2s;
-	white-space: nowrap;
+    transition: 0.2s;
+    white-space: nowrap;
 
     &__nav {
         display: flex;
         flex-direction: column;
-		align-self: stretch;
+        align-self: stretch;
     }
 
     &__bottom {
@@ -29,7 +29,7 @@
         cursor: pointer;
         margin-left: auto;
         transition: 0.2s;
-		margin-right: 2.4rem;
+        margin-right: 2.4rem;
 
         &:hover {
             opacity: 0.7;
@@ -51,7 +51,7 @@
         display: flex;
         align-items: center;
         gap: 0.8rem;
-		padding: 2.4rem;
+        padding: 2.4rem;
     }
 
     &__user-avatar {
@@ -59,26 +59,34 @@
         height: 30px;
     }
 
-	&.sidebar--compact {
+    &__logo {
+        opacity: 0.8;
+    }
+
+    &.sidebar--compact {
         width: var(--sidebar-width-compact);
-        padding: 3.6rem 0 11.6rem;
         align-items: center;
 
-		.sidebar__toggle-compact-button {
-			margin-right: auto;
-		}
+        .sidebar__toggle-compact-button {
+            margin-right: auto;
+        }
 
-		.sidebar__user-details {
-			padding: 2.4rem 0;
-		}
-		.sidebar-item {
-			padding: 1.2rem 0;
-			display: flex;
-			justify-content: center;
-		}
+        .sidebar__user-details {
+            padding: 2.4rem 0;
+        }
+        .sidebar-item {
+            padding: 1.2rem 0;
+            display: flex;
+            justify-content: center;
+        }
 
-		.new-task-button {
-			padding: 2.6rem 0;
-		}
+        .new-task-button {
+            padding: 2.6rem 0;
+        }
+
+        .sidebar__logo {
+            visibility: hidden;
+            opacity: 0;
+        }
     }
 }

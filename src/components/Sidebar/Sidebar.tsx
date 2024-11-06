@@ -27,10 +27,7 @@ export default function Sidebar() {
 
     return (
         <div className={getClassWithModifier("sidebar", "compact", isCompactSidebar)}>
-            <HamburgerIcon
-                className="sidebar__toggle-compact-button"
-                onClick={toggleSidebar}
-            />
+            <HamburgerIcon className="sidebar__toggle-compact-button" onClick={toggleSidebar} />
             <div className="sidebar__user-details">
                 <img src={defaultAvatarUrl} className="sidebar__user-avatar" />
                 {!isCompactSidebar && <div className="sidebar__user-name">{"Omer"}</div>}
@@ -49,7 +46,7 @@ export default function Sidebar() {
             </nav>
             <div className="sidebar__bottom">
                 <ThemeToggleButton />
-                {!isCompactSidebar && <Logo className="sidebar__logo" />}
+                <Logo className="sidebar__logo" />
             </div>
         </div>
     );
