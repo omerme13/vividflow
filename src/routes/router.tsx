@@ -1,7 +1,10 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import Tasks from "@/pages/Tasks";
 import Sidebar from "@/components/Sidebar";
 import { TaskProvider } from "@/context/TaskContext";
+import Tasks from "@/pages/Tasks";
+import Dashboard from "@/pages/Dashboard";
+import Calendar from "@/pages/Calendar";
+import Settings from "@/pages/Settings";
 
 function RootLayout() {
     return (
@@ -12,14 +15,6 @@ function RootLayout() {
     );
 }
 
-function TasksPage() {
-    return (
-        <TaskProvider>
-            <Tasks />
-        </TaskProvider>
-    );
-}
-
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -27,7 +22,23 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "tasks",
-                element: <TasksPage />,
+                element: (
+                    <TaskProvider>
+                        <Tasks />
+                    </TaskProvider>
+                ),
+            },
+            {
+                path: "dashboard",
+                element: <Dashboard />,
+            },
+            {
+                path: "calendar",
+                element: <Calendar />,
+            },
+            {
+                path: "settings",
+                element: <Settings />,
             },
         ],
     },
