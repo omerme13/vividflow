@@ -1,11 +1,21 @@
+.app {
+    &__content {
+        margin-left: var(--sidebar-width);
+        transition: 0.2s;
+
+        &.tasks--compact-sidebar {
+            margin-left: var(--sidebar-width-compact);
+        }
+    }
+}
 
 :root {
-	color: var(--color-main-text);
-	
-	::selection {
-		color: var(--color-purple-10);
-		background: var(--color-purple-60);
-	}
-	
+    color: var(--color-main-text);
+
+    ::selection {
+        color: var(--color-purple-10);
+        background: var(--color-purple-60);
+    }
+
     background-color: var(--color-purple-20);
 }

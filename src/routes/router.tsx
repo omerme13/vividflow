@@ -10,7 +10,9 @@ function RootLayout() {
     return (
         <div className="app">
             <Sidebar />
-            <Outlet />
+            <div className="app__content">
+                <Outlet />
+            </div>
         </div>
     );
 }
@@ -30,11 +32,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: "dashboard",
-                element: <Dashboard />,
+                element: (
+                    <TaskProvider>
+                        <Dashboard />
+                    </TaskProvider>
+                ),
             },
             {
                 path: "calendar",
-                element: <Calendar />,
+                element: (
+                    <TaskProvider>
+                        <Calendar />,
+                    </TaskProvider>
+                ),
             },
             {
                 path: "settings",

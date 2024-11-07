@@ -7,8 +7,8 @@ export enum CalendarMode {
 
 export enum Page {
     Tasks = "tasks",
-    Dashboard = "dashboard",
     Calendar = "calendar",
+    Dashboard = "dashboard",
     Settings = "settings",
 }
 

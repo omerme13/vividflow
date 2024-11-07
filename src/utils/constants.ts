@@ -15,7 +15,6 @@ export const DEFAULT_PREFERENCES: UserPreferences = {
 export const DEFAULT_LAYOUT: LayoutState = {
 	isCompactSidebar: false,
     isGridViewMode: true,
-    currentPage: Page.Tasks,
     calendarMode: CalendarMode.Month,
 	isTaskModalOpen: false
 } as const;

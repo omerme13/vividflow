@@ -3,7 +3,7 @@ import { StorageKeys } from "@/utils/constants";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const defaultLayoutState: LayoutState = {
-    isCompactSidebar: true,
+    isCompactSidebar: false,
     isGridViewMode: true,
     calendarMode: CalendarMode.Month,
 	isTaskModalOpen: false

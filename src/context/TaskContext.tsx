@@ -29,6 +29,7 @@ interface TaskContext {
     filterByLabel: (label: string) => void;
     toggleTaskCompletion: (id: string) => void;
     setTaskDueDate: (id: string, date: Date | undefined) => void;
+    getTasksWithTime: () => TaskData[];
 }
 
 const TaskContext = createContext<TaskContext | undefined>(undefined);
@@ -134,6 +135,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         });
     }, []);
 
+    const getTasksWithTime = useCallback(() => tasks.filter((task) => !!task.dueDate), [tasks]);
+
     return (
         <TaskContext.Provider
             value={{
@@ -154,6 +157,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
                 filterByLabel,
                 toggleTaskCompletion,
                 setTaskDueDate,
+                getTasksWithTime,
             }}
         >
             {children}
@@ -174,7 +178,7 @@ export function useTask(id: string) {
         useTaskContext();
     const task = getTaskById(id);
 
-	if (!task) {
+    if (!task) {
         throw new Error(`Task with id ${id} not found`);
     }
 

@@ -1,8 +1,3 @@
 .tasks {
-    margin-left: var(--sidebar-width);
-	transition: 0.2s;
-	
-	&.tasks--compact-sidebar {
-		margin-left: var(--sidebar-width-compact);
-	}
+
 }
