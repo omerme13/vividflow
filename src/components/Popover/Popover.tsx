@@ -1,18 +1,36 @@
+// Popover.tsx
 import { useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import useClickOutside from "@/hooks/useClickOutside";
-import { PopoverProps } from "./Popover.types";
 import "./Popover.scss";
+import { PopoverProps } from "./Popover.types";
 
-export default function Popover({ trigger, triggerClassName = "", children, marginFromBorders = 0 }: PopoverProps) {
-    const [isOpen, setIsOpen] = useState(false);
+export default function Popover({
+    trigger,
+    children,
+    triggerClassName = "",
+    marginFromBorders = 0,
+    isOpen: controlledIsOpen,
+    onOpenChange,
+}: PopoverProps) {
+    const [internalIsOpen, setInternalIsOpen] = useState(false);
     const triggerRef = useRef<HTMLButtonElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ top: 0, left: 0 });
 
+    const isControlled = controlledIsOpen !== undefined;
+    const isOpen = isControlled ? controlledIsOpen : internalIsOpen;
+
+    const handleOpenChange = (newIsOpen: boolean) => {
+        if (!isControlled) {
+            setInternalIsOpen(newIsOpen);
+        }
+        onOpenChange?.(newIsOpen);
+    };
+
     useClickOutside({
         refs: [triggerRef, contentRef],
-        handler: () => setIsOpen(false),
+        handler: () => handleOpenChange(false),
         enabled: isOpen,
     });
 
@@ -56,7 +74,7 @@ export default function Popover({ trigger, triggerClassName = "", children, marg
             <button
                 ref={triggerRef}
                 className={`popover__trigger ${triggerClassName}`}
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => handleOpenChange(!isOpen)}
                 type="button"
             >
                 {trigger}
@@ -75,8 +93,6 @@ export default function Popover({ trigger, triggerClassName = "", children, marg
                             maxHeight: `calc(100vh - ${marginFromBorders * 2}px)`,
                         }}
                     >
-						<div className="popover__close-button" onClick={() => setIsOpen(false)}>x</div>
-
                         {children}
                     </div>,
                     document.body

@@ -15,6 +15,7 @@ import "./Task.scss";
 export default function Task({ task, onEdit, isGridMode }: TaskProps) {
     const { id, text, label, color = TaskColors.Gray, isCompleted, dueDate } = task;
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
+    const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
     const { updateTask, deleteTask, filterByLabel, toggleTaskCompletion, setTaskDueDate } = useTask(id);
 
     const togglePalette = () => setIsPaletteOpen((prev) => !prev);
@@ -29,10 +30,20 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
         filterByLabel();
     };
 
-    const handleDateChange = (date: Date | null) => {
+    const handleDateChange = (date: Date | null, e) => {
         if (date) {
             setTaskDueDate(date);
         }
+
+        if (!e) {
+            setIsDatePickerOpen(false);
+        }
+    };
+
+    const handleClearDate = (e: MouseEvent) => {
+        e.stopPropagation();
+        setTaskDueDate(undefined);
+        setIsDatePickerOpen(false);
     };
 
     return (
@@ -59,6 +70,8 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                     <ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
                 )}
                 <Popover
+                    isOpen={isDatePickerOpen}
+                    onOpenChange={setIsDatePickerOpen}
                     marginFromBorders={190}
                     trigger={
                         <TaskAction
@@ -71,6 +84,16 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                     }
                 >
                     <div className="datepicker-wrapper">
+                        {dueDate && (
+                            <button
+                                className="datepicker-wrapper__clear-button"
+                                onClick={handleClearDate}
+                                type="button"
+                            >
+                                <TrashIcon />
+                                <span>Clear date</span>
+                            </button>
+                        )}
                         <DatePicker
                             selected={dueDate ? new Date(dueDate) : null}
                             onChange={handleDateChange}
