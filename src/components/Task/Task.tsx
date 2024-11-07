@@ -18,6 +18,8 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
     const { updateTask, deleteTask, filterByLabel, toggleTaskCompletion, setTaskDueDate } = useTask(id);
 
+    const isColorSelected = color !== TaskColors.Gray;
+
     const togglePalette = () => setIsPaletteOpen((prev) => !prev);
 
     const handleUpdateColor = (newColor: TaskColors) => {
@@ -65,7 +67,12 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                     isActive={isCompleted}
                 />
 
-                <TaskAction icon={PaletteIcon} action={togglePalette} tooltipContent="choose a color" />
+                <TaskAction
+                    icon={PaletteIcon}
+                    action={togglePalette}
+                    isActive={isColorSelected}
+                    tooltipContent={isColorSelected ? color : "choose a color"}
+                />
                 {isPaletteOpen && (
                     <ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
                 )}
