@@ -1,12 +1,12 @@
 import TaskHeader from "@/components/TasksHeader/TasksHeader";
 import TaskList from "@/components/TasksList";
 
-import "./Tasks.scss";
+import "./TasksPage.scss";
 
 export default function Tasks() {
 
     return (
-        <div className="tasks">
+        <div className="tasks-page">
             <TaskHeader />
             <TaskList />
         </div>

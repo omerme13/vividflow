@@ -1,9 +1,9 @@
-import "./Dashboard.scss";
+import "./DashboardPage.scss";
 
 export default function Dashboard() {
 
     return (
-        <div className="dashboard">
+        <div className="dashboard-page">
         </div>
     );
 }

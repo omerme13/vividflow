@@ -1,10 +1,10 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import Sidebar from "@/components/Sidebar";
 import { TaskProvider } from "@/context/TaskContext";
-import Tasks from "@/pages/Tasks";
-import Dashboard from "@/pages/Dashboard";
-import Calendar from "@/pages/Calendar";
-import Settings from "@/pages/Settings";
+import TasksPage from "@/pages/TasksPage";
+import DashboardPage from "@/pages/DashboardPage";
+import CalendarPage from "@/pages/CalendarPage";
+import SettingsPage from "@/pages/SettingsPage";
 import { useLayout } from "@/context/LayoutContext";
 import { getClassWithModifier } from "@/utils/styles";
 
@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
                 path: "tasks",
                 element: (
                     <TaskProvider>
-                        <Tasks />
+                        <TasksPage />
                     </TaskProvider>
                 ),
             },
@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
                 path: "dashboard",
                 element: (
                     <TaskProvider>
-                        <Dashboard />
+                        <DashboardPage />
                     </TaskProvider>
                 ),
             },
@@ -46,13 +46,13 @@ export const router = createBrowserRouter([
                 path: "calendar",
                 element: (
                     <TaskProvider>
-                        <Calendar />,
+                        <CalendarPage />,
                     </TaskProvider>
                 ),
             },
             {
                 path: "settings",
-                element: <Settings />,
+                element: <SettingsPage />,
             },
         ],
     },

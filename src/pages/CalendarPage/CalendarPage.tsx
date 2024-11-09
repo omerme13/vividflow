@@ -3,7 +3,7 @@ import { format, parse, startOfWeek, getDay } from "date-fns";
 import { enUS } from "date-fns/locale";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import "./Calendar.scss";
+import "./CalendarPage.scss";
 import { useTaskContext } from "@/context/TaskContext";
 
 const events = [
@@ -29,7 +29,7 @@ export default function CalendarPage() {
 
 
     return (
-        <div className="calendar">
+        <div className="calendar-page">
             <Calendar
                 localizer={localizer}
                 events={events}

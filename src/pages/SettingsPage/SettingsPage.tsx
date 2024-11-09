@@ -1,9 +1,9 @@
-import "./Settings.scss";
+import "./SettingsPage.scss";
 
 export default function Settings() {
 
     return (
-        <div className="settings">
+        <div className="settings-page">
         </div>
     );
 }
