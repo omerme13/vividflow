@@ -4,16 +4,10 @@ import { enUS } from "date-fns/locale";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./CalendarPage.scss";
-import { useTaskContext } from "@/context/TaskContext";
-
-const events = [
-    // { start: Date.now(), endTime: Date.now() + 3 * 60 * 60 * 1000}
-];
+import { useCalendar } from "@/context/CalendarContext";
 
 export default function CalendarPage() {
-	const { getTasksWithTime } = useTaskContext();
-	const tasks = getTasksWithTime();
-	console.log(tasks);
+	const { events } = useCalendar();
 	
     const locales = {
         "en-US": enUS,

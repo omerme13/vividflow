@@ -1,4 +1,4 @@
-import { CalendarMode, LayoutState, Page } from "@/types/layout";
+import { CalendarMode, LayoutState } from "@/types/layout";
 import { UserPreferences } from "@/types/preference";
 
 export enum StorageKeys {
@@ -6,6 +6,8 @@ export enum StorageKeys {
     Tasks = "vividflow_tasks",
     Labels = "vividflow_labels",
     Layout = "vividflow_layout",
+    CalendarPreference = "vividflow_calendar_preference",
+    CalendarView = "vividflow_calendar_view",
 }
 
 export const DEFAULT_PREFERENCES: UserPreferences = {

@@ -7,10 +7,11 @@ import CalendarPage from "@/pages/CalendarPage";
 import SettingsPage from "@/pages/SettingsPage";
 import { useLayout } from "@/context/LayoutContext";
 import { getClassWithModifier } from "@/utils/styles";
+import { CalendarProvider } from "@/context/CalendarContext";
 
 function RootLayout() {
-	const { layout } =useLayout();
-	
+    const { layout } = useLayout();
+
     return (
         <div className="app">
             <Sidebar />
@@ -21,6 +22,7 @@ function RootLayout() {
     );
 }
 
+// TODO add ErrorBoundary to the routes
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -46,7 +48,9 @@ export const router = createBrowserRouter([
                 path: "calendar",
                 element: (
                     <TaskProvider>
-                        <CalendarPage />,
+                        <CalendarProvider>
+                            <CalendarPage />,
+                        </CalendarProvider>
                     </TaskProvider>
                 ),
             },
