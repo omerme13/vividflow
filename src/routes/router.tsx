@@ -5,12 +5,16 @@ import Tasks from "@/pages/Tasks";
 import Dashboard from "@/pages/Dashboard";
 import Calendar from "@/pages/Calendar";
 import Settings from "@/pages/Settings";
+import { useLayout } from "@/context/LayoutContext";
+import { getClassWithModifier } from "@/utils/styles";
 
 function RootLayout() {
+	const { layout } =useLayout();
+	
     return (
         <div className="app">
             <Sidebar />
-            <div className="app__content">
+            <div className={getClassWithModifier("app__content", "compact-sidebar", layout.isCompactSidebar)}>
                 <Outlet />
             </div>
         </div>
