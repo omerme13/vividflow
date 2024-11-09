@@ -1,7 +1,8 @@
-import { StorageKeys } from "./constants";
+import { StorageKeys, DEFAULT_CALENDAR_PREFERENCES } from "./constants";
+import { View } from "react-big-calendar";
 
-interface CalendarPreference {
-    currentView: "month" | "week" | "day" | "agenda";
+export interface CalendarPreference {
+    currentView: View;
     filterCompleted: boolean;
     selectedLabels: string[];
     workingHours: {
@@ -10,46 +11,18 @@ interface CalendarPreference {
     };
 }
 
-interface CalendarView {
-    selectedDate: string;
-    filterCompleted: boolean;
-    selectedLabels: string[];
-}
-
-const DEFAULT_PREFERENCES: CalendarPreference = {
-    currentView: "month",
-    filterCompleted: true,
-    selectedLabels: [],
-    workingHours: {
-        start: 9,
-        end: 17,
-    },
-};
-
 export const getCalendarPreference = (): CalendarPreference => {
     const storedPreferences = localStorage.getItem(StorageKeys.CalendarPreference);
     if (!storedPreferences) {
-        localStorage.setItem(StorageKeys.CalendarPreference, JSON.stringify(DEFAULT_PREFERENCES));
-        return DEFAULT_PREFERENCES;
+        localStorage.setItem(StorageKeys.CalendarPreference, JSON.stringify(DEFAULT_CALENDAR_PREFERENCES));
+        return DEFAULT_CALENDAR_PREFERENCES;
     }
 
     try {
         return JSON.parse(storedPreferences);
     } catch {
         localStorage.removeItem(StorageKeys.CalendarPreference);
-        return DEFAULT_PREFERENCES;
-    }
-};
-
-export const getCalendarView = (): CalendarView | null => {
-    const storedState = localStorage.getItem(StorageKeys.CalendarView);
-    if (!storedState) return null;
-
-    try {
-        return JSON.parse(storedState);
-    } catch {
-        localStorage.removeItem(StorageKeys.CalendarView);
-        return null;
+        return DEFAULT_CALENDAR_PREFERENCES;
     }
 };
 
@@ -62,24 +35,17 @@ export const saveCalendarPreference = (preferences: Partial<CalendarPreference>)
     localStorage.setItem(StorageKeys.CalendarPreference, JSON.stringify(updatedPreferences));
 };
 
-export const saveCalendarView = (state: CalendarView): void => {
-    localStorage.setItem(StorageKeys.CalendarView, JSON.stringify(state));
-};
-
 export const getWorkingHours = () => {
     const preferences = getCalendarPreference();
     return preferences.workingHours;
 };
 
 export const saveWorkingHours = (start: number, end: number): void => {
-    const preferences = getCalendarPreference();
     saveCalendarPreference({
-        ...preferences,
         workingHours: { start, end },
     });
 };
 
 export const clearCalendarStorage = (): void => {
     localStorage.removeItem(StorageKeys.CalendarPreference);
-    localStorage.removeItem(StorageKeys.CalendarView);
 };

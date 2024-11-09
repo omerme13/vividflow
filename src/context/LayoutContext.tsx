@@ -1,11 +1,10 @@
-import { CalendarMode, LayoutState, Page } from "@/types/layout";
+import { LayoutState, Page } from "@/types/layout";
 import { StorageKeys } from "@/utils/constants";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const defaultLayoutState: LayoutState = {
     isCompactSidebar: false,
     isGridViewMode: true,
-    calendarMode: CalendarMode.Month,
 	isTaskModalOpen: false
 };
 
@@ -14,7 +13,6 @@ interface LayoutContextType {
     toggleSidebar: () => void;
     toggleViewMode: () => void;
     setCurrentPage: (page: Page) => void;
-    setCalendarMode: (mode: CalendarMode) => void;
 	toggleTaskModal: () => void;
 }
 
@@ -51,13 +49,6 @@ export function LayoutProvider({ children }: { children: React.ReactNode }) {
         }));
     };
 
-    const setCalendarMode = (mode: CalendarMode) => {
-        setLayout((prev) => ({
-            ...prev,
-            calendarMode: mode,
-        }));
-    };
-
 	const toggleTaskModal = () => {
         setLayout((prev) => ({
             ...prev,
@@ -72,7 +63,6 @@ export function LayoutProvider({ children }: { children: React.ReactNode }) {
                 toggleSidebar,
                 toggleViewMode,
                 setCurrentPage,
-                setCalendarMode,
 				toggleTaskModal
             }}
         >

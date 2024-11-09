@@ -1,15 +1,9 @@
 import { createContext, useContext, useMemo, useState, useEffect, ReactNode } from "react";
 import { addDays, isBefore, isSameDay } from "date-fns";
 import { useFilteredTasks, useTaskContext } from "./TaskContext";
-import {
-    getCalendarPreference,
-    getCalendarView,
-    saveCalendarPreference,
-    saveCalendarView,
-} from "@/utils/calendarLocalStorage";
+import { getCalendarPreference, saveCalendarPreference } from "@/utils/calendarLocalStorage";
 import { TaskData, TaskColors } from "@/components/Task";
-
-type CalendarViewType = "month" | "week" | "day" | "agenda";
+import { View } from "react-big-calendar";
 
 interface CalendarEvent {
     id: string;
@@ -26,7 +20,7 @@ interface CalendarEvent {
 
 interface CalendarContextType {
     events: CalendarEvent[];
-    currentView: CalendarViewType;
+    currentView: View;
     selectedDate: Date;
     filterCompleted: boolean;
     selectedLabels: string[];
@@ -35,7 +29,7 @@ interface CalendarContextType {
         start: number;
         end: number;
     };
-    setCurrentView: (view: CalendarViewType) => void;
+    setCurrentView: (view: View) => void;
     setSelectedDate: (date: Date) => void;
     setFilterCompleted: (completed: boolean) => void;
     toggleLabel: (label: string) => void;
@@ -72,17 +66,15 @@ const defaultContext: CalendarContextType = {
 };
 
 const CalendarContext = createContext<CalendarContextType>(defaultContext);
+
 export function CalendarProvider({ children }: { children: ReactNode }) {
     const { incomplete: tasks } = useFilteredTasks();
     const { updateTask } = useTaskContext();
 
     const storedPreferences = getCalendarPreference();
-    const storedView = getCalendarView();
 
-    const [currentView, setCurrentView] = useState<CalendarViewType>(storedPreferences.currentView);
-    const [selectedDate, setSelectedDate] = useState<Date>(
-        storedView?.selectedDate ? new Date(storedView.selectedDate) : new Date()
-    );
+    const [currentView, setCurrentView] = useState<View>(storedPreferences.currentView);
+    const [selectedDate, setSelectedDate] = useState<Date>(new Date());
     const [filterCompleted, setFilterCompleted] = useState(storedPreferences.filterCompleted);
     const [selectedLabels, setSelectedLabels] = useState<string[]>(storedPreferences.selectedLabels);
 
@@ -93,14 +85,6 @@ export function CalendarProvider({ children }: { children: ReactNode }) {
             selectedLabels,
         });
     }, [currentView, filterCompleted, selectedLabels]);
-
-    useEffect(() => {
-        saveCalendarView({
-            selectedDate: selectedDate.toISOString(),
-            filterCompleted,
-            selectedLabels,
-        });
-    }, [selectedDate, filterCompleted, selectedLabels]);
 
     const events = useMemo<CalendarEvent[]>(() => {
         return tasks

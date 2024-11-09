@@ -1,9 +1,3 @@
-export enum CalendarMode {
-    Day = "day",
-    Week = "week",
-    Month = "month",
-    Year = "year",
-}
 
 export enum Page {
     Tasks = "tasks",
@@ -15,6 +9,5 @@ export enum Page {
 export interface LayoutState {
     isCompactSidebar: boolean;
     isGridViewMode: boolean;
-    calendarMode: CalendarMode;
 	isTaskModalOpen: boolean;
 }

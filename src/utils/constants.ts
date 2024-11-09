@@ -1,5 +1,7 @@
-import { CalendarMode, LayoutState } from "@/types/layout";
+import { LayoutState } from "@/types/layout";
 import { UserPreferences } from "@/types/preference";
+import { CalendarPreference } from "./calendarLocalStorage";
+import { CalendarViewMode } from "@/types/calendar";
 
 export enum StorageKeys {
     Preference = "vividflow_user_preferences",
@@ -17,6 +19,15 @@ export const DEFAULT_PREFERENCES: UserPreferences = {
 export const DEFAULT_LAYOUT: LayoutState = {
 	isCompactSidebar: false,
     isGridViewMode: true,
-    calendarMode: CalendarMode.Month,
 	isTaskModalOpen: false
+} as const;
+
+export const DEFAULT_CALENDAR_PREFERENCES: CalendarPreference = {
+    currentView: CalendarViewMode.Month,
+    filterCompleted: true,
+    selectedLabels: [],
+    workingHours: {
+        start: 9,
+        end: 17,
+    },
 } as const;
