@@ -135,6 +135,26 @@
 
     .rbc-time-content {
         border-top: 1px solid var(--color-purple-30);
+
+        &::-webkit-scrollbar {
+            width: 0.8rem;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--color-purple-40);
+            border: 0.2rem solid var(--color-purple-30);
+
+            &:hover {
+                background-color: var(--color-purple-50);
+                border-width: 0.15rem;
+            }
+        }
+
+        scrollbar-gutter: stable;
     }
 
     .rbc-time-column {
