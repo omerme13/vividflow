@@ -1,27 +1,15 @@
-import { useState } from "react";
-import TaskModal from "@/components/TaskModal";
 import Task from "@/components/Task";
-import { TaskData } from "@/components/Task/Task.types";
 import { useFilteredTasks } from "@/context/TaskContext";
-import { useLayout } from "@/context/LayoutContext";
 import { getClassWithModifier } from "@/utils/styles";
+import { useLayout } from "@/context/LayoutContext";
+import useTaskModal from "@/hooks/useTaskModal";
 
 import "./TasksList.scss";
 
 export default function TaskList() {
     const filteredTasks = useFilteredTasks();
-    const [selectedTask, setSelectedTask] = useState<TaskData | null>(null);
-    const { layout, toggleTaskModal } = useLayout();
-
-    const handleEdit = (task: TaskData) => {
-        setSelectedTask(task);
-        toggleTaskModal();
-    };
-
-    const handleClose = () => {
-        toggleTaskModal();
-        setSelectedTask(null);
-    };
+    const { layout } = useLayout();
+    const { handleEdit, taskModal } = useTaskModal();
 
     return (
         <div className={getClassWithModifier("tasks-list", "list-mode", !layout.isGridViewMode)}>
@@ -29,12 +17,7 @@ export default function TaskList() {
                 {filteredTasks.incomplete.map((task) => (
                     <Task key={task.id} task={task} onEdit={() => handleEdit(task)} />
                 ))}
-                <TaskModal
-                    isOpen={layout.isTaskModalOpen}
-                    onClose={handleClose}
-                    isEditMode={!!selectedTask}
-                    task={selectedTask || undefined}
-                />
+                {taskModal}
             </div>
             <div className="tasks-list__done">
                 {filteredTasks.completed.map((task) => (

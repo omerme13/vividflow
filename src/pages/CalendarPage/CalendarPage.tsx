@@ -1,16 +1,18 @@
 import { Calendar, dateFnsLocalizer, View } from "react-big-calendar";
-import { CalendarViewMode } from "@/types/calendar";
+import { CalendarEvent, CalendarViewMode } from "@/types/calendar";
 import { format, parse, startOfWeek, getDay, setHours } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { useCalendar } from "@/context/CalendarContext";
 import { DEFAULT_CALENDAR_PREFERENCES } from "@/utils/constants";
 import Tooltip from "@/components/Tooltip";
+import useTaskModal from "@/hooks/useTaskModal";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./CalendarPage.scss";
 
 export default function CalendarPage() {
     const { events, currentView, setCurrentView, selectedDate, setSelectedDate, workingHours } = useCalendar();
+    const { taskModal, handleEdit } = useTaskModal();
 
     const locales = {
         "en-US": enUS,
@@ -24,11 +26,11 @@ export default function CalendarPage() {
         locales,
     });
 
-    const handleSelectEvent = (e) => {
-        // console.log(e);
+    const handleSelectEvent = (e: CalendarEvent) => {
+        handleEdit(e.task);
     };
 
-    const handleEventProps = (e) => {
+    const handleEventProps = (e: CalendarEvent) => {
         return {
             style: {
                 background: `var(--color-palette-${e.task.color})`,
@@ -64,6 +66,7 @@ export default function CalendarPage() {
                     eventTimeRangeFormat: ({ start }) => `${format(start, "HH:mm")}`,
                 }}
             />
+            {taskModal}
         </div>
     );
 }
