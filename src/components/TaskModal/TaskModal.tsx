@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "@/components/Modal";
 import { useTaskContext } from "@/context/TaskContext";
 import { TaskModalProps } from "./TaskModal.types";
 import Autocomplete from "@/components/Autocomplete";
+import useDebouncedValue from "@/hooks/useDebouncedValue";
 
 import "./TaskModal.scss";
 
@@ -11,6 +12,9 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
     const [label, setLabel] = useState("");
     const inputRef = useRef<HTMLTextAreaElement>(null);
     const { addTask, updateTask, labels: existingLabels } = useTaskContext();
+
+    const debouncedName = useDebouncedValue(name);
+    const debouncedLabel = useDebouncedValue(label);
 
     useEffect(() => {
         if (isOpen) {
@@ -21,35 +25,37 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                 setName("");
                 setLabel("");
             }
-
             inputRef.current?.focus();
         }
     }, [isOpen, task, isEditMode]);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!name.trim()) return;
-
-        const taskData = {
-            text: name.trim(),
-            label: label.trim(),
-        };
-
-        if (isEditMode && task) {
-            updateTask({ ...task, ...taskData });
-        } else {
-            addTask(taskData);
+    useEffect(() => {
+        if (isEditMode && task && (debouncedName !== task.text || debouncedLabel !== task.label)) {
+            updateTask({
+                ...task,
+                text: debouncedName.trim(),
+                label: debouncedLabel.trim(),
+            });
         }
-        handleClose();
-    };
+    }, [debouncedName, debouncedLabel, isEditMode, task, updateTask]);
 
     const handleClose = () => {
+        if (!isEditMode && name.trim()) {
+            addTask({
+                text: name.trim(),
+                label: label.trim(),
+            });
+        }
+        onClose();
+    };
+
+    const handleCancel = () => {
         onClose();
     };
 
     return (
-        <Modal isOpen={isOpen} onClose={onClose}>
-            <form className="task-modal__form" onSubmit={handleSubmit}>
+        <Modal isOpen={isOpen} onClose={handleClose}>
+            <div className="task-modal__form">
                 <div className="task-modal__input-wrapper">
                     <textarea
                         ref={inputRef}
@@ -66,19 +72,12 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                     <button
                         type="button"
                         className="task-modal__button task-modal__button--secondary"
-                        onClick={handleClose}
+                        onClick={handleCancel}
                     >
-                        Cancel
-                    </button>
-                    <button
-                        type="submit"
-                        className="task-modal__button task-modal__button--primary"
-                        disabled={!name.trim()}
-                    >
-                        {isEditMode ? "Update" : "Create"}
+                        {isEditMode ? "Close" : "Cancel"}
                     </button>
                 </div>
-            </form>
+            </div>
         </Modal>
     );
 }
