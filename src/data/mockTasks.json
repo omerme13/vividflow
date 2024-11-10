@@ -10,7 +10,8 @@
     {
         "id": "2",
         "text": "Convince my smart home it's not the boss of me",
-        "isCompleted": false
+        "isCompleted": false,
+        "color": "gray"
     },
     {
         "id": "3",
@@ -25,7 +26,7 @@
         "text": "Debug my life choices (stack overflow not helping)",
         "isCompleted": false,
         "label": "personal",
-        "color": "purple"
+        "color": "red"
     },
     {
         "id": "5",
@@ -33,13 +34,15 @@
         "isCompleted": false,
         "label": "work",
         "isOnKanban": true,
-        "dueDate": "2024-11-30"
+        "dueDate": "2024-11-30",
+        "color": "blue"
     },
     {
         "id": "6",
         "text": "Find out why my code works on Friday but not on Monday",
         "isCompleted": false,
-        "label": "coding"
+        "label": "coding",
+        "color": "red"
     },
     {
         "id": "7",
@@ -53,12 +56,14 @@
         "text": "Develop a time management system that actually works",
         "isCompleted": true,
         "label": "productivity",
-        "isOnKanban": true
+        "isOnKanban": true,
+        "color": "blue"
     },
     {
         "id": "9",
         "text": "Create a playlist for my plants' music preferences",
-        "isCompleted": false
+        "isCompleted": false,
+        "color": "green"
     },
     {
         "id": "10",
@@ -73,7 +78,8 @@
         "text": "Find out who's been stealing my cookies from the cookie jar",
         "isCompleted": false,
         "label": "investigation",
-        "dueDate": "2024-11-15"
+        "dueDate": "2024-11-15",
+        "color": "red"
     },
     {
         "id": "12",
@@ -86,26 +92,29 @@
         "text": "Teach my rubber duck advanced debugging techniques",
         "isCompleted": false,
         "label": "education",
-        "isOnKanban": true
+        "isOnKanban": true,
+        "color": "yellow"
     },
     {
         "id": "14",
         "text": "Write a letter to my future self about backing up data",
         "isCompleted": false,
-        "dueDate": "2024-12-31"
+        "dueDate": "2024-12-31",
+        "color": "gray"
     },
     {
         "id": "15",
         "text": "Calculate the optimal nap-to-productivity ratio",
         "isCompleted": false,
         "label": "research",
-        "color": "purple"
+        "color": "blue"
     },
     {
         "id": "16",
         "text": "Design a better mouse trap (for catching bugs)",
         "isCompleted": false,
-        "isOnKanban": true
+        "isOnKanban": true,
+        "color": "green"
     },
     {
         "id": "17",
@@ -119,7 +128,8 @@
         "id": "18",
         "text": "Create a flowchart of my decision-making process",
         "isCompleted": false,
-        "label": "planning"
+        "label": "planning",
+        "color": "blue"
     },
     {
         "id": "19",
@@ -133,6 +143,7 @@
         "text": "Document the mysterious case of disappearing semicolons",
         "isCompleted": false,
         "label": "mysteries",
-        "dueDate": "2024-12-10"
+        "dueDate": "2024-12-10",
+        "color": "gray"
     }
 ]

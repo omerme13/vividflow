@@ -68,7 +68,7 @@ const defaultContext: CalendarContextType = {
 const CalendarContext = createContext<CalendarContextType>(defaultContext);
 
 export function CalendarProvider({ children }: { children: ReactNode }) {
-    const { incomplete: tasks } = useFilteredTasks();
+    const { tasks } = useTaskContext();
     const { updateTask } = useTaskContext();
 
     const storedPreferences = getCalendarPreference();

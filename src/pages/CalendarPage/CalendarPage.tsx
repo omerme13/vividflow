@@ -24,6 +24,19 @@ export default function CalendarPage() {
         locales,
     });
 
+    const handleSelectEvent = (e) => {
+        // console.log(e);
+    };
+
+    const handleEventProps = (e) => {
+        return {
+            style: {
+                background: `var(--color-palette-${e.task.color})`,
+                color: "var(--color-main-text)",
+            },
+        };
+    };
+
     return (
         <div className="calendar-page">
             <Calendar
@@ -43,7 +56,13 @@ export default function CalendarPage() {
                         return <Tooltip content={event.title}>{children}</Tooltip>;
                     },
                 }}
-				tooltipAccessor={null}
+                tooltipAccessor={null}
+                onSelectEvent={handleSelectEvent}
+                eventPropGetter={handleEventProps}
+                formats={{
+                    timeGutterFormat: "HH:mm",
+                    eventTimeRangeFormat: ({ start }) => `${format(start, "HH:mm")}`,
+                }}
             />
         </div>
     );
