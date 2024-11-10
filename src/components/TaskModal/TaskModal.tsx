@@ -3,7 +3,6 @@ import Modal from "@/components/Modal";
 import { useTaskContext } from "@/context/TaskContext";
 import { TaskModalProps } from "./TaskModal.types";
 import Autocomplete from "@/components/Autocomplete";
-import useDebouncedValue from "@/hooks/useDebouncedValue";
 
 import "./TaskModal.scss";
 
@@ -11,33 +10,40 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
     const [name, setName] = useState("");
     const [label, setLabel] = useState("");
     const inputRef = useRef<HTMLTextAreaElement>(null);
+    const isUserChange = useRef(false);
     const { addTask, updateTask, labels: existingLabels } = useTaskContext();
 
-    const debouncedName = useDebouncedValue(name);
-    const debouncedLabel = useDebouncedValue(label);
-
     useEffect(() => {
-        if (isOpen) {
-            if (isEditMode && task) {
-                setName(task.text);
-                setLabel(task.label || "");
-            } else {
-                setName("");
-                setLabel("");
-            }
-            inputRef.current?.focus();
+        if (isOpen && isEditMode && task) {
+            isUserChange.current = false;
+            setName(task.text);
+            setLabel(task.label || "");
+        } else if (isOpen) {
+            setName("");
+            setLabel("");
         }
+        inputRef.current?.focus();
     }, [isOpen, task, isEditMode]);
 
     useEffect(() => {
-        if (isEditMode && task && (debouncedName !== task.text || debouncedLabel !== task.label)) {
+        if (isUserChange.current && isEditMode && task && (name !== task.text || label !== task.label)) {
             updateTask({
                 ...task,
-                text: debouncedName.trim(),
-                label: debouncedLabel.trim(),
+                text: name.trim(),
+                label: label.trim(),
             });
         }
-    }, [debouncedName, debouncedLabel, isEditMode, task, updateTask]);
+    }, [name, label, isEditMode, task, updateTask]);
+
+    const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        isUserChange.current = true;
+        setName(e.target.value);
+    };
+
+    const handleLabelChange = (value: string) => {
+        isUserChange.current = true;
+        setLabel(value);
+    };
 
     const handleClose = () => {
         if (!isEditMode && name.trim()) {
@@ -61,12 +67,17 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                         ref={inputRef}
                         className="task-modal__input task-modal__textarea scrollbar"
                         value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={handleTextChange}
                         placeholder="Task description"
                     />
                 </div>
 
-                <Autocomplete value={label} onChange={setLabel} suggestions={existingLabels} placeholder="Add label" />
+                <Autocomplete
+                    value={label}
+                    onChange={handleLabelChange}
+                    suggestions={existingLabels}
+                    placeholder="Add label"
+                />
 
                 <div className="task-modal__actions">
                     <button
