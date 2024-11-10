@@ -84,16 +84,20 @@
 
     .rbc-month-header {
         padding: 1rem;
-        background-color: var(--color-purple-10);
-        border-bottom: 1px solid var(--color-purple-30);
+        background-color: var(--color-card-background);
+		.rbc-header {
+			background: var(--color-card-background);
+		}
     }
 
     .rbc-header {
-        padding: 1.2rem;
         font-weight: var(--font-weight-bold);
         color: var(--color-main-text);
-        border-bottom: 1px solid var(--color-purple-30);
+        // border-bottom: 1px solid var(--color-purple-30);
         background-color: var(--color-purple-10);
+        font-size: var(--font-size-menu);
+        padding: 0.8rem 1.6rem !important;
+		border: none;
     }
 
     .rbc-date-cell {
@@ -133,8 +137,6 @@
     }
 
     .rbc-time-content {
-        border-top: 1px solid var(--color-purple-30);
-
         &::-webkit-scrollbar {
             width: 0.8rem;
         }
@@ -178,7 +180,15 @@
         border: 1px solid var(--color-purple-30);
         border-radius: 0.8rem;
         overflow: hidden;
-		border: none;
+        border: none;
+    }
+
+    .rbc-agenda-content {
+        tr {
+            td {
+				padding: 1rem 2.1rem !important;
+            }
+        }
     }
 
     .rbc-agenda-table {
@@ -190,12 +200,13 @@
         th,
         td {
             padding: 1.2rem;
-            border-bottom: 1px solid var(--color-purple-30);
+			border: none !important;
         }
 
         thead th {
             background-color: var(--color-purple-10);
             font-weight: var(--font-weight-bold);
+            border: none;
         }
     }
 

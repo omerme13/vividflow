@@ -14,7 +14,8 @@
     overflow: hidden;
     position: relative;
     top: 0;
-
+	cursor: pointer;
+	
     &:hover {
         box-shadow: 0 0.3rem 1rem rgba(black, 0.2);
         top: -2px;
