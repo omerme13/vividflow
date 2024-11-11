@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+	<!-- Main container circle -->
+	<circle 
+	  cx="100" 
+	  cy="100" 
+	  r="80" 
+	  fill="var(--color-card-background)" 
+	/>
+	
+	<!-- Dashed circle -->
+	<circle 
+	  cx="100" 
+	  cy="100" 
+	  r="95" 
+	  fill="none"
+	  stroke="var(--color-purple-30)"
+	  stroke-width="4"
+	  stroke-dasharray="8,8"
+	  opacity="0.5"
+	/>
+	
+	<!-- Question mark - simplified and better proportioned -->
+	<path 
+	  d="M85 80C85 65 90 60 100 60C110 60 115 65 115 80C115 95 100 95 100 115M100 135L100 145" 
+	  stroke="var(--color-purple-50)"
+	  stroke-width="16"
+	  stroke-linecap="round"
+	  stroke-linejoin="round"
+	  fill="none"
+	  opacity="0.8"
+	/>
+  </svg>

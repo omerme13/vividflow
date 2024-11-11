@@ -210,7 +210,8 @@ export function useFilteredTasks() {
         return {
             completed: filteredTasks.filter((task) => task.isCompleted),
             incomplete: filteredTasks.filter((task) => !task.isCompleted),
-			all: filteredTasks
+			all: filteredTasks,
+			tasksExist: !!tasks.length
         };
     }, [tasks, debouncedSearchQuery, selectedLabels, selectedColors]);
 }
