@@ -54,16 +54,14 @@ export default function CalendarPage() {
                 defaultView={DEFAULT_CALENDAR_PREFERENCES.currentView}
                 scrollToTime={setHours(new Date(), workingHours.start)}
                 components={{
-                    eventWrapper: function EventWrapper({ event, children }) {
-                        return <Tooltip content={event.title}>{children}</Tooltip>;
-                    },
+                    event: ({ event }) => <Tooltip content={event.title}>{event.title}</Tooltip>,
                 }}
                 tooltipAccessor={null}
                 onSelectEvent={handleSelectEvent}
                 eventPropGetter={handleEventProps}
                 formats={{
                     timeGutterFormat: "HH:mm",
-                    eventTimeRangeFormat: ({ start }) => `${format(start, "HH:mm")}`,
+                    eventTimeRangeFormat: () => "",
                 }}
             />
             {taskModal}

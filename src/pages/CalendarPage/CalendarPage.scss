@@ -109,7 +109,7 @@
         background-color: var(--color-cta);
         border: none;
         border-radius: 0.8rem;
-        padding: 0.4rem 0.8rem;
+        padding: 0.2rem 0.4rem;
         color: var(--color-card-background);
     }
 
@@ -124,7 +124,13 @@
 
     .rbc-event-content {
         font-size: var(--font-size-menu);
-    }
+
+		.tooltip__trigger {
+			white-space: nowrap;
+			overflow: hidden;
+			// text-overflow: ellipsis;
+		}
+	}
 
     .rbc-today {
         background-color: var(--color-cta-lighter);
@@ -185,6 +191,8 @@
 
     .rbc-agenda-content {
         tr {
+			cursor: pointer;
+			
             td {
 				padding: 1rem 2.1rem !important;
             }
