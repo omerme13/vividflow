@@ -40,7 +40,8 @@
 
     &__textarea {
         resize: none;
-        height: 10rem;
+        height: 20rem;
+		line-height: var(--line-height-regular);
     }
 
     &__actions {
