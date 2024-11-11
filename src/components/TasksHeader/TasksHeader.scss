@@ -32,11 +32,23 @@
         }
     }
 
-    &__search-button {
-        position: absolute;
+	&__search-icon,
+	&__clear-text {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+    &__search-icon {
         left: 2rem;
-        top: 50%;
-        transform: translateY(-50%);
+    }
+
+    &__clear-text {
+        right: 2rem;
+		
+		&:hover {
+			cursor: pointer;
+			opacity: 0.7;
+		}
     }
 
     &__menu-button {

@@ -1,4 +1,4 @@
-import { FilterIcon, FilterOffIcon, SearchIcon } from "@/assets/icons";
+import { FilterIcon, FilterOffIcon, SearchIcon, CloseIcon } from "@/assets/icons";
 import LayoutToggleButton from "./LayoutToggleButton";
 import { useTaskContext } from "@/context/TaskContext";
 import { ChangeEvent } from "react";
@@ -14,7 +14,15 @@ export default function TasksHeader() {
     return (
         <div className="tasks-header">
             <div className="tasks-header__search-input-container">
-                <SearchIcon className="tasks-header__search-button" />
+                <SearchIcon className="tasks-header__search-icon" />
+                {searchQuery && (
+                    <CloseIcon
+                        className="tasks-header__clear-text"
+                        width={18}
+                        height={18}
+                        onClick={() => setSearchQuery("")}
+                    />
+                )}
                 <input
                     type="text"
                     className="tasks-header__search-input"
