@@ -7,6 +7,7 @@ import ColorPalette from "./components/ColorPalette/ColorPalette";
 import { useTask } from "@/context/TaskContext";
 import Tooltip from "@/components/Tooltip";
 import DatePicker from "./components/DatePicker/DatePicker";
+import Popover from "@/components/Popover";
 
 import "./Task.scss";
 
@@ -48,15 +49,20 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                     isActive={isCompleted}
                 />
 
-                <TaskAction
-                    icon={PaletteIcon}
-                    action={togglePalette}
-                    isActive={isColorSelected}
-                    tooltipContent={isColorSelected ? color : "choose a color"}
-                />
-                {isPaletteOpen && (
+                <Popover
+                    trigger={
+                        <TaskAction
+                            icon={PaletteIcon}
+                            action={togglePalette}
+                            isActive={isColorSelected}
+                            tooltipContent={isColorSelected ? color : "choose a color"}
+                        />
+                    }
+                    onOpenChange={setIsPaletteOpen}
+                    isOpen={isPaletteOpen}
+                >
                     <ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
-                )}
+                </Popover>
                 <DatePicker
                     date={dueDate}
                     onChange={setTaskDueDate}
