@@ -3,12 +3,15 @@ import Modal from "@/components/Modal";
 import { useTaskContext } from "@/context/TaskContext";
 import { TaskModalProps } from "./TaskModal.types";
 import Autocomplete from "@/components/Autocomplete";
+import ColorPaletteInput from "@/components/ColorPaletteInput";
+import { TaskColors } from "@/components/Task";
 
 import "./TaskModal.scss";
 
 export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskModalProps) {
     const [text, setText] = useState("");
     const [label, setLabel] = useState("");
+    const [selectedColor, setSelectedColor] = useState<TaskColors | undefined>(TaskColors.Gray);
     const inputRef = useRef<HTMLTextAreaElement>(null);
     const { addTask, updateTask, labels: existingLabels } = useTaskContext();
 
@@ -16,9 +19,11 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
         if (isOpen && isEditMode && task) {
             setText(task.text);
             setLabel(task.label || "");
+            setSelectedColor(task.color!);
         } else if (isOpen) {
             setText("");
             setLabel("");
+            setSelectedColor(TaskColors.Gray);
         }
         inputRef.current?.focus();
     }, [isOpen, task, isEditMode]);
@@ -30,17 +35,22 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                     ...task,
                     text: text.trim(),
                     label: label.trim(),
+                    color: selectedColor,
                 });
             } else {
                 addTask({
                     text: text.trim(),
                     label: label.trim(),
+                    color: selectedColor,
                 });
             }
         }
         onClose();
     };
 
+    const handleColorChange = (color: TaskColors | undefined) => {
+        setSelectedColor(color);
+    };
 
     return (
         <Modal isOpen={isOpen} onClose={handleClose}>
@@ -55,6 +65,11 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                     />
                 </div>
                 <Autocomplete value={label} onChange={setLabel} suggestions={existingLabels} placeholder="Add label" />
+                <ColorPaletteInput
+                    color={selectedColor}
+                    onChangeColor={handleColorChange}
+					isMulti={false}
+                />
             </div>
         </Modal>
     );
