@@ -1,11 +1,11 @@
 import { MouseEvent } from "react";
 import { TaskColors } from "@/components/Task";
-import { ColorPaletteProps } from "./ColorPalette.types";
 import { getPaletteColor } from "@/utils/styles";
+import { ColorPickerQuickProps } from "./ColorPickerQuick.types";
 
 import "./ColorPalette.scss";
 
-export default function ColorPalette({ updateTaskColor }: ColorPaletteProps) {
+export default function ColorPickerQuick({ updateTaskColor }: ColorPickerQuickProps) {
 
     const setColor = (e: MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement;

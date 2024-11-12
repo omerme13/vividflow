@@ -3,11 +3,11 @@ import { TaskColors, TaskProps } from "./Task.types";
 import { CheckIcon, ClockIcon, PaletteIcon, TrashIcon } from "@/assets/icons";
 import { getClassWithModifier, getPaletteColor } from "@/utils/styles";
 import TaskAction from "./components/TaskAction/TaskAction";
-import ColorPalette from "./components/ColorPalette/ColorPalette";
 import { useTask } from "@/context/TaskContext";
 import Tooltip from "@/components/Tooltip";
 import DatePicker from "./components/DatePicker/DatePicker";
 import Popover from "@/components/Popover";
+import ColorPickerQuick from "./components/ColorPickerQuick/ColorPickerQuick";
 
 import "./Task.scss";
 
@@ -61,7 +61,7 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                     onOpenChange={setIsPaletteOpen}
                     isOpen={isPaletteOpen}
                 >
-                    <ColorPalette updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
+                    <ColorPickerQuick updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
                 </Popover>
                 <DatePicker
                     date={dueDate}
