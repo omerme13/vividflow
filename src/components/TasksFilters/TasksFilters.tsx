@@ -5,7 +5,7 @@ import { TaskColors } from "../Task/Task.types";
 
 import "./TasksFilters.scss";
 
-const TaskFilter = () => {
+export default function TaskFilter()  {
     const { labels, filterOptions, setFilterOptions, clearColorFilters } = useTaskContext();
 
     const labelOptions = labels.map((label) => ({
@@ -51,5 +51,3 @@ const TaskFilter = () => {
         </div>
     );
 };
-
-export default TaskFilter;
