@@ -1,7 +1,8 @@
+import { Page } from "@/types/layout";
 import { FC, SVGProps } from "react";
 
 export interface SideBarItemData {
-	page: string;
+	page: Page;
 	action: () => void;
 	icon: FC<SVGProps<SVGSVGElement>>
 }

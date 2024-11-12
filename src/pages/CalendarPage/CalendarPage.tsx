@@ -80,10 +80,11 @@ export default function CalendarPage() {
                 formats={{
                     timeGutterFormat: "HH:mm",
                     eventTimeRangeFormat: () => "",
+                    agendaTimeRangeFormat: ({ start }: { start: Date }) => format(start, "HH:mm"),
                 }}
                 onEventDrop={moveEvent}
-				resizable={false}
-				selectable
+                resizable={false}
+                selectable
             />
             {taskModal}
         </div>
