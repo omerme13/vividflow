@@ -27,7 +27,7 @@ export default function DatePicker({ date, onChange, trigger }: DatePickerProps)
     };
 
     return (
-        <Popover isOpen={isOpen} onOpenChange={setIsOpen} marginFromBorders={190} trigger={trigger}>
+        <Popover isOpen={isOpen} onOpenChange={setIsOpen} trigger={trigger}>
             <div className="datepicker-wrapper">
                 {date && (
                     <button className="datepicker-wrapper__clear-button" onClick={handleClearDate} type="button">

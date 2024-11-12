@@ -1,4 +1,3 @@
-// Popover.tsx
 import { useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import useClickOutside from "@/hooks/useClickOutside";
@@ -9,7 +8,7 @@ export default function Popover({
     trigger,
     children,
     triggerClassName = "",
-    marginFromBorders = 0,
+    marginFromBorders = 10,
     isOpen: controlledIsOpen,
     onOpenChange,
 }: PopoverProps) {
@@ -40,33 +39,37 @@ export default function Popover({
         const updatePosition = () => {
             const triggerRect = triggerRef.current!.getBoundingClientRect();
             const contentRect = contentRef.current!.getBoundingClientRect();
-            const viewportWidth = document.documentElement.clientWidth;
-            const viewportHeight = window.innerHeight;
 
-            let top = triggerRect.bottom;
-            let left = triggerRect.left;
+            const absoluteTop = triggerRect.bottom + window.scrollY;
+            const absoluteLeft = triggerRect.left + window.scrollX;
 
-            if (left + contentRect.width > viewportWidth) {
-                left = viewportWidth - contentRect.width;
+            let top = absoluteTop;
+            let left = absoluteLeft;
+
+            const viewportBottom = window.scrollY + window.innerHeight;
+            if (absoluteTop + contentRect.height > viewportBottom - marginFromBorders) {
+                top = absoluteTop - contentRect.height - triggerRect.height;
             }
 
-            const shouldPositionAbove = top + contentRect.height > viewportHeight;
-            if (shouldPositionAbove) {
-                top = triggerRect.top - contentRect.height;
+            const viewportRight = window.scrollX + document.documentElement.clientWidth;
+            if (absoluteLeft + contentRect.width > viewportRight - marginFromBorders) {
+                left = absoluteLeft + triggerRect.width - contentRect.width;
             }
 
-            setPosition({
-                top: Math.min(Math.max(marginFromBorders, top), viewportHeight - contentRect.height),
-                left: Math.min(
-                    Math.max(marginFromBorders, left),
-                    viewportWidth - contentRect.width - marginFromBorders
-                ),
-            });
+            left = Math.max(window.scrollX + marginFromBorders, left);
+            top = Math.max(window.scrollY + marginFromBorders, top);
+
+            setPosition({ top, left });
         };
 
         updatePosition();
+        window.addEventListener("scroll", updatePosition, true);
         window.addEventListener("resize", updatePosition);
-        return () => window.removeEventListener("resize", updatePosition);
+
+        return () => {
+            window.removeEventListener("scroll", updatePosition, true);
+            window.removeEventListener("resize", updatePosition);
+        };
     }, [isOpen, marginFromBorders]);
 
     return (
@@ -86,7 +89,7 @@ export default function Popover({
                         ref={contentRef}
                         className="popover__content"
                         style={{
-                            position: "fixed",
+                            position: "absolute",
                             top: `${position.top}px`,
                             left: `${position.left}px`,
                             maxWidth: `calc(100vw - ${marginFromBorders * 2}px)`,
