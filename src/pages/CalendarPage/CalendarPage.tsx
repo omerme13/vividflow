@@ -50,19 +50,8 @@ export default function CalendarPage() {
         const calendarEvent = event as CalendarEvent;
 
         const updatedTask: TaskData = {
-			...calendarEvent.task,
-			dueDate: start,
-	};
-
-        updateTask(updatedTask);
-    };
-
-    const resizeEvent: withDragAndDropProps["onEventResize"] = ({ event, start, end }) => {
-        const calendarEvent = event as CalendarEvent;
-
-        const updatedTask: TaskData = {
-                ...calendarEvent.task,
-                dueDate: start,
+            ...calendarEvent.task,
+            dueDate: new Date(start),
         };
 
         updateTask(updatedTask);
@@ -73,8 +62,6 @@ export default function CalendarPage() {
             <DnDCalendar
                 localizer={localizer}
                 events={events}
-                startAccessor="start"
-                endAccessor="end"
                 view={currentView as View}
                 onView={(view: View) => setCurrentView(view as CalendarViewMode)}
                 views={Object.values(CalendarViewMode)}
@@ -95,9 +82,8 @@ export default function CalendarPage() {
                     eventTimeRangeFormat: () => "",
                 }}
                 onEventDrop={moveEvent}
-                onEventResize={resizeEvent}
-                resizable
-                selectable
+				resizable={false}
+				selectable
             />
             {taskModal}
         </div>
