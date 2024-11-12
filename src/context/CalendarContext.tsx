@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useState, useEffect, ReactNode } from "react";
-import { addDays, isBefore, isSameDay } from "date-fns";
-import { useFilteredTasks, useTaskContext } from "./TaskContext";
+import { addDays, addMinutes, isBefore, isSameDay } from "date-fns";
+import { useTaskContext } from "./TaskContext";
 import { getCalendarPreference, saveCalendarPreference } from "@/utils/calendarLocalStorage";
 import { TaskData, TaskColors } from "@/components/Task";
 import { View } from "react-big-calendar";
@@ -94,7 +94,7 @@ export function CalendarProvider({ children }: { children: ReactNode }) {
                 id: task.id,
                 title: task.text,
                 start: new Date(task.dueDate!),
-                end: new Date(task.dueDate!),
+				end: addMinutes(new Date(task.dueDate!), 15),
                 allDay: false,
                 task,
                 style: {
