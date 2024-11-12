@@ -3,7 +3,7 @@ import { TaskColors } from "@/components/Task";
 import { getPaletteColor } from "@/utils/styles";
 import { ColorPickerQuickProps } from "./ColorPickerQuick.types";
 
-import "./ColorPalette.scss";
+import "./ColorPickerQuick.scss";
 
 export default function ColorPickerQuick({ updateTaskColor }: ColorPickerQuickProps) {
 
@@ -16,11 +16,11 @@ export default function ColorPickerQuick({ updateTaskColor }: ColorPickerQuickPr
     };
 
     return (
-        <div className="color-palette">
+        <div className="color-picker-quick">
             {Object.values(TaskColors).map((color: TaskColors) => (
                 <div
                     key={color}
-                    className={`color-palette__color color-palette__color--${color}`}
+                    className={`color-picker-quick__color color-picker-quick__color--${color}`}
                     onClick={setColor}
                     data-color={color}
 					style={{ background: getPaletteColor(color) }}

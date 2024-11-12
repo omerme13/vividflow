@@ -3,7 +3,7 @@ import Modal from "@/components/Modal";
 import { useTaskContext } from "@/context/TaskContext";
 import { TaskModalProps } from "./TaskModal.types";
 import Autocomplete from "@/components/Autocomplete";
-import ColorPaletteInput from "@/components/ColorPaletteInput";
+import ColorPicker from "@/components/ColorPicker";
 import { TaskColors } from "@/components/Task";
 
 import "./TaskModal.scss";
@@ -65,7 +65,7 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                     />
                 </div>
                 <Autocomplete value={label} onChange={setLabel} suggestions={existingLabels} placeholder="Add label" />
-                <ColorPaletteInput
+                <ColorPicker
                     color={selectedColor}
                     onChangeColor={handleColorChange}
 					isMulti={false}

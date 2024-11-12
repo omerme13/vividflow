@@ -1,6 +1,6 @@
 import Select from "react-select";
 import { useTaskContext } from "@/context/TaskContext";
-import ColorPaletteInput from "@/components/ColorPaletteInput";
+import ColorPicker from "@/components/ColorPicker";
 import { TaskColors } from "../Task/Task.types";
 
 import "./TasksFilters.scss";
@@ -36,7 +36,7 @@ export default function TaskFilter()  {
 
             <div className="tasks-filters__section">
                 <h3 className="tasks-filters__title">Colors</h3>
-                <ColorPaletteInput
+                <ColorPicker
                     colors={filterOptions.selectedColors}
                     onChangeColors={(colors: TaskColors[]) => {
                         setFilterOptions((prev) => ({

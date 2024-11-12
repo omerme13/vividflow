@@ -1,10 +1,10 @@
 import { TaskColors } from "@/components/Task";
 import { getClassWithModifier, getPaletteColor } from "@/utils/styles";
-import { ColorPaletteInputProps } from "./ColorPaletteInput.types";
+import { ColorPickerProps } from "./ColorPicker.types";
 
-import "./ColorPaletteInput.scss";
+import "./ColorPicker.scss";
 
-export default function ColorPaletteInput({
+export default function ColorPicker({
     isMulti,
     color,
     colors,
@@ -12,7 +12,7 @@ export default function ColorPaletteInput({
     onChangeColors,
     onClear,
     className = "",
-}: ColorPaletteInputProps) {
+}: ColorPickerProps) {
     const handleColorChange = (selectedColor: TaskColors) => {
         if (isMulti) {
             onChangeColors(
@@ -28,22 +28,22 @@ export default function ColorPaletteInput({
     };
 
     return (
-        <div className={`color-palette-input ${className}`}>
-            <div className="color-palette-input__colors">
+        <div className={`color-picker ${className}`}>
+            <div className="color-picker__colors">
                 {Object.values(TaskColors).map((colorOption: TaskColors) => (
-                    <div key={colorOption} className="color-palette-input__color-item">
+                    <div key={colorOption} className="color-picker__color-item">
                         <input
                             type={isMulti ? "checkbox" : "radio"}
                             id={`color-${colorOption}`}
                             name="color-selection"
-                            className="color-palette-input__color-input"
+                            className="color-picker__color-input"
                             checked={isSelected(colorOption)}
                             onChange={() => handleColorChange(colorOption)}
                         />
                         <label
                             htmlFor={`color-${colorOption}`}
                             className={getClassWithModifier(
-                                "color-palette-input__color-label",
+                                "color-picker__color-label",
                                 "selected",
                                 isSelected(colorOption)
                             )}
@@ -52,7 +52,7 @@ export default function ColorPaletteInput({
                     </div>
                 ))}
                 {onClear && (
-                    <button className="color-palette-input__clear-button" type="button" onClick={onClear}>
+                    <button className="color-picker__clear-button" type="button" onClick={onClear}>
                         Clear
                     </button>
                 )}

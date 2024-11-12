@@ -1,4 +1,4 @@
-.color-palette-input {
+.color-picker {
     &__colors {
         display: flex;
         gap: 1.6rem;
@@ -22,7 +22,7 @@
         white-space: nowrap;
         border: 0;
 
-        &:focus-visible + .color-palette-input__color-label {
+        &:focus-visible + .color-picker__color-label {
             box-shadow: 0 0 0 2px var(--color-purple-60);
         }
     }
