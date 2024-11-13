@@ -25,6 +25,7 @@ export default function useTaskModal() {
                 task={selectedTask || undefined}
             />
         ),
-		handleEdit
+		handleEdit,
+		toggleTaskModal,
     };
 }

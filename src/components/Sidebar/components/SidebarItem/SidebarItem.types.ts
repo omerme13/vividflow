@@ -3,7 +3,6 @@ import { FC, SVGProps } from "react";
 
 export interface SideBarItemData {
 	page: Page;
-	action: () => void;
 	icon: FC<SVGProps<SVGSVGElement>>
 }
 

@@ -3,15 +3,16 @@ import { useFilteredTasks } from "@/context/TaskContext";
 import { getClassWithModifier } from "@/utils/styles";
 import { useLayout } from "@/context/LayoutContext";
 import useTaskModal from "@/hooks/useTaskModal";
-import { EmptyTasksIcon, NotFoundTasksIcon } from "@/assets/icons";
+import { EmptyTasksIcon, NotFoundTasksIcon, PlusIcon } from "@/assets/icons";
 import FeedbackState from "../FeedbackState/FeedbackState";
+import FloatingActionButton from "@/components/FloatingActionButton";
 
 import "./TasksList.scss";
 
 export default function TaskList() {
     const { incomplete, completed, tasksExist, all } = useFilteredTasks();
     const { layout } = useLayout();
-    const { handleEdit, taskModal } = useTaskModal();
+    const { handleEdit, taskModal, toggleTaskModal } = useTaskModal();
 
     const renderTasks = (tasks: TaskData[], className: string) =>
         tasks.length > 0 && (
@@ -37,6 +38,7 @@ export default function TaskList() {
             {tasksExist && all.length === 0 && (
                 <FeedbackState icon={NotFoundTasksIcon} title="No matching tasks found" />
             )}
+			<FloatingActionButton icon={PlusIcon} onClick={toggleTaskModal} />
         </div>
     );
 }
