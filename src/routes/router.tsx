@@ -8,31 +8,36 @@ import SettingsPage from "@/pages/SettingsPage";
 import { useLayout } from "@/context/LayoutContext";
 import { getClassWithModifier } from "@/utils/styles";
 import { CalendarProvider } from "@/context/CalendarContext";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 function RootLayout() {
     const { layout } = useLayout();
 
     return (
-        <div className="app">
-            <Sidebar />
-            <div className={getClassWithModifier("app__content", "compact-sidebar", layout.isCompactSidebar)}>
-                <Outlet />
+        <ErrorBoundary>
+            <div className="app">
+                <Sidebar />
+                <div className={getClassWithModifier("app__content", "compact-sidebar", layout.isCompactSidebar)}>
+                    <Outlet />
+                </div>
             </div>
-        </div>
+        </ErrorBoundary>
     );
 }
 
-// TODO add ErrorBoundary to the routes
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <RootLayout />,
+        errorElement: <div>Route Error!</div>,
         children: [
             {
                 path: "tasks",
                 element: (
                     <TaskProvider>
-                        <TasksPage />
+                        <ErrorBoundary>
+                            <TasksPage />
+                        </ErrorBoundary>
                     </TaskProvider>
                 ),
             },
@@ -40,7 +45,9 @@ export const router = createBrowserRouter([
                 path: "dashboard",
                 element: (
                     <TaskProvider>
-                        <DashboardPage />
+                        <ErrorBoundary>
+                            <DashboardPage />
+                        </ErrorBoundary>
                     </TaskProvider>
                 ),
             },
@@ -49,14 +56,20 @@ export const router = createBrowserRouter([
                 element: (
                     <TaskProvider>
                         <CalendarProvider>
-                            <CalendarPage />,
+                            <ErrorBoundary>
+                                <CalendarPage />
+                            </ErrorBoundary>
                         </CalendarProvider>
                     </TaskProvider>
                 ),
             },
             {
                 path: "settings",
-                element: <SettingsPage />,
+                element: (
+                    <ErrorBoundary>
+                        <SettingsPage />
+                    </ErrorBoundary>
+                ),
             },
         ],
     },

@@ -22,4 +22,5 @@ export { default as ListIcon } from "@/assets/icons/list.svg?react";
 export { default as TaskIcon } from "@/assets/icons/task.svg?react";
 export { default as EmptyTasksIcon } from "@/assets/icons/empty-tasks.svg?react";
 export { default as NotFoundTasksIcon } from "@/assets/icons/not-found-tasks.svg?react";
+export { default as ErrorIcon } from "@/assets/icons/error.svg?react";
 export { default as CloseIcon } from "@/assets/icons/close.svg?react";
