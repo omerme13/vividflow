@@ -25,6 +25,14 @@ function RootLayout() {
     );
 }
 
+function TaskEnabledLayout() {
+    return (
+        <TaskProvider>
+            <Outlet />
+        </TaskProvider>
+    );
+}
+
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -32,36 +40,35 @@ export const router = createBrowserRouter([
         errorElement: <div>Route Error!</div>,
         children: [
             {
-                path: "tasks",
-                element: (
-                    <TaskProvider>
-                        <ErrorBoundary>
-                            <TasksPage />
-                        </ErrorBoundary>
-                    </TaskProvider>
-                ),
-            },
-            {
-                path: "dashboard",
-                element: (
-                    <TaskProvider>
-                        <ErrorBoundary>
-                            <DashboardPage />
-                        </ErrorBoundary>
-                    </TaskProvider>
-                ),
-            },
-            {
-                path: "calendar",
-                element: (
-                    <TaskProvider>
-                        <CalendarProvider>
+                element: <TaskEnabledLayout />,
+                children: [
+                    {
+                        path: "tasks",
+                        element: (
                             <ErrorBoundary>
-                                <CalendarPage />
+                                <TasksPage />
                             </ErrorBoundary>
-                        </CalendarProvider>
-                    </TaskProvider>
-                ),
+                        ),
+                    },
+                    {
+                        path: "dashboard",
+                        element: (
+                            <ErrorBoundary>
+                                <DashboardPage />
+                            </ErrorBoundary>
+                        ),
+                    },
+                    {
+                        path: "calendar",
+                        element: (
+                            <CalendarProvider>
+                                <ErrorBoundary>
+                                    <CalendarPage />
+                                </ErrorBoundary>
+                            </CalendarProvider>
+                        ),
+                    },
+                ],
             },
             {
                 path: "settings",
