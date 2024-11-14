@@ -6,7 +6,7 @@
     padding: 2.4rem;
     background-color: var(--color-card-background);
     box-shadow: var(--shadow-1);
-    border-radius: 0.3rem;
+    border-radius: var(--radius-xs);
     gap: 2.4rem;
     transition: 0.2s;
     break-inside: avoid;
@@ -54,7 +54,7 @@
         width: fit-content;
         padding: 0.6rem 1.2rem;
         font-weight: var(--font-weight-bold);
-        border-radius: 0.5rem;
+        border-radius: var(--radius-sm);
         text-transform: capitalize;
         line-height: 1;
 

@@ -3,12 +3,12 @@
     display: flex;
     gap: 0.8rem;
     padding: 1rem 0.8rem;
-	border-radius: 3px;
+	border-radius: var(--radius-xs);
 
     &__color {
         width: 1.5rem;
         height: 1.5rem;
-        border-radius: 50%;
+        border-radius: var(--radius-full);
 		transition: 0.2s;
 
 		&:hover {

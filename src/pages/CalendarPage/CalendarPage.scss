@@ -17,7 +17,7 @@
             background: transparent;
             border: 1px solid var(--color-purple-30);
             padding: 0.8rem 1.6rem;
-            border-radius: 0.8rem;
+            border-radius: var(--radius-md);
             font-size: var(--font-size-menu);
             font-family: var(--font-family-main);
             font-weight: var(--font-weight-bold);
@@ -74,7 +74,7 @@
 
     .rbc-month-view {
         border: 1px solid var(--color-purple-30);
-        border-radius: 0.8rem;
+        border-radius: var(--radius-md);
         overflow: hidden;
     }
 
@@ -108,7 +108,7 @@
     .rbc-event {
         background-color: var(--color-cta);
         border: none;
-        border-radius: 0.8rem;
+        border-radius: var(--radius-md);
         padding: 0.2rem 0.4rem;
         color: var(--color-card-background);
     }
@@ -138,7 +138,7 @@
 
     .rbc-time-view {
         border: 1px solid var(--color-purple-30);
-        border-radius: 0.8rem;
+        border-radius: var(--radius-md);
         overflow: hidden;
     }
 
@@ -185,7 +185,7 @@
 
     .rbc-agenda-view {
         border: 1px solid var(--color-purple-30);
-        border-radius: 0.8rem;
+        border-radius: var(--radius-md);
         overflow: hidden;
         border: none;
     }

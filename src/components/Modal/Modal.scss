@@ -10,13 +10,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 1000;
+        z-index: var(--z-high);
         animation: fadeIn 0.1s ease-out;
     }
 
     &__content {
         background-color: var(--color-card-background);
-        border-radius: 1.2rem;
+        border-radius: var(--radius-lg);
         padding: 3.2rem;
         width: 100%;
         max-width: 40rem;

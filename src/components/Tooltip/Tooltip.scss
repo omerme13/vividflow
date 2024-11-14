@@ -9,10 +9,10 @@
         padding: 0.4rem 0.8rem;
         font-size: 1.2rem;
         white-space: nowrap;
-        z-index: 1000;
+        z-index: var(--z-high);
         margin-top: 1.5rem;
         margin-left: 1rem;
-        border-radius: 0.5rem;
+        border-radius: var(--radius-sm);
 		line-height: 1;
 		box-shadow: var(--shadow-1);
 		white-space: normal;

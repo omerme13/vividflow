@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     padding: 3.6rem 0 6rem;
-    z-index: 1;
+	z-index: var(--z-low);
     font-size: var(--font-size-menu);
     transition: 0.2s;
     white-space: nowrap;

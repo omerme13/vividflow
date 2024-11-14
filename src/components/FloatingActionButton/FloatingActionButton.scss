@@ -1,9 +1,9 @@
 button.floating-action-button {
     position: fixed;
-    z-index: 1000;
+	z-index: var(--z-high);
     width: 5.6rem;
     height: 5.6rem;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     border: none;
     background-color: var(--color-secondary);
     color: var(--color-purple-20);
