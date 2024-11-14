@@ -5,7 +5,7 @@
     flex-direction: column;
     padding: 2.4rem;
     background-color: var(--color-card-background);
-    box-shadow: 0 0.1rem 0.5rem rgba(black, 0.1);
+    box-shadow: var(--shadow-1);
     border-radius: 0.3rem;
     gap: 2.4rem;
     transition: 0.2s;
@@ -17,7 +17,7 @@
     cursor: pointer;
 
     &:hover {
-        box-shadow: 0 0.3rem 1rem rgba(black, 0.2);
+        box-shadow: var(--shadow-2);
         top: -2px;
 
         .task-action {

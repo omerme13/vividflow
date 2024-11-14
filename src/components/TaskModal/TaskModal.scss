@@ -31,10 +31,7 @@
         }
 
         &:focus {
-            outline: none;
             background-color: var(--color-card-background);
-            border-color: var(--color-purple-70);
-            box-shadow: 0 0 0 0.4rem var(--color-cta-light);
         }
     }
 
@@ -42,60 +39,5 @@
         resize: none;
         height: 20rem;
 		line-height: var(--line-height-regular);
-    }
-
-    &__actions {
-        display: flex;
-        justify-content: flex-end;
-        gap: 1.6rem;
-        margin-top: 0.8rem;
-    }
-
-    &__button {
-        font-family: inherit;
-        padding: 1rem 2rem;
-        border-radius: 1rem;
-        font-size: var(--font-size-menu);
-        font-weight: var(--font-weight-bold);
-        cursor: pointer;
-        transition: 0.1s;
-
-        &--primary {
-            background-color: var(--color-cta);
-            color: var(--color-card-background);
-            border: none;
-
-            &:hover {
-                background-color: var(--color-cta-hover);
-                transform: translateY(-1px);
-                box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
-            }
-
-            &:active {
-                transform: translateY(0);
-                box-shadow: none;
-            }
-
-            &:disabled {
-                background-color: var(--color-purple-30);
-                cursor: not-allowed;
-                transform: none;
-                box-shadow: none;
-            }
-        }
-
-        &--secondary {
-            background-color: transparent;
-            color: var(--color-main-text);
-            border: none;
-
-            &:hover {
-                background-color: var(--color-purple-10);
-            }
-
-            &:active {
-                background-color: var(--color-purple-20);
-            }
-        }
     }
 }
