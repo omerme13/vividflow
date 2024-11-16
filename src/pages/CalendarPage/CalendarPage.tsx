@@ -79,7 +79,7 @@ export default function CalendarPage() {
                 eventPropGetter={handleEventProps}
                 formats={{
                     timeGutterFormat: "HH:mm",
-                    eventTimeRangeFormat: () => "",
+                    eventTimeRangeFormat: ({ start }: { start: Date }) => format(start, "HH:mm"),
                     agendaTimeRangeFormat: ({ start }: { start: Date }) => format(start, "HH:mm"),
                 }}
                 onEventDrop={moveEvent}
