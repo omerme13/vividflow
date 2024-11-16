@@ -8,13 +8,20 @@ import Tooltip from "@/components/Tooltip";
 import DatePicker from "./components/DatePicker/DatePicker";
 import Popover from "@/components/Popover";
 import ColorPickerQuick from "./components/ColorPickerQuick/ColorPickerQuick";
+import useToast, { ToastType } from "@/hooks/useToast";
 
 import "./Task.scss";
 
 export default function Task({ task, onEdit, isGridMode }: TaskProps) {
     const { id, text, label, color = TaskColors.Gray, isCompleted, dueDate } = task;
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
-    const { updateTask, deleteTask, filterByLabel, toggleTaskCompletion, setTaskDueDate } = useTask(id);
+    const { updateTask, deleteTask, filterByLabel, toggleTaskCompletion, setTaskDueDate, restoreTask } = useTask(id);
+
+    const notify = useToast({
+        text: "The task has been deleted",
+        type: ToastType.Success,
+        action: { text: "undo", onClick: () => restoreTask() },
+    });
 
     const isColorSelected = color !== TaskColors.Gray;
 
@@ -28,6 +35,11 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
     const handleLabelClick = (e: MouseEvent<HTMLElement>) => {
         e.stopPropagation();
         filterByLabel();
+    };
+
+    const handleDeleteTask = () => {
+        deleteTask();
+        notify();
     };
 
     return (
@@ -76,7 +88,7 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                         />
                     }
                 />
-                <TaskAction icon={TrashIcon} action={deleteTask} isWarning tooltipContent="delete" />
+                <TaskAction icon={TrashIcon} action={handleDeleteTask} isWarning tooltipContent="delete" />
             </div>
         </div>
     );
