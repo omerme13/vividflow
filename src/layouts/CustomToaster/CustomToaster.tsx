@@ -26,7 +26,7 @@ export default function CustomToaster() {
                         style={
                             {
                                 background: "var(--color-purple-10)",
-                                position: "relative",
+								overflow: 'hidden',
                                 "--toast-duration": `${t.duration}ms`,
                             } as React.CSSProperties
                         }
