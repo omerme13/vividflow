@@ -71,7 +71,7 @@ export default function CalendarPage() {
                 scrollToTime={setHours(new Date(), workingHours.start)}
                 components={{
                     event: ({ event }: { event: CalendarEvent }) => (
-                        <Tooltip content={event.title}>{event.title}</Tooltip>
+                        <Tooltip content={`${format(event.start, "HH:mm")} ${event.title}`}>{event.title}</Tooltip>
                     ),
                 }}
                 tooltipAccessor={null}

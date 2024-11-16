@@ -9,6 +9,7 @@ import DatePicker from "./components/DatePicker/DatePicker";
 import Popover from "@/components/Popover";
 import ColorPickerQuick from "./components/ColorPickerQuick/ColorPickerQuick";
 import useToast, { ToastType } from "@/hooks/useToast";
+import { format } from "date-fns";
 
 import "./Task.scss";
 
@@ -82,7 +83,7 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                         <TaskAction
                             icon={ClockIcon}
                             tooltipContent={
-                                dueDate ? `time set to ${new Date(dueDate).toLocaleString("en-GB")}` : "set time"
+                                dueDate ? `time set to ${format(new Date(dueDate), "dd/MM/yyyy HH:mm")}` : "set time"
                             }
                             isActive={!!dueDate}
                         />
