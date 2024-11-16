@@ -38,7 +38,7 @@ export default function TaskList() {
             {tasksExist && all.length === 0 && (
                 <FeedbackState icon={NotFoundTasksIcon} title="No matching tasks found" />
             )}
-			<FloatingActionButton icon={PlusIcon} onClick={toggleTaskModal} />
+            <FloatingActionButton icon={PlusIcon} onClick={toggleTaskModal} />
         </div>
     );
 }
