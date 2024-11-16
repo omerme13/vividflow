@@ -22,7 +22,7 @@ export interface UseToastProps {
 export default function useToast({
     type,
     text,
-    duration = 50000,
+    duration = 5000,
     position = "bottom-right",
     icon,
     className,
