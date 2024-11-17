@@ -1,4 +1,4 @@
-import { FilterIcon, FilterOffIcon, SearchIcon, CloseIcon } from "@/assets/icons";
+import { FilterIcon, SearchIcon, CloseIcon } from "@/assets/icons";
 import LayoutToggleButton from "./LayoutToggleButton";
 import { useTaskContext } from "@/context/TaskContext";
 import { ChangeEvent } from "react";
@@ -7,9 +7,11 @@ import TasksFilters from "@/components/TasksFilters";
 import Popover from "@/components/Popover";
 
 import "./TasksHeader.scss";
+import { getClassWithModifier } from "@/utils/styles";
 
 export default function TasksHeader() {
     const { searchQuery, setSearchQuery, clearFilters, hasFilters } = useTaskContext();
+    const isHasFilters = hasFilters();
 
     return (
         <div className="tasks-header">
@@ -34,7 +36,7 @@ export default function TasksHeader() {
 
             <div className="tasks-header__filter-buttons">
                 <Popover
-                    triggerClassName="tasks-header__filter-icon"
+                    triggerClassName={getClassWithModifier("tasks-header__filter-icon", "active", isHasFilters)}
                     trigger={
                         <Tooltip content="filter">
                             <FilterIcon />
@@ -43,10 +45,10 @@ export default function TasksHeader() {
                 >
                     <TasksFilters />
                 </Popover>
-                {hasFilters() && (
+                {isHasFilters && (
                     <Tooltip content="remove filters">
                         <button className="tasks-header__filter-off-icon" onClick={clearFilters}>
-                            <FilterOffIcon />
+                            <CloseIcon width={16} height={16} />
                         </button>
                     </Tooltip>
                 )}

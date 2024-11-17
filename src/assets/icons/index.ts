@@ -17,7 +17,6 @@ export { default as SearchIcon } from "@/assets/icons/search.svg?react";
 export { default as KanbanIcon } from "@/assets/icons/kanban.svg?react";
 export { default as GridIcon } from "@/assets/icons/grid.svg?react";
 export { default as FilterIcon } from "@/assets/icons/filter.svg?react";
-export { default as FilterOffIcon } from "@/assets/icons/filter-off.svg?react";
 export { default as ListIcon } from "@/assets/icons/list.svg?react";
 export { default as TaskIcon } from "@/assets/icons/task.svg?react";
 export { default as EmptyTasksIcon } from "@/assets/icons/empty-tasks.svg?react";
