@@ -7,6 +7,7 @@ interface UseSuggestionsResult {
     showSuggestions: boolean;
     setShowSuggestions: (show: boolean) => void;
     handleKeyDown: (e: React.KeyboardEvent) => void;
+	clearSuggestions: () => void;
 }
 
 interface UseSuggestionsProps {
@@ -63,6 +64,10 @@ export default function useSuggestions({
         }
     };
 
+	const clearSuggestions = () => {
+		setFilteredSuggestions([])
+	};
+
     return {
         filteredSuggestions,
         selectedIndex,
@@ -70,5 +75,6 @@ export default function useSuggestions({
         showSuggestions,
         setShowSuggestions,
         handleKeyDown,
+		clearSuggestions
     };
 }

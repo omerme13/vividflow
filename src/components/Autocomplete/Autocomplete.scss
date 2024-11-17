@@ -69,6 +69,18 @@
             border-top: 1px solid var(--color-purple-10);
         }
     }
+
+	&__clear-text {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 2rem;
+		
+		&:hover {
+			cursor: pointer;
+			opacity: 0.7;
+		}
+	}
 }
 
 @keyframes slideUp {

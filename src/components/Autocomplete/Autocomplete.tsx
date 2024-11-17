@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import useClickOutside from "@/hooks/useClickOutside";
-import useSuggestions from './useSuggestion';
+import useSuggestions from "./useSuggestion";
 import { AutocompleteProps } from "./Autocomplete.types";
+import { CloseIcon } from "@/assets/icons";
 
 import "./Autocomplete.scss";
 
@@ -11,18 +12,26 @@ export default function Autocomplete({
     suggestions: existingSuggestions,
     placeholder = "",
     className = "",
+    resetValue,
 }: AutocompleteProps) {
     const suggestionsRef = useRef<HTMLDivElement>(null);
 
-    const { filteredSuggestions, selectedIndex, setSelectedIndex, showSuggestions, setShowSuggestions, handleKeyDown } =
-        useSuggestions({
-            inputValue: value,
-            suggestions: existingSuggestions,
-            onSelect: (suggestion) => {
-                onChange(suggestion);
-                setShowSuggestions(false);
-            },
-        });
+    const {
+        filteredSuggestions,
+        selectedIndex,
+        setSelectedIndex,
+        showSuggestions,
+        setShowSuggestions,
+        handleKeyDown,
+        clearSuggestions,
+    } = useSuggestions({
+        inputValue: value,
+        suggestions: existingSuggestions,
+        onSelect: (suggestion) => {
+            onChange(suggestion);
+            setShowSuggestions(false);
+        },
+    });
 
     useClickOutside({
         refs: [suggestionsRef],
@@ -30,6 +39,11 @@ export default function Autocomplete({
         enabled: showSuggestions,
     });
 
+    const handleClearButton = () => {
+        clearSuggestions();
+        resetValue();
+    };
+	
     return (
         <div className={`autocomplete__wrapper ${className}`}>
             <input
@@ -61,6 +75,9 @@ export default function Autocomplete({
                         </button>
                     ))}
                 </div>
+            )}
+            {value && (
+                <CloseIcon className="autocomplete__clear-text" width={18} height={18} onClick={handleClearButton} />
             )}
         </div>
     );

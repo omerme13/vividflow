@@ -64,12 +64,14 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                         placeholder="Task description"
                     />
                 </div>
-                <Autocomplete value={label} onChange={setLabel} suggestions={existingLabels} placeholder="Add label" />
-                <ColorPicker
-                    color={selectedColor}
-                    onChangeColor={handleColorChange}
-					isMulti={false}
+                <Autocomplete
+                    value={label}
+                    onChange={setLabel}
+                    suggestions={existingLabels}
+                    placeholder="Add label"
+                    resetValue={() => setLabel("")}
                 />
+                <ColorPicker color={selectedColor} onChangeColor={handleColorChange} isMulti={false} />
             </div>
         </Modal>
     );
