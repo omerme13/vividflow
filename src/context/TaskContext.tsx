@@ -15,7 +15,7 @@ interface DeletedTaskInfo {
     [taskId: string]: {
         task: TaskData;
         index: number;
-    }
+    };
 }
 
 interface TaskContext {
@@ -58,7 +58,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     const [labels, setLabels] = useState<string[]>(() => taskStorage.getLabels());
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [filterOptions, setFilterOptions] = useState<FilterOptions>(initialFilterOptions);
-	const [, setLastDeletedTaskInfo] = useState<DeletedTaskInfo | null>(null);
+    const [, setLastDeletedTaskInfo] = useState<DeletedTaskInfo | null>(null);
 
     const addTask = useCallback((newTask: TaskDataWithoutId) => {
         const taskWithId = { ...newTask, isCompleted: false, id: crypto.randomUUID() };
@@ -77,44 +77,44 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         });
     }, []);
 
-	const deleteTask = useCallback((id: string) => {
-		setTasks((prev) => {
-			const taskIndex = prev.findIndex((task) => task.id === id);
-			const deletedTask = prev[taskIndex];
-			const updatedTasks = prev.filter((task) => task.id !== id);
-				
-			saveTasksAndUpdateLabels(updatedTasks, setLabels);
-	
-			if (deletedTask) {
-				setLastDeletedTaskInfo(prevDeleted => ({
-					...(prevDeleted || {}),
-					[deletedTask.id]: { task: deletedTask, index: taskIndex }
-				}));
-			}
-				
-			return updatedTasks;
-		});
-	}, []);
-	
-	const restoreTask = useCallback((id: string) => {
-		setLastDeletedTaskInfo(prevDeleted => {
-			if (!prevDeleted || !prevDeleted[id]) return prevDeleted;
-	
-			const { task, index } = prevDeleted[id];
-			
-			setTasks(prevTasks => {
-				const updatedTasks = [...prevTasks];
-				const restoredIndex = Math.min(index, updatedTasks.length);
-				updatedTasks.splice(restoredIndex, 0, task);
-				saveTasksAndUpdateLabels(updatedTasks, setLabels);
-				return updatedTasks;
-			});
-	
-			const remainingTasks = {...prevDeleted};
-			delete remainingTasks[id];
-			return Object.keys(remainingTasks).length > 0 ? remainingTasks : null;
-		});
-	}, []);
+    const deleteTask = useCallback((id: string) => {
+        setTasks((prev) => {
+            const taskIndex = prev.findIndex((task) => task.id === id);
+            const deletedTask = prev[taskIndex];
+            const updatedTasks = prev.filter((task) => task.id !== id);
+
+            saveTasksAndUpdateLabels(updatedTasks, setLabels);
+
+            if (deletedTask) {
+                setLastDeletedTaskInfo((prevDeleted) => ({
+                    ...(prevDeleted || {}),
+                    [deletedTask.id]: { task: deletedTask, index: taskIndex },
+                }));
+            }
+
+            return updatedTasks;
+        });
+    }, []);
+
+    const restoreTask = useCallback((id: string) => {
+        setLastDeletedTaskInfo((prevDeleted) => {
+            if (!prevDeleted || !prevDeleted[id]) return prevDeleted;
+
+            const { task, index } = prevDeleted[id];
+
+            setTasks((prevTasks) => {
+                const updatedTasks = [...prevTasks];
+                const restoredIndex = Math.min(index, updatedTasks.length);
+                updatedTasks.splice(restoredIndex, 0, task);
+                saveTasksAndUpdateLabels(updatedTasks, setLabels);
+                return updatedTasks;
+            });
+
+            const remainingTasks = { ...prevDeleted };
+            delete remainingTasks[id];
+            return Object.keys(remainingTasks).length > 0 ? remainingTasks : null;
+        });
+    }, []);
 
     const getTasksByLabel = useCallback((label: string) => tasks.filter((task) => task.label === label), [tasks]);
 
@@ -134,12 +134,15 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         [filterOptions]
     );
 
-    const filterByLabel = useCallback((label: string) => {
-        setFilterOptions((prev) => ({
-            ...prev,
-            selectedLabels: [label],
-        }));
-    }, []);
+    const filterByLabel = useCallback(
+        (label: string) => {
+            setFilterOptions((prev) => ({
+                ...prev,
+                selectedLabels: filterOptions.selectedLabels[0] === label ? [] : [label],
+            }));
+        },
+        [filterOptions]
+    );
 
     const toggleTaskCompletion = useCallback((id: string) => {
         setTasks((prev) => {

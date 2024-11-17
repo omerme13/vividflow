@@ -48,7 +48,7 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
             <div className="task__color" style={{ background: getPaletteColor(color) }} />
             <div className="task__text">{text}</div>
             {label && (
-                <Tooltip content={`filter by ${label}`}>
+                <Tooltip content={`Toggle filter by ${label}`}>
                     <div className="task__label" onClick={handleLabelClick}>
                         {label}
                     </div>
