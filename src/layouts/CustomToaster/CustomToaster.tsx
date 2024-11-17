@@ -18,7 +18,6 @@ export default function CustomToaster() {
         <Toaster>
             {(t: Toast) => {
                 const customToast = t as CustomToast;
-				console.log(t);
 				
                 return (
                     <ToastBar

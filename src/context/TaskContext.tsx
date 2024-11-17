@@ -138,7 +138,10 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         (label: string) => {
             setFilterOptions((prev) => ({
                 ...prev,
-                selectedLabels: filterOptions.selectedLabels[0] === label ? [] : [label],
+                selectedLabels:
+                    filterOptions.selectedLabels.length === 1 && filterOptions.selectedLabels[0] === label
+                        ? []
+                        : [label],
             }));
         },
         [filterOptions]
