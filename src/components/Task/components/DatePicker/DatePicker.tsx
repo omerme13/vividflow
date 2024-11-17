@@ -1,7 +1,7 @@
 import ReactDatePicker from "react-datepicker";
 import Popover from "@/components/Popover";
 import { MouseEvent, useState } from "react";
-import { TrashIcon } from "@/assets/icons";
+import { CloseIcon } from "@/assets/icons";
 import { DatePickerProps } from "./types";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -31,7 +31,7 @@ export default function DatePicker({ date, onChange, trigger }: DatePickerProps)
             <div className="datepicker-wrapper">
                 {date && (
                     <button className="datepicker-wrapper__clear-button" onClick={handleClearDate} type="button">
-                        <TrashIcon />
+                        <CloseIcon width={16} height={16} />
                         <span>Clear date</span>
                     </button>
                 )}
