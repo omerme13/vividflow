@@ -1,4 +1,4 @@
-import { Calendar, dateFnsLocalizer, View, EventPropGetter } from "react-big-calendar";
+import { Calendar, dateFnsLocalizer, View, EventPropGetter, SlotInfo } from "react-big-calendar";
 import withDragAndDrop, { withDragAndDropProps } from "react-big-calendar/lib/addons/dragAndDrop";
 import { CalendarEvent, CalendarViewMode } from "@/types/calendar";
 import { format, parse, startOfWeek, getDay, setHours } from "date-fns";
@@ -19,7 +19,7 @@ const DnDCalendar = withDragAndDrop<CalendarEvent, object>(Calendar);
 export default function CalendarPage() {
     const { events, currentView, setCurrentView, selectedDate, setSelectedDate, workingHours } = useCalendar();
     const { updateTask } = useTaskContext();
-    const { taskModal, handleEdit } = useTaskModal();
+    const { taskModal, handleEdit, toggleTaskModal, setDueDate } = useTaskModal();
 
     const locales = {
         "en-US": enUS,
@@ -57,6 +57,11 @@ export default function CalendarPage() {
         updateTask(updatedTask);
     };
 
+    const handleSelectSlot = (slotInfo: SlotInfo) => {
+        toggleTaskModal();
+        setDueDate(slotInfo.slots[0]);
+    };
+
     return (
         <div className="calendar-page">
             <DnDCalendar
@@ -71,7 +76,7 @@ export default function CalendarPage() {
                 scrollToTime={setHours(new Date(), workingHours.start)}
                 components={{
                     event: ({ event }: { event: CalendarEvent }) => (
-                        <Tooltip content={`${format(event.start, "HH:mm")} ${event.title}`}>{event.title}</Tooltip>
+                        <Tooltip content={`${format(event.start!, "HH:mm")} ${event.title}`}>{event.title}</Tooltip>
                     ),
                 }}
                 tooltipAccessor={null}
@@ -85,6 +90,10 @@ export default function CalendarPage() {
                 onEventDrop={moveEvent}
                 resizable={false}
                 selectable
+                onSelectSlot={handleSelectSlot}
+                longPressThreshold={1}
+                timeslots={1}
+                onSelecting={() => false}
             />
             {taskModal}
         </div>

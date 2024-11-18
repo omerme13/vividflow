@@ -8,7 +8,7 @@ import { TaskColors } from "@/components/Task";
 
 import "./TaskModal.scss";
 
-export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskModalProps) {
+export default function TaskModal({ isOpen, onClose, task, isEditMode, dueDate }: TaskModalProps) {
     const [text, setText] = useState("");
     const [label, setLabel] = useState("");
     const [selectedColor, setSelectedColor] = useState<TaskColors | undefined>(TaskColors.Gray);
@@ -42,6 +42,7 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode }: TaskMod
                     text: text.trim(),
                     label: label.trim(),
                     color: selectedColor,
+                    ...(dueDate && { dueDate }),
                 });
             }
         }
