@@ -1,7 +1,12 @@
 .tasks-header {
     display: flex;
-    padding: 3.2rem;
-	gap: 2.4rem;
+    padding: 2.4rem 3.2rem;
+    gap: 2.4rem;
+    position: sticky;
+    top: 0;
+    z-index: var(--z-low);
+    background-color: var(--color-purple-20);
+
     &__search-input-container {
         position: relative;
     }
@@ -91,22 +96,26 @@
     &__add-task-button {
         display: flex;
         background: none;
-		border: none;
+        border: none;
         border-radius: var(--radius-xl);
         align-items: center;
         gap: 0.8rem;
         transition: 0.1s;
         color: inherit;
         font-size: inherit;
-		background-color: var(--color-purple-60);
-		color: var(--color-text-white);		
-		padding: 0 2.4rem;
-		font-family: var(--font-family-main);
-		font-weight: var(--font-weight-bold);
+        background-color: var(--color-purple-60);
+        color: var(--color-text-white);
+        padding: 0 2.4rem;
+        font-family: var(--font-family-main);
+        font-weight: var(--font-weight-bold);
 
         &:hover {
             cursor: pointer;
             opacity: 0.7;
         }
+    }
+
+    &--scrolled {
+        box-shadow: var(--shadow-1);
     }
 }
