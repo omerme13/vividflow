@@ -1,7 +1,7 @@
 .tasks-header {
     display: flex;
     padding: 3.2rem;
-
+	gap: 2.4rem;
     &__search-input-container {
         position: relative;
     }
@@ -31,23 +31,23 @@
         }
     }
 
-	&__search-icon,
-	&__clear-text {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-	}
+    &__search-icon,
+    &__clear-text {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
     &__search-icon {
         left: 2rem;
     }
 
     &__clear-text {
         right: 2rem;
-		
-		&:hover {
-			cursor: pointer;
-			opacity: 0.7;
-		}
+
+        &:hover {
+            cursor: pointer;
+            opacity: 0.7;
+        }
     }
 
     &__menu-button {
@@ -59,34 +59,54 @@
         }
     }
 
-	&__filter-buttons {
-		display: flex;
-		align-items: center;
-		margin-left: 1.6rem;
-		color: var(--color-main-text);
-	}
-
-    &__filter-off-icon {
-		cursor: pointer;
-		border: none;
-		background: none;
-		line-height: 1;
-		color: inherit;
-		margin-top: 4px;
-		
-		&:hover {
-			opacity: 0.7;
-		}
+    &__filter-buttons {
+        display: flex;
+        align-items: center;
+        color: var(--color-main-text);
     }
 
-	&__filter-icon {
-		
-		&:hover {
-			opacity: 0.7;
-		}
-		
-		&--active {
-			color: var(--color-secondary);
-		}
-	}
+    &__filter-off-icon {
+        cursor: pointer;
+        border: none;
+        background: none;
+        line-height: 1;
+        color: inherit;
+        margin-top: 4px;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &__filter-icon {
+        &:hover {
+            opacity: 0.7;
+        }
+
+        &--active {
+            color: var(--color-secondary);
+        }
+    }
+
+    &__add-task-button {
+        display: flex;
+        background: none;
+		border: none;
+        border-radius: var(--radius-xl);
+        align-items: center;
+        gap: 0.8rem;
+        transition: 0.1s;
+        color: inherit;
+        font-size: inherit;
+		background-color: var(--color-purple-60);
+		color: var(--color-text-white);		
+		padding: 0 2.4rem;
+		font-family: var(--font-family-main);
+		font-weight: var(--font-weight-bold);
+
+        &:hover {
+            cursor: pointer;
+            opacity: 0.7;
+        }
+    }
 }

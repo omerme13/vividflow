@@ -1,10 +1,11 @@
-import { FilterIcon, SearchIcon, CloseIcon } from "@/assets/icons";
+import { FilterIcon, SearchIcon, CloseIcon, PlusIcon } from "@/assets/icons";
 import LayoutToggleButton from "./LayoutToggleButton";
 import { useTaskContext } from "@/context/TaskContext";
 import { ChangeEvent } from "react";
 import Tooltip from "@/components/Tooltip";
 import TasksFilters from "@/components/TasksFilters";
 import Popover from "@/components/Popover";
+import useTaskModal from "@/hooks/useTaskModal";
 
 import "./TasksHeader.scss";
 import { getClassWithModifier } from "@/utils/styles";
@@ -12,9 +13,14 @@ import { getClassWithModifier } from "@/utils/styles";
 export default function TasksHeader() {
     const { searchQuery, setSearchQuery, clearFilters, hasFilters } = useTaskContext();
     const isHasFilters = hasFilters();
+    const { toggleTaskModal } = useTaskModal();
 
     return (
         <div className="tasks-header">
+            <button className="tasks-header__add-task-button" onClick={toggleTaskModal}>
+                <PlusIcon />
+                <div className="tasks-header__add-task-button-text">Add task</div>
+            </button>
             <div className="tasks-header__search-input-container">
                 <SearchIcon className="tasks-header__search-icon" />
                 {searchQuery && (
