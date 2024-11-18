@@ -1,13 +1,11 @@
 import SidebarItem from "./components/SidebarItem/SidebarItem";
-import { sidebarItems } from "./constants";
+import { DEFAULT_AVATAR_URL, sidebarItems } from "./constants";
 import { HamburgerIcon, Logo } from "@/assets/icons";
 import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton";
 import { useLayout } from "@/context/LayoutContext";
 import { getClassWithModifier } from "@/utils/styles";
 
 import "./Sidebar.scss";
-
-export const defaultAvatarUrl = "/src/assets/icons/avatar.svg";
 
 export default function Sidebar() {
     const {
@@ -19,8 +17,8 @@ export default function Sidebar() {
         <div className={getClassWithModifier("sidebar", "compact", isCompactSidebar)}>
             <HamburgerIcon className="sidebar__toggle-compact-button" onClick={toggleSidebar} />
             <div className="sidebar__user-details">
-                <img src={defaultAvatarUrl} className="sidebar__user-avatar" />
-                {!isCompactSidebar && <div className="sidebar__user-name">{"Omer"}</div>}
+                <img src={DEFAULT_AVATAR_URL} className="sidebar__user-avatar" />
+                {!isCompactSidebar && <div className="sidebar__user-name">{"User"}</div>}
             </div>
             <nav className="sidebar__nav">
                 {sidebarItems.map(({ page, icon }) => (
