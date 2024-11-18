@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet } from "react-router-dom";
+import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import Sidebar from "@/components/Sidebar";
 import { TaskProvider } from "@/context/TaskContext";
 import TasksPage from "@/pages/TasksPage";
@@ -39,6 +39,10 @@ export const router = createBrowserRouter([
         element: <RootLayout />,
         errorElement: <div>Route Error!</div>,
         children: [
+            {
+                index: true,
+                element: <Navigate to="tasks" replace />,
+            },
             {
                 element: <TaskEnabledLayout />,
                 children: [
