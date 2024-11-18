@@ -24,7 +24,7 @@ interface CalendarContextType {
     selectedDate: Date;
     filterCompleted: boolean;
     selectedLabels: string[];
-    uniqueLabels: string[];
+    uniqueLabels: (string | undefined)[];
     workingHours: {
         start: number;
         end: number;
@@ -94,7 +94,7 @@ export function CalendarProvider({ children }: { children: ReactNode }) {
                 id: task.id,
                 title: task.text,
                 start: new Date(task.dueDate!),
-				end: addMinutes(new Date(task.dueDate!), 15),
+                end: addMinutes(new Date(task.dueDate!), 15),
                 allDay: false,
                 task,
                 style: {
@@ -104,7 +104,7 @@ export function CalendarProvider({ children }: { children: ReactNode }) {
             }));
     }, [tasks, selectedLabels]);
 
-    const uniqueLabels = useMemo<string[]>(() => {
+    const uniqueLabels = useMemo<(string | undefined)[]>(() => {
         return [...new Set(tasks.map((task) => task.label))].filter(Boolean);
     }, [tasks]);
 
