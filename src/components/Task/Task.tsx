@@ -1,6 +1,6 @@
 import { MouseEvent, useState } from "react";
 import { TaskColors, TaskProps } from "./Task.types";
-import { CheckIcon, ClockIcon, PaletteIcon, TrashIcon } from "@/assets/icons";
+import { CheckIcon, ClockIcon, PaletteIcon, TrashIcon, UndoIcon } from "@/assets/icons";
 import { getClassWithModifier, getPaletteColor } from "@/utils/styles";
 import TaskAction from "./components/TaskAction/TaskAction";
 import { useTask } from "@/context/TaskContext";
@@ -41,6 +41,11 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
     const handleDeleteTask = () => {
         deleteTask();
         notify();
+    };
+
+    const handleClickOnCompleted = (e: MouseEvent<HTMLElement>) => {
+        e.stopPropagation();
+        toggleTaskCompletion();
     };
 
     return (
@@ -91,6 +96,11 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                 />
                 <TaskAction icon={TrashIcon} action={handleDeleteTask} isWarning tooltipContent="delete" />
             </div>
+            {isCompleted && (
+                <div className="task__cover-done" onClick={handleClickOnCompleted}>
+                    <UndoIcon className="task__undo-icon" width={40} height={40} />
+                </div>
+            )}
         </div>
     );
 }
