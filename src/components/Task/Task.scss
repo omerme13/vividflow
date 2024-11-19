@@ -76,4 +76,33 @@
         -webkit-box-orient: vertical;
         line-height: var(--line-height-regular);
     }
+
+	&__cover-done {
+		background: rgba(0,0,0, 0.3);
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: 0.2s;
+		
+		&:hover {
+			background: rgba(0,0,0, 0.7);
+
+			.task__undo-icon {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+	
+	&__undo-icon {
+		visibility: hidden;
+		opacity: 0;
+		transition: 0.2s;
+		color: var(--color-text-white);
+	}
 }
