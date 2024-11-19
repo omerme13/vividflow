@@ -15,7 +15,7 @@ export default function TasksHeader() {
     const { searchQuery, setSearchQuery, clearFilters, hasFilters } = useTaskContext();
     const isHasFilters = hasFilters();
     const { toggleTaskModal } = useTaskModal();
-	const isScrolled = useScroll(30);
+    const isScrolled = useScroll(30);
 
     return (
         <div className={getClassWithModifier("tasks-header", "scrolled", isScrolled)}>
@@ -24,7 +24,7 @@ export default function TasksHeader() {
                 <div className="tasks-header__add-task-button-text">Add task</div>
             </button>
             <div className="tasks-header__search-input-container">
-                <SearchIcon className="tasks-header__search-icon" />
+                <SearchIcon className={getClassWithModifier("tasks-header__search-icon", "active", !!searchQuery)} />
                 {searchQuery && (
                     <CloseIcon
                         className="tasks-header__clear-text"

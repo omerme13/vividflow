@@ -44,6 +44,10 @@
     }
     &__search-icon {
         left: 2rem;
+
+		&--active {
+			color: var(--color-secondary);
+		}
     }
 
     &__clear-text {
