@@ -5,6 +5,8 @@ import { TaskModalProps } from "./TaskModal.types";
 import Autocomplete from "@/components/Autocomplete";
 import ColorPicker from "@/components/ColorPicker";
 import { TaskColors } from "@/components/Task";
+import { TrashIcon } from "@/assets/icons";
+import useDeleteTask from "@/hooks/useDeleteTask";
 
 import "./TaskModal.scss";
 
@@ -14,6 +16,7 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode, dueDate }
     const [selectedColor, setSelectedColor] = useState<TaskColors | undefined>(TaskColors.Gray);
     const inputRef = useRef<HTMLTextAreaElement>(null);
     const { addTask, updateTask, labels: existingLabels } = useTaskContext();
+    const handleDeleteTask = useDeleteTask(task?.id, onClose);
 
     useEffect(() => {
         if (isOpen && isEditMode && task) {
@@ -73,6 +76,12 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode, dueDate }
                     resetValue={() => setLabel("")}
                 />
                 <ColorPicker color={selectedColor} onChangeColor={handleColorChange} isMulti={false} />
+                {isEditMode && (
+                    <button className="task-modal__delete-button" onClick={handleDeleteTask} type="button">
+                        <TrashIcon width={16} height={16} />
+                        <span>Delete task</span>
+                    </button>
+                )}
             </div>
         </Modal>
     );

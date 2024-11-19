@@ -40,4 +40,25 @@
         height: 20rem;
 		line-height: var(--line-height-regular);
     }
+
+	&__delete-button {
+		font-family: inherit;
+		border: none;
+		background: none;
+		font-weight: var(--font-weight-bold);
+		font-size: var(--font-size-menu);
+		color: var(--color-palette-red-strong);
+		display: flex;
+		gap: 0.4rem;
+		align-items: center;
+
+		&:hover {
+			cursor: pointer;
+			opacity: 0.7;
+		}
+
+		span {
+			line-height: 1;
+		}
+	}
 }
