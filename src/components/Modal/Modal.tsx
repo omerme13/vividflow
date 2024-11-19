@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { ModalProps } from "./Modal.types";
 import useClickOutside from "@/hooks/useClickOutside";
@@ -14,6 +14,15 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
         enabled: isOpen,
     });
 
+    useEffect(() => {
+        const originalStyle = window.getComputedStyle(document.body).overflow;
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        }
+        return () => {
+            document.body.style.overflow = originalStyle;
+        };
+    }, [isOpen]);
     if (!isOpen) return null;
 
     return createPortal(
