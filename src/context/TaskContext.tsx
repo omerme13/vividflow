@@ -63,7 +63,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     const addTask = useCallback((newTask: TaskDataWithoutId) => {
         const taskWithId = { ...newTask, isCompleted: false, id: crypto.randomUUID() };
         setTasks((prev) => {
-            const updatedTasks = [...prev, taskWithId];
+            const updatedTasks = [taskWithId, ...prev];
             saveTasksAndUpdateLabels(updatedTasks, setLabels);
             return updatedTasks;
         });
