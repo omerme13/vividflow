@@ -23,6 +23,7 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
             document.body.style.overflow = originalStyle;
         };
     }, [isOpen]);
+	
     if (!isOpen) return null;
 
     return createPortal(
