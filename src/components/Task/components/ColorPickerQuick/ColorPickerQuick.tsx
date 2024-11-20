@@ -1,7 +1,7 @@
 import { MouseEvent } from "react";
-import { TaskColors } from "@/components/Task";
 import { getPaletteColor } from "@/utils/styles";
 import { ColorPickerQuickProps } from "./ColorPickerQuick.types";
+import { TaskColors } from "@/types/task";
 
 import "./ColorPickerQuick.scss";
 

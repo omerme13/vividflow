@@ -1,4 +1,4 @@
-import { TaskData } from '@/components/Task';
+import { TaskData } from "@/types/task";
 
 export interface TaskModalProps {
     isOpen: boolean;

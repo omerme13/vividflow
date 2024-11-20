@@ -1,5 +1,5 @@
-import { TaskData } from "@/components/Task";
 import { Event } from "react-big-calendar";
+import { TaskData } from "./task";
 
 export enum CalendarViewMode {
     Day = "day",

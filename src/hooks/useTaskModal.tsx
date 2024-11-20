@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLayout } from "@/context/LayoutContext";
-import { TaskData } from "@/components/Task";
 import TaskModal from "@/components/TaskModal";
+import { TaskData } from "@/types/task";
 
 export default function useTaskModal() {
     const [selectedTask, setSelectedTask] = useState<TaskData | null>(null);

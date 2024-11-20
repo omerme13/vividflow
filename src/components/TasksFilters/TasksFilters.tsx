@@ -1,7 +1,7 @@
 import Select from "react-select";
 import { useTaskContext } from "@/context/TaskContext";
 import ColorPicker from "@/components/ColorPicker";
-import { TaskColors } from "../Task/Task.types";
+import { TaskColors } from "@/types/task";
 
 import "./TasksFilters.scss";
 

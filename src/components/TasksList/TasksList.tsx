@@ -1,10 +1,11 @@
-import Task, { TaskData } from "@/components/Task";
+import Task from "@/components/Task";
 import { useFilteredTasks } from "@/context/TaskContext";
 import { getClassWithModifier } from "@/utils/styles";
 import { useLayout } from "@/context/LayoutContext";
 import useTaskModal from "@/hooks/useTaskModal";
 import { EmptyTasksIcon, NotFoundTasksIcon } from "@/assets/icons";
 import FeedbackState from "../FeedbackState/FeedbackState";
+import { TaskData } from "@/types/task";
 
 import "./TasksList.scss";
 

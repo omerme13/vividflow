@@ -8,7 +8,7 @@ import { DEFAULT_CALENDAR_PREFERENCES } from "@/utils/constants";
 import Tooltip from "@/components/Tooltip";
 import useTaskModal from "@/hooks/useTaskModal";
 import { useTaskContext } from "@/context/TaskContext";
-import { TaskData } from "@/components/Task";
+import { TaskData } from "@/types/task";
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";

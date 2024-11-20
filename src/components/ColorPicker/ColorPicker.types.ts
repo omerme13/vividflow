@@ -1,4 +1,4 @@
-import { TaskColors } from "@/components/Task";
+import { TaskColors } from "@/types/task";
 
 interface BaseColorPickerProps {
     onClear?: () => void;

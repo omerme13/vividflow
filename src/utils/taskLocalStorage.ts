@@ -1,6 +1,6 @@
-import { TaskData } from "@/components/Task";
 import { extractUniqueLabels } from "./tasks";
 import { StorageKeys } from "./constants";
+import { TaskData } from "@/types/task";
 
 export const getTasks = (): TaskData[] => {
     const storedTasks = localStorage.getItem(StorageKeys.Tasks);

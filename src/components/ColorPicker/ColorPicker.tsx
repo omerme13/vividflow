@@ -1,8 +1,8 @@
-import { TaskColors } from "@/components/Task";
 import { getClassWithModifier, getPaletteColor } from "@/utils/styles";
 import { ColorPickerProps } from "./ColorPicker.types";
 
 import "./ColorPicker.scss";
+import { TaskColors } from "@/types/task";
 
 export default function ColorPicker({
     isMulti,

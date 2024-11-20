@@ -2,8 +2,8 @@ import { createContext, useContext, useMemo, useState, useEffect, ReactNode } fr
 import { addDays, addMinutes, isBefore, isSameDay } from "date-fns";
 import { useTaskContext } from "./TaskContext";
 import { getCalendarPreference, saveCalendarPreference } from "@/utils/calendarLocalStorage";
-import { TaskData, TaskColors } from "@/components/Task";
 import { View } from "react-big-calendar";
+import { TaskColors, TaskData } from "@/types/task";
 
 interface CalendarEvent {
     id: string;

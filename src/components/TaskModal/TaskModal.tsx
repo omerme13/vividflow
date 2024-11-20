@@ -4,9 +4,9 @@ import { useTaskContext } from "@/context/TaskContext";
 import { TaskModalProps } from "./TaskModal.types";
 import Autocomplete from "@/components/Autocomplete";
 import ColorPicker from "@/components/ColorPicker";
-import { TaskColors } from "@/components/Task";
 import { TrashIcon } from "@/assets/icons";
 import useDeleteTask from "@/hooks/useDeleteTask";
+import { TaskColors } from "@/types/task";
 
 import "./TaskModal.scss";
 

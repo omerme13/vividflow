@@ -1,5 +1,5 @@
 import { MouseEvent, useState } from "react";
-import { TaskColors, TaskProps } from "./Task.types";
+import { TaskProps } from "./Task.types";
 import { CheckIcon, ClockIcon, PaletteIcon, TrashIcon, UndoIcon } from "@/assets/icons";
 import { getClassWithModifier, getPaletteColor } from "@/utils/styles";
 import TaskAction from "./components/TaskAction/TaskAction";
@@ -10,6 +10,7 @@ import Popover from "@/components/Popover";
 import ColorPickerQuick from "./components/ColorPickerQuick/ColorPickerQuick";
 import useDeleteTask from "@/hooks/useDeleteTask";
 import { format } from "date-fns";
+import { TaskColors } from "@/types/task";
 
 import "./Task.scss";
 

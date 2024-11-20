@@ -1,8 +1,8 @@
 import { createContext, useState, useCallback, useContext, Dispatch, SetStateAction, ReactNode, useMemo } from "react";
-import { TaskColors, TaskData } from "@/components/Task";
 import * as taskStorage from "@/utils/taskLocalStorage";
 import { extractUniqueLabels } from "@/utils/tasks";
 import useDebouncedValue from "@/hooks/useDebouncedValue";
+import { TaskColors, TaskData } from "@/types/task";
 
 type TaskDataWithoutId = Omit<TaskData, "id">;
 
