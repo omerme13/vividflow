@@ -17,7 +17,7 @@
             background: transparent;
             border: 1px solid var(--color-purple-30);
             padding: 0.8rem 1.6rem;
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
             font-size: var(--font-size-menu);
             font-family: var(--font-family-main);
             font-weight: var(--font-weight-bold);
@@ -85,9 +85,9 @@
     .rbc-month-header {
         padding: 1rem;
         background-color: var(--color-card-background);
-		.rbc-header {
-			background: var(--color-card-background);
-		}
+        .rbc-header {
+            background: var(--color-card-background);
+        }
     }
 
     .rbc-header {
@@ -97,7 +97,7 @@
         background-color: var(--color-purple-10);
         font-size: var(--font-size-menu);
         padding: 0.8rem 1.6rem !important;
-		border: none;
+        border: none;
     }
 
     .rbc-date-cell {
@@ -125,12 +125,12 @@
     .rbc-event-content {
         font-size: var(--font-size-menu);
 
-		.tooltip__trigger {
-			white-space: nowrap;
-			overflow: hidden;
-			// text-overflow: ellipsis;
-		}
-	}
+        .tooltip__trigger {
+            white-space: nowrap;
+            overflow: hidden;
+            // text-overflow: ellipsis;
+        }
+    }
 
     .rbc-today {
         background-color: var(--color-cta-lighter);
@@ -176,7 +176,7 @@
     .rbc-time-slot {
         color: var(--color-main-text);
         border-top: none;
-		font-size: var(--font-size-menu);
+        font-size: var(--font-size-menu);
     }
 
     .rbc-time-gutter {
@@ -184,11 +184,9 @@
     }
 
     .rbc-agenda-view {
-        border: 1px solid var(--color-purple-30);
         border-radius: var(--radius-md);
-        border: none;
 
-		&::-webkit-scrollbar {
+        &::-webkit-scrollbar {
             width: 0.8rem;
         }
 
@@ -205,34 +203,38 @@
                 border-width: 0.15rem;
             }
         }
-    }
 
-    .rbc-agenda-content {
-        tr {
-			cursor: pointer;
-			
+        table.rbc-agenda-table {
+            border-spacing: 0;
+            border-collapse: collapse;
+            font-size: var(--font-size-menu);
+			border: none;
+
+            th,
             td {
-				padding: 1rem 2.1rem !important;
+                padding: 1.2rem;
+                border: none !important;
+            }
+
+            thead th {
+                background-color: var(--color-purple-10);
+                font-weight: var(--font-weight-bold);
+                border: none;
+            }
+
+            tr {
+                border: none;
             }
         }
     }
 
-    .rbc-agenda-table {
-        border-spacing: 0;
-        border-collapse: collapse;
-        font-size: var(--font-size-menu);
+    .rbc-agenda-content {
+        tr {
+            cursor: pointer;
 
-
-        th,
-        td {
-            padding: 1.2rem;
-			border: none !important;
-        }
-
-        thead th {
-            background-color: var(--color-purple-10);
-            font-weight: var(--font-weight-bold);
-            border: none;
+            td {
+                padding: 1rem 2.1rem !important;
+            }
         }
     }
 

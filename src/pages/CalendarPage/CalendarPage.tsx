@@ -40,7 +40,7 @@ export default function CalendarPage() {
     const handleEventProps: EventPropGetter<CalendarEvent> = (event) => {
         return {
             style: {
-                background: `var(--color-palette-${event.task.color})`,
+                background: `var(--color-${event.task.color})`,
                 color: "var(--color-main-text)",
             },
         };
