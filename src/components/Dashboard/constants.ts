@@ -15,4 +15,3 @@ export const DASHBOARD_COLORS = [
     "#D946EF",
     "#64748B",
 ];
-
