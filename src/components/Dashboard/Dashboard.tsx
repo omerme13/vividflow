@@ -35,7 +35,7 @@ export default function Dashboard() {
             <DashboardItem title="Task Overview">
                 <div className="dashboard__info-boxes">
                     <StatBox label="Total Tasks" value={stats.total} color={TaskColors.Blue} />
-                    <StatBox label="Completion Rate" value={stats.completionRate} color={TaskColors.Green} />
+                    <StatBox label="Completion Rate" value={`${stats.completionRate}%`} color={TaskColors.Green} />
                     <StatBox label="Overdue" value={stats.overdue} color={TaskColors.Red} />
                 </div>
             </DashboardItem>

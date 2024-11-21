@@ -8,6 +8,6 @@ export enum TimeFilter {
 
 export interface StatBoxProps {
 	label: string;
-	value: number;
+	value: number | string;
 	color: TaskColors;
 }

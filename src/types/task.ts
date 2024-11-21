@@ -3,7 +3,6 @@ export interface TaskData {
     text: string;
     label?: string;
     color?: TaskColors;
-    isOnKanban?: boolean;
     isCompleted?: boolean;
     dueDate?: Date | undefined;
 	completedAt?: Date;
