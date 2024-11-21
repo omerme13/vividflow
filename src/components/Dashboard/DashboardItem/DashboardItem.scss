@@ -1,0 +1,37 @@
+.dashboard-item {
+	background: var(--color-card-background);
+	border-radius: var(--radius-md);
+	padding: 2rem;
+	box-shadow: var(--shadow-1);
+	transition: 0.2s;
+
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-2);
+	}
+
+	&--full {
+		grid-column: 1 / -1;
+	}
+
+	&__header {
+		margin-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+	}
+
+	&__title {
+		font-size: var(--font-size-main);
+        color: var(--color-main-text);
+		text-transform: uppercase;
+	}
+
+	&__container {
+		height: 30rem;
+        width: 100%;
+        padding: 2rem;
+        background: var(--color-purple-10);
+        border-radius: var(--radius-md);
+	}
+}

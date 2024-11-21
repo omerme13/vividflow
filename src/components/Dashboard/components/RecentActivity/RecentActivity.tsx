@@ -7,7 +7,7 @@ interface RecentActivityProps {
     tasks: TaskData[];
 }
 
-
+// TODO make functionality better, move logic outside
 const getActivityDescription = (task: TaskData) => {
     if (task.isCompleted) return "Task completed";
     if (task.dueDate && new Date(task.dueDate) < new Date()) return "Task overdue";

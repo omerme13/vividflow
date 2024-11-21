@@ -11,9 +11,9 @@ import useTaskProgressData from "@/hooks/useTaskProgressData";
 import { StatBoxProps, TimeFilter } from "./Dashboard.types";
 
 import "./Dashboard.scss";
+import DashboardItem from "./DashboardItem/DashboardItem";
 
-
-export  function StatBox({ label, value, color }: StatBoxProps) {
+export function StatBox({ label, value, color }: StatBoxProps) {
     return (
         <div className={`dashboard__stat-box dashboard__stat-box--${color}`}>
             <div className="dashboard__stat-box-value">{value}</div>
@@ -32,29 +32,22 @@ export default function Dashboard() {
 
     return (
         <div className="dashboard">
-            <div className="dashboard__card">
-                <div className="dashboard__header">
-                    <h2 className="dashboard__title">Task Overview</h2>
-                </div>
+            <DashboardItem title="Task Overview">
                 <div className="dashboard__info-boxes">
                     <StatBox label="Total Tasks" value={stats.total} color={TaskColors.Blue} />
                     <StatBox label="Completion Rate" value={stats.completionRate} color={TaskColors.Green} />
                     <StatBox label="Overdue" value={stats.overdue} color={TaskColors.Red} />
                 </div>
-            </div>
+            </DashboardItem>
+            <DashboardItem title="Tasks by Category" hasContainer>
+                <TaskDistributionChart data={labelData} />
+            </DashboardItem>
 
-            <div className="dashboard__card">
-                <div className="dashboard__header">
-                    <h2 className="dashboard__title">Tasks by Category</h2>
-                </div>
-                <div className="dashboard__chart-container">
-                    <TaskDistributionChart data={labelData} />
-                </div>
-            </div>
-
-            <div className="dashboard__card dashboard__card--full">
-                <div className="dashboard__header">
-                    <h2 className="dashboard__title">Task Progress</h2>
+            <DashboardItem
+                title="Task Progress"
+                hasContainer
+                fullRow
+                filters={
                     <div className="dashboard__filters">
                         {Object.values(TimeFilter).map((filter) => (
                             <button
@@ -66,18 +59,13 @@ export default function Dashboard() {
                             </button>
                         ))}
                     </div>
-                </div>
-                <div className="dashboard__chart-container">
-                    <TaskProgressChart data={statusData} />
-                </div>
-            </div>
-
-            <div className="dashboard__card dashboard__card--full">
-                <div className="dashboard__header">
-                    <h2 className="dashboard__title">Recent Activity</h2>
-                </div>
+                }
+            >
+                <TaskProgressChart data={statusData} />
+            </DashboardItem>
+            <DashboardItem title="Recent Activity" fullRow>
                 <RecentActivity tasks={tasks} />
-            </div>
+            </DashboardItem>
         </div>
     );
 }
