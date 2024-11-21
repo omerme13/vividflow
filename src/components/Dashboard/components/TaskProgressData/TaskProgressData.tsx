@@ -1,5 +1,5 @@
-import { DASHBOARD_COLORS } from "@/pages/DashboardPage/constants";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { DASHBOARD_COLORS } from "@/components/Dashboard";
 
 export interface TaskProgressData {
     date: string;

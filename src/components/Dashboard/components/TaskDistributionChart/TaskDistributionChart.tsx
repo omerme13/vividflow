@@ -1,5 +1,5 @@
-import { DASHBOARD_COLORS } from "@/pages/DashboardPage/constants";
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Cell, Legend } from "recharts";
+import { DASHBOARD_COLORS } from "@/components/Dashboard";
 
 export const CHART_TOOLTIP_STYLES = {
     background: "var(--color-purple-10)",

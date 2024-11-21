@@ -1,11 +1,12 @@
 import { TaskData } from "@/types/task";
+import { format } from "date-fns";
+
+import "./RecentActivity.scss";
 
 interface RecentActivityProps {
     tasks: TaskData[];
 }
 
-const truncateText = (text: string, maxLength: number = 50) =>
-    text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
 
 const getActivityDescription = (task: TaskData) => {
     if (task.isCompleted) return "Task completed";
@@ -24,31 +25,27 @@ export default function RecentActivity({ tasks }: RecentActivityProps) {
         .slice(0, 5);
 
     return (
-        <div className="dashboard__activity">
+        <div className="recent-activity">
             {recentTasks.map((task) => (
-                <div key={task.id} className="dashboard__activity-item">
-                    <div className="dashboard__activity-main">
-                        <span className="dashboard__activity-text">
-                            {truncateText(task.text)}
-                        </span>
+                <div key={task.id} className="recent-activity__item">
+                    <div className="recent-activity__main">
+                        <span className="recent-activity__text">{task.text}</span>
                         {task.label && (
-                            <span className={`dashboard__activity-label dashboard__activity-label--${task.color || "gray"}`}>
+                            <span className={`recent-activity__label recent-activity__label--${task.color || "gray"}`}>
                                 {task.label}
                             </span>
                         )}
                     </div>
-                    <div className="dashboard__activity-info">
-                        <span className="dashboard__activity-status">
-                            {getActivityDescription(task)}
-                        </span>
+                    <div className="recent-activity__info">
+                        <span className="recent-activity__status">{getActivityDescription(task)}</span>
                         {task.dueDate && (
-                            <span className="dashboard__activity-due">
-                                Due: {new Date(task.dueDate).toLocaleString()}
+                            <span className="recent-activity__due">
+                                Due: {format(new Date(task.dueDate), "dd/MM/yyyy, HH:mm")}
                             </span>
                         )}
                         {task.completedAt && (
-                            <span className="dashboard__activity-date">
-                                {new Date(task.completedAt).toLocaleString()}
+                            <span className="recent-activity__date">
+                                {format(new Date(task.completedAt), "dd/MM/yyyy, HH:mm")}
                             </span>
                         )}
                     </div>

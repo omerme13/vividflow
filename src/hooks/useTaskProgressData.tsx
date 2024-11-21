@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { TaskData } from "@/types/task";
-import { TimeFilter } from "@/pages/DashboardPage/DashboardPage.types";
 import { TaskProgressData } from "@/components/Dashboard/components/TaskProgressData/TaskProgressData";
+import { TimeFilter } from "@/components/Dashboard";
 
 export default function useTaskProgressData(tasks: TaskData[], timeFilter: TimeFilter): TaskProgressData[] {
     return useMemo(() => {

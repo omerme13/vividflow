@@ -98,94 +98,7 @@
         border-radius: var(--radius-md);
     }
 
-    &__activity {
-        &-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 1.5rem;
-            border-radius: var(--radius-sm);
-            background: var(--color-purple-10);
-            margin-bottom: 1rem;
 
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-
-        &-main {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            max-width: 60%;
-        }
-
-        &-text {
-            color: var(--color-main-text);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        &-label {
-            padding: 0.2rem 0.8rem;
-            border-radius: var(--radius-xs);
-            font-size: var(--font-size-menu);
-            white-space: nowrap;
-
-            &--gray {
-                background: var(--color-gray);
-            }
-            &--red {
-                background: var(--color-red);
-            }
-            &--yellow {
-                background: var(--color-yellow);
-            }
-            &--green {
-                background: var(--color-green);
-            }
-            &--blue {
-                background: var(--color-blue);
-            }
-        }
-
-        &-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 0.4rem;
-            min-width: 30%;
-        }
-
-        &-status {
-            color: var(--color-purple-70);
-            font-size: var(--font-size-menu);
-
-            &--deleted {
-                color: var(--color-red-strong);
-            }
-
-            &--updated {
-                color: var(--color-purple-70);
-            }
-
-            &--overdue {
-                color: var(--color-red);
-            }
-        }
-
-        &-due {
-            color: var(--color-main-text);
-            font-size: var(--font-size-menu);
-            opacity: 0.8;
-        }
-
-        &-date {
-            color: var(--color-main-text);
-            font-size: var(--font-size-menu);
-            opacity: 0.8;
-        }
-    }
 
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
@@ -193,10 +106,6 @@
 
         &__card--timeline {
             grid-column: 1;
-        }
-
-        &__activity-main {
-            max-width: 50%;
         }
 
         &__filters {
