@@ -1,18 +1,6 @@
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Cell, Legend } from "recharts";
 import { DASHBOARD_COLORS } from "@/components/Dashboard";
-
-export const CHART_TOOLTIP_STYLES = {
-    background: "var(--color-purple-10)",
-    border: "none",
-    boxShadow: "var(--shadow-1)",
-    padding: "0.4rem 0.8rem",
-    borderRadius: "var(--radius-xs)"
-};
-
-export const CHART_ITEM_STYLES = {
-    color: "var(--color-main-text)",
-    fontSize: "1.2rem"
-};
+import { CHART_ITEM_STYLES, CHART_TOOLTIP_STYLES } from "./constants";
 
 interface TaskDistributionChartProps {
     data: Array<{ name: string; value: number }>;
@@ -24,10 +12,7 @@ export default function TaskDistributionChart({ data }: TaskDistributionChartPro
             <PieChart>
                 <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80}>
                     {data.map((_, index) => (
-                        <Cell 
-                            key={`cell-${index}`} 
-                            fill={DASHBOARD_COLORS[index % DASHBOARD_COLORS.length]} 
-                        />
+                        <Cell key={`cell-${index}`} fill={DASHBOARD_COLORS[index % DASHBOARD_COLORS.length]} />
                     ))}
                 </Pie>
                 <Tooltip contentStyle={CHART_TOOLTIP_STYLES} itemStyle={CHART_ITEM_STYLES} />

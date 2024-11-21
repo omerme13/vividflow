@@ -1,5 +1,5 @@
 import SidebarItem from "./components/SidebarItem/SidebarItem";
-import { DEFAULT_AVATAR_URL, sidebarItems } from "./constants";
+import { DEFAULT_AVATAR_URL, SIDEBAR_ITEMS } from "./constants";
 import { HamburgerIcon, Logo } from "@/assets/icons";
 import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton";
 import { useLayout } from "@/context/LayoutContext";
@@ -21,7 +21,7 @@ export default function Sidebar() {
                 {!isCompactSidebar && <div className="sidebar__user-name">{"User"}</div>}
             </div>
             <nav className="sidebar__nav">
-                {sidebarItems.map(({ page, icon }) => (
+                {SIDEBAR_ITEMS.map(({ page, icon }) => (
                     <SidebarItem key={page} page={page} icon={icon} isCompactSidebar={isCompactSidebar} />
                 ))}
             </nav>
