@@ -6,8 +6,8 @@ export enum TimeFilter {
     Month = "month",
 }
 
-export interface StatBoxProps {
-	label: string;
-	value: number | string;
-	color: TaskColors;
+export interface StatProps {
+    color?: TaskColors;
+    value: number | string;
+    label: string;
 }

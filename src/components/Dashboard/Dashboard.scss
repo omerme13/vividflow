@@ -3,6 +3,12 @@
     grid-template-columns: repeat(2, minmax(30rem, 1fr));
     gap: 2.4rem;
 
+	&__task-overview {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
     &__filters {
         display: flex;
         gap: 1.6rem;
@@ -16,7 +22,7 @@
         cursor: pointer;
         transition: all 0.2s;
         text-transform: capitalize;
-		color: var(--color-main-text);
+        color: var(--color-main-text);
 
         &--active {
             background: var(--color-cta);
@@ -29,37 +35,54 @@
         }
     }
 
-    &__info-boxes {
+    &__stats {
         display: grid;
-        gap: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3.2rem;
     }
 
-    &__stat-box {
-        background: var(--color-purple-10);
-        padding: 2rem;
-        border-radius: var(--radius-md);
-        text-align: center;
-
-        &--blue {
-            border-left: 4px solid var(--color-blue);
-        }
-        &--green {
-            border-left: 4px solid var(--color-green);
-        }
-        &--red {
-            border-left: 4px solid var(--color-red);
-        }
-
+    &__stat {
         &-value {
-            font-size: 2.4rem;
+            font-size: 3.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
         }
 
         &-label {
-            color: var(--color-main-text);
+            color: var(--color-text-secondary);
             font-size: var(--font-size-menu);
+			text-transform: capitalize;
         }
     }
 
+    &__subtitle {
+        font-size: var(--font-size-menu);
+		margin-bottom: 1.6rem;
+    }
+
+    &__color-distribution {
+		display: flex;
+        gap: 1.6rem;
+		// margin-top: auto;
+    }
+
+    &__color-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    &__color-bar {
+        width: 100%;
+        height: 0.8rem;
+        border-radius: var(--radius-md);
+    }
+
+    &__color-count {
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-menu);
+    }
 
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
@@ -67,6 +90,10 @@
 
         &__filters {
             flex-wrap: wrap;
+        }
+
+        &__stats {
+            grid-template-columns: 1fr;
         }
     }
 }

@@ -1,52 +1,54 @@
 import { useState } from "react";
 import { useTaskContext } from "@/context/TaskContext";
 import { TaskColors } from "@/types/task";
-import { getClassWithModifier } from "@/utils/styles";
+import { getClassWithModifier, getPaletteColor } from "@/utils/styles";
 import useTaskStats from "@/hooks/useTaskStats";
-import useTaskLabels from "@/hooks/useTasksLabels";
-import TaskDistributionChart from "@/components/Dashboard/components/TaskDistributionChart/TaskDistributionChart";
 import TaskProgressChart from "@/components/Dashboard/components/TaskProgressData/TaskProgressData";
 import RecentActivity from "@/components/Dashboard/components/RecentActivity/RecentActivity";
 import useTaskProgressData from "@/hooks/useTaskProgressData";
-import { StatBoxProps, TimeFilter } from "./Dashboard.types";
-
-import "./Dashboard.scss";
+import { StatProps, TimeFilter } from "./Dashboard.types";
 import DashboardItem from "./DashboardItem/DashboardItem";
 
-export function StatBox({ label, value, color }: StatBoxProps) {
+import "./Dashboard.scss";
+
+function Stat({ color, value, label }: StatProps) {
     return (
-        <div className={`dashboard__stat-box dashboard__stat-box--${color}`}>
-            <div className="dashboard__stat-box-value">{value}</div>
-            <div className="dashboard__stat-box-label">{label}</div>
+        <div className="dashboard__stat">
+            <div className="dashboard__stat-value" style={{ color: color ? getPaletteColor(color) : "" }}>
+                {value}
+            </div>
+            <div className="dashboard__stat-label">{label}</div>
         </div>
     );
 }
-
 export default function Dashboard() {
     const { tasks } = useTaskContext();
     const [timeFilter, setTimeFilter] = useState<TimeFilter>(TimeFilter.Week);
-
     const stats = useTaskStats(tasks);
-    const labelData = useTaskLabels(tasks);
     const statusData = useTaskProgressData(tasks, timeFilter);
 
     return (
         <div className="dashboard">
-            <DashboardItem title="Task Overview">
-                <div className="dashboard__info-boxes">
-                    <StatBox label="Total Tasks" value={stats.total} color={TaskColors.Blue} />
-                    <StatBox label="Completion Rate" value={`${stats.completionRate}%`} color={TaskColors.Green} />
-                    <StatBox label="Overdue" value={stats.overdue} color={TaskColors.Red} />
+            <DashboardItem title="Task Overview" className="dashboard__task-overview">
+                <div className="dashboard__stats">
+                    <Stat value={stats.total} label="total tasks" />
+                    <Stat value={`${stats.completionRate}%`} label="completion rate" color={TaskColors.Green} />
+                    <Stat value={stats.dueSoon} label="due soon" color={TaskColors.Yellow} />
+                    <Stat value={stats.overdue} label="overdue" color={TaskColors.Red} />
                 </div>
-            </DashboardItem>
-            <DashboardItem title="Tasks by Category" hasContainer>
-                <TaskDistributionChart data={labelData} />
+                <div className="dashboard__color-distribution">
+                    {Object.values(TaskColors).map((color) => (
+                        <div key={color} className="dashboard__color-item" style={{ flex: stats.colorCounts[color] }}>
+                            <span className="dashboard__color-count">{stats.colorCounts[color] || 0}</span>
+                            <div className={`dashboard__color-bar`} style={{ background: getPaletteColor(color) }} />
+                        </div>
+                    ))}
+                </div>
             </DashboardItem>
 
             <DashboardItem
                 title="Task Progress"
                 hasContainer
-                fullRow
                 filters={
                     <div className="dashboard__filters">
                         {Object.values(TimeFilter).map((filter) => (

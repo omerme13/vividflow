@@ -4,4 +4,5 @@ export interface DashboardItemProps {
     filters?: React.ReactNode;
     fullRow?: boolean;
 	hasContainer?: boolean;
+	className?: string;
 }
