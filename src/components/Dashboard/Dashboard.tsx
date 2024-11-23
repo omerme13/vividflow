@@ -26,8 +26,6 @@ export default function Dashboard() {
     const stats = useTaskStats(tasks, timeFilter);
     const statusData = useTaskProgress(tasks, timeFilter);
 
-
-
     return (
         <div className="dashboard">
             <DashboardItem title="Task Overview" className="dashboard__task-overview">
