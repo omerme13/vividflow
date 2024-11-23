@@ -3,9 +3,8 @@ import { DEFAULT_PREFERENCES, StorageKeys } from "./constants";
 
 export const getStoredPreferences = (): UserPreferences => {
     const storedPreferences = localStorage.getItem(StorageKeys.Preference);
-    if (!storedPreferences) {
-        return DEFAULT_PREFERENCES;
-    }
+    if (!storedPreferences) return DEFAULT_PREFERENCES;
+	
     const parsedPreferences = JSON.parse(storedPreferences) as Partial<UserPreferences>;
     return { ...DEFAULT_PREFERENCES, ...parsedPreferences };
 };

@@ -37,12 +37,23 @@ export default function Dashboard() {
                     <Stat value={stats.overdue} label="overdue" color={TaskColors.Red} />
                 </div>
                 <div className="dashboard__color-distribution">
-                    {Object.values(TaskColors).map((color) => (
-                        <div key={color} className="dashboard__color-item" style={{ flex: stats.colorCounts[color] }}>
-                            <span className="dashboard__color-count">{stats.colorCounts[color] || 0}</span>
-                            <div className={`dashboard__color-bar`} style={{ background: getPaletteColor(color) }} />
-                        </div>
-                    ))}
+                    {Object.values(TaskColors).map((color) => {
+                        if (!stats.colorCounts[color]) return null;
+
+                        return (
+                            <div
+                                key={color}
+                                className="dashboard__color-item"
+                                style={{ flex: stats.colorCounts[color] }}
+                            >
+                                <span className="dashboard__color-count">{stats.colorCounts[color] || 0}</span>
+                                <div
+                                    className={`dashboard__color-bar`}
+                                    style={{ background: getPaletteColor(color) }}
+                                />
+                            </div>
+                        );
+                    })}
                 </div>
             </DashboardItem>
 

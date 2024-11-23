@@ -17,9 +17,7 @@ export default function useClickOutside({ refs, handler, enabled = true }: UseCl
                 ref.current && path.includes(ref.current)
             );
 
-            if (!clickedInside) {
-                handler();
-            }
+            if (!clickedInside) handler();
         };
 		
         document.addEventListener("mousedown", handleClickOutside);

@@ -16,14 +16,13 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
 
     useEffect(() => {
         const originalStyle = window.getComputedStyle(document.body).overflow;
-        if (isOpen) {
-            document.body.style.overflow = "hidden";
-        }
+        if (isOpen) document.body.style.overflow = "hidden";
+
         return () => {
             document.body.style.overflow = originalStyle;
         };
     }, [isOpen]);
-	
+
     if (!isOpen) return null;
 
     return createPortal(

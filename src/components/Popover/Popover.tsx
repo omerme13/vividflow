@@ -21,9 +21,7 @@ export default function Popover({
     const isOpen = isControlled ? controlledIsOpen : internalIsOpen;
 
     const handleOpenChange = (newIsOpen: boolean) => {
-        if (!isControlled) {
-            setInternalIsOpen(newIsOpen);
-        }
+        if (!isControlled) setInternalIsOpen(newIsOpen);
         onOpenChange?.(newIsOpen);
     };
 

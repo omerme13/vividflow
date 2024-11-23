@@ -11,13 +11,8 @@ export default function DatePicker({ date, onChange, trigger }: DatePickerProps)
     const [isOpen, setIsOpen] = useState(false);
 
     const handleDateChange = (date: Date | null, e: unknown) => {
-        if (date) {
-            onChange(date);
-        }
-
-        if (!e) {
-            setIsOpen(false);
-        }
+        if (date) onChange(date);
+        if (!e) setIsOpen(false);
     };
 
     const handleClearDate = (e: MouseEvent<HTMLElement>) => {

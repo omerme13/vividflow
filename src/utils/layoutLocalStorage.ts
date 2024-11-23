@@ -5,9 +5,7 @@ import { DEFAULT_LAYOUT, StorageKeys } from "./constants";
 
 export const getStoredLayout = (): LayoutState => {
     const storedLayout = localStorage.getItem(StorageKeys.Layout);
-    if (!storedLayout) {
-        return DEFAULT_LAYOUT;
-    }
+    if (!storedLayout) return DEFAULT_LAYOUT;
 
     try {
         const parsedLayout = JSON.parse(storedLayout) as Partial<LayoutState>;
