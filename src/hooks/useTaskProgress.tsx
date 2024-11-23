@@ -21,7 +21,7 @@ const getDateRange = (timeFilter: DashboardTimeFilter): DateRangeItem[] => {
         case DashboardTimeFilter.Week:
             return Array.from({ length: 4 }, (_, i) => ({
                 date: startOfWeek(subWeeks(today, 3 - i)),
-                display: `Week ${4 - i}`,
+                display: `Week ${i + 1}`,
             }));
         case DashboardTimeFilter.Month:
             return Array.from({ length: 6 }, (_, i) => {
