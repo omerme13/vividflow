@@ -10,22 +10,22 @@ interface DateRangeItem {
 }
 
 const getDateRange = (timeFilter: DashboardTimeFilter): DateRangeItem[] => {
-    const today = startOfDay(new Date());
+    const now = startOfDay(new Date());
 
     switch (timeFilter) {
         case DashboardTimeFilter.Day:
             return Array.from({ length: 14 }, (_, i) => ({
-                date: subDays(today, 13 - i),
-                display: format(subDays(today, 13 - i), "dd/MM/yyyy"),
+                date: subDays(now, 13 - i),
+                display: format(subDays(now, 13 - i), "dd/MM/yyyy"),
             }));
         case DashboardTimeFilter.Week:
             return Array.from({ length: 4 }, (_, i) => ({
-                date: startOfWeek(subWeeks(today, 3 - i)),
+                date: startOfWeek(subWeeks(now, 3 - i)),
                 display: `Week ${i + 1}`,
             }));
         case DashboardTimeFilter.Month:
             return Array.from({ length: 6 }, (_, i) => {
-                const date = subMonths(today, 5 - i);
+                const date = subMonths(now, 5 - i);
                 return {
                     date,
                     display: format(date, "MMM"),

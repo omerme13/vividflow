@@ -1,24 +1,36 @@
 import { useMemo } from "react";
 import { TaskData, TaskColors } from "@/types/task";
 import { DashboardTimeFilter } from "@/types/dashboard";
+import {
+    addDays,
+    startOfDay,
+    startOfWeek,
+    endOfWeek,
+    startOfMonth,
+    endOfMonth,
+    isSameDay,
+    isWithinInterval,
+} from "date-fns";
 
 export default function useTaskStats(tasks: TaskData[], timeFilter: DashboardTimeFilter) {
     return useMemo(() => {
-        const now = new Date();
-        const dueSoonThreshold = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+        const now = startOfDay(new Date());
+        const dueSoonThreshold = addDays(now, 1);
 
         const filteredTasks = tasks.filter((task) => {
-            const taskDate = task.completedAt || task.dueDate || new Date();
-            const date = new Date(taskDate);
+            const taskDate = task.completedAt ? new Date(task.completedAt) : new Date();
+			const weekStart = startOfWeek(now);
+			const weekEnd = endOfWeek(now);
+			const monthStart = startOfMonth(now);
+			const monthEnd = endOfMonth(now);
 
             switch (timeFilter) {
                 case DashboardTimeFilter.Day:
-                    return date.toDateString() === now.toDateString();
+                    return isSameDay(taskDate, now);
                 case DashboardTimeFilter.Week:
-                    const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-                    return date >= weekAgo;
+                    return isWithinInterval(taskDate, { start: weekStart, end: weekEnd });
                 case DashboardTimeFilter.Month:
-                    return date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear();
+                    return isWithinInterval(taskDate, { start: monthStart, end: monthEnd });
                 default:
                     return true;
             }
