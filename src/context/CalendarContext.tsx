@@ -5,6 +5,7 @@ import { getCalendarPreference, saveCalendarPreference } from "@/utils/calendarL
 import { View } from "react-big-calendar";
 import { TaskColors, TaskData } from "@/types/task";
 
+// TODO go over the whole context and delete unused vars and funcs
 interface CalendarEvent {
     id: string;
     title: string;

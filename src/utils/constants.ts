@@ -2,6 +2,7 @@ import { LayoutState } from "@/types/layout";
 import { UserPreferences } from "@/types/preference";
 import { CalendarPreference } from "./calendarLocalStorage";
 import { CalendarViewMode } from "@/types/calendar";
+import { Activity } from "@/types/dashboard";
 
 export enum StorageKeys {
     Preference = "vividflow_user_preferences",
@@ -10,6 +11,7 @@ export enum StorageKeys {
     Layout = "vividflow_layout",
     CalendarPreference = "vividflow_calendar_preference",
     CalendarView = "vividflow_calendar_view",
+	Activities = "dashboard_activities"
 }
 
 export const DEFAULT_PREFERENCES: UserPreferences = {
@@ -31,3 +33,5 @@ export const DEFAULT_CALENDAR_PREFERENCES: CalendarPreference = {
         end: 17,
     },
 } as const;
+
+export const DEFAULT_ACTIVITIES: Activity[] = [] as const;

@@ -3,7 +3,6 @@ import * as taskStorage from "@/utils/taskLocalStorage";
 import { extractUniqueLabels } from "@/utils/tasks";
 import useDebouncedValue from "@/hooks/useDebouncedValue";
 import { TaskColors, TaskData } from "@/types/task";
-import { DashboardTimeFilter as TimeFilter } from "@/types/dashboard";
 
 type TaskDataWithoutId = Omit<TaskData, "id">;
 
@@ -24,8 +23,6 @@ interface TaskContext {
     labels: string[];
     searchQuery: string;
     filterOptions: FilterOptions;
-    timeFilter: TimeFilter;
-    setTimeFilter: Dispatch<SetStateAction<TimeFilter>>;
     setSearchQuery: Dispatch<SetStateAction<string>>;
     setFilterOptions: Dispatch<SetStateAction<FilterOptions>>;
     addTask: (task: TaskDataWithoutId) => void;
@@ -61,7 +58,6 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     const [labels, setLabels] = useState<string[]>(() => taskStorage.getLabels());
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [filterOptions, setFilterOptions] = useState<FilterOptions>(initialFilterOptions);
-    const [timeFilter, setTimeFilter] = useState<TimeFilter>(TimeFilter.Week);
     const [, setLastDeletedTaskInfo] = useState<DeletedTaskInfo | null>(null);
 
     const addTask = useCallback((newTask: TaskDataWithoutId) => {
@@ -198,8 +194,6 @@ export function TaskProvider({ children }: { children: ReactNode }) {
                 setSearchQuery,
                 filterOptions,
                 setFilterOptions,
-                timeFilter,
-                setTimeFilter,
                 clearFilters,
                 clearColorFilters,
                 hasFilters,

@@ -1,6 +1,6 @@
 import { TaskData } from "./task";
 
-export enum DashboardTimeFilter {
+export enum TimeFilter {
     Day = "day",
     Week = "week",
     Month = "month",
@@ -8,5 +8,25 @@ export enum DashboardTimeFilter {
 
 export interface DashboardChildProps {
 	tasks: TaskData[];
-	timeFilter: DashboardTimeFilter;
+	timeFilter: TimeFilter;
+}
+
+export enum ActivityType {
+    Completed = "completed",
+    Undone = "undone",
+    Created = "created",
+    Deleted = "deleted",
+    DueDateSet = "dueDateSet",
+    DueSoon = "dueSoon",
+    TextUpdated = "textUpdated",
+    ColorChanged = "colorChanged"
+}
+export interface Activity {
+    id: string;
+    taskId: string;
+    taskText: string;
+    type: ActivityType;
+    timestamp: Date;
+    dueDate?: Date;
+    color?: string;
 }

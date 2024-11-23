@@ -1,15 +1,15 @@
-import { useTaskContext } from "@/context/TaskContext";
-import { DashboardTimeFilter } from "@/types/dashboard";
+import { TimeFilter } from "@/types/dashboard";
 import { getClassWithModifier } from "@/utils/styles";
+import { useDashboardContext } from "@/context/DashboardContext";
 
 import './TimeFilters.scss';
 
 export default function TimeFilters() {
-    const { timeFilter, setTimeFilter } = useTaskContext();
+    const { timeFilter, setTimeFilter } = useDashboardContext();
 
     return (
         <div className="time-filters">
-            {Object.values(DashboardTimeFilter).map((filter) => (
+            {Object.values(TimeFilter).map((filter) => (
                 <button
                     key={filter}
                     className={getClassWithModifier("time-filters__filter", "active", timeFilter === filter)}

@@ -9,6 +9,7 @@ import { useLayout } from "@/context/LayoutContext";
 import { getClassWithModifier } from "@/utils/styles";
 import { CalendarProvider } from "@/context/CalendarContext";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { DashboardProvider } from "@/context/DashboardContext";
 
 function RootLayout() {
     const { layout } = useLayout();
@@ -58,7 +59,9 @@ export const router = createBrowserRouter([
                         path: "dashboard",
                         element: (
                             <ErrorBoundary>
-                                <DashboardPage />
+                                <DashboardProvider>
+                                    <DashboardPage />
+                                </DashboardProvider>
                             </ErrorBoundary>
                         ),
                     },

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { TaskData, TaskColors } from "@/types/task";
-import { DashboardTimeFilter } from "@/types/dashboard";
+import { TimeFilter } from "@/types/dashboard";
 import {
     addDays,
     startOfDay,
@@ -12,7 +12,7 @@ import {
     isWithinInterval,
 } from "date-fns";
 
-export default function useTaskStats(tasks: TaskData[], timeFilter: DashboardTimeFilter) {
+export default function useTaskStats(tasks: TaskData[], timeFilter: TimeFilter) {
     return useMemo(() => {
         const now = startOfDay(new Date());
         const dueSoonThreshold = addDays(now, 1);
@@ -25,11 +25,11 @@ export default function useTaskStats(tasks: TaskData[], timeFilter: DashboardTim
 			const monthEnd = endOfMonth(now);
 
             switch (timeFilter) {
-                case DashboardTimeFilter.Day:
+                case TimeFilter.Day:
                     return isSameDay(taskDate, now);
-                case DashboardTimeFilter.Week:
+                case TimeFilter.Week:
                     return isWithinInterval(taskDate, { start: weekStart, end: weekEnd });
-                case DashboardTimeFilter.Month:
+                case TimeFilter.Month:
                     return isWithinInterval(taskDate, { start: monthStart, end: monthEnd });
                 default:
                     return true;

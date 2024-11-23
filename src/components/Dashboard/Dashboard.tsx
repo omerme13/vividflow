@@ -2,11 +2,13 @@ import { useTaskContext } from "@/context/TaskContext";
 import TaskProgressChart from "@/components/Dashboard/components/TaskProgress/TaskProgress";
 import RecentActivity from "@/components/Dashboard/components/RecentActivity/RecentActivity";
 import TasksOverview from "./components/TasksOverview/TasksOverview";
+import { useDashboardContext } from "@/context/DashboardContext";
 
 import "./Dashboard.scss";
 
 export default function Dashboard() {
-    const { tasks, timeFilter } = useTaskContext();
+    const { tasks } = useTaskContext();
+	const { timeFilter } = useDashboardContext();
 
     return (
         <div className="dashboard">
