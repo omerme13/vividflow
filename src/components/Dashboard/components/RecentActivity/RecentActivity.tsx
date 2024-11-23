@@ -1,11 +1,9 @@
 import { TaskData } from "@/types/task";
 import { format } from "date-fns";
+import DashboardItem from "../DashboardItem/DashboardItem";
+import { DashboardChildProps } from "@/types/dashboard";
 
 import "./RecentActivity.scss";
-
-interface RecentActivityProps {
-    tasks: TaskData[];
-}
 
 // TODO make functionality better, move logic outside
 const getActivityDescription = (task: TaskData) => {
@@ -14,7 +12,7 @@ const getActivityDescription = (task: TaskData) => {
     return "Task updated";
 };
 
-export default function RecentActivity({ tasks }: RecentActivityProps) {
+export default function RecentActivity({ tasks }: DashboardChildProps) {
     const recentTasks = tasks
         .filter((t) => t.completedAt || (t.dueDate && new Date(t.dueDate) < new Date()))
         .sort((a, b) => {
@@ -25,7 +23,7 @@ export default function RecentActivity({ tasks }: RecentActivityProps) {
         .slice(0, 5);
 
     return (
-        <div className="recent-activity">
+        <DashboardItem className="recent-activity" title="Recent Activity" fullRow>
             {recentTasks.map((task) => (
                 <div key={task.id} className="recent-activity__item">
                     <div className="recent-activity__main">
@@ -51,6 +49,6 @@ export default function RecentActivity({ tasks }: RecentActivityProps) {
                     </div>
                 </div>
             ))}
-        </div>
+        </DashboardItem>
     );
 }

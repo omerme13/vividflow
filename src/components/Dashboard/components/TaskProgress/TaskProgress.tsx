@@ -1,5 +1,8 @@
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { TASK_PROGRESS_LEGEND_DATA } from "./constants";
+import DashboardItem from "../DashboardItem/DashboardItem";
+import useTaskProgress from "@/hooks/useTaskProgress";
+import { DashboardChildProps } from "@/types/dashboard";
 
 export interface TaskProgress {
     date: string;
@@ -8,22 +11,22 @@ export interface TaskProgress {
     overdue: number;
 }
 
-interface TaskProgressChartProps {
-    data: TaskProgress[];
-}
+export default function TaskProgressChart({ tasks, timeFilter }: DashboardChildProps) {
+    const data = useTaskProgress(tasks, timeFilter);
 
-export default function TaskProgressChart({ data }: TaskProgressChartProps) {
     return (
-        <ResponsiveContainer>
-            <AreaChart data={data}>
-                <XAxis dataKey="date" />
-                <YAxis />
-                <Tooltip />
-                {TASK_PROGRESS_LEGEND_DATA.map(({ key, color }) => (
-                    <Area key={key} type="monotone" dataKey={key} stackId="1" stroke={color} fill={color} />
-                ))}
-                <Legend />
-            </AreaChart>
-        </ResponsiveContainer>
+        <DashboardItem title="Task Progress" hasContainer>
+            <ResponsiveContainer>
+                <AreaChart data={data}>
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip />
+                    {TASK_PROGRESS_LEGEND_DATA.map(({ key, color }) => (
+                        <Area key={key} type="monotone" dataKey={key} stackId="1" stroke={color} fill={color} />
+                    ))}
+                    <Legend />
+                </AreaChart>
+            </ResponsiveContainer>
+        </DashboardItem>
     );
 }

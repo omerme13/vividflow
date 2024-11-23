@@ -3,71 +3,13 @@
     grid-template-columns: repeat(2, minmax(30rem, 1fr));
     gap: 2.4rem;
 
-	&__task-overview {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-
-    &__stats {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3.2rem;
-    }
-
-    &__stat {
-        &-value {
-            font-size: 3.2rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        &-label {
-            color: var(--color-text-secondary);
-            font-size: var(--font-size-menu);
-			text-transform: capitalize;
-        }
-    }
-
     &__subtitle {
         font-size: var(--font-size-menu);
-		margin-bottom: 1.6rem;
-    }
-
-    &__color-distribution {
-		display: flex;
-        gap: 1.6rem;
-		// margin-top: auto;
-    }
-
-    &__color-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-    }
-
-    &__color-bar {
-        width: 100%;
-        height: 0.8rem;
-        border-radius: var(--radius-md);
-    }
-
-    &__color-count {
-        color: var(--color-text-secondary);
-        font-size: var(--font-size-menu);
+        margin-bottom: 1.6rem;
     }
 
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
         padding: 1rem;
-
-        &__filters {
-            flex-wrap: wrap;
-        }
-
-        &__stats {
-            grid-template-columns: 1fr;
-        }
     }
 }
