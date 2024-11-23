@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { TaskData } from "@/types/task";
 import { TaskProgress } from "@/components/Dashboard/components/TaskProgress/TaskProgress";
-import { TimeFilter } from "@/components/Dashboard";
+import { DashboardTimeFilter } from "@/types/dashboard";
 
-export default function useTaskProgress(tasks: TaskData[], timeFilter: TimeFilter): TaskProgress[] {
+export default function useTaskProgress(tasks: TaskData[], timeFilter: DashboardTimeFilter): TaskProgress[] {
     return useMemo(() => {
         const statusTimeline: Record<string, TaskProgress> = {};
 
@@ -14,14 +14,14 @@ export default function useTaskProgress(tasks: TaskData[], timeFilter: TimeFilte
                 const completedDate = new Date(task.completedAt);
 
                 switch (timeFilter) {
-                    case TimeFilter.Day:
+                    case DashboardTimeFilter.Day:
                         date = completedDate.toLocaleDateString();
                         break;
-                    case TimeFilter.Week:
+                    case DashboardTimeFilter.Week:
                         const week = Math.floor(completedDate.getDate() / 7);
                         date = `Week ${week + 1}`;
                         break;
-                    case TimeFilter.Month:
+                    case DashboardTimeFilter.Month:
                         date = completedDate.toLocaleString("default", { month: "short" });
                         break;
                     default:

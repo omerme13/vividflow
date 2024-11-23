@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import useClickOutside from "@/hooks/useClickOutside";
-import useSuggestions from "./useSuggestion";
 import { AutocompleteProps } from "./Autocomplete.types";
 import { CloseIcon } from "@/assets/icons";
+import useSuggestions from "@/hooks/useSuggestion";
 
 import "./Autocomplete.scss";
 

@@ -1,13 +1,12 @@
-import { useState } from "react";
 import { useTaskContext } from "@/context/TaskContext";
 import { TaskColors } from "@/types/task";
-import { getClassWithModifier, getPaletteColor } from "@/utils/styles";
+import { getPaletteColor } from "@/utils/styles";
 import useTaskStats from "@/hooks/useTaskStats";
 import TaskProgressChart from "@/components/Dashboard/components/TaskProgress/TaskProgress";
 import RecentActivity from "@/components/Dashboard/components/RecentActivity/RecentActivity";
 import useTaskProgress from "@/hooks/useTaskProgress";
-import { StatProps, TimeFilter } from "./Dashboard.types";
-import DashboardItem from "./DashboardItem/DashboardItem";
+import { StatProps } from "./Dashboard.types";
+import DashboardItem from "./components/DashboardItem/DashboardItem";
 
 import "./Dashboard.scss";
 
@@ -21,11 +20,13 @@ function Stat({ color, value, label }: StatProps) {
         </div>
     );
 }
+
 export default function Dashboard() {
-    const { tasks } = useTaskContext();
-    const [timeFilter, setTimeFilter] = useState<TimeFilter>(TimeFilter.Week);
-    const stats = useTaskStats(tasks);
+    const { tasks, timeFilter } = useTaskContext();
+    const stats = useTaskStats(tasks, timeFilter);
     const statusData = useTaskProgress(tasks, timeFilter);
+
+
 
     return (
         <div className="dashboard">
@@ -57,25 +58,10 @@ export default function Dashboard() {
                 </div>
             </DashboardItem>
 
-            <DashboardItem
-                title="Task Progress"
-                hasContainer
-                filters={
-                    <div className="dashboard__filters">
-                        {Object.values(TimeFilter).map((filter) => (
-                            <button
-                                key={filter}
-                                className={getClassWithModifier("dashboard__filter", "active", timeFilter === filter)}
-                                onClick={() => setTimeFilter(filter)}
-                            >
-                                {filter}
-                            </button>
-                        ))}
-                    </div>
-                }
-            >
+            <DashboardItem title="Task Progress" hasContainer>
                 <TaskProgressChart data={statusData} />
             </DashboardItem>
+
             <DashboardItem title="Recent Activity" fullRow>
                 <RecentActivity tasks={tasks} />
             </DashboardItem>
