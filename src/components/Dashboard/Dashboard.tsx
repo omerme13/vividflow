@@ -3,9 +3,9 @@ import { useTaskContext } from "@/context/TaskContext";
 import { TaskColors } from "@/types/task";
 import { getClassWithModifier, getPaletteColor } from "@/utils/styles";
 import useTaskStats from "@/hooks/useTaskStats";
-import TaskProgressChart from "@/components/Dashboard/components/TaskProgressData/TaskProgressData";
+import TaskProgressChart from "@/components/Dashboard/components/TaskProgress/TaskProgress";
 import RecentActivity from "@/components/Dashboard/components/RecentActivity/RecentActivity";
-import useTaskProgressData from "@/hooks/useTaskProgressData";
+import useTaskProgress from "@/hooks/useTaskProgress";
 import { StatProps, TimeFilter } from "./Dashboard.types";
 import DashboardItem from "./DashboardItem/DashboardItem";
 
@@ -25,7 +25,7 @@ export default function Dashboard() {
     const { tasks } = useTaskContext();
     const [timeFilter, setTimeFilter] = useState<TimeFilter>(TimeFilter.Week);
     const stats = useTaskStats(tasks);
-    const statusData = useTaskProgressData(tasks, timeFilter);
+    const statusData = useTaskProgress(tasks, timeFilter);
 
     return (
         <div className="dashboard">

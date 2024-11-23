@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { TaskData } from "@/types/task";
-import { TaskProgressData } from "@/components/Dashboard/components/TaskProgressData/TaskProgressData";
+import { TaskProgress } from "@/components/Dashboard/components/TaskProgress/TaskProgress";
 import { TimeFilter } from "@/components/Dashboard";
 
-export default function useTaskProgressData(tasks: TaskData[], timeFilter: TimeFilter): TaskProgressData[] {
+export default function useTaskProgress(tasks: TaskData[], timeFilter: TimeFilter): TaskProgress[] {
     return useMemo(() => {
-        const statusTimeline: Record<string, TaskProgressData> = {};
+        const statusTimeline: Record<string, TaskProgress> = {};
 
         tasks.forEach((task) => {
             let date: string;

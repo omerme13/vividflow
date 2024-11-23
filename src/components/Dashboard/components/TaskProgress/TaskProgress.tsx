@@ -1,7 +1,7 @@
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { TASK_PROGRESS_LEGEND_DATA } from "./constants";
 
-export interface TaskProgressData {
+export interface TaskProgress {
     date: string;
     completed: number;
     pending: number;
@@ -9,7 +9,7 @@ export interface TaskProgressData {
 }
 
 interface TaskProgressChartProps {
-    data: TaskProgressData[];
+    data: TaskProgress[];
 }
 
 export default function TaskProgressChart({ data }: TaskProgressChartProps) {
