@@ -36,8 +36,6 @@ interface TaskContext {
     clearColorFilters: () => void;
     hasFilters: () => boolean;
     filterByLabel: (label: string) => void;
-    toggleTaskCompletion: (id: string) => void;
-    setTaskDueDate: (id: string, date: Date | undefined) => void;
     restoreTask: (taskId: string) => void;
 }
 
@@ -74,16 +72,19 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         });
     }, []);
 
-    const updateTask = useCallback((updatedTask: TaskData) => {
-        const prevTask = tasks.find((task) => task.id === updatedTask.id);
-        compareAndTrackChanges(prevTask, updatedTask);
+    const updateTask = useCallback(
+        (updatedTask: TaskData) => {
+            const prevTask = tasks.find((task) => task.id === updatedTask.id);
+            compareAndTrackChanges(prevTask, updatedTask);
 
-        setTasks((prev) => {
-            const updatedTasks = prev.map((task) => (task.id === updatedTask.id ? updatedTask : task));
-            saveTasksAndUpdateLabels(updatedTasks, setLabels);
-            return updatedTasks;
-        });
-    }, []);
+            setTasks((prev) => {
+                const updatedTasks = prev.map((task) => (task.id === updatedTask.id ? updatedTask : task));
+                saveTasksAndUpdateLabels(updatedTasks, setLabels);
+                return updatedTasks;
+            });
+        },
+        [tasks, compareAndTrackChanges]
+    );
 
     const deleteTask = useCallback((id: string) => {
         setTasks((prev) => {
@@ -155,39 +156,6 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         [filterOptions]
     );
 
-    const toggleTaskCompletion = useCallback((id: string) => {
-        setTasks((prev) => {
-            const updatedTasks = prev.map((task) =>
-                task.id === id
-                    ? {
-                          ...task,
-                          isCompleted: !task.isCompleted,
-                          completedAt: !task.isCompleted ? new Date() : undefined,
-                      }
-                    : task
-            );
-
-            taskStorage.saveTasks(updatedTasks);
-            return updatedTasks;
-        });
-    }, []);
-
-    const setTaskDueDate = useCallback((id: string, date: Date | undefined) => {
-        setTasks((prev) => {
-            const updatedTasks = prev.map((task) =>
-                task.id === id
-                    ? {
-                          ...task,
-                          dueDate: date,
-                      }
-                    : task
-            );
-
-            taskStorage.saveTasks(updatedTasks);
-            return updatedTasks;
-        });
-    }, []);
-
     return (
         <TaskContext.Provider
             value={{
@@ -206,8 +174,6 @@ export function TaskProvider({ children }: { children: ReactNode }) {
                 clearColorFilters,
                 hasFilters,
                 filterByLabel,
-                toggleTaskCompletion,
-                setTaskDueDate,
                 restoreTask,
             }}
         >
@@ -225,8 +191,7 @@ export function useTaskContext() {
 }
 
 export function useTask(id: string) {
-    const { getTaskById, updateTask, deleteTask, filterByLabel, toggleTaskCompletion, setTaskDueDate, restoreTask } =
-        useTaskContext();
+    const { getTaskById, updateTask, deleteTask, filterByLabel, restoreTask } = useTaskContext();
     const task = getTaskById(id);
 
     if (!task) {
@@ -238,8 +203,17 @@ export function useTask(id: string) {
         updateTask,
         deleteTask: () => deleteTask(id),
         filterByLabel: () => filterByLabel(task.label || ""),
-        toggleTaskCompletion: () => toggleTaskCompletion(id),
-        setTaskDueDate: (date: Date | undefined) => setTaskDueDate(id, date),
+        toggleTaskCompletion: () =>
+            updateTask({
+                ...task,
+                isCompleted: !task.isCompleted,
+                completedAt: !task.isCompleted ? new Date().toISOString() : undefined,
+            }),
+        setTaskDueDate: (date: string | undefined) =>
+            updateTask({
+                ...task,
+                dueDate: date,
+            }),
         restoreTask: () => restoreTask(task.id),
     };
 }
