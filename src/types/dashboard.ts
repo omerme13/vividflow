@@ -17,7 +17,6 @@ export enum ActivityType {
     Created = "created",
     Deleted = "deleted",
     DueDateSet = "dueDateSet",
-    DueSoon = "dueSoon",
     TextUpdated = "textUpdated",
     ColorChanged = "colorChanged",
     DueDateRemoved = "dueDateRemoved",
