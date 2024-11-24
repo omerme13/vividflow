@@ -4,8 +4,8 @@ export interface TaskData {
     label?: string;
     color?: TaskColors;
     isCompleted?: boolean;
-    dueDate?: Date | undefined;
-	completedAt?: Date;
+    dueDate?: string | undefined;
+	completedAt?: string;
 }
 
 export enum TaskColors {

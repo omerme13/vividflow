@@ -19,14 +19,15 @@ export enum ActivityType {
     DueDateSet = "dueDateSet",
     DueSoon = "dueSoon",
     TextUpdated = "textUpdated",
-    ColorChanged = "colorChanged"
+    ColorChanged = "colorChanged",
+    DueDateRemoved = "dueDateRemoved",
 }
 export interface Activity {
     id: string;
     taskId: string;
     taskText: string;
     type: ActivityType;
-    timestamp: Date;
-    dueDate?: Date;
+    timestamp: string;
+    dueDate?: string;
     color?: string;
 }

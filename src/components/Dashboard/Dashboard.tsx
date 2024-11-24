@@ -14,7 +14,7 @@ export default function Dashboard() {
         <div className="dashboard">
             <TasksOverview tasks={tasks} timeFilter={timeFilter} />
             <TaskProgressChart tasks={tasks} timeFilter={timeFilter} />
-            <RecentActivity tasks={tasks} timeFilter={timeFilter} />
+            <RecentActivity  />
         </div>
     );
 }
