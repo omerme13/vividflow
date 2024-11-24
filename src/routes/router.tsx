@@ -10,6 +10,7 @@ import { getClassWithModifier } from "@/utils/styles";
 import { CalendarProvider } from "@/context/CalendarContext";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { DashboardProvider } from "@/context/DashboardContext";
+import { ActivityProvider } from "@/context/ActivityContext";
 
 function RootLayout() {
     const { layout } = useLayout();
@@ -28,9 +29,11 @@ function RootLayout() {
 
 function TaskEnabledLayout() {
     return (
-        <TaskProvider>
-            <Outlet />
-        </TaskProvider>
+        <ActivityProvider>
+            <TaskProvider>
+                <Outlet />
+            </TaskProvider>
+        </ActivityProvider>
     );
 }
 

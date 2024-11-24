@@ -1,9 +1,9 @@
 import { formatDistanceToNow } from "date-fns";
 import { TaskColors } from "@/types/task";
 import DashboardItem from "../DashboardItem/DashboardItem";
-import { useDashboardContext } from "@/context/DashboardContext";
 import { ACTIVITY_CONFIG } from "./constants";
 import { Activity } from "@/types/dashboard";
+import { useActivityState } from "@/context/ActivityContext";
 
 import "./RecentActivity.scss";
 
@@ -36,7 +36,7 @@ function ActivityItem({ activity }: { activity: Activity }) {
 }
 
 export default function RecentActivity() {
-    const { activities } = useDashboardContext();
+    const { activities } = useActivityState();
 
     return (
         <DashboardItem title="Recent Activity" fullRow>

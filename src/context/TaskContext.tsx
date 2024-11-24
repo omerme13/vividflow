@@ -3,6 +3,8 @@ import * as taskStorage from "@/utils/taskLocalStorage";
 import { extractUniqueLabels } from "@/utils/tasks";
 import useDebouncedValue from "@/hooks/useDebouncedValue";
 import { TaskColors, TaskData } from "@/types/task";
+import { useActivityDispatch } from "./ActivityContext";
+import { ActivityType } from "@/types/dashboard";
 
 type TaskDataWithoutId = Omit<TaskData, "id">;
 
@@ -59,9 +61,12 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [filterOptions, setFilterOptions] = useState<FilterOptions>(initialFilterOptions);
     const [, setLastDeletedTaskInfo] = useState<DeletedTaskInfo | null>(null);
+    const { compareAndTrackChanges, trackActivity } = useActivityDispatch();
 
     const addTask = useCallback((newTask: TaskDataWithoutId) => {
         const taskWithId = { ...newTask, isCompleted: false, id: crypto.randomUUID() };
+        trackActivity(ActivityType.Created, taskWithId);
+
         setTasks((prev) => {
             const updatedTasks = [taskWithId, ...prev];
             saveTasksAndUpdateLabels(updatedTasks, setLabels);
@@ -70,6 +75,9 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     }, []);
 
     const updateTask = useCallback((updatedTask: TaskData) => {
+        const prevTask = tasks.find((task) => task.id === updatedTask.id);
+        compareAndTrackChanges(prevTask, updatedTask);
+
         setTasks((prev) => {
             const updatedTasks = prev.map((task) => (task.id === updatedTask.id ? updatedTask : task));
             saveTasksAndUpdateLabels(updatedTasks, setLabels);
