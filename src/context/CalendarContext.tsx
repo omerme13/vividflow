@@ -125,7 +125,7 @@ export function CalendarProvider({ children }: { children: ReactNode }) {
             const updatedTask: TaskData = {
                 ...task,
                 isCompleted: !task.isCompleted,
-                completedAt: !task.isCompleted ? new Date() : undefined,
+                completedAt: !task.isCompleted ? new Date().toISOString() : undefined,
             };
             updateTask(updatedTask);
         }

@@ -6,7 +6,7 @@ import { TaskData } from "@/types/task";
 export default function useTaskModal() {
     const [selectedTask, setSelectedTask] = useState<TaskData | null>(null);
     const { layout, toggleTaskModal } = useLayout();
-	const [dueDate, setDueDate] = useState<Date>();
+	const [dueDate, setDueDate] = useState<string>();
 
     const handleEdit = (task: TaskData) => {
         setSelectedTask(task);

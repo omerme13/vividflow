@@ -19,7 +19,6 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
     const { updateTask, filterByLabel, toggleTaskCompletion, setTaskDueDate } = useTask(id);
 	const handleDeleteTask = useDeleteTask(id);
-
     const isColorSelected = color !== TaskColors.Gray;
 
     const togglePalette = () => setIsPaletteOpen((prev) => !prev);
@@ -73,7 +72,7 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                     <ColorPickerQuick updateTaskColor={handleUpdateColor} onClose={() => setIsPaletteOpen(false)} />
                 </Popover>
                 <DatePicker
-                    date={dueDate}
+                    date={dueDate ? new Date(dueDate) : undefined}
                     onChange={setTaskDueDate}
                     trigger={
                         <TaskAction

@@ -5,5 +5,5 @@ export interface TaskModalProps {
     onClose: () => void;
     task?: TaskData;
     isEditMode: boolean;
-	dueDate?: Date;
+	dueDate?: string;
 }

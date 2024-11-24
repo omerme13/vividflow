@@ -51,7 +51,7 @@ export default function CalendarPage() {
 
         const updatedTask: TaskData = {
             ...calendarEvent.task,
-            dueDate: new Date(start),
+            dueDate: start as string,
         };
 
         updateTask(updatedTask);
@@ -59,7 +59,7 @@ export default function CalendarPage() {
 
     const handleSelectSlot = (slotInfo: SlotInfo) => {
         toggleTaskModal();
-        setDueDate(slotInfo.slots[0]);
+        setDueDate((slotInfo.slots[0]).toISOString());
     };
 
     return (

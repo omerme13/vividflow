@@ -211,10 +211,10 @@ export function useTask(id: string) {
                 isCompleted: !task.isCompleted,
                 completedAt: !task.isCompleted ? new Date().toISOString() : undefined,
             }),
-        setTaskDueDate: (date: string | undefined) =>
+        setTaskDueDate: (date: Date | undefined) =>
             updateTask({
                 ...task,
-                dueDate: date,
+                dueDate: date?.toDateString(),
             }),
         restoreTask: () => restoreTask(task.id),
     };
