@@ -4,7 +4,7 @@ import { format } from "date-fns";
 
 interface ActivityConfig {
     icon: string;
-    description: string | ((date?: Date, color?: TaskColors) => string);
+    description: string | ((date?: string, color?: TaskColors) => string);
 }
 export const ACTIVITY_CONFIG: Record<ActivityType, ActivityConfig> = {
     [ActivityType.Created]: {
@@ -17,11 +17,7 @@ export const ACTIVITY_CONFIG: Record<ActivityType, ActivityConfig> = {
     },
     [ActivityType.DueDateSet]: {
         icon: "📅",
-        description: (date?: Date) => `Due date set to ${date ? format(date, "MMM d") : ""}`
-    },
-    [ActivityType.DueDateRemoved]: {
-        icon: "📅",
-        description: "Due date removed",
+        description: (date?: string) => (date ? `Due date set to ${format(new Date(date), "MMM d")}` : "Due date removed"),
     },
     [ActivityType.ColorChanged]: {
         icon: "🎨",

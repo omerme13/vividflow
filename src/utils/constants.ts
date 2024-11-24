@@ -11,7 +11,7 @@ export enum StorageKeys {
     Layout = "vividflow_layout",
     CalendarPreference = "vividflow_calendar_preference",
     CalendarView = "vividflow_calendar_view",
-	Activities = "dashboard_activities"
+	Activities = "vividflow_activities"
 }
 
 export const DEFAULT_PREFERENCES: UserPreferences = {

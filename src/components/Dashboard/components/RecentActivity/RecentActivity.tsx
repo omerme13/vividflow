@@ -4,15 +4,15 @@ import DashboardItem from "../DashboardItem/DashboardItem";
 import { useDashboardContext } from "@/context/DashboardContext";
 import { ACTIVITY_CONFIG } from "./constants";
 import { Activity } from "@/types/dashboard";
-import { useMemo } from "react";
 
 import "./RecentActivity.scss";
 
 function ActivityStatus({ activity }: { activity: Activity }) {
     const config = ACTIVITY_CONFIG[activity.type];
-    const description = typeof config.description === "function" 
-        ? config.description(activity.dueDate, activity.color as TaskColors) 
-        : config.description;
+    const description =
+        typeof config.description === "function"
+            ? config.description(activity.dueDate, activity.color as TaskColors)
+            : config.description;
 
     return <span className="recent-activity__description">{description}</span>;
 }
@@ -37,17 +37,11 @@ function ActivityItem({ activity }: { activity: Activity }) {
 
 export default function RecentActivity() {
     const { activities } = useDashboardContext();
-    
-    const sortedActivities = useMemo(() => {
-        return [...activities]
-            .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
-            .slice(0, 5);
-    }, [activities]);
 
     return (
         <DashboardItem title="Recent Activity" fullRow>
             <div className="recent-activity">
-                {sortedActivities.map((activity) => (
+                {activities.map((activity) => (
                     <ActivityItem key={activity.id} activity={activity} />
                 ))}
             </div>
