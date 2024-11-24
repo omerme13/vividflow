@@ -19,6 +19,7 @@ export enum ActivityType {
     DueDateSet = "dueDateSet",
     TextUpdated = "textUpdated",
     ColorChanged = "colorChanged",
+    UndoDelete = "undoDelete",
 }
 export interface Activity {
     id: string;

@@ -63,8 +63,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
     const addTask = useCallback((newTask: TaskDataWithoutId) => {
         const taskWithId = { ...newTask, isCompleted: false, id: crypto.randomUUID() };
+	
         trackActivity(ActivityType.Created, taskWithId);
-
         setTasks((prev) => {
             const updatedTasks = [taskWithId, ...prev];
             saveTasksAndUpdateLabels(updatedTasks, setLabels);
@@ -92,6 +92,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
             const deletedTask = prev[taskIndex];
             const updatedTasks = prev.filter((task) => task.id !== id);
 
+			trackActivity(ActivityType.Deleted, deletedTask);
             saveTasksAndUpdateLabels(updatedTasks, setLabels);
 
             if (deletedTask) {
@@ -111,6 +112,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
             const { task, index } = prevDeleted[id];
 
+			trackActivity(ActivityType.UndoDelete, task);
             setTasks((prevTasks) => {
                 const updatedTasks = [...prevTasks];
                 const restoredIndex = Math.min(index, updatedTasks.length);

@@ -6,6 +6,7 @@ interface ActivityConfig {
     icon: string;
     description: string | ((date?: string, color?: TaskColors) => string);
 }
+
 export const ACTIVITY_CONFIG: Record<ActivityType, ActivityConfig> = {
     [ActivityType.Created]: {
         icon: "➕",
@@ -34,5 +35,9 @@ export const ACTIVITY_CONFIG: Record<ActivityType, ActivityConfig> = {
     [ActivityType.Undone]: {
         icon: "🔄",
         description: "Marked as incomplete",
+    },
+    [ActivityType.UndoDelete]: {
+        icon: "🔄",
+        description: "Deletion undone",
     },
 };
