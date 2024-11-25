@@ -50,9 +50,13 @@
     }
 
     &__time {
-        font-size: var(--font-size-menu);
         white-space: nowrap;
-        color: var(--color-main-text-light);
+		font-size: var(--font-size-s);
+        background-color: var(--color-purple-30);
+        font-weight: var(--font-weight-bold);
+        border-radius: var(--radius-sm);
+        line-height: 1;
+        padding: 0.4rem 0.8rem;
     }
 
     &__description {

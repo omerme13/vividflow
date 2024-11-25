@@ -1,4 +1,4 @@
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNowStrict } from "date-fns";
 import { TaskColors } from "@/types/task";
 import DashboardItem from "../DashboardItem/DashboardItem";
 import { ACTIVITY_CONFIG } from "./constants";
@@ -23,7 +23,11 @@ function ActivityStatus({ activity }: { activity: Activity }) {
 
 function ActivityItem({ activity }: { activity: Activity }) {
     const config = ACTIVITY_CONFIG[activity.type];
-    const timeAgo = formatDistanceToNow(new Date(activity.timestamp), { addSuffix: true });
+    const timeAgo = formatDistanceToNowStrict(new Date(activity.timestamp), { addSuffix: true })
+        .replace(/ minutes?/, "m")
+        .replace(/ hours?/, "h")
+        .replace(/ days?/, "d")
+        .replace(/ months?/, "m");
 
     return (
         <div className="recent-activity__item">
