@@ -4,255 +4,246 @@
         "text": "Teach my cat to respect the concept of personal space",
         "label": "pets",
         "color": "blue",
-        "isCompleted": false,
-        "dueDate": "2024-12-15T19:30:00Z"
+        "dueDate": "2024-12-15T19:30:00Z",
+        "createdAt": "2024-11-01T10:15:00Z"
     },
     {
         "id": "2",
-        "text": "Debug my relationship with my coffee maker - we're not speaking since the morning incident",
+        "text": "Debug my relationship with my coffee maker",
         "label": "appliances",
         "color": "red",
-        "isCompleted": true,
         "completedAt": "2024-11-15T06:15:00Z",
-        "dueDate": "2024-11-30T09:00:00Z"
+        "dueDate": "2024-11-18T09:00:00Z",
+        "createdAt": "2024-11-10T08:30:00Z"
     },
     {
         "id": "3",
-        "text": "Develop an AI to tell me if I really need another AI project in my life",
+        "text": "Develop an AI to tell me if I really need another AI project",
         "label": "coding",
         "color": "yellow",
-        "isCompleted": false,
-        "dueDate": "2024-12-01T23:59:00Z"
+        "dueDate": "2024-11-28T23:59:00Z",
+        "createdAt": "2024-11-05T14:20:00Z"
     },
     {
         "id": "4",
-        "text": "Write a strongly-worded letter to my printer about its attitude problems and chronic paper jams. Include specific examples of its passive-aggressive behavior, document its mysterious weekend malfunctions, and propose a path forward for our professional relationship. Additionally, prepare a detailed analysis of its suspicious collaboration with the paper shredder, compile evidence of its deliberate timing of breakdowns during crucial deadlines, and draft a comprehensive workplace improvement plan including mandatory sensitivity training for all office equipment. CC the scanner for transparency, BCC the coffee maker for moral support.",
+        "text": "Write a strongly-worded letter to my printer",
         "label": "appliances",
         "color": "red",
-        "isCompleted": false,
-        "dueDate": "2024-12-05T16:45:00Z"
+        "dueDate": "2024-12-20T16:45:00Z",
+        "createdAt": "2024-11-15T11:45:00Z"
     },
     {
         "id": "5",
-        "text": "Calculate the probability of finding matching socks",
-        "label": "research",
-        "color": "blue",
-        "isCompleted": false,
-        "dueDate": "2024-11-25T08:15:00Z"
-    },
-    {
-        "id": "6",
-        "text": "Organize my collection of unused organizational apps",
-        "label": "productivity",
-        "color": "green",
-        "isCompleted": true,
-        "completedAt": "2024-11-10T23:45:00Z",
-        "dueDate": "2024-11-20T14:30:00Z"
-    },
-    {
-        "id": "7",
         "text": "Train my rubber duck to give better debugging advice",
         "label": "coding",
         "color": "yellow",
-        "isCompleted": false,
-        "dueDate": "2024-12-10T11:20:00Z"
+        "completedAt": "2024-11-18T11:20:00Z",
+        "dueDate": "2024-11-25T11:20:00Z",
+        "createdAt": "2024-11-10T09:00:00Z"
     },
     {
-        "id": "8",
-        "text": "Conduct a thorough investigation into why my code works in development but not in production, including interviews with suspicious npm packages, analyzing git blame histories, and performing a detailed psychological evaluation of my development environment. Document findings in interpretive dance format. Create a comprehensive timeline of all Mercury retrograde periods that coincide with failed deployments, analyze the impact of coffee consumption on code quality, and establish a correlation between bug occurrence and the alignment of mechanical keyboard switches. Prepare a 500-slide presentation explaining why 'it works on my machine' should be an acceptable status in JIRA. Include testimonials from senior developers who have achieved enlightenment through debugging.",
-        "label": "coding",
-        "color": "yellow",
-        "isCompleted": false,
-        "dueDate": "2024-12-30T17:00:00Z"
-    },
-    {
-        "id": "9",
-        "text": "Create a PowerPoint presentation explaining to my DNA why I need more caffeine tolerance",
-        "color": "blue",
-        "isCompleted": false,
-        "dueDate": "2024-12-01T15:45:00Z"
-    },
-    {
-        "id": "10",
-        "text": "Implement a neural network to predict my next coding mistake",
-        "label": "coding",
-        "color": "red",
-        "isCompleted": false,
-        "dueDate": "2024-12-15T12:30:00Z"
-    },
-    {
-        "id": "11",
-        "text": "Design an advanced database schema for organizing pizza toppings preferences based on mood, weather conditions, and alignment of planets. Include comprehensive documentation about the correlation between pepperoni placement and overall satisfaction rates. Must account for the butterfly effect of pineapple. Develop machine learning models to predict topping combinations based on lunar phases, implement a blockchain solution for tracking ingredient freshness, and create a quantum computing algorithm to optimize cheese distribution. Include a detailed analysis of the socioeconomic impact of crust thickness preferences and establish a mathematical proof for the perfect pizza-to-mouth ratio. Propose a unified theory of pizza relativity that explains the time dilation effect of waiting for delivery.",
-        "label": "research",
-        "color": "blue",
-        "isCompleted": false,
-        "dueDate": "2024-12-25T20:00:00Z"
-    },
-    {
-        "id": "12",
+        "id": "6",
         "text": "Optimize my procrastination workflow",
         "label": "productivity",
         "color": "gray",
-        "isCompleted": true,
-        "completedAt": "2024-11-14T19:23:00Z",
-        "dueDate": "2024-11-30T23:59:00Z"
+        "dueDate": "2024-11-30T23:59:00Z",
+        "createdAt": "2024-11-01T15:30:00Z"
     },
     {
-        "id": "13",
+        "id": "7",
+        "text": "Calculate the probability of finding matching socks",
+        "label": "research",
+        "color": "blue",
+        "completedAt": "2024-11-20T08:15:00Z",
+        "dueDate": "2024-11-25T08:15:00Z",
+        "createdAt": "2024-11-12T16:45:00Z"
+    },
+    {
+        "id": "8",
         "text": "Create a support group for neglected side projects",
         "label": "community",
         "color": "blue",
-        "isCompleted": false,
-        "dueDate": "2024-12-20T18:30:00Z"
+        "dueDate": "2024-12-20T18:30:00Z",
+        "createdAt": "2024-11-08T13:20:00Z"
     },
     {
-        "id": "14",
-        "text": "Teach my smart home to be less judgmental",
-        "label": "appliances",
-        "color": "green",
-        "isCompleted": false,
-        "dueDate": "2024-11-28T21:15:00Z"
-    },
-    {
-        "id": "15",
-        "text": "Write unit tests for my life decisions",
-        "label": "coding",
-        "color": "red",
-        "isCompleted": false,
-        "dueDate": "2024-12-05T13:45:00Z"
-    },
-    {
-        "id": "16",
-        "text": "Debug why my plants ignore my pep talks",
-        "color": "yellow",
-        "isCompleted": true,
-        "completedAt": "2024-11-12T11:42:00Z",
-        "dueDate": "2024-11-25T10:00:00Z"
-    },
-    {
-        "id": "17",
+        "id": "9",
         "text": "Implement error handling for Monday mornings",
         "label": "productivity",
         "color": "blue",
-        "isCompleted": false,
-        "dueDate": "2024-11-27T07:30:00Z"
+        "dueDate": "2024-11-27T07:30:00Z",
+        "createdAt": "2024-11-20T09:15:00Z"
     },
     {
-        "id": "18",
+        "id": "10",
+        "text": "Debug why my plants ignore my pep talks",
+        "color": "yellow",
+        "completedAt": "2024-11-22T11:42:00Z",
+        "dueDate": "2024-11-25T10:00:00Z",
+        "createdAt": "2024-11-15T14:30:00Z"
+    },
+    {
+        "id": "11",
         "text": "Create a git branch for alternative life choices",
         "label": "coding",
         "color": "green",
-        "isCompleted": false,
-        "dueDate": "2024-12-31T23:59:00Z"
+        "dueDate": "2024-12-31T23:59:00Z",
+        "createdAt": "2024-11-18T17:00:00Z"
     },
     {
-        "id": "19",
+        "id": "12",
         "text": "Build an AI to find my missing motivation",
         "color": "gray",
-        "isCompleted": false,
-        "dueDate": "2024-12-01T09:15:00Z"
+        "dueDate": "2024-12-01T09:15:00Z",
+        "createdAt": "2024-11-10T11:45:00Z"
     },
     {
-        "id": "20",
-        "text": "Refactor my sleep schedule",
-        "label": "health",
-        "color": "red",
-        "isCompleted": false,
-        "dueDate": "2024-11-25T22:00:00Z"
-    },
-    {
-        "id": "21",
-        "text": "Create a ML model to predict when I'll actually use my gym membership",
-        "label": "health",
-        "color": "yellow",
-        "isCompleted": false,
-        "dueDate": "2024-12-10T17:45:00Z"
-    },
-    {
-        "id": "22",
+        "id": "13",
         "text": "Develop a quantum algorithm for finding lost keys",
         "label": "research",
         "color": "blue",
-        "isCompleted": false,
-        "dueDate": "2024-12-15T15:30:00Z"
+        "completedAt": "2024-11-21T15:30:00Z",
+        "dueDate": "2024-11-25T15:30:00Z",
+        "createdAt": "2024-11-05T08:20:00Z"
     },
     {
-        "id": "23",
+        "id": "14",
         "text": "Write documentation for my morning routine",
         "label": "productivity",
         "color": "green",
-        "isCompleted": true,
-        "completedAt": "2024-11-16T05:30:00Z",
-        "dueDate": "2024-11-20T08:00:00Z"
+        "dueDate": "2024-12-20T08:00:00Z",
+        "createdAt": "2024-11-19T06:30:00Z"
     },
     {
-        "id": "24",
-        "text": "Create a blockchain for tracking borrowed pens",
-        "color": "gray",
-        "isCompleted": false,
-        "dueDate": "2024-12-05T16:20:00Z"
-    },
-    {
-        "id": "25",
-        "text": "Implement GDPR compliance for my brain",
-        "label": "health",
-        "color": "red",
-        "isCompleted": false,
-        "dueDate": "2024-12-20T12:00:00Z"
-    },
-    {
-        "id": "26",
-        "text": "Debug the mystery of missing tupperware lids",
-        "label": "research",
-        "color": "yellow",
-        "isCompleted": false,
-        "dueDate": "2024-11-30T19:45:00Z"
-    },
-    {
-        "id": "27",
+        "id": "15",
         "text": "Optimize the process of optimizing processes",
         "label": "productivity",
         "color": "blue",
-        "isCompleted": false,
-        "dueDate": "2024-12-01T14:15:00Z"
+        "completedAt": "2024-11-23T14:15:00Z",
+        "dueDate": "2024-12-01T14:15:00Z",
+        "createdAt": "2024-11-22T10:45:00Z"
     },
     {
-        "id": "28",
-        "text": "Create a machine learning model to predict which plants I'll accidentally kill next",
+        "id": "16",
+        "text": "Create a neural network to predict my next coding mistake",
+        "label": "coding",
+        "color": "red",
+        "dueDate": "2024-12-15T12:30:00Z",
+        "createdAt": "2024-11-03T09:20:00Z"
+    },
+    {
+        "id": "17",
+        "text": "Design an advanced database schema for pizza toppings",
+        "label": "research",
+        "color": "blue",
+        "dueDate": "2024-12-25T20:00:00Z",
+        "createdAt": "2024-11-17T13:45:00Z"
+    },
+    {
+        "id": "18",
+        "text": "Write unit tests for my life decisions",
+        "label": "coding",
+        "color": "red",
+        "completedAt": "2024-11-19T13:45:00Z",
+        "dueDate": "2024-12-05T13:45:00Z",
+        "createdAt": "2024-11-15T08:30:00Z"
+    },
+    {
+        "id": "19",
+        "text": "Implement GDPR compliance for my brain",
+        "label": "health",
+        "color": "red",
+        "dueDate": "2024-12-20T12:00:00Z",
+        "createdAt": "2024-11-21T15:20:00Z"
+    },
+    {
+        "id": "20",
+        "text": "Debug the mystery of missing tupperware lids",
+        "label": "research",
+        "color": "yellow",
+        "completedAt": "2024-11-24T19:45:00Z",
+        "dueDate": "2024-11-30T19:45:00Z",
+        "createdAt": "2024-11-16T11:30:00Z"
+    },
+    {
+        "id": "21",
+        "text": "Create a machine learning model for plant survival prediction",
         "color": "green",
-        "isCompleted": false,
-        "dueDate": "2024-12-15T11:30:00Z"
+        "dueDate": "2024-12-15T11:30:00Z",
+        "createdAt": "2024-11-02T14:15:00Z"
     },
     {
-        "id": "29",
+        "id": "22",
         "text": "Develop a time machine to undo embarrassing code commits",
         "label": "coding",
         "color": "red",
-        "isCompleted": false,
-        "dueDate": "2024-12-31T23:59:00Z"
+        "dueDate": "2024-12-31T23:59:00Z",
+        "createdAt": "2024-11-19T16:40:00Z"
     },
     {
-        "id": "30",
-        "text": "Write a script to automate my excuses for being late",
-        "color": "yellow",
-        "isCompleted": true,
-        "completedAt": "2024-11-13T16:07:00Z",
-        "dueDate": "2024-11-25T09:30:00Z"
-    },
-    {
-        "id": "31",
+        "id": "23",
         "text": "Create a neural network to understand my handwriting",
         "label": "research",
         "color": "blue",
-        "isCompleted": false,
-        "dueDate": "2024-12-10T13:45:00Z"
+        "completedAt": "2024-11-17T13:45:00Z",
+        "dueDate": "2024-12-10T13:45:00Z",
+        "createdAt": "2024-11-07T10:20:00Z"
     },
     {
-        "id": "32",
+        "id": "24",
         "text": "Implement a cache for frequently used snacks",
         "label": "health",
         "color": "green",
-        "isCompleted": false,
-        "dueDate": "2024-11-28T15:30:00Z"
+        "dueDate": "2024-11-28T15:30:00Z",
+        "createdAt": "2024-11-23T09:15:00Z"
+    },
+    {
+        "id": "25",
+        "text": "Create a PowerPoint about caffeine tolerance for DNA",
+        "color": "blue",
+        "dueDate": "2024-12-01T15:45:00Z",
+        "createdAt": "2024-11-14T11:30:00Z"
+    },
+    {
+        "id": "26",
+        "text": "Build a recommendation system for excuses",
+        "label": "productivity",
+        "color": "yellow",
+        "completedAt": "2024-11-16T17:30:00Z",
+        "dueDate": "2024-11-20T14:00:00Z",
+        "createdAt": "2024-11-10T13:45:00Z"
+    },
+    {
+        "id": "27",
+        "text": "Research the correlation between bugs and coffee intake",
+        "label": "research",
+        "color": "green",
+        "dueDate": "2024-12-05T16:20:00Z",
+        "createdAt": "2024-11-20T15:30:00Z"
+    },
+    {
+        "id": "28",
+        "text": "Develop an algorithm to locate missing semicolons",
+        "label": "coding",
+        "color": "yellow",
+        "dueDate": "2024-11-30T12:00:00Z",
+        "createdAt": "2024-11-18T09:45:00Z"
+    },
+    {
+        "id": "29",
+        "text": "Create a blockchain for tracking rubber ducks",
+        "label": "coding",
+        "color": "blue",
+        "completedAt": "2024-11-25T14:20:00Z",
+        "dueDate": "2024-11-28T18:00:00Z",
+        "createdAt": "2024-11-15T16:30:00Z"
+    },
+    {
+        "id": "30",
+        "text": "Implement a recursive solution for desk organization",
+        "label": "productivity",
+        "color": "gray",
+        "dueDate": "2024-12-15T09:30:00Z",
+        "createdAt": "2024-11-22T13:15:00Z"
     }
 ]

@@ -23,3 +23,4 @@ export { default as NotFoundTasksIcon } from "@/assets/icons/not-found-tasks.svg
 export { default as ErrorIcon } from "@/assets/icons/error.svg?react";
 export { default as CloseIcon } from "@/assets/icons/close.svg?react";
 export { default as UndoIcon } from "@/assets/icons/undo.svg?react";
+export { default as EditIcon } from "@/assets/icons/edit.svg?react";

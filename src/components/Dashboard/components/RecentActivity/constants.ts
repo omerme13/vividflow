@@ -1,43 +1,71 @@
 import { ActivityType } from "@/types/dashboard";
-import { TaskColors } from "@/types/task";
 import { format } from "date-fns";
-
+import { FC, SVGProps } from "react";
+import {
+    TrashIcon,
+    PaletteIcon,
+    CalendarIcon,
+    TaskIcon,
+    UndoIcon,
+    PlusIcon,
+    EditIcon,
+    LabelIcon,
+} from "@/assets/icons";
+interface Test {
+    dueDate?: string;
+    color?: string;
+    label?: string;
+}
 interface ActivityConfig {
-    icon: string;
-    description: string | ((date?: string, color?: TaskColors) => string);
+    icon: FC<SVGProps<SVGSVGElement>> | string;
+    description: string | (({ dueDate, color, label }: Test) => string);
+    color: string;
 }
 
 export const ACTIVITY_CONFIG: Record<ActivityType, ActivityConfig> = {
     [ActivityType.Created]: {
-        icon: "➕",
+        icon: PlusIcon,
         description: "Created",
+        color: "var(--color-cta)",
     },
     [ActivityType.Deleted]: {
-        icon: "🗑️",
+        icon: TrashIcon,
         description: "Deleted",
+        color: "var(--color-red)",
     },
     [ActivityType.DueDateSet]: {
-        icon: "📅",
-        description: (date?: string) => (date ? `Due date set to ${format(new Date(date), "MMM d")}` : "Due date removed"),
+        icon: CalendarIcon,
+        description: ({ dueDate }) => (dueDate ? `Due date set to ${format(new Date(dueDate), "MMM d")}` : "Due date removed"),
+        color: "var(--color-cta)",
     },
     [ActivityType.ColorChanged]: {
-        icon: "🎨",
-        description: (_, color?: TaskColors) => `Changed color to ${color || ""}`,
+        icon: PaletteIcon,
+        description: ({ color }) => `Changed color to ${color || ""}`,
+        color: "var(--color-cta)",
+    },
+    [ActivityType.LabelChanged]: {
+        icon: LabelIcon,
+        description: ({ label }) => `Label changed to ${label || ""}`,
+        color: "var(--color-cta)",
     },
     [ActivityType.TextUpdated]: {
-        icon: "✏️",
+        icon: EditIcon,
         description: "Text updated",
+        color: "var(--color-cta)",
     },
     [ActivityType.Completed]: {
-        icon: "✓",
+        icon: TaskIcon,
         description: "Completed",
+        color: "var(--color-green)",
     },
     [ActivityType.Undone]: {
-        icon: "🔄",
+        icon: UndoIcon,
         description: "Marked as incomplete",
+        color: "var(--color-cta)",
     },
     [ActivityType.UndoDelete]: {
-        icon: "🔄",
+        icon: UndoIcon,
         description: "Deletion undone",
+        color: "var(--color-cta)",
     },
 };

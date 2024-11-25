@@ -11,7 +11,11 @@ function ActivityStatus({ activity }: { activity: Activity }) {
     const config = ACTIVITY_CONFIG[activity.type];
     const description =
         typeof config.description === "function"
-            ? config.description(activity.dueDate, activity.color as TaskColors)
+            ? config.description({
+                  dueDate: activity.dueDate,
+                  color: activity.color as TaskColors,
+                  label: activity.label,
+              })
             : config.description;
 
     return <span className="recent-activity__description">{description}</span>;
@@ -23,7 +27,9 @@ function ActivityItem({ activity }: { activity: Activity }) {
 
     return (
         <div className="recent-activity__item">
-            <div className="recent-activity__icon">{config.icon}</div>
+            <div className="recent-activity__icon">
+                <config.icon color={config.color} />
+            </div>
             <div className="recent-activity__content">
                 <div className="recent-activity__main">
                     <span className="recent-activity__text">{activity.taskText}</span>
@@ -40,7 +46,7 @@ export default function RecentActivity() {
 
     return (
         <DashboardItem title="Recent Activity" fullRow>
-            <div className="recent-activity">
+            <div className="recent-activity scrollbar">
                 {activities.map((activity) => (
                     <ActivityItem key={activity.id} activity={activity} />
                 ))}

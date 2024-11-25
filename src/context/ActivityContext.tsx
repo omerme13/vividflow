@@ -8,7 +8,7 @@ export interface ActivityContextState {
 }
 
 export interface ActivityContextDispatch {
-    trackActivity: (type: ActivityType, task: TaskData, extraData?: { dueDate?: string; color?: string }) => void;
+    trackActivity: (type: ActivityType, task: TaskData) => void;
     compareAndTrackChanges: (previousTask: TaskData | undefined, currentTask: TaskData) => void;
     clearActivities: () => void;
 }
@@ -20,14 +20,16 @@ export function ActivityProvider({ children }: { children: ReactNode }) {
     const [activities, setActivities] = useState<Activity[]>(() => storage.getActivities());
 
     const trackActivity = useCallback(
-        (type: ActivityType, task: TaskData, extraData?: { dueDate?: string; color?: string }) => {
+        (type: ActivityType, task: TaskData) => {
             const activity: Activity = {
                 id: crypto.randomUUID(),
                 taskId: task.id,
                 taskText: task.text,
                 type,
                 timestamp: new Date().toISOString(),
-                ...extraData,
+				color: task.color,
+				dueDate: task.dueDate,
+				label: task.label
             };
 
             storage.addActivity(activity);
@@ -51,10 +53,12 @@ export function ActivityProvider({ children }: { children: ReactNode }) {
                 trackActivity(ActivityType.ColorChanged, currentTask, { color: currentTask.color });
             }
 
+            if (previousTask.label !== currentTask.label) {
+                trackActivity(ActivityType.LabelChanged, currentTask);
+            }
+
             if (previousTask.dueDate !== currentTask.dueDate) {
-                trackActivity(ActivityType.DueDateSet, currentTask, {
-                    dueDate: currentTask.dueDate,
-                });
+                trackActivity(ActivityType.DueDateSet, currentTask);
             }
 
             if (!previousTask.completedAt && currentTask.completedAt) {

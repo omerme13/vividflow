@@ -16,12 +16,15 @@
     }
 
     &__icon {
-        width: 2.4rem;
-        height: 2.4rem;
+        width: 2rem;
+        height: 2rem;
         border-radius: var(--radius-full);
         display: flex;
         justify-content: center;
         font-size: var(--font-size-menu);
+		display: flex;
+		justify-content: center;
+		align-items: center;
     }
 
     &__content {

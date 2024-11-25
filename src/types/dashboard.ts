@@ -19,6 +19,7 @@ export enum ActivityType {
     DueDateSet = "dueDateSet",
     TextUpdated = "textUpdated",
     ColorChanged = "colorChanged",
+    LabelChanged = "labelChanged",
     UndoDelete = "undoDelete",
 }
 export interface Activity {
@@ -29,4 +30,5 @@ export interface Activity {
     timestamp: string;
     dueDate?: string;
     color?: string;
+    label?: string;
 }
