@@ -2,7 +2,17 @@ import { useMemo } from "react";
 import { TaskData } from "@/types/task";
 import { TaskProgress } from "@/components/Dashboard/components/TaskProgress/TaskProgress";
 import { TimeFilter } from "@/types/dashboard";
-import { format, subDays, subWeeks, subMonths, startOfWeek, startOfDay, isSameWeek, isSameMonth } from "date-fns";
+import {
+    format,
+    subDays,
+    subWeeks,
+    subMonths,
+    startOfWeek,
+    startOfDay,
+    isSameWeek,
+    isSameMonth,
+    parseISO,
+} from "date-fns";
 
 interface DateRangeItem {
     date: Date;
@@ -36,12 +46,8 @@ const getDateRange = (timeFilter: TimeFilter): DateRangeItem[] => {
     }
 };
 
-const categorizeTasks = (
-    tasks: TaskData[],
-    dateRange: DateRangeItem[],
-    timeFilter: TimeFilter
-): TaskProgress[] => {
-    const today = new Date();
+const categorizeTasks = (tasks: TaskData[], dateRange: DateRangeItem[], timeFilter: TimeFilter): TaskProgress[] => {
+    const now = new Date();
     const statusTimeline: Record<string, TaskProgress> = {};
 
     dateRange.forEach(({ display }) => {
@@ -54,7 +60,7 @@ const categorizeTasks = (
     });
 
     tasks.forEach((task) => {
-        const taskDate = task.completedAt ? new Date(task.completedAt) : new Date();
+        const taskDate = parseISO(task.createdAt);
         let periodKey: string | undefined;
 
         switch (timeFilter) {
@@ -72,9 +78,9 @@ const categorizeTasks = (
         }
 
         if (periodKey && statusTimeline[periodKey]) {
-            if (task.isCompleted) {
+            if (task.completedAt) {
                 statusTimeline[periodKey].completed++;
-            } else if (task.dueDate && new Date(task.dueDate) < today) {
+            } else if (task.dueDate && parseISO(task.dueDate) < now) {
                 statusTimeline[periodKey].overdue++;
             } else {
                 statusTimeline[periodKey].pending++;
