@@ -15,10 +15,10 @@ import { TaskColors } from "@/types/task";
 import "./Task.scss";
 
 export default function Task({ task, onEdit, isGridMode }: TaskProps) {
-    const { id, text, label, color = TaskColors.Gray, isCompleted, dueDate } = task;
+    const { id, text, label, color = TaskColors.Gray, completedAt, dueDate } = task;
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
     const { updateTask, filterByLabel, toggleTaskCompletion, setTaskDueDate } = useTask(id);
-	const handleDeleteTask = useDeleteTask(id);
+    const handleDeleteTask = useDeleteTask(id);
     const isColorSelected = color !== TaskColors.Gray;
 
     const togglePalette = () => setIsPaletteOpen((prev) => !prev);
@@ -53,8 +53,8 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                 <TaskAction
                     icon={CheckIcon}
                     action={toggleTaskCompletion}
-                    tooltipContent={`mark as ${isCompleted ? "undone" : "done"}`}
-                    isActive={isCompleted}
+                    tooltipContent={`mark as ${completedAt ? "undone" : "done"}`}
+                    isActive={!!completedAt}
                 />
 
                 <Popover
@@ -86,7 +86,7 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                 />
                 <TaskAction icon={TrashIcon} action={handleDeleteTask} isWarning tooltipContent="delete" />
             </div>
-            {isCompleted && (
+            {!!completedAt && (
                 <div className="task__cover-done" onClick={handleClickOnCompleted}>
                     <UndoIcon className="task__undo-icon" width={40} height={40} />
                 </div>

@@ -100,7 +100,7 @@ export function CalendarProvider({ children }: { children: ReactNode }) {
                 task,
                 style: {
                     backgroundColor: task.color || TaskColors.Gray,
-                    opacity: task.isCompleted ? 0.7 : 1,
+                    opacity: task.completedAt ? 0.7 : 1,
                 },
             }));
     }, [tasks, selectedLabels]);
@@ -111,12 +111,12 @@ export function CalendarProvider({ children }: { children: ReactNode }) {
 
     const getDueTasks = (days = 7): CalendarEvent[] => {
         const cutoff = addDays(new Date(), days);
-        return events.filter((event) => isBefore(event.start, cutoff) && !event.task.isCompleted);
+        return events.filter((event) => isBefore(event.start, cutoff) && !event.task.completedAt);
     };
 
     const getOverdueTasks = (): CalendarEvent[] => {
         const now = new Date();
-        return events.filter((event) => isBefore(event.start, now) && !event.task.isCompleted);
+        return events.filter((event) => isBefore(event.start, now) && !event.task.completedAt);
     };
 
     const toggleTaskComplete = async (eventId: string): Promise<void> => {
@@ -124,8 +124,7 @@ export function CalendarProvider({ children }: { children: ReactNode }) {
         if (task) {
             const updatedTask: TaskData = {
                 ...task,
-                isCompleted: !task.isCompleted,
-                completedAt: !task.isCompleted ? new Date().toISOString() : undefined,
+                completedAt: !task.completedAt ? new Date().toISOString() : undefined,
             };
             updateTask(updatedTask);
         }

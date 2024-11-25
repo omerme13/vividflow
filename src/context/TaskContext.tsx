@@ -62,8 +62,12 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     const { compareAndTrackChanges, trackActivity } = useActivityDispatch();
 
     const addTask = useCallback((newTask: TaskDataWithoutId) => {
-        const taskWithId = { ...newTask, isCompleted: false, id: crypto.randomUUID() };
-	
+        const taskWithId = {
+            ...newTask,
+            id: crypto.randomUUID(),
+            createdAt: new Date().toISOString(),
+        };
+
         trackActivity(ActivityType.Created, taskWithId);
         setTasks((prev) => {
             const updatedTasks = [taskWithId, ...prev];
@@ -92,7 +96,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
             const deletedTask = prev[taskIndex];
             const updatedTasks = prev.filter((task) => task.id !== id);
 
-			trackActivity(ActivityType.Deleted, deletedTask);
+            trackActivity(ActivityType.Deleted, deletedTask);
             saveTasksAndUpdateLabels(updatedTasks, setLabels);
 
             if (deletedTask) {
@@ -112,7 +116,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
             const { task, index } = prevDeleted[id];
 
-			trackActivity(ActivityType.UndoDelete, task);
+            trackActivity(ActivityType.UndoDelete, task);
             setTasks((prevTasks) => {
                 const updatedTasks = [...prevTasks];
                 const restoredIndex = Math.min(index, updatedTasks.length);
@@ -208,8 +212,7 @@ export function useTask(id: string) {
         toggleTaskCompletion: () =>
             updateTask({
                 ...task,
-                isCompleted: !task.isCompleted,
-                completedAt: !task.isCompleted ? new Date().toISOString() : undefined,
+                completedAt: !task.completedAt ? new Date().toISOString() : undefined,
             }),
         setTaskDueDate: (date: Date | undefined) =>
             updateTask({
@@ -240,8 +243,8 @@ export function useFilteredTasks() {
         const filteredTasks = tasks.filter((task) => filterConditions.every((condition) => condition(task)));
 
         return {
-            completed: filteredTasks.filter((task) => task.isCompleted),
-            incomplete: filteredTasks.filter((task) => !task.isCompleted),
+            completed: filteredTasks.filter((task) => task.completedAt),
+            incomplete: filteredTasks.filter((task) => !task.completedAt),
             all: filteredTasks,
             tasksExist: !!tasks.length,
         };
