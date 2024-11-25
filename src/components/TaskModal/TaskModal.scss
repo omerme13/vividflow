@@ -11,7 +11,7 @@
 
     &__input {
         font-family: inherit;
-        font-size: var(--font-size-menu);
+        font-size: var(--font-size-md);
         color: inherit;
         width: 100%;
         padding: 1.2rem 1.6rem;
@@ -46,7 +46,7 @@
 		border: none;
 		background: none;
 		font-weight: var(--font-weight-bold);
-		font-size: var(--font-size-menu);
+		font-size: var(--font-size-md);
 		color: var(--color-red-strong);
 		display: flex;
 		gap: 0.4rem;

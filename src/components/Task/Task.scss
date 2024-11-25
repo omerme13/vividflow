@@ -49,7 +49,7 @@
     }
 
     &__label {
-        font-size: 1.2rem;
+        font-size: var(--font-size-sm);
         background-color: var(--color-purple-30);
         width: fit-content;
         padding: 0.6rem 1.2rem;

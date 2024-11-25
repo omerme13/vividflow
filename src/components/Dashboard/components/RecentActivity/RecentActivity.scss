@@ -19,7 +19,7 @@
         border-radius: var(--radius-full);
         display: flex;
         justify-content: center;
-        font-size: var(--font-size-menu);
+        font-size: var(--font-size-md);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -40,7 +40,7 @@
     }
 
     &__text {
-        font-size: var(--font-size-main);
+        font-size: var(--font-size-lg);
         font-weight: var(--font-weight-bold);
         color: var(--color-main-text);
         overflow: hidden;
@@ -51,7 +51,7 @@
 
     &__time {
         white-space: nowrap;
-		font-size: var(--font-size-s);
+		font-size: var(--font-size-sm);
         background-color: var(--color-purple-30);
         font-weight: var(--font-weight-bold);
         border-radius: var(--radius-sm);
@@ -60,7 +60,7 @@
     }
 
     &__description {
-        font-size: var(--font-size-menu);
+        font-size: var(--font-size-md);
         color: var(--color-main-text-light);
     }
 }

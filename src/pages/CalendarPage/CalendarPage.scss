@@ -18,7 +18,7 @@
             border: 1px solid var(--color-purple-30);
             padding: 0.8rem 1.6rem;
             border-radius: var(--radius-lg);
-            font-size: var(--font-size-menu);
+            font-size: var(--font-size-md);
             font-family: var(--font-family-main);
             font-weight: var(--font-weight-bold);
             transition: 0.1s;
@@ -42,7 +42,7 @@
 
         .rbc-toolbar-label {
             flex: 1;
-            font-size: var(--font-size-main);
+            font-size: var(--font-size-lg);
             font-weight: var(--font-weight-bold);
             color: var(--color-main-text);
             text-align: center;
@@ -95,14 +95,14 @@
         color: var(--color-main-text);
         // border-bottom: 1px solid var(--color-purple-30);
         background-color: var(--color-purple-10);
-        font-size: var(--font-size-menu);
+        font-size: var(--font-size-md);
         padding: 0.8rem 1.6rem !important;
         border: none;
     }
 
     .rbc-date-cell {
         padding: 0.8rem;
-        font-size: var(--font-size-menu);
+        font-size: var(--font-size-md);
     }
 
     .rbc-event {
@@ -118,12 +118,12 @@
     }
 
     .rbc-event__label {
-        font-size: var(--font-size-menu);
+        font-size: var(--font-size-md);
         font-weight: var(--font-weight-bold);
     }
 
     .rbc-event-content {
-        font-size: var(--font-size-menu);
+        font-size: var(--font-size-md);
 
         .tooltip__trigger {
             white-space: nowrap;
@@ -176,7 +176,7 @@
     .rbc-time-slot {
         color: var(--color-main-text);
         border-top: none;
-        font-size: var(--font-size-menu);
+        font-size: var(--font-size-md);
     }
 
     .rbc-time-gutter {
@@ -207,7 +207,7 @@
         table.rbc-agenda-table {
             border-spacing: 0;
             border-collapse: collapse;
-            font-size: var(--font-size-menu);
+            font-size: var(--font-size-md);
 			border: none;
 
             th,
