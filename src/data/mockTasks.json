@@ -1,24 +1,23 @@
 [
     {
         "id": "1",
-        "text": "Teach my cat to respect the concept of personal space",
-        "label": "pets",
+        "text": "Develop a comprehensive full-stack enterprise application architecture incorporating microservices, event-driven messaging, and real-time data processing capabilities, with implementation of OAuth2/OpenID Connect for authentication, role-based access control (RBAC), database sharding for horizontal scalability, Kubernetes-based container orchestration, automated CI/CD pipelines with blue-green deployments, comprehensive logging and monitoring with ELK stack integration, and implementation of circuit breakers and fallback mechanisms for resilient service communication",
+        "label": "coding",
         "color": "blue",
         "dueDate": "2024-12-15T19:30:00Z",
         "createdAt": "2024-11-01T10:15:00Z"
     },
     {
         "id": "2",
-        "text": "Debug my relationship with my coffee maker",
-        "label": "appliances",
+        "text": "Debug printer",
+        "label": "hardware",
         "color": "red",
-        "completedAt": "2024-11-15T06:15:00Z",
         "dueDate": "2024-11-18T09:00:00Z",
         "createdAt": "2024-11-10T08:30:00Z"
     },
     {
         "id": "3",
-        "text": "Develop an AI to tell me if I really need another AI project",
+        "text": "Implement a distributed system architecture for high-availability microservices with fault tolerance, load balancing, service discovery, circuit breakers, and comprehensive logging and monitoring, while ensuring data consistency across multiple regions and handling network partitions gracefully",
         "label": "coding",
         "color": "yellow",
         "dueDate": "2024-11-28T23:59:00Z",
@@ -26,25 +25,24 @@
     },
     {
         "id": "4",
-        "text": "Write a strongly-worded letter to my printer",
-        "label": "appliances",
+        "text": "Review code PR",
+        "label": "coding",
         "color": "red",
         "dueDate": "2024-12-20T16:45:00Z",
         "createdAt": "2024-11-15T11:45:00Z"
     },
     {
         "id": "5",
-        "text": "Train my rubber duck to give better debugging advice",
-        "label": "coding",
+        "text": "Setup CI/CD",
+        "label": "devops",
         "color": "yellow",
-        "completedAt": "2024-11-18T11:20:00Z",
         "dueDate": "2024-11-25T11:20:00Z",
         "createdAt": "2024-11-10T09:00:00Z"
     },
     {
         "id": "6",
-        "text": "Optimize my procrastination workflow",
-        "label": "productivity",
+        "text": "Design and implement a scalable event-driven architecture for real-time data processing and analytics, incorporating message queuing, stream processing, complex event processing, and automated scaling mechanisms while maintaining data consistency and fault tolerance across distributed components",
+        "label": "architecture",
         "color": "gray",
         "dueDate": "2024-11-30T23:59:00Z",
         "createdAt": "2024-11-01T15:30:00Z"
@@ -54,7 +52,6 @@
         "text": "Calculate the probability of finding matching socks",
         "label": "research",
         "color": "blue",
-        "completedAt": "2024-11-20T08:15:00Z",
         "dueDate": "2024-11-25T08:15:00Z",
         "createdAt": "2024-11-12T16:45:00Z"
     },
@@ -119,13 +116,12 @@
         "text": "Optimize the process of optimizing processes",
         "label": "productivity",
         "color": "blue",
-        "completedAt": "2024-11-23T14:15:00Z",
         "dueDate": "2024-12-01T14:15:00Z",
         "createdAt": "2024-11-22T10:45:00Z"
     },
     {
         "id": "16",
-        "text": "Create a neural network to predict my next coding mistake",
+        "text": "Create an advanced machine learning pipeline for predictive maintenance in IoT systems, including data ingestion from multiple sensor types, real-time stream processing with Apache Kafka, feature engineering incorporating temporal and spatial characteristics, ensemble modeling combining deep learning and traditional ML approaches, automated model retraining based on drift detection, A/B testing framework for model deployment, and integration with existing monitoring systems while maintaining high availability and fault tolerance across geographically distributed nodes",
         "label": "coding",
         "color": "red",
         "dueDate": "2024-12-15T12:30:00Z",
@@ -144,7 +140,6 @@
         "text": "Write unit tests for my life decisions",
         "label": "coding",
         "color": "red",
-        "completedAt": "2024-11-19T13:45:00Z",
         "dueDate": "2024-12-05T13:45:00Z",
         "createdAt": "2024-11-15T08:30:00Z"
     },
@@ -185,7 +180,6 @@
         "text": "Create a neural network to understand my handwriting",
         "label": "research",
         "color": "blue",
-        "completedAt": "2024-11-17T13:45:00Z",
         "dueDate": "2024-12-10T13:45:00Z",
         "createdAt": "2024-11-07T10:20:00Z"
     },
@@ -209,7 +203,6 @@
         "text": "Build a recommendation system for excuses",
         "label": "productivity",
         "color": "yellow",
-        "completedAt": "2024-11-16T17:30:00Z",
         "dueDate": "2024-11-20T14:00:00Z",
         "createdAt": "2024-11-10T13:45:00Z"
     },
@@ -234,7 +227,6 @@
         "text": "Create a blockchain for tracking rubber ducks",
         "label": "coding",
         "color": "blue",
-        "completedAt": "2024-11-25T14:20:00Z",
         "dueDate": "2024-11-28T18:00:00Z",
         "createdAt": "2024-11-15T16:30:00Z"
     },

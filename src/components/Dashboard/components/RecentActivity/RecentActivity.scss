@@ -1,18 +1,16 @@
 .recent-activity {
-	height: 32rem;
-	overflow: auto;
-	
+    height: 32rem;
+    overflow: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+
     &__item {
         display: flex;
         gap: 1rem;
         padding: 1.5rem;
         background: var(--color-purple-10);
-        border-radius: var(--radius-sm);
-        margin-bottom: 1rem;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
+        border-radius: var(--radius-md);
     }
 
     &__icon {
@@ -22,22 +20,23 @@
         display: flex;
         justify-content: center;
         font-size: var(--font-size-menu);
-		display: flex;
-		justify-content: center;
-		align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__content {
         flex: 1;
         min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
     }
 
     &__main {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        gap: 1rem;
-        margin-bottom: 0.4rem;
     }
 
     &__text {
@@ -47,17 +46,17 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-		line-height: 1;
+        padding-right: 1.6rem;
     }
 
     &__time {
         font-size: var(--font-size-menu);
         white-space: nowrap;
-		color: var(--color-main-text-light);
+        color: var(--color-main-text-light);
     }
-	
+
     &__description {
         font-size: var(--font-size-menu);
-		color: var(--color-main-text-light);
+        color: var(--color-main-text-light);
     }
 }
