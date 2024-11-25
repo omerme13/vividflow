@@ -1,4 +1,7 @@
 .recent-activity {
+	height: 32rem;
+	overflow: auto;
+	
     &__item {
         display: flex;
         gap: 1rem;
@@ -41,17 +44,17 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+		line-height: 1;
     }
 
     &__time {
-        color: var(--color-main-text);
         font-size: var(--font-size-menu);
-        opacity: 0.8;
         white-space: nowrap;
+		color: var(--color-main-text-light);
     }
-
+	
     &__description {
-        color: var(--color-purple-70);
         font-size: var(--font-size-menu);
+		color: var(--color-main-text-light);
     }
 }
