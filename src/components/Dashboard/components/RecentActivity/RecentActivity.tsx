@@ -24,6 +24,7 @@ function ActivityStatus({ activity }: { activity: Activity }) {
 function ActivityItem({ activity }: { activity: Activity }) {
     const config = ACTIVITY_CONFIG[activity.type];
     const timeAgo = formatDistanceToNowStrict(new Date(activity.timestamp), { addSuffix: true })
+        .replace(/ seconds?/, "s")
         .replace(/ minutes?/, "m")
         .replace(/ hours?/, "h")
         .replace(/ days?/, "d")
