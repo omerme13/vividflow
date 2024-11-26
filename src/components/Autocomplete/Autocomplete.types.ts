@@ -4,5 +4,5 @@ export interface AutocompleteProps {
     suggestions: string[];
     placeholder?: string;
     className?: string;
-	resetValue: () => void;
+    resetValue: () => void;
 }

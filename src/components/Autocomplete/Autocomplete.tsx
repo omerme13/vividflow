@@ -1,9 +1,8 @@
 import { useRef } from "react";
 import useClickOutside from "@/hooks/useClickOutside";
-import { AutocompleteProps } from "./Autocomplete.types";
-import { CloseIcon } from "@/assets/icons";
 import useSuggestions from "@/hooks/useSuggestion";
-
+import { AutocompleteProps } from "./Autocomplete.types";
+import Input from "../Input/Input";
 import "./Autocomplete.scss";
 
 export default function Autocomplete({
@@ -39,23 +38,19 @@ export default function Autocomplete({
         enabled: showSuggestions,
     });
 
-    const handleClearButton = () => {
-        clearSuggestions();
-        resetValue();
-    };
-	
     return (
-        <div className={`autocomplete__wrapper ${className}`}>
-            <input
-                className="autocomplete__input"
-                type="text"
+        <div className={`autocomplete ${className}`}>
+            <Input
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={(newValue) => onChange(newValue)}
+                onClear={() => {
+                    clearSuggestions();
+                    resetValue();
+                }}
+                placeholder={placeholder}
                 onFocus={() => setShowSuggestions(true)}
                 onKeyDown={handleKeyDown}
-                placeholder={placeholder}
             />
-
             {showSuggestions && filteredSuggestions.length > 0 && (
                 <div className="autocomplete__suggestions scrollbar" ref={suggestionsRef}>
                     {filteredSuggestions.map((suggestion, index) => (
@@ -75,9 +70,6 @@ export default function Autocomplete({
                         </button>
                     ))}
                 </div>
-            )}
-            {value && (
-                <CloseIcon className="autocomplete__clear-text" width={18} height={18} onClick={handleClearButton} />
             )}
         </div>
     );
