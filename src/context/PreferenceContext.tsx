@@ -1,14 +1,14 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { UserPreferences } from "@/types/preference";
-import * as preferenceStorage from "@/utils/preferenceLocalStorage";
+import * as storage from "@/utils/preferenceLocalStorage";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 interface PreferencesContextType {
     preferences: UserPreferences;
     updatePreference: (updates: Partial<UserPreferences>) => void;
-};
+}
 
 const PreferencesContext = createContext<PreferencesContextType>({
-    preferences: preferenceStorage.getStoredPreferences(),
+    preferences: storage.getStoredPreferences(),
     updatePreference: () => undefined,
 });
 
@@ -17,7 +17,7 @@ interface PreferencesProviderProps {
 }
 
 export function PreferencesProvider({ children }: PreferencesProviderProps) {
-    const [preferences, setPreferences] = useState<UserPreferences>(preferenceStorage.getStoredPreferences());
+    const [preferences, setPreferences] = useState<UserPreferences>(storage.getStoredPreferences());
 
     useEffect(() => {
         const isDark = preferences.isDarkMode;
@@ -36,7 +36,7 @@ export function PreferencesProvider({ children }: PreferencesProviderProps) {
     }, []);
 
     function updatePreference(updates: Partial<UserPreferences>) {
-        const newPreferences = preferenceStorage.updatePreferences(updates);
+        const newPreferences = storage.updatePreferences(updates);
         setPreferences(newPreferences);
     }
 

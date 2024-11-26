@@ -1,5 +1,5 @@
 import { LayoutState } from "@/types/layout";
-import { UserPreferences } from "@/types/preference";
+import { PreferenceActivityCount, PreferenceDateFormat, UserPreferences } from "@/types/preference";
 import { CalendarPreference } from "./calendarLocalStorage";
 import { CalendarViewMode } from "@/types/calendar";
 import { Activity } from "@/types/dashboard";
@@ -13,10 +13,6 @@ export enum StorageKeys {
     CalendarView = "vividflow_calendar_view",
 	Activities = "vividflow_activities"
 }
-
-export const DEFAULT_PREFERENCES: UserPreferences = {
-    isDarkMode: false,
-} as const;
 
 export const DEFAULT_LAYOUT: LayoutState = {
 	isCompactSidebar: false,
@@ -35,3 +31,11 @@ export const DEFAULT_CALENDAR_PREFERENCES: CalendarPreference = {
 } as const;
 
 export const DEFAULT_ACTIVITIES: Activity[] = [] as const;
+
+export const DEFAULT_PREFERENCES: UserPreferences = {
+    isDarkMode: window.matchMedia("(prefers-color-scheme: dark)").matches,
+    dateFormat: PreferenceDateFormat.UK,
+    username: "",
+    showCompletedEvents: true,
+    recentActivitiesCount: PreferenceActivityCount.regular,
+} as const;
