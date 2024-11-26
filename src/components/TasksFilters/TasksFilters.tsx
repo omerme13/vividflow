@@ -1,7 +1,7 @@
-import Select from "react-select";
 import { useTaskContext } from "@/context/TaskContext";
 import ColorPicker from "@/components/ColorPicker";
 import { TaskColors } from "@/types/task";
+import CustomSelect from "../CustomSelect";
 
 import "./TasksFilters.scss";
 
@@ -17,7 +17,7 @@ export default function TaskFilter()  {
         <div className="tasks-filters">
             <div className="tasks-filters__section">
                 <h3 className="tasks-filters__title">Labels</h3>
-                <Select
+                <CustomSelect
                     isMulti
                     options={labelOptions}
                     value={labelOptions.filter((option) => filterOptions.selectedLabels.includes(option.value))}
@@ -28,8 +28,6 @@ export default function TaskFilter()  {
                         }));
                     }}
                     placeholder="Select labels"
-                    className="tasks-filters__select"
-                    classNamePrefix="tasks-filters-select"
                     classNames={{ menuList: () => "scrollbar" }}
                 />
             </div>

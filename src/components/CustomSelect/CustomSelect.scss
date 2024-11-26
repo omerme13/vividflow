@@ -1,0 +1,124 @@
+.custom-select-wrapper .custom-select {
+    &__control {
+        min-height: 4.4rem;
+        padding: 0 0.4rem;
+        background-color: var(--color-purple-10);
+        border: 1px solid transparent;
+        border-radius: var(--radius-lg);
+        transition: 0.2s;
+        font-family: inherit;
+        font-size: var(--font-size-md);
+        color: inherit;
+
+        &--is-focused {
+            outline: none;
+            background-color: var(--color-card-background);
+            border-color: var(--color-cta);
+            box-shadow: var(--shadow-focus);
+        }
+
+        &:hover {
+            background-color: var(--color-card-background);
+        }
+    }
+
+    &__value-container {
+        padding: 0.2rem 1.2rem;
+    }
+
+    &__placeholder {
+        color: var(--color-main-text);
+        opacity: 0.5;
+        font-size: var(--font-size-md);
+    }
+
+    &__input-container {
+        margin: 0;
+        padding: 0;
+        font-size: var(--font-size-md);
+        color: inherit;
+    }
+
+    &__multi-value {
+        background: var(--color-card-background);
+        border: 1px solid var(--color-purple-20);
+        border-radius: var(--radius-md);
+        margin: 0.2rem;
+
+        &__label {
+            font-size: var(--font-size-md);
+            color: var(--color-main-text);
+            padding: 0.4rem 0.8rem;
+        }
+
+        &__remove {
+            padding: 0 0.6rem;
+            cursor: pointer;
+            border-radius: 0 0.8rem 0.8rem 0;
+
+            &:hover {
+                background-color: var(--color-purple-10);
+                color: var(--color-cta);
+            }
+
+            &:active {
+                background-color: var(--color-purple-20);
+            }
+        }
+    }
+
+    &__menu {
+        margin-top: 0.4rem;
+        background-color: var(--color-card-background);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-purple-20);
+        box-shadow: var(--shadow-3);
+        animation: slideUp 0.2s ease-out;
+        overflow: hidden;
+    }
+
+    &__menu-list {
+        max-height: 24rem;
+        padding: 0;
+    }
+
+    &__option {
+        font-family: inherit;
+        font-size: var(--font-size-md);
+        color: var(--color-main-text);
+        padding: 1rem 2rem;
+        cursor: pointer;
+        text-transform: capitalize;
+
+        & + & {
+            border-top: 1px solid var(--color-purple-10);
+        }
+
+        &--is-focused {
+            background-color: var(--color-purple-10);
+            color: var(--color-cta);
+        }
+
+        &--is-selected {
+            background-color: var(--color-purple-10);
+            color: var(--color-cta);
+        }
+
+        &:active {
+            background-color: var(--color-purple-20);
+        }
+    }
+
+    &__indicators {
+        .custom-select__indicator {
+            color: var(--color-main-text);
+            cursor: pointer;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        .custom-select__indicator-separator {
+            display: none;
+        }
+    }
+}
