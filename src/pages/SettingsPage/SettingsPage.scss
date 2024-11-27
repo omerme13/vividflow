@@ -1,3 +1,70 @@
 .settings-page {
+    padding: 2.4rem 3.2rem;
+    max-width: 80rem;
+    font-family: var(--font-family-main);
+	display: flex;
+	flex-direction: column;
+	gap: 3.2rem;
+	.custom-select-wrapper {
+		width: 18rem;
+	}
+}
 
+.settings-header {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+
+    h1 {
+        font-size: 2.4rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--color-text-main);
+    }
+
+    p {
+        font-size: 1.4rem;
+        color: var(--color-main-text-light);
+    }
+}
+
+.settings-section {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+
+        h2 {
+            font-size: 1.6rem;
+            color: var(--color-text-main);
+            font-weight: var(--font-weight-bold);
+        }
+    }
+}
+
+.settings-card {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+	background-color: var(--color-card-background);
+	padding: 1.6rem 2.8rem;
+	border-radius: var(--radius-md);
+}
+
+.settings-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__label {
+        font-size: 1.4rem;
+        color: var(--color-text-main);
+    }
+
+    &__description {
+        font-size: 1.2rem;
+        color: var(--color-main-text-light);
+    }
 }

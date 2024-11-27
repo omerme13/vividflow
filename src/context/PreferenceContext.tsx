@@ -4,12 +4,12 @@ import { createContext, useContext, useState, useEffect, ReactNode } from "react
 
 interface PreferencesContextType {
     preferences: UserPreferences;
-    updatePreference: (updates: Partial<UserPreferences>) => void;
+    updatePreferences: (updates: Partial<UserPreferences>) => void;
 }
 
 const PreferencesContext = createContext<PreferencesContextType>({
     preferences: storage.getStoredPreferences(),
-    updatePreference: () => undefined,
+    updatePreferences: () => undefined,
 });
 
 interface PreferencesProviderProps {
@@ -28,20 +28,20 @@ export function PreferencesProvider({ children }: PreferencesProviderProps) {
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
         const handleChange = (e: MediaQueryListEvent) => {
-            updatePreference({ isDarkMode: e.matches });
+            updatePreferences({ isDarkMode: e.matches });
         };
 
         mediaQuery.addEventListener("change", handleChange);
         return () => mediaQuery.removeEventListener("change", handleChange);
     }, []);
 
-    function updatePreference(updates: Partial<UserPreferences>) {
+    function updatePreferences(updates: Partial<UserPreferences>) {
         const newPreferences = storage.updatePreferences(updates);
         setPreferences(newPreferences);
     }
 
     return (
-        <PreferencesContext.Provider value={{ preferences, updatePreference }}>{children}</PreferencesContext.Provider>
+        <PreferencesContext.Provider value={{ preferences, updatePreferences }}>{children}</PreferencesContext.Provider>
     );
 }
 

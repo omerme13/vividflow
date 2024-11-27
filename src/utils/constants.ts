@@ -37,5 +37,5 @@ export const DEFAULT_PREFERENCES: UserPreferences = {
     dateFormat: PreferenceDateFormat.UK,
     username: "",
     showCompletedEvents: true,
-    recentActivitiesCount: PreferenceActivityCount.regular,
+    recentActivitiesCount: PreferenceActivityCount.Regular,
 } as const;

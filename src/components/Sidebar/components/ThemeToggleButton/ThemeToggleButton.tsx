@@ -5,9 +5,9 @@ import "./ThemeToggleButton.scss";
 import Tooltip from "@/components/Tooltip";
 
 export default function ThemeToggleButton() {
-    const { preferences, updatePreference } = usePreferences();
+    const { preferences, updatePreferences } = usePreferences();
 
-    const toggleDarkMode = () => updatePreference({ isDarkMode: !preferences.isDarkMode });
+    const toggleDarkMode = () => updatePreferences({ isDarkMode: !preferences.isDarkMode });
 
     return (
         <Tooltip content={`switch to ${preferences.isDarkMode ? "light" : "dark"} mode`}>

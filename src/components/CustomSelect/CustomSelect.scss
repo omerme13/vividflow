@@ -10,15 +10,15 @@
         font-size: var(--font-size-md);
         color: inherit;
 
-        &--is-focused {
-            outline: none;
+        &--is-focused, &--is-focused:hover {
             background-color: var(--color-card-background);
             border-color: var(--color-cta);
             box-shadow: var(--shadow-focus);
         }
-
+		
         &:hover {
-            background-color: var(--color-card-background);
+			background-color: var(--color-card-background);
+			border-color: var(--color-cta);
         }
     }
 
@@ -88,7 +88,6 @@
         color: var(--color-main-text);
         padding: 1rem 2rem;
         cursor: pointer;
-        text-transform: capitalize;
 
         & + & {
             border-top: 1px solid var(--color-purple-10);

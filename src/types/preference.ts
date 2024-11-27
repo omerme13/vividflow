@@ -1,16 +1,16 @@
 export enum PreferenceDateFormat {
-    US = "MM/dd/yyyy",       // 12/31/2024
-    UK = "dd/MM/yyyy",       // 31/12/2024
-    ISO = "yyyy-MM-dd",      // 2024-12-31
-    EuropeanDot = "dd.MM.yyyy", // 31.12.2024
-    ShortUS = "MM/dd/yy",    // 12/31/24
-    ShortUK = "dd/MM/yy"     // 31/12/24
+    US = "MM/dd/yyyy",
+    UK = "dd/MM/yyyy",
+    ISO = "yyyy-MM-dd",
+    EuropeanDot = "dd.MM.yyyy",
+    ShortUS = "MM/dd/yy",
+    ShortUK = "dd/MM/yy",
 }
 
 export enum PreferenceActivityCount {
-	few = 10,
-	regular = 30,
-	many = 50,
+    Few = "10",
+    Regular = "30",
+    Many = "50",
 }
 export interface UserPreferences {
     isDarkMode: boolean;

@@ -13,17 +13,18 @@
 		border: 0.2rem solid var(--color-card-background);
 	}
 
-    scrollbar-gutter: stable;
-
+	
 	&--big {
 		&::-webkit-scrollbar-thumb {
 			background-color: var(--color-purple-40);
 			border: 0.2rem solid var(--color-purple-30);
-	
+			
 			&:hover {
 				background-color: var(--color-purple-50);
 				border-width: 0.15rem;
 			}
 		}
+		
+		scrollbar-gutter: stable;
 	}
 }
