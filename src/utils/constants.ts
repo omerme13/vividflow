@@ -34,7 +34,7 @@ export const DEFAULT_ACTIVITIES: Activity[] = [] as const;
 
 export const DEFAULT_PREFERENCES: UserPreferences = {
     isDarkMode: window.matchMedia("(prefers-color-scheme: dark)").matches,
-    dateFormat: PreferenceDateFormat.UK,
+    dateFormat: PreferenceDateFormat["DD/MM/YYYY"],
     username: "",
     showCompletedEvents: true,
     recentActivitiesCount: PreferenceActivityCount.Regular,

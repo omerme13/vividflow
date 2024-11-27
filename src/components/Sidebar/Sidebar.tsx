@@ -4,10 +4,14 @@ import { HamburgerIcon, Logo } from "@/assets/icons";
 import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton";
 import { useLayout } from "@/context/LayoutContext";
 import { getClassWithModifier } from "@/utils/styles";
+import Tooltip from "../Tooltip";
+import { usePreferences } from "@/context/PreferenceContext";
 
 import "./Sidebar.scss";
 
 export default function Sidebar() {
+    const { preferences: { username } } = usePreferences();
+	
     const {
         layout: { isCompactSidebar },
         toggleSidebar,
@@ -18,7 +22,11 @@ export default function Sidebar() {
             <HamburgerIcon className="sidebar__toggle-compact-button" onClick={toggleSidebar} />
             <div className="sidebar__user-details">
                 <img src={DEFAULT_AVATAR_URL} className="sidebar__user-avatar" />
-                {!isCompactSidebar && <div className="sidebar__user-name">{"User"}</div>}
+                {!isCompactSidebar && (
+                    <Tooltip className="sidebar__user-name" content={username}>
+                        {username}
+                    </Tooltip>
+                )}
             </div>
             <nav className="sidebar__nav">
                 {SIDEBAR_ITEMS.map(({ page, icon }) => (

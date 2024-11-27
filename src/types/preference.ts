@@ -1,10 +1,10 @@
 export enum PreferenceDateFormat {
-    US = "MM/dd/yyyy",
-    UK = "dd/MM/yyyy",
-    ISO = "yyyy-MM-dd",
-    EuropeanDot = "dd.MM.yyyy",
-    ShortUS = "MM/dd/yy",
-    ShortUK = "dd/MM/yy",
+    "MM/DD/YYYY" = "MM/dd/yyyy",
+    "DD/MM/YYYY" = "dd/MM/yyyy",
+    "YYYY-MM-DD" = "yyyy-MM-dd",
+    "DD.MM.YYY" = "dd.MM.yyyy",
+    "MM/DD/YY" = "MM/dd/yy",
+    "DD/MM/YY" = "dd/MM/yy",
 }
 
 export enum PreferenceActivityCount {

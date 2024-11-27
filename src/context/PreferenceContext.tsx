@@ -1,32 +1,23 @@
 import { UserPreferences } from "@/types/preference";
 import * as storage from "@/utils/preferenceLocalStorage";
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, ReactNode, useEffect } from "react";
 
-interface PreferencesContextType {
+interface PreferencesContext {
     preferences: UserPreferences;
     updatePreferences: (updates: Partial<UserPreferences>) => void;
 }
 
-const PreferencesContext = createContext<PreferencesContextType>({
-    preferences: storage.getStoredPreferences(),
-    updatePreferences: () => undefined,
-});
+const PreferencesContext = createContext<PreferencesContext | undefined>(undefined);
 
-interface PreferencesProviderProps {
-    children: ReactNode;
-}
-
-export function PreferencesProvider({ children }: PreferencesProviderProps) {
+export function PreferencesProvider({ children }: { children: ReactNode }) {
     const [preferences, setPreferences] = useState<UserPreferences>(storage.getStoredPreferences());
 
     useEffect(() => {
-        const isDark = preferences.isDarkMode;
-        document.documentElement.classList.toggle("dark", isDark);
+        document.documentElement.classList.toggle("dark", preferences.isDarkMode);
     }, [preferences.isDarkMode]);
 
     useEffect(() => {
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
         const handleChange = (e: MediaQueryListEvent) => {
             updatePreferences({ isDarkMode: e.matches });
         };
@@ -35,20 +26,18 @@ export function PreferencesProvider({ children }: PreferencesProviderProps) {
         return () => mediaQuery.removeEventListener("change", handleChange);
     }, []);
 
-    function updatePreferences(updates: Partial<UserPreferences>) {
-        const newPreferences = storage.updatePreferences(updates);
-        setPreferences(newPreferences);
-    }
+    const updatePreferences = useCallback((updates: Partial<UserPreferences>) => {
+        setPreferences((prev) => ({ ...prev, ...updates }));
+        storage.updatePreferences(updates);
+    }, []);
 
     return (
         <PreferencesContext.Provider value={{ preferences, updatePreferences }}>{children}</PreferencesContext.Provider>
     );
 }
 
-export function usePreferences(): PreferencesContextType {
+export function usePreferences() {
     const context = useContext(PreferencesContext);
-    if (!context) {
-        throw new Error("usePreferences must be used within a PreferencesProvider");
-    }
+    if (!context) throw new Error("usePreferences must be used within PreferencesProvider");
     return context;
 }

@@ -11,6 +11,7 @@ import ColorPickerQuick from "./components/ColorPickerQuick/ColorPickerQuick";
 import useDeleteTask from "@/hooks/useDeleteTask";
 import { format } from "date-fns";
 import { TaskColors } from "@/types/task";
+import { usePreferences } from "@/context/PreferenceContext";
 
 import "./Task.scss";
 
@@ -19,6 +20,8 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
     const { updateTask, filterByLabel, toggleTaskCompletion, setTaskDueDate } = useTask(id);
     const handleDeleteTask = useDeleteTask(id);
+	const { preferences: { dateFormat }} = usePreferences();
+	
     const isColorSelected = color !== TaskColors.Gray;
 
     const togglePalette = () => setIsPaletteOpen((prev) => !prev);
@@ -78,7 +81,7 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                         <TaskAction
                             icon={ClockIcon}
                             tooltipContent={
-                                dueDate ? `time set to ${format(new Date(dueDate), "dd/MM/yyyy HH:mm")}` : "set time"
+                                dueDate ? `time set to ${format(new Date(dueDate), `${dateFormat} HH:mm`)}` : "set time"
                             }
                             isActive={!!dueDate}
                         />

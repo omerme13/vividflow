@@ -13,20 +13,22 @@ import {
     isSameMonth,
     parseISO,
 } from "date-fns";
+import { usePreferences } from "@/context/PreferenceContext";
+import { PreferenceDateFormat } from "@/types/preference";
 
 interface DateRangeItem {
     date: Date;
     display: string;
 }
 
-const getDateRange = (timeFilter: TimeFilter): DateRangeItem[] => {
+const getDateRange = (timeFilter: TimeFilter, dateFormat: PreferenceDateFormat): DateRangeItem[] => {
     const now = startOfDay(new Date());
 
     switch (timeFilter) {
         case TimeFilter.Day:
             return Array.from({ length: 14 }, (_, i) => ({
                 date: subDays(now, 13 - i),
-                display: format(subDays(now, 13 - i), "dd/MM/yyyy"),
+                display: format(subDays(now, 13 - i), dateFormat),
             }));
         case TimeFilter.Week:
             return Array.from({ length: 4 }, (_, i) => ({
@@ -46,7 +48,7 @@ const getDateRange = (timeFilter: TimeFilter): DateRangeItem[] => {
     }
 };
 
-const categorizeTasks = (tasks: TaskData[], dateRange: DateRangeItem[], timeFilter: TimeFilter): TaskProgress[] => {
+const categorizeTasks = (tasks: TaskData[], dateRange: DateRangeItem[], timeFilter: TimeFilter, dateFormat: PreferenceDateFormat): TaskProgress[] => {
     const now = new Date();
     const statusTimeline: Record<string, TaskProgress> = {};
 
@@ -66,7 +68,7 @@ const categorizeTasks = (tasks: TaskData[], dateRange: DateRangeItem[], timeFilt
         switch (timeFilter) {
             case TimeFilter.Day:
                 periodKey = dateRange.find(
-                    (d) => format(d.date, "dd/MM/yyyy") === format(taskDate, "dd/MM/yyyy")
+                    (d) => format(d.date, dateFormat) === format(taskDate, dateFormat)
                 )?.display;
                 break;
             case TimeFilter.Week:
@@ -92,8 +94,10 @@ const categorizeTasks = (tasks: TaskData[], dateRange: DateRangeItem[], timeFilt
 };
 
 export default function useTaskProgress(tasks: TaskData[], timeFilter: TimeFilter): TaskProgress[] {
+	const { preferences: { dateFormat }} = usePreferences();
+	
     return useMemo(() => {
-        const dateRange = getDateRange(timeFilter);
-        return categorizeTasks(tasks, dateRange, timeFilter);
-    }, [tasks, timeFilter]);
+        const dateRange = getDateRange(timeFilter, dateFormat);
+        return categorizeTasks(tasks, dateRange, timeFilter, dateFormat);
+    }, [tasks, timeFilter, dateFormat]);
 }

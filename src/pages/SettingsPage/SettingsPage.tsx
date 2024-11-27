@@ -2,8 +2,8 @@ import React from "react";
 import { CalendarIcon, DashboardIcon, SettingsIcon } from "@/assets/icons";
 import Input from "@/components/Input";
 import CustomSelect from "@/components/CustomSelect";
-import { usePreferences } from "@/context/PreferenceContext";
 import { PreferenceDateFormat, PreferenceActivityCount } from "@/types/preference";
+import { usePreferences } from "@/context/PreferenceContext";
 
 import "./SettingsPage.scss";
 
@@ -19,14 +19,14 @@ interface SettingRowProps {
     children: React.ReactNode;
 }
 
-const dateFormatOptions = Object.values(PreferenceDateFormat).map((format) => ({
-    value: format,
-    label: format,
+const dateFormatOptions = Object.entries(PreferenceDateFormat).map(([key, value]) => ({
+    value,
+    label: key,
 }));
 
 const activityCountOptions = Object.values(PreferenceActivityCount).map((value) => ({
     value: value,
-    label: `${value} activities`,
+    label: `${value} Activities`,
 }));
 
 function SettingsSection({ icon, title, children }: SettingsSectionProps) {
@@ -55,8 +55,7 @@ function SettingRow({ label, description, children }: SettingRowProps) {
 
 export default function Settings() {
     const { preferences, updatePreferences } = usePreferences();
-	console.log(preferences, {activityCountOptions, dateFormatOptions});
-	
+
     return (
         <div className="settings-page">
             <header className="settings-header">
@@ -72,10 +71,10 @@ export default function Settings() {
                             value={dateFormatOptions.find((format) => format.value === preferences.dateFormat)}
                             onChange={(option) => {
                                 updatePreferences({
-                                    dateFormat: option as PreferenceDateFormat,
+                                    dateFormat: option.value as PreferenceDateFormat,
                                 });
                             }}
-							isSearchable={false}
+                            isSearchable={false}
                         />
                     </SettingRow>
 
@@ -120,7 +119,7 @@ export default function Settings() {
                                     recentActivitiesCount: option as PreferenceActivityCount,
                                 });
                             }}
-							isSearchable={false}
+                            isSearchable={false}
                         />
                     </SettingRow>
                 </div>
