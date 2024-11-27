@@ -2,7 +2,7 @@ import { createContext, ReactNode, useContext, useEffect, useMemo, useState } fr
 import { addMinutes } from "date-fns";
 import { CalendarViewMode } from "@/types/calendar";
 import { TaskColors, TaskData } from "@/types/task";
-import { getCalendarPreference, saveCalendarPreference } from "@/utils/calendarLocalStorage";
+import * as storage from "@/utils/calendarLocalStorage";
 import { View } from "react-big-calendar";
 import { useTaskContext } from "./TaskContext";
 
@@ -45,13 +45,13 @@ const CalendarContext = createContext<CalendarContextType>(defaultContext);
 export function CalendarProvider({ children }: { children: ReactNode }) {
     const { tasks } = useTaskContext();
 
-    const storedPreferences = getCalendarPreference();
+    const storedPreferences = storage.getCalendarPreference();
 
     const [currentView, setCurrentView] = useState<View>(storedPreferences.currentView);
     const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
     useEffect(() => {
-        saveCalendarPreference({
+        storage.saveCalendarPreference({
             currentView,
         });
     }, [currentView]);
