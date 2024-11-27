@@ -120,4 +120,8 @@
             display: none;
         }
     }
+
+	&__single-value {
+		color: var(--color-main-text);
+	}
 }
