@@ -51,7 +51,7 @@ export default function CalendarPage() {
 
         const updatedTask: TaskData = {
             ...calendarEvent.task,
-            dueDate: start as string,
+            dueDate: new Date(start).toISOString(),
         };
 
         updateTask(updatedTask);
