@@ -85,6 +85,7 @@ export default function Settings() {
                                 updatePreferences({ username: value });
                             }}
                             placeholder="Enter username"
+							className="settings-page__input"
                         />
                     </SettingRow>
                 </div>

@@ -45,6 +45,7 @@ export default function TaskModal({ isOpen, onClose, task, isEditMode, dueDate }
                     text: text.trim(),
                     label: label.trim(),
                     color: selectedColor,
+					createdAt: new Date().toISOString(),
                     ...(dueDate && { dueDate }),
                 });
             }
