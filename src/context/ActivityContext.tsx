@@ -52,7 +52,7 @@ export function ActivityProvider({ children }: { children: ReactNode }) {
             }
 
             if (previousTask.color !== currentTask.color) {
-                trackActivity(ActivityType.ColorChanged, currentTask, { color: currentTask.color });
+                trackActivity(ActivityType.ColorChanged, currentTask);
             }
 
             if (previousTask.label !== currentTask.label) {

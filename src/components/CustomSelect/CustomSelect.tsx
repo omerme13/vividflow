@@ -5,8 +5,8 @@ import "./CustomSelect.scss";
 export default function CustomSelect(props: Props) {
     return (
         <Select
-		{...props}
-			className="custom-select-wrapper"
+            {...props}
+            className="custom-select-wrapper"
             classNamePrefix="custom-select"
             classNames={{ menuList: () => "scrollbar" }}
         />
