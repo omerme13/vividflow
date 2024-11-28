@@ -20,7 +20,7 @@ export default function CalendarPage() {
     const { events, currentView, setCurrentView, selectedDate, setSelectedDate, workingHours } = useCalendar();
     const { updateTask } = useTaskContext();
     const { taskModal, handleEdit, toggleTaskModal, setDueDate } = useTaskModal();
-
+	
     const locales = {
         "en-US": enUS,
     };
@@ -38,12 +38,7 @@ export default function CalendarPage() {
     };
 
     const handleEventProps: EventPropGetter<CalendarEvent> = (event) => {
-        return {
-            style: {
-                background: `var(--color-${event.task.color})`,
-                color: "var(--color-main-text)",
-            },
-        };
+		return { style: event.style}
     };
 
     const moveEvent: withDragAndDropProps["onEventDrop"] = ({ event, start }) => {

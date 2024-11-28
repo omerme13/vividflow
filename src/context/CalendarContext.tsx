@@ -5,6 +5,7 @@ import { TaskColors, TaskData } from "@/types/task";
 import * as storage from "@/utils/calendarLocalStorage";
 import { View } from "react-big-calendar";
 import { useTaskContext } from "./TaskContext";
+import { usePreferences } from "./PreferenceContext";
 
 interface CalendarEvent {
     id: string;
@@ -44,6 +45,9 @@ const CalendarContext = createContext<CalendarContextType>(defaultContext);
 
 export function CalendarProvider({ children }: { children: ReactNode }) {
     const { tasks } = useTaskContext();
+    const {
+        preferences: { showCompletedEvents },
+    } = usePreferences();
 
     const storedPreferences = storage.getCalendarPreference();
 
@@ -58,7 +62,7 @@ export function CalendarProvider({ children }: { children: ReactNode }) {
 
     const events = useMemo<CalendarEvent[]>(() => {
         return tasks
-            .filter((task) => task.dueDate)
+            .filter((task) => task.dueDate && (!task.completedAt || (task.completedAt && showCompletedEvents)))
             .map((task) => ({
                 id: task.id,
                 title: task.text,
@@ -67,11 +71,12 @@ export function CalendarProvider({ children }: { children: ReactNode }) {
                 allDay: false,
                 task,
                 style: {
-                    backgroundColor: task.color || TaskColors.Gray,
-                    opacity: task.completedAt ? 0.7 : 1,
+                    background: `var(--color-${task.color})`,
+                    color: "var(--color-main-text)",
+                    textDecoration: task.completedAt ? "line-through" : "",
                 },
             }));
-    }, [tasks]);
+    }, [tasks, showCompletedEvents]);
 
     const value: CalendarContextType = {
         events,
