@@ -116,7 +116,7 @@ export default function Settings() {
                             )}
                             onChange={(option) => {
                                 updatePreferences({
-                                    recentActivitiesCount: option as PreferenceActivityCount,
+                                    recentActivitiesCount: option.value as PreferenceActivityCount,
                                 });
                             }}
                             isSearchable={false}

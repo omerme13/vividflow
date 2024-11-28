@@ -2,6 +2,7 @@ import { Activity, ActivityType } from "@/types/dashboard";
 import { TaskData } from "@/types/task";
 import { createContext, useContext, useState, useCallback, ReactNode, useMemo } from "react";
 import * as storage from "@/utils/dashboardLocalStorage";
+import { usePreferences } from "./PreferenceContext";
 
 export interface ActivityContextState {
     activities: Activity[];
@@ -18,6 +19,7 @@ export const ActivityDispatchContext = createContext<ActivityContextDispatch | u
 
 export function ActivityProvider({ children }: { children: ReactNode }) {
     const [activities, setActivities] = useState<Activity[]>(() => storage.getActivities());
+	const {preferences: { recentActivitiesCount}} = usePreferences();
 
     const trackActivity = useCallback(
         (type: ActivityType, task: TaskData) => {
@@ -88,9 +90,9 @@ export function ActivityProvider({ children }: { children: ReactNode }) {
 
     const stateValue = useMemo(
         () => ({
-            activities,
+            activities: activities.slice(0, +recentActivitiesCount),
         }),
-        [activities]
+        [activities, recentActivitiesCount]
     );
 
     return (
