@@ -85,9 +85,11 @@ export default function Settings() {
                             options={dateFormatOptions}
                             value={dateFormatOptions.find((format) => format.value === preferences.dateFormat)}
                             onChange={(option) => {
-                                updatePreferences({
-                                    dateFormat: option.value as PreferenceDateFormat,
-                                });
+                                if (option) {
+                                    updatePreferences({
+                                        dateFormat: option.value as PreferenceDateFormat,
+                                    });
+                                }
                             }}
                             isSearchable={false}
                         />
@@ -130,9 +132,11 @@ export default function Settings() {
                                 (option) => option.value === preferences.recentActivitiesCount
                             )}
                             onChange={(option) => {
-                                updatePreferences({
-                                    recentActivitiesCount: option.value as PreferenceActivityCount,
-                                });
+                                if (option) {
+                                    updatePreferences({
+                                        recentActivitiesCount: option.value as PreferenceActivityCount,
+                                    });
+                                }
                             }}
                             isSearchable={false}
                         />

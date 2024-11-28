@@ -1,14 +1,25 @@
-import Select, { Props } from "react-select";
+import Select, { GroupBase, Props } from "react-select";
 
 import "./CustomSelect.scss";
 
-export default function CustomSelect(props: Props) {
+interface Option {
+    label: string;
+    value: string;
+}
+
+type CustomSelectProps<IsMulti extends boolean = false> = Omit<
+    Props<Option, IsMulti, GroupBase<Option>>,
+    "classNamePrefix"
+> & { isMulti?: IsMulti };
+
+function CustomSelect<IsMulti extends boolean = false>(props: CustomSelectProps<IsMulti>) {
     return (
-        <Select
-            {...props}
-            className="custom-select-wrapper"
+        <Select<Option, IsMulti, GroupBase<Option>>
             classNamePrefix="custom-select"
-            classNames={{ menuList: () => "scrollbar" }}
+            className="custom-select-wrapper"
+            {...props}
         />
     );
 }
+
+export default CustomSelect;

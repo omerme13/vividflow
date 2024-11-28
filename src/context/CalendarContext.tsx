@@ -1,24 +1,10 @@
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 import { addMinutes } from "date-fns";
-import { CalendarViewMode } from "@/types/calendar";
-import { TaskColors, TaskData } from "@/types/task";
+import { CalendarEvent, CalendarViewMode } from "@/types/calendar";
 import * as storage from "@/utils/calendarLocalStorage";
 import { View } from "react-big-calendar";
 import { useTaskContext } from "./TaskContext";
 import { usePreferences } from "./PreferenceContext";
-
-interface CalendarEvent {
-    id: string;
-    title: string;
-    start: Date;
-    end: Date;
-    allDay: boolean;
-    task: TaskData;
-    style: {
-        backgroundColor: TaskColors | string;
-        opacity: number;
-    };
-}
 
 interface CalendarContextType {
     events: CalendarEvent[];
