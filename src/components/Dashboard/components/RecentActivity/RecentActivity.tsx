@@ -50,7 +50,7 @@ export default function RecentActivity() {
     const { activities } = useActivityState();
 
     return (
-        <DashboardItem title="Recent Activity" fullRow>
+        <DashboardItem title="Recent Activity">
             <div className="recent-activity scrollbar">
                 {activities.map((activity) => (
                     <ActivityItem key={activity.id} activity={activity} />
