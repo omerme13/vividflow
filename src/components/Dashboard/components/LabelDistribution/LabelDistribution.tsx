@@ -46,15 +46,12 @@ export default function LabelDistribution({ tasks }: DashboardChildProps) {
     return (
         <DashboardItem title="Tasks by Label" hasContainer>
             <ResponsiveContainer>
-                <BarChart
-                    data={labelData}
-                    layout="vertical"
-                    margin={{ top: 0, right: 20, left: 40 }}
-                >
+                <BarChart data={labelData} layout="vertical" margin={{ top: 0, right: 20, left: 40 }}>
                     <XAxis
                         type="number"
                         tick={{ fill: "var(--color-main-text-light)" }}
                         axisLine={{ stroke: "var(--color-gray)" }}
+                        fontSize={14}
                     />
                     <YAxis
                         type="category"
@@ -62,6 +59,8 @@ export default function LabelDistribution({ tasks }: DashboardChildProps) {
                         width={70}
                         tick={{ fill: "var(--color-main-text)" }}
                         axisLine={{ stroke: "var(--color-gray)" }}
+                        fontSize={14}
+                        style={{ textTransform: "capitalize" }}
                     />
                     <Tooltip content={<CustomTooltip />} cursor={{ fill: "var(--color-cta-lighter)" }} />
                     <Bar
