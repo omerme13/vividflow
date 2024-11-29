@@ -1,30 +1,44 @@
 import { useMemo } from "react";
-import { TaskData } from "@/types/task";
+import { TaskData, TaskColors } from "@/types/task";
 import { TimeFilter } from "@/types/dashboard";
-import { filterTasksByTimeRange } from "@/utils/dashboardTimeFilters";
+import { parseISO } from "date-fns";
+import { filterTasksByTimeRange, getTimeRange } from "@/utils/dashboardTimeFilters";
 
-interface LabelChartData {
-    label: string;
-    count: number;
-    percentage: string;
-}
-
-export function useTaskLabelDistribution(tasks: TaskData[], timeFilter: TimeFilter): LabelChartData[] {
+export default function useTaskStats(tasks: TaskData[], timeFilter: TimeFilter) {
     return useMemo(() => {
+        const timeRange = getTimeRange();
         const tasksInPeriod = filterTasksByTimeRange(tasks, timeFilter);
 
-        const labelCounts = tasksInPeriod.reduce<Record<string, number>>((acc, task) => {
-            const label = task.label || "Unassigned";
-            acc[label] = (acc[label] || 0) + 1;
-            return acc;
-        }, {});
+        const total = tasksInPeriod.length;
+        const completed = tasksInPeriod.filter(task => task.completedAt).length;
 
-        return Object.entries(labelCounts)
-            .map(([label, count]) => ({
-                label,
-                count,
-                percentage: ((count / tasksInPeriod.length) * 100).toFixed(1),
-            }))
-            .sort((a, b) => b.count - a.count);
+        const overdue = tasks.filter(
+            task => !task.completedAt && task.dueDate && parseISO(task.dueDate) < timeRange.now
+        ).length;
+
+        const dueSoon = tasks.filter(
+            task =>
+                !task.completedAt &&
+                task.dueDate &&
+                parseISO(task.dueDate) > timeRange.now &&
+                parseISO(task.dueDate) <= timeRange.dueSoonThreshold
+        ).length;
+
+        const colorCounts = Object.values(TaskColors).reduce(
+            (acc, color) => ({
+                ...acc,
+                [color]: tasksInPeriod.filter(task => task.color === color).length,
+            }),
+            {} as Record<TaskColors, number>
+        );
+
+        return {
+            total,
+            completed,
+            overdue,
+            dueSoon,
+            completionRate: total ? Math.round((completed / total) * 100) : 0,
+            colorCounts,
+        };
     }, [tasks, timeFilter]);
 }
