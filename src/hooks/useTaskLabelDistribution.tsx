@@ -1,7 +1,7 @@
-import { useMemo } from "react";
-import { TaskData } from "@/types/task";
-import { TimeFilter } from "@/types/dashboard";
-import { filterTasksByTimeRange } from "@/utils/dashboardTimeFilters";
+import { useMemo } from 'react';
+import { TaskData } from '@/types/task';
+import { TimeFilter } from '@/types/dashboard';
+import { filterTasksByTimeRange } from '@/utils/dashboardTimeFilters';
 
 interface LabelChartData {
     label: string;
