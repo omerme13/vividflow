@@ -13,6 +13,7 @@
 		font-size: var(--font-size-md);
 		font-weight: var(--font-weight-bold);
 		color: var(--color-main-text);
+		text-transform: capitalize;
 	}
 
 	&__tooltip-value {

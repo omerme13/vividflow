@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { TaskData } from "@/types/task";
-import { TaskProgress } from "@/components/Dashboard/components/TaskProgress/TaskProgress";
 import { TimeFilter } from "@/types/dashboard";
 import {
     format,
@@ -19,6 +18,13 @@ import { PreferenceDateFormat } from "@/types/preference";
 interface DateRangeItem {
     date: Date;
     display: string;
+}
+
+interface TaskProgress {
+    date: string;
+    completed: number;
+    pending: number;
+    overdue: number;
 }
 
 const getDateRange = (timeFilter: TimeFilter, dateFormat: PreferenceDateFormat): DateRangeItem[] => {
