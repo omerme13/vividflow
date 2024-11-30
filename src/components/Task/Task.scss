@@ -106,3 +106,21 @@
 		color: var(--color-text-white);
 	}
 }
+
+
+@media (max-width: $bp-l) {
+	.task{
+		&--list-mode {
+			min-width: 80%;
+		}
+	}
+}
+
+@media (max-width: $bp-s) {
+	.task{
+
+		&--list-mode {
+			min-width: 100%;
+		}
+	}
+}

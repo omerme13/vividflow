@@ -100,3 +100,11 @@
         }
     }
 }
+
+@media (max-width: $bp-m) {
+	.sidebar {
+		&__toggle-compact-button {
+			visibility: hidden;
+		}
+	}
+}

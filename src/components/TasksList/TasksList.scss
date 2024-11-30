@@ -35,3 +35,21 @@
 		margin-top: 14rem;
 	}
 }
+
+@media (max-width: $bp-m) {
+	.tasks-list{
+		padding: 2.4rem;
+
+		& > * {
+			column-width: 20rem;
+		}
+	}
+}
+
+@media (max-width: $bp-s) {
+	.tasks-list{
+		& > * {
+			column-width: 18rem;
+		}
+	}
+}
