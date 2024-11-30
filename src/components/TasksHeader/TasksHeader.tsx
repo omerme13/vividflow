@@ -7,9 +7,9 @@ import TasksFilters from "@/components/TasksFilters";
 import Popover from "@/components/Popover";
 import useTaskModal from "@/hooks/useTaskModal";
 import useScroll from "@/hooks/useScroll";
+import { getClassWithModifier } from "@/utils/styles";
 
 import "./TasksHeader.scss";
-import { getClassWithModifier } from "@/utils/styles";
 
 export default function TasksHeader() {
     const { searchQuery, setSearchQuery, clearFilters, hasFilters } = useTaskContext();

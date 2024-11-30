@@ -13,6 +13,7 @@ import { TaskData } from "@/types/task";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./CalendarPage.scss";
+import { usePreferences } from "@/context/PreferenceContext";
 
 const DnDCalendar = withDragAndDrop<CalendarEvent, object>(Calendar);
 
@@ -20,7 +21,10 @@ export default function CalendarPage() {
     const { events, currentView, setCurrentView, selectedDate, setSelectedDate, workingHours } = useCalendar();
     const { updateTask } = useTaskContext();
     const { taskModal, handleEdit, toggleTaskModal, setDueDate } = useTaskModal();
-	
+    const {
+        preferences: { hourFormat, dateFormat },
+    } = usePreferences();
+
     const locales = {
         "en-US": enUS,
     };
@@ -38,7 +42,7 @@ export default function CalendarPage() {
     };
 
     const handleEventProps: EventPropGetter<CalendarEvent> = (event) => {
-		return { style: event.style}
+        return { style: event.style };
     };
 
     const moveEvent: withDragAndDropProps["onEventDrop"] = ({ event, start }) => {
@@ -54,7 +58,7 @@ export default function CalendarPage() {
 
     const handleSelectSlot = (slotInfo: SlotInfo) => {
         toggleTaskModal();
-        setDueDate((slotInfo.slots[0]).toISOString());
+        setDueDate(slotInfo.slots[0].toISOString());
     };
 
     return (
@@ -71,16 +75,17 @@ export default function CalendarPage() {
                 scrollToTime={setHours(new Date(), workingHours.start)}
                 components={{
                     event: ({ event }: { event: CalendarEvent }) => (
-                        <Tooltip content={`${format(event.start!, "HH:mm")} ${event.title}`}>{event.title}</Tooltip>
+                        <Tooltip content={`${format(event.start!, hourFormat)} ${event.title}`}>{event.title}</Tooltip>
                     ),
                 }}
                 tooltipAccessor={null}
                 onSelectEvent={handleSelectEvent}
                 eventPropGetter={handleEventProps}
                 formats={{
-                    timeGutterFormat: "HH:mm",
-                    eventTimeRangeFormat: ({ start }: { start: Date }) => format(start, "HH:mm"),
-                    agendaTimeRangeFormat: ({ start }: { start: Date }) => format(start, "HH:mm"),
+                    timeGutterFormat: hourFormat,
+                    eventTimeRangeFormat: ({ start }: { start: Date }) => format(start, hourFormat),
+                    agendaTimeRangeFormat: ({ start }: { start: Date }) => format(start, hourFormat),
+                    agendaDateFormat: dateFormat,
                 }}
                 onEventDrop={moveEvent}
                 resizable={false}

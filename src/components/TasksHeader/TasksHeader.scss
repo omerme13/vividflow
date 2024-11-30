@@ -113,6 +113,7 @@
         font-family: var(--font-family-main);
         font-weight: var(--font-weight-bold);
 		line-height: 1;
+		flex-shrink: 0;
 
         &:hover {
             cursor: pointer;

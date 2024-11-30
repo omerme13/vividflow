@@ -20,7 +20,7 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
     const [isPaletteOpen, setIsPaletteOpen] = useState(false);
     const { updateTask, filterByLabel, toggleTaskCompletion, setTaskDueDate } = useTask(id);
     const handleDeleteTask = useDeleteTask(id);
-	const { preferences: { dateFormat }} = usePreferences();
+	const { preferences: { dateFormat, hourFormat }} = usePreferences();
 	
     const isColorSelected = color !== TaskColors.Gray;
 
@@ -81,7 +81,7 @@ export default function Task({ task, onEdit, isGridMode }: TaskProps) {
                         <TaskAction
                             icon={ClockIcon}
                             tooltipContent={
-                                dueDate ? `time set to ${format(new Date(dueDate), `${dateFormat} HH:mm`)}` : "set time"
+                                dueDate ? `time set to ${format(new Date(dueDate), `${dateFormat} ${hourFormat}`)}` : "set time"
                             }
                             isActive={!!dueDate}
                         />

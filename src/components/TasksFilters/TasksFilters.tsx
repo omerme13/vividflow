@@ -28,7 +28,6 @@ export default function TaskFilter()  {
                         }));
                     }}
                     placeholder="Select labels"
-                    classNames={{ menuList: () => "scrollbar" }}
                 />
             </div>
 

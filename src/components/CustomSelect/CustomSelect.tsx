@@ -17,6 +17,7 @@ function CustomSelect<IsMulti extends boolean = false>(props: CustomSelectProps<
         <Select<Option, IsMulti, GroupBase<Option>>
             classNamePrefix="custom-select"
             className="custom-select-wrapper"
+			classNames={{ menuList: () => "scrollbar" }}
             {...props}
         />
     );

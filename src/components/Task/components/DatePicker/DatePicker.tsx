@@ -3,12 +3,14 @@ import Popover from "@/components/Popover";
 import { MouseEvent, useState } from "react";
 import { CloseIcon } from "@/assets/icons";
 import { DatePickerProps } from "./types";
+import { usePreferences } from "@/context/PreferenceContext";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./DatePicker.scss";
 
 export default function DatePicker({ date, onChange, trigger }: DatePickerProps) {
     const [isOpen, setIsOpen] = useState(false);
+	const { preferences: { dateFormat, hourFormat }} = usePreferences();
 
     const handleDateChange = (date: Date | null, e: unknown) => {
         if (date) onChange(date);
@@ -33,11 +35,11 @@ export default function DatePicker({ date, onChange, trigger }: DatePickerProps)
                 <ReactDatePicker
                     selected={date ? new Date(date) : null}
                     onChange={handleDateChange}
-                    dateFormat="dd-mm-yyyy"
+                    dateFormat={dateFormat}
                     minDate={new Date()}
                     inline
                     showTimeSelect
-                    timeFormat="HH:mm"
+                    timeFormat={hourFormat}
                     timeCaption="Time"
                     timeIntervals={30}
                 />

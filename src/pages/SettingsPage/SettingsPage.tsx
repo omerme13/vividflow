@@ -2,13 +2,13 @@ import { ChangeEvent } from "react";
 import { CalendarIcon, DashboardIcon, SettingsIcon } from "@/assets/icons";
 import Input from "@/components/Input";
 import CustomSelect from "@/components/CustomSelect";
-import { PreferenceDateFormat, PreferenceActivityCount } from "@/types/preference";
+import { PreferenceDateFormat, PreferenceActivityCount, PreferenceHourFormat } from "@/types/preference";
 import { usePreferences } from "@/context/PreferenceContext";
 import Checkbox from "@/components/Checkbox";
 import { SettingRowProps, SettingsSectionProps } from "./types";
+import { activityCountOptions, dateFormatOptions, hourFormatOptions } from "./constants";
 
 import "./SettingsPage.scss";
-import { activityCountOptions, dateFormatOptions } from "./constants";
 
 function SettingsSection({ icon, title, children }: SettingsSectionProps) {
     return (
@@ -61,6 +61,21 @@ export default function Settings() {
                         />
                     </SettingRow>
 
+                    <SettingRow label="Hour Format" description="Choose your preferred hour format">
+                        <CustomSelect
+                            options={hourFormatOptions}
+                            value={hourFormatOptions.find((format) => format.value === preferences.hourFormat)}
+                            onChange={(option) => {
+                                if (option) {
+                                    updatePreferences({
+                                        hourFormat: option.value as PreferenceHourFormat,
+                                    });
+                                }
+                            }}
+                            isSearchable={false}
+                        />
+                    </SettingRow>
+
                     <SettingRow label="Username" description="Set your display name">
                         <Input
                             value={preferences.username}
@@ -69,6 +84,7 @@ export default function Settings() {
                             }}
                             placeholder="Enter username"
                             className="settings-page__input"
+							showClearButton={false}
                         />
                     </SettingRow>
                 </div>

@@ -1,5 +1,5 @@
 import { LayoutState } from "@/types/layout";
-import { PreferenceActivityCount, PreferenceDateFormat, UserPreferences } from "@/types/preference";
+import { PreferenceActivityCount, PreferenceDateFormat, PreferenceHourFormat, UserPreferences } from "@/types/preference";
 import { CalendarPreference } from "./calendarLocalStorage";
 import { CalendarViewMode } from "@/types/calendar";
 import { Activity, TimeFilter } from "@/types/dashboard";
@@ -35,6 +35,7 @@ export const DEFAULT_ACTIVITIES: Activity[] = [] as const;
 export const DEFAULT_PREFERENCES: UserPreferences = {
     isDarkMode: window.matchMedia("(prefers-color-scheme: dark)").matches,
     dateFormat: PreferenceDateFormat["DD/MM/YYYY"],
+    hourFormat: PreferenceHourFormat["HH:mm"],
     username: "",
     showCompletedEvents: true,
     recentActivitiesCount: PreferenceActivityCount.Regular,
