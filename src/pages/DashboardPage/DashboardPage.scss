@@ -4,4 +4,8 @@
 	flex-direction: column;
 	gap: 2rem;
 	height: 90vh;
+
+	@media (max-width: $bp-l) {
+		height: auto;
+    }
 }

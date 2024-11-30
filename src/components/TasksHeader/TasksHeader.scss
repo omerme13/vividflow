@@ -125,3 +125,17 @@
         box-shadow: var(--shadow-1);
     }
 }
+
+@media (max-width: $bp-m) {
+	.tasks-header {
+		padding: 2.4rem;
+
+		&__search-input {
+			width: 15rem;
+		}
+		&__add-task-button {
+			padding: 0 1.6rem;
+
+		}
+	}
+}

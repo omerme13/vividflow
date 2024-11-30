@@ -1,4 +1,5 @@
-import { LayoutState, Page } from "@/types/layout";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { Breakpoint, LayoutState, Page } from "@/types/layout";
 import { StorageKeys } from "@/utils/constants";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -23,6 +24,8 @@ export function LayoutProvider({ children }: { children: React.ReactNode }) {
         const stored = localStorage.getItem(StorageKeys.Layout);
         return stored ? JSON.parse(stored) : defaultLayoutState;
     });
+	const isBelowM = useBreakpoint(Breakpoint.m);
+
 
     useEffect(() => {
         localStorage.setItem(StorageKeys.Layout, JSON.stringify(layout));
@@ -59,7 +62,10 @@ export function LayoutProvider({ children }: { children: React.ReactNode }) {
     return (
         <LayoutContext.Provider
             value={{
-                layout,
+                layout: {
+					...layout,
+					isCompactSidebar: isBelowM || layout.isCompactSidebar
+				},
                 toggleSidebar,
                 toggleViewMode,
                 setCurrentPage,

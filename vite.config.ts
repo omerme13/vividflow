@@ -8,12 +8,13 @@ export default defineConfig({
     css: {
         preprocessorOptions: {
             scss: {
-                additionalData:`
-					@import "./src/styles/_breakpoints.scss"; 
-                    @import "./src/styles/_utilities.scss"; 
-                    @import "./src/styles/_reset.scss"; 
-                    @import "./src/styles/_variables.scss";
-				`,
+                silenceDeprecations: ["legacy-js-api"],
+                additionalData: `
+                    @use "./src/styles/_breakpoints.scss" as *;
+                    @use "./src/styles/_utilities.scss" as *;
+                    @use "./src/styles/_reset.scss" as *;
+                    @use "./src/styles/_variables.scss" as *;
+                `,
             },
         },
     },
