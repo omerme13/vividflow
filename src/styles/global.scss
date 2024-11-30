@@ -1,9 +1,0 @@
-@use "./reset";
-@use "./variables";
-@use "./utilities";
-
-:focus-visible {
-    outline: none;
-    border: 1px solid var(--color-cta);
-    box-shadow: var(--shadow-focus);
-}

@@ -17,6 +17,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+:focus-visible {
+    outline: none;
+    border: 1px solid var(--color-cta);
+    box-shadow: var(--shadow-focus);
+}
+
+
 img,
 picture,
 video,

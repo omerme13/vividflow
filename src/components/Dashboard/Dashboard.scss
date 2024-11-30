@@ -8,8 +8,8 @@
         margin-bottom: 1.6rem;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: $bp-l) {
         grid-template-columns: 1fr;
-        gap: 1.6rem;
+        gap: 1rem;
     }
 }
