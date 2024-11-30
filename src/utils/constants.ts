@@ -2,7 +2,7 @@ import { LayoutState } from "@/types/layout";
 import { PreferenceActivityCount, PreferenceDateFormat, UserPreferences } from "@/types/preference";
 import { CalendarPreference } from "./calendarLocalStorage";
 import { CalendarViewMode } from "@/types/calendar";
-import { Activity } from "@/types/dashboard";
+import { Activity, TimeFilter } from "@/types/dashboard";
 
 export enum StorageKeys {
     Preference = "vividflow_user_preferences",
@@ -10,8 +10,8 @@ export enum StorageKeys {
     Labels = "vividflow_labels",
     Layout = "vividflow_layout",
     CalendarPreference = "vividflow_calendar_preference",
-    CalendarView = "vividflow_calendar_view",
-	Activities = "vividflow_activities"
+	Activities = "vividflow_activities",
+	DashboardTimeFilter = 'vividflow_dashbaord_time_filter'
 }
 
 export const DEFAULT_LAYOUT: LayoutState = {
@@ -39,3 +39,5 @@ export const DEFAULT_PREFERENCES: UserPreferences = {
     showCompletedEvents: true,
     recentActivitiesCount: PreferenceActivityCount.Regular,
 } as const;
+
+export const DEFAULT_DASHBOARD_TIME_FILTER: TimeFilter = TimeFilter.Month;

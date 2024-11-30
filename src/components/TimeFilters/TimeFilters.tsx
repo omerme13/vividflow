@@ -5,7 +5,7 @@ import { useDashboardContext } from "@/context/DashboardContext";
 import './TimeFilters.scss';
 
 export default function TimeFilters() {
-    const { timeFilter, setTimeFilter } = useDashboardContext();
+    const { timeFilter, updateTimeFilter } = useDashboardContext();
 
     return (
         <div className="time-filters">
@@ -13,7 +13,7 @@ export default function TimeFilters() {
                 <button
                     key={filter}
                     className={getClassWithModifier("time-filters__filter", "active", timeFilter === filter)}
-                    onClick={() => setTimeFilter(filter)}
+                    onClick={() => updateTimeFilter(filter)}
                 >
                     {filter}
                 </button>

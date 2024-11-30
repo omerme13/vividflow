@@ -1,5 +1,25 @@
-import { StorageKeys, DEFAULT_ACTIVITIES } from "./constants";
-import { Activity } from "@/types/dashboard";
+import { StorageKeys, DEFAULT_ACTIVITIES, DEFAULT_DASHBOARD_TIME_FILTER } from "./constants";
+import { Activity, TimeFilter } from "@/types/dashboard";
+
+export const getTimeFilters = (): TimeFilter => {
+    const storedTimeFilter = localStorage.getItem(StorageKeys.DashboardTimeFilter);
+    if (!storedTimeFilter) {
+        localStorage.setItem(StorageKeys.DashboardTimeFilter, JSON.stringify(DEFAULT_DASHBOARD_TIME_FILTER));
+        return DEFAULT_DASHBOARD_TIME_FILTER;
+    }
+
+    try {
+        return JSON.parse(storedTimeFilter);
+    } catch {
+        localStorage.removeItem(StorageKeys.DashboardTimeFilter);
+        return DEFAULT_DASHBOARD_TIME_FILTER;
+    }
+};
+
+export const saveTimeFilter = (timeFilter: TimeFilter): void => {
+    localStorage.setItem(StorageKeys.DashboardTimeFilter, JSON.stringify(timeFilter));
+};
+
 
 export const getActivities = (): Activity[] => {
     const storedActivities = localStorage.getItem(StorageKeys.Activities);
