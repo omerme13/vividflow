@@ -1,6 +1,6 @@
 .dashboard-item {
 	background: var(--color-card-background);
-	border-radius: var(--radius-md);
+	border-radius: var(--radius-m);
 	padding: 2.4rem;
 	display: flex;
 	flex-direction: column;
@@ -19,7 +19,7 @@
 	}
 
 	&__title {
-		font-size: var(--font-size-lg);
+		font-size: var(--font-size-l);
         color: var(--color-main-text);
 		text-transform: uppercase;
 	}
@@ -27,7 +27,7 @@
 	&__container {
         padding: 2rem;
         background: var(--color-purple-10);
-        border-radius: var(--radius-md);
+        border-radius: var(--radius-m);
 		height: 100%;
 		width: 100%;
 	}

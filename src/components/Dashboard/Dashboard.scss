@@ -4,12 +4,12 @@
     gap: 2.4rem;
 
     &__subtitle {
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-m);
         margin-bottom: 1.6rem;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
         grid-template-columns: 1fr;
-        padding: 1rem;
+        gap: 1.6rem;
     }
 }

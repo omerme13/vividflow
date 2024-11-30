@@ -28,9 +28,9 @@
 
     --font-family-main: "Lato", Arial, sans-serif;
     --font-weight-bold: 600;
-    --font-size-lg: 1.6rem;
-    --font-size-md: 1.4rem;
-    --font-size-sm: 1.2rem;
+    --font-size-s: 1.2rem;
+    --font-size-m: 1.4rem;
+    --font-size-l: 1.6rem;
     --line-height-regular: 1.5;
 
     --task-width: 25rem;
@@ -50,11 +50,16 @@
     --z-high: 1000;
 
     --radius-xs: 0.3rem;
-    --radius-sm: 0.5rem;
-    --radius-md: 0.8rem;
-    --radius-lg: 1.2rem;
+    --radius-s: 0.5rem;
+    --radius-m: 0.8rem;
+    --radius-l: 1.2rem;
     --radius-xl: 2.8rem;
     --radius-full: 50%;
+
+	--bp-s: 37.5em; // 600px
+    --bp-m: 56.25em; // 900px
+    --bp-l: 75em; // 1200px
+    --bp-xl: 87.5em; // 1400px
 }
 
 html.dark {

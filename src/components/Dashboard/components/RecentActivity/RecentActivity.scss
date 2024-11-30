@@ -10,7 +10,7 @@
         gap: 1rem;
         padding: 1.5rem;
         background: var(--color-purple-10);
-        border-radius: var(--radius-md);
+        border-radius: var(--radius-m);
     }
 
     &__icon {
@@ -18,7 +18,7 @@
         height: 2rem;
         display: flex;
         justify-content: center;
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-m);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -39,7 +39,7 @@
     }
 
     &__text {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-l);
         font-weight: var(--font-weight-bold);
         color: var(--color-main-text);
         overflow: hidden;
@@ -50,16 +50,16 @@
 
     &__time {
         white-space: nowrap;
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-s);
         background-color: var(--color-purple-30);
         font-weight: var(--font-weight-bold);
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-s);
         line-height: 1;
         padding: 0.4rem 0.8rem;
     }
 
     &__description {
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-m);
         color: var(--color-main-text-light);
     }
 }

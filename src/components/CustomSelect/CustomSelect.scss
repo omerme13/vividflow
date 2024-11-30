@@ -4,10 +4,10 @@
         padding: 0 0.4rem;
         background-color: var(--color-purple-10);
         border: 1px solid transparent;
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-l);
         transition: 0.2s;
         font-family: inherit;
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-m);
         color: inherit;
 
         &--is-focused, &--is-focused:hover {
@@ -29,24 +29,24 @@
     &__placeholder {
         color: var(--color-main-text);
         opacity: 0.5;
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-m);
     }
 
     &__input-container {
         margin: 0;
         padding: 0;
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-m);
         color: inherit;
     }
 
     &__multi-value {
         background: var(--color-card-background);
         border: 1px solid var(--color-purple-20);
-        border-radius: var(--radius-md);
+        border-radius: var(--radius-m);
         margin: 0.2rem;
 
         &__label {
-            font-size: var(--font-size-md);
+            font-size: var(--font-size-m);
             color: var(--color-main-text);
             padding: 0.4rem 0.8rem;
         }
@@ -70,7 +70,7 @@
     &__menu {
         margin-top: 0.4rem;
         background-color: var(--color-card-background);
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-l);
         border: 1px solid var(--color-purple-20);
         box-shadow: var(--shadow-3);
         animation: slideUp 0.2s ease-out;
@@ -84,7 +84,7 @@
 
     &__option {
         font-family: inherit;
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-m);
         color: var(--color-main-text);
         padding: 1rem 2rem;
         cursor: pointer;

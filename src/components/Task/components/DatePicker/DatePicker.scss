@@ -2,7 +2,7 @@
 .datepicker-wrapper {
     display: flex;
     background: var(--color-purple-10);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-m);
     overflow: hidden;
     color: var(--color-main-text);
 
@@ -15,7 +15,7 @@
 		border: none;
 		background: none;
 		font-weight: var(--font-weight-bold);
-		font-size: var(--font-size-md);
+		font-size: var(--font-size-m);
 		color: inherit;
 		padding: 0.5rem 1rem;
 		display: flex;
@@ -60,7 +60,7 @@
 
     &__month-container {
         background: var(--color-purple-10);
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-m);
         padding: 1.6rem;
         min-width: 28rem;
     }
@@ -87,7 +87,7 @@
 
     &__day-name {
         color: var(--color-secondary-text);
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-s);
         font-weight: var(--font-weight-bold);
         width: 3.2rem;
         margin: 0;
@@ -109,7 +109,7 @@
         line-height: 3.2rem;
         border-radius: var(--radius-full);
         margin: 0;
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-s);
 
 		&:hover {
             background: var(--color-purple-30) !important;
@@ -225,7 +225,7 @@
     .react-datepicker-time {
         &__header {
             color: inherit;
-            font-size: var(--font-size-md);
+            font-size: var(--font-size-m);
         }
     }
 }

@@ -1,6 +1,6 @@
 .label-distribution {
     &__tooltip {
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-s);
         padding: 1rem;
         box-shadow: var(--shadow-1);
         background-color: var(--color-purple-10);
@@ -10,14 +10,14 @@
     }
 
 	&__tooltip-label {
-		font-size: var(--font-size-md);
+		font-size: var(--font-size-m);
 		font-weight: var(--font-weight-bold);
 		color: var(--color-main-text);
 		text-transform: capitalize;
 	}
 
 	&__tooltip-value {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-s);
 		color: var(--color-main-text-light);
 	}
 

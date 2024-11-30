@@ -11,13 +11,13 @@
 
     &__input {
         font-family: inherit;
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-m);
         color: inherit;
         width: 100%;
         padding: 1.2rem 1.6rem;
         background-color: var(--color-purple-10);
         border: 1px solid transparent;
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-l);
         transition: 0.1s;
         resize: none;
 
@@ -46,7 +46,7 @@
 		border: none;
 		background: none;
 		font-weight: var(--font-weight-bold);
-		font-size: var(--font-size-md);
+		font-size: var(--font-size-m);
 		color: var(--color-red-strong);
 		display: flex;
 		gap: 0.4rem;

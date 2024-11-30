@@ -49,12 +49,12 @@
     }
 
     &__label {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-s);
         background-color: var(--color-purple-30);
         width: fit-content;
         padding: 0.6rem 1.2rem;
         font-weight: var(--font-weight-bold);
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-s);
         text-transform: capitalize;
         line-height: 1;
 

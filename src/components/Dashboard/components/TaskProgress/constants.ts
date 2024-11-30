@@ -9,8 +9,8 @@ export const TASK_PROGRESS_LEGEND_DATA = [
 export const TOOLTIP_STYLE: React.CSSProperties = {
 	background: 'var(--color-purple-10)',
 	border: 'none',
-	borderRadius: 'var(--radius-sm)',
+	borderRadius: 'var(--radius-s)',
 	boxShadow: 'var(--shadow-1)',
 	textTransform: 'capitalize',
-	fontSize: 'var(--font-size-md)'
+	fontSize: 'var(--font-size-m)'
 } as const;
