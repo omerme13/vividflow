@@ -1,39 +1,14 @@
-import React, { ChangeEventHandler } from "react";
-import { CalendarIcon, CheckIcon, DashboardIcon, SettingsIcon } from "@/assets/icons";
+import { ChangeEvent } from "react";
+import { CalendarIcon, DashboardIcon, SettingsIcon } from "@/assets/icons";
 import Input from "@/components/Input";
 import CustomSelect from "@/components/CustomSelect";
 import { PreferenceDateFormat, PreferenceActivityCount } from "@/types/preference";
 import { usePreferences } from "@/context/PreferenceContext";
+import Checkbox from "@/components/Checkbox";
+import { SettingRowProps, SettingsSectionProps } from "./types";
 
 import "./SettingsPage.scss";
-
-// TODO divide this page to a few components, to do the same with style file
-interface SettingsSectionProps {
-    icon: React.ReactNode;
-    title: string;
-    children: React.ReactNode;
-}
-
-interface SettingRowProps {
-    label: string;
-    description: string;
-    children: React.ReactNode;
-}
-
-interface SettingsCheckboxProps {
-    checked: boolean;
-    onChange: ChangeEventHandler<HTMLInputElement>;
-}
-
-const dateFormatOptions = Object.entries(PreferenceDateFormat).map(([key, value]) => ({
-    value,
-    label: key,
-}));
-
-const activityCountOptions = Object.values(PreferenceActivityCount).map((value) => ({
-    value: value,
-    label: `${value} Activities`,
-}));
+import { activityCountOptions, dateFormatOptions } from "./constants";
 
 function SettingsSection({ icon, title, children }: SettingsSectionProps) {
     return (
@@ -55,15 +30,6 @@ function SettingRow({ label, description, children }: SettingRowProps) {
                 <div className="settings-row__description">{description}</div>
             </div>
             <div className="settings-row__control">{children}</div>
-        </div>
-    );
-}
-
-function SettingCheckbox({ checked, onChange }: SettingsCheckboxProps) {
-    return (
-        <div className="checkbox-wrapper">
-            <input type="checkbox" checked={checked} onChange={onChange} className="checkbox" />
-            <CheckIcon width={14} height={14} className="checkbox-check-icon" />
         </div>
     );
 }
@@ -111,8 +77,8 @@ export default function Settings() {
             <SettingsSection icon={<CalendarIcon />} title="Calendar">
                 <div className="settings-card">
                     <SettingRow label="Show Completed Events" description="Display completed tasks in calendar view">
-                        <SettingCheckbox
-                            onChange={(e) => {
+                        <Checkbox
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
                                 updatePreferences({
                                     showCompletedEvents: e.target.checked,
                                 });

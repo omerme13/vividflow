@@ -6,7 +6,8 @@
     flex-direction: column;
     gap: 3.2rem;
 
-    .custom-select-wrapper, &__input {
+    .custom-select-wrapper,
+    &__input {
         width: 18rem;
     }
 }
@@ -32,6 +33,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
+	
     &__header {
         display: flex;
         align-items: center;
@@ -68,43 +70,4 @@
         font-size: 1.2rem;
         color: var(--color-main-text-light);
     }
-
-	.checkbox-wrapper {
-		&:hover {
-			opacity: 0.7;
-		}
-		position: relative;
-		.checkbox-check-icon {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%,-60%);
-			visibility: hidden;
-			color: var(--color-text-white);
-		}
-		.checkbox {
-			cursor: pointer;
-			width: 1.8rem;
-			height: 1.8rem;
-			appearance: none;
-			border: 2px solid var(--color-purple-70);
-			border-radius: var(--radius-xs);
-			background: var(--color-card-background);
-			transition: 0.2s;
-		}
-		
-		.checkbox:checked {
-			background: var(--color-purple-70);
-		}
-		
-		.checkbox:focus-visible {
-			box-shadow: var(--shadow-focus-purple);
-		}
-
-		.checkbox:checked + .checkbox-check-icon {
-			visibility: visible;
-			pointer-events: none;
-		}
-
-	}
 }

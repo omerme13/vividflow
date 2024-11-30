@@ -1,0 +1,37 @@
+.checkbox-wrapper {
+	position: relative;
+
+	&:hover {
+		opacity: 0.7;
+	}
+	
+	.checkbox-check-icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-60%);
+		visibility: hidden;
+		color: var(--color-text-white);
+	}
+
+	.checkbox {
+		cursor: pointer;
+		width: 1.8rem;
+		height: 1.8rem;
+		appearance: none;
+		border: 2px solid var(--color-purple-70);
+		border-radius: var(--radius-xs);
+		background: var(--color-card-background);
+		transition: 0.2s;
+	}
+	
+	.checkbox:checked {
+		background: var(--color-purple-70);
+	}
+	
+	.checkbox:checked + .checkbox-check-icon {
+		visibility: visible;
+		pointer-events: none;
+	}
+
+}
