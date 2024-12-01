@@ -1,19 +1,10 @@
 import { useMemo } from "react";
 import { TaskData } from "@/types/task";
 import { TimeFilter } from "@/types/dashboard";
-import {
-    format,
-    subDays,
-    subWeeks,
-    subMonths,
-    startOfWeek,
-    startOfDay,
-    isSameWeek,
-    isSameMonth,
-    parseISO,
-} from "date-fns";
+import { format, subDays, isSameDay, parseISO, startOfDay } from "date-fns";
 import { usePreferences } from "@/context/PreferenceContext";
 import { PreferenceDateFormat } from "@/types/preference";
+import { isOverdue } from "@/utils/dashboardTimeFilters";
 
 interface DateRangeItem {
     date: Date;
@@ -28,34 +19,47 @@ interface TaskProgress {
 }
 
 const getDateRange = (timeFilter: TimeFilter, dateFormat: PreferenceDateFormat): DateRangeItem[] => {
-    const now = startOfDay(new Date());
+    const now = new Date();
+    const today = startOfDay(now);
 
     switch (timeFilter) {
         case TimeFilter.Day:
-            return Array.from({ length: 14 }, (_, i) => ({
-                date: subDays(now, 13 - i),
-                display: format(subDays(now, 13 - i), dateFormat),
+            return Array.from({ length: 1 }, () => ({
+                date: today,
+                display: format(today, dateFormat),
             }));
+
         case TimeFilter.Week:
-            return Array.from({ length: 4 }, (_, i) => ({
-                date: startOfWeek(subWeeks(now, 3 - i)),
-                display: `Week ${i + 1}`,
-            }));
-        case TimeFilter.Month:
-            return Array.from({ length: 6 }, (_, i) => {
-                const date = subMonths(now, 5 - i);
+            return Array.from({ length: 7 }, (_, i) => {
+                const date = subDays(today, 6 - i);
                 return {
                     date,
-                    display: format(date, "MMM"),
+                    display: format(date, dateFormat),
                 };
             });
+
+        case TimeFilter.Month:
+            return Array.from({ length: 30 }, (_, i) => {
+                const date = subDays(today, 29 - i);
+                return {
+                    date,
+                    display: format(date, dateFormat),
+                };
+            });
+
+        case TimeFilter.All:
         default:
-            return [];
+            return Array.from({ length: 30 }, (_, i) => {
+                const date = subDays(today, 29 - i);
+                return {
+                    date,
+                    display: format(date, dateFormat),
+                };
+            });
     }
 };
 
-const categorizeTasks = (tasks: TaskData[], dateRange: DateRangeItem[], timeFilter: TimeFilter, dateFormat: PreferenceDateFormat): TaskProgress[] => {
-    const now = new Date();
+const categorizeTasks = (tasks: TaskData[], dateRange: DateRangeItem[]): TaskProgress[] => {
     const statusTimeline: Record<string, TaskProgress> = {};
 
     dateRange.forEach(({ display }) => {
@@ -69,26 +73,12 @@ const categorizeTasks = (tasks: TaskData[], dateRange: DateRangeItem[], timeFilt
 
     tasks.forEach((task) => {
         const taskDate = parseISO(task.createdAt);
-        let periodKey: string | undefined;
-
-        switch (timeFilter) {
-            case TimeFilter.Day:
-                periodKey = dateRange.find(
-                    (d) => format(d.date, dateFormat) === format(taskDate, dateFormat)
-                )?.display;
-                break;
-            case TimeFilter.Week:
-                periodKey = dateRange.find((d) => isSameWeek(d.date, taskDate))?.display;
-                break;
-            case TimeFilter.Month:
-                periodKey = dateRange.find((d) => isSameMonth(d.date, taskDate))?.display;
-                break;
-        }
+        const periodKey = dateRange.find((d) => isSameDay(d.date, taskDate))?.display;
 
         if (periodKey && statusTimeline[periodKey]) {
             if (task.completedAt) {
                 statusTimeline[periodKey].completed++;
-            } else if (task.dueDate && parseISO(task.dueDate) < now) {
+            } else if (task.dueDate && isOverdue(task.dueDate)) {
                 statusTimeline[periodKey].overdue++;
             } else {
                 statusTimeline[periodKey].pending++;
@@ -100,10 +90,12 @@ const categorizeTasks = (tasks: TaskData[], dateRange: DateRangeItem[], timeFilt
 };
 
 export default function useTaskProgress(tasks: TaskData[], timeFilter: TimeFilter): TaskProgress[] {
-	const { preferences: { dateFormat }} = usePreferences();
-	
+    const {
+        preferences: { dateFormat },
+    } = usePreferences();
+
     return useMemo(() => {
         const dateRange = getDateRange(timeFilter, dateFormat);
-        return categorizeTasks(tasks, dateRange, timeFilter, dateFormat);
+        return categorizeTasks(tasks, dateRange);
     }, [tasks, timeFilter, dateFormat]);
 }

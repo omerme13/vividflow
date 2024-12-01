@@ -4,11 +4,12 @@ export enum TimeFilter {
     Day = "day",
     Week = "week",
     Month = "month",
+	All  = "all"
 }
 
 export interface DashboardChildProps {
-	tasks: TaskData[];
-	timeFilter: TimeFilter;
+    tasks: TaskData[];
+    timeFilter: TimeFilter;
 }
 
 export enum ActivityType {
