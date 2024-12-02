@@ -48,7 +48,7 @@ export function CalendarProvider({ children }: { children: ReactNode }) {
 
     const events = useMemo<CalendarEvent[]>(() => {
         return tasks
-            .filter((task) => task.dueDate && (!task.completedAt || (task.completedAt && showCompletedEvents)))
+            .filter((task) => task.dueDate && (!task.completedAt || showCompletedEvents))
             .map((task) => ({
                 id: task.id,
                 title: task.text,

@@ -36,7 +36,7 @@ export const DEFAULT_PREFERENCES: UserPreferences = {
     isDarkMode: window.matchMedia("(prefers-color-scheme: dark)").matches,
     dateFormat: PreferenceDateFormat["DD/MM/YYYY"],
     hourFormat: PreferenceHourFormat["HH:mm"],
-    username: "",
+    username: "User",
     showCompletedEvents: true,
     recentActivitiesCount: PreferenceActivityCount.Regular,
 } as const;

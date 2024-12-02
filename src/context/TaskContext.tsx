@@ -217,7 +217,7 @@ export function useTask(id: string) {
         setTaskDueDate: (date: Date | undefined) =>
             updateTask({
                 ...task,
-                dueDate: date?.toDateString(),
+                dueDate: date?.toISOString(),
             }),
         restoreTask: () => restoreTask(task.id),
     };

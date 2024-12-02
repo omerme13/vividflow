@@ -33,7 +33,7 @@ export default function DatePicker({ date, onChange, trigger }: DatePickerProps)
                     </button>
                 )}
                 <ReactDatePicker
-                    selected={date ? new Date(date) : null}
+                    selected={date || null}
                     onChange={handleDateChange}
                     dateFormat={dateFormat}
                     minDate={new Date()}
