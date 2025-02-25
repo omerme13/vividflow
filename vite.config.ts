@@ -8,12 +8,11 @@ export default defineConfig({
     css: {
         preprocessorOptions: {
             scss: {
-                silenceDeprecations: ["legacy-js-api"],
                 additionalData: `
-                    @use "./src/styles/_breakpoints.scss" as *;
-                    @use "./src/styles/_utilities.scss" as *;
-                    @use "./src/styles/_reset.scss" as *;
-                    @use "./src/styles/_variables.scss" as *;
+                    @use "/src/styles/_breakpoints.scss" as *;
+                    @use "/src/styles/_utilities.scss" as *;
+                    @use "/src/styles/_reset.scss" as *;
+                    @use "/src/styles/_variables.scss" as *;
                 `,
             },
         },
